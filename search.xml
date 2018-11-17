@@ -3,13 +3,27 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2018/11/14/hello-world/"/>
-      <url>/2018/11/14/hello-world/</url>
+      <title>duckduckgo</title>
+      <link href="/2018/11/17/duckduckgo/"/>
+      <url>/2018/11/17/duckduckgo/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>转载自<a href="https://cloudwonders.info" target="_blank" rel="noopener">cloudwonders.info</a><br>当你在任意一个搜索引擎输入一个关键词之后，你就成了全网全平台追逐的流量热点。</p></blockquote><p>平时大打口水战的各大平台在共享你的隐私数据方面异常团结，在B系网站搜索，在A系T系的应用APP上都会看到为你“量身定制”的推送和广告，延迟不超过一分钟。<br><a id="more"></a><br>这一点即便是业界道德楷模G老师都未能免俗，毕竟它也要靠着广告收入维持其智能推荐算法引擎的研发投入。</p><p>最可气的是，推送些边栏广告也就算了，竟然连自己看的新闻和短视频内容也都要和搜索记录沾边，在聚会上随便刷下手机就暴露了自己到底是个什么货色。</p><p>网络对你的监视是全方位的，除了你主动输入的那些关键字，你平时的谈话、你的地理位置，你周围的环境照片都会被偷偷记录上传，用以支撑靠勤劳质朴的城镇劳动人民手动打标签的“人工”智能工程师们的高薪。</p><p>当个人隐私在巨头面前节节败退，当生而为人的尊严在利益机器面前粉碎，当你不能说的秘密被拿来公开叫卖和嘲弄，当互联网利用你心底的弱点反过来操控你之时，难道就没有一款可以放心解放双手，安全地释放自己的求知欲，满足人类最原始的好奇的搜索引擎吗？当然不是这样的鸭——</p><p><img src="http://ww1.sinaimg.cn/large/73403117ly1fhsqrvtg20j223w1kwq8e.jpg?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt=""></p><p>这个创立于2008年的搜索引擎，十年来一直在巨头的夹击下惨淡经营。如果没有愈演愈烈的互联网隐私泄露事件、没棱镜门、没有小扎的听证会，恐怕Duckduckgo也不会有近来的长足发展。</p><p><img src="https://i.loli.net/2018/11/05/5be057be3a57f.jpg" alt=""></p><p>Duckduckgo从创立之初秉承的理念就是不对用户的搜索做任何追踪与记录，不把用户的隐私和数据当作公司的资产，做好一个搜索引擎的本分。自2018年之初，该搜索引擎已每日接受多于两千万次的匿名搜索。</p><p>Duckduckgo的使用方式与其他搜索引擎没有区别，唯一的不同就是搜索之后在其他任何平台没有相关的广告推送。至于搜索本身的质量和水平，笔者简单做了个对比：</p><p><img src="https://i.loli.net/2018/11/05/5be057fe2c0e7.png" alt=""></p><p>应当说完全可以满足日常应用，不说超越G老师，超越B老师应该是问题不大。同时不用担心在互联网大机器下无所遁形。已经有越来越多的朋友和公司将Duckduckgo设置为了默认搜索引擎。</p><p>如果说互联网早已是赢家通吃的寡头时代，用隐私交换在线服务已如缴纳“人头税“一般自然，而在这万马齐喑的时刻，Duckduckgo代表的是一豆星星点点的亮光，为所有在歌舞升平中“心怀鬼胎“的人们擎举起惊奇与愤怒的能力。可以放心大胆地搜索不可描述内容的传送门：<a href="https://www.duckduckgo.com" target="_blank" rel="noopener">https://www.duckduckgo.com</a></p>]]></content>
       
       
+      <categories>
+          
+          <category> Wonder </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> resources </tag>
+            
+            <tag> Wonder </tag>
+            
+        </tags>
       
     </entry>
     

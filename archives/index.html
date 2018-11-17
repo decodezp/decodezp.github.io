@@ -67,7 +67,7 @@
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-0123456789ABCDEF",
+          google_ad_client: "ca-pub-9462173887006476",
           enable_page_level_ads: true
       });
   </script>
@@ -211,45 +211,24 @@ var themeMenus = {};
 </div></section>
           <aside id="sidebar">
   
+    
+  
     <div class="widget-wrap" style="margin: 20px 0;">
 	<div id="search-form-wrap">
 
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
+    <form class="search-form" method="GET" action="https://www.baidu.com/s?">
+    <input name="wd" type="text" class="search-form-input" style="height: 42px; width: 75%;" placeholder="Search...">
+    <button type="submit" class="search-form-submit">Search</button>
+</form>
 <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:decodezp.github.io ' + keyword;
+        return false;
+    });
+})(jQuery);
 </script>
-<script src="/js/insight.js"></script>
 
 </div>
 </div>
@@ -261,10 +240,6 @@ var themeMenus = {};
 
     	<ul class="clearfix widget-social-icons">   
     	
-          
-     			  <li><a href="cloudcollections" title="Wechat"><i class="fa fa-wechat" aria-hidden="true"></i></a></li> 
-          
-   		
           
             <li><a href="mailto:dazhangpan@gmail.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
           

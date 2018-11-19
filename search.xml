@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>top命令使用方法补遗</title>
+      <link href="/2018/11/19/topcmd/"/>
+      <url>/2018/11/19/topcmd/</url>
+      
+        <content type="html"><![CDATA[<h2 id="更改界面刷新频率"><a href="#更改界面刷新频率" class="headerlink" title="更改界面刷新频率"></a>更改界面刷新频率</h2><ul><li>自动刷新</li></ul><p><code>top</code><br><code>d</code><br>输入刷新时间（默认3秒，可调至0.5）</p><ul><li>手动刷新<br>空格</li></ul><a id="more"></a><h2 id="屏幕滚动"><a href="#屏幕滚动" class="headerlink" title="屏幕滚动"></a>屏幕滚动</h2><p>一个屏幕显示不完<br><code>C</code><br>使用方向键滚动</p><p>可用在使用<code>c</code>和<code>V</code>开启命令行及Forest view之后</p><h2 id="查看线程top信息"><a href="#查看线程top信息" class="headerlink" title="查看线程top信息"></a>查看线程top信息</h2><p><code>H</code></p><h2 id="查看线程CPU绑定-亲和性状态"><a href="#查看线程CPU绑定-亲和性状态" class="headerlink" title="查看线程CPU绑定/亲和性状态"></a>查看线程CPU绑定/亲和性状态</h2><p><code>F</code><br>移动光标至<code>Last Used Cpu</code><br>空格<br><code>q</code>返回</p><p>与<code>H</code>配合使用<br>可观察各线程是否与对应的CPU核绑定亲和性</p><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p><code>M</code>按驻留内存大小排序<br><code>P</code>按CPU使用率排序<br><code>T</code>按累计时间排序<br><code>x</code>高亮排序的列</p><h2 id="按NUMA查看CPU使用情况"><a href="#按NUMA查看CPU使用情况" class="headerlink" title="按NUMA查看CPU使用情况"></a>按NUMA查看CPU使用情况</h2><p><code>2</code>查看各NUMA节点CPU汇总使用信息<br><code>3</code>输入节点号，查看该节点各CPU使用信息</p><h2 id="按条件过滤"><a href="#按条件过滤" class="headerlink" title="按条件过滤"></a>按条件过滤</h2><p>‘O’<br>输入过滤条件，如:<br><code>!COMMAND=top</code> COMMAND栏中不包含top<br><code>%CPU&gt;3.0</code> CPU占用率大于3%<br>清除全部过滤条件 <code>=</code></p><h2 id="保存当前命令配置"><a href="#保存当前命令配置" class="headerlink" title="保存当前命令配置"></a>保存当前命令配置</h2><p><code>W</code><br>下次再启动时恢复当前配置形式</p><h2 id="其他信息"><a href="#其他信息" class="headerlink" title="其他信息"></a>其他信息</h2><p><code>man top</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>刚日读经，柔日读史</title>
       <link href="/2018/11/18/gangrirouri/"/>
       <url>/2018/11/18/gangrirouri/</url>

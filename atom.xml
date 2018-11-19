@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-18T11:48:03.541Z</updated>
+  <updated>2018-11-19T13:32:42.827Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>top命令使用方法补遗</title>
+    <link href="https://decodezp.github.io/2018/11/19/topcmd/"/>
+    <id>https://decodezp.github.io/2018/11/19/topcmd/</id>
+    <published>2018-11-19T13:25:58.000Z</published>
+    <updated>2018-11-19T13:32:42.827Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;更改界面刷新频率&quot;&gt;&lt;a href=&quot;#更改界面刷新频率&quot; class=&quot;headerlink&quot; title=&quot;更改界面刷新频率&quot;&gt;&lt;/a&gt;更改界面刷新频率&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;自动刷新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;top&lt;/code&gt;&lt;br&gt;&lt;code&gt;d&lt;/code&gt;&lt;br&gt;输入刷新时间（默认3秒，可调至0.5）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;手动刷新&lt;br&gt;空格&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
     <title>刚日读经，柔日读史</title>
     <link href="https://decodezp.github.io/2018/11/18/gangrirouri/"/>
     <id>https://decodezp.github.io/2018/11/18/gangrirouri/</id>
     <published>2018-11-18T11:27:23.000Z</published>
-    <updated>2018-11-18T11:48:03.541Z</updated>
+    <updated>2018-11-19T13:31:38.766Z</updated>
     
     <summary type="html">
     
@@ -41,7 +67,7 @@
     <link href="https://decodezp.github.io/2018/11/17/duckduckgo/"/>
     <id>https://decodezp.github.io/2018/11/17/duckduckgo/</id>
     <published>2018-11-17T13:13:36.000Z</published>
-    <updated>2018-11-17T13:38:22.335Z</updated>
+    <updated>2018-11-18T11:48:05.706Z</updated>
     
     <summary type="html">
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-19T13:32:42.827Z</updated>
+  <updated>2018-11-20T12:15:52.628Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>几句话说清楚:为什么CPU L1缓存容量始终很小</title>
+    <link href="https://decodezp.github.io/2018/11/20/cachesize/"/>
+    <id>https://decodezp.github.io/2018/11/20/cachesize/</id>
+    <published>2018-11-20T11:45:45.000Z</published>
+    <updated>2018-11-20T12:15:52.628Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;CPU缓存是影响软件性能的关键因素之一。在做性能调优时，经常关注的一个指标就是缓存的命中率(hit rate)。&lt;br&gt;缓存之所以不会达到100%的命中率，是因为缓存容量有限，不能将内存中的全部数据都同时放入其中。只能将当前最热，相邻最近的数据存入，同时还受多核CPU中缓存同步机制的影响。&lt;br&gt;奇怪的是，CPU的制程、晶体管数量、核心数量一直都在增加，但L1缓存的容量始终维持在一个相当低的水平。为什么不加大L1缓存呢？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
+  
+  <entry>
     <title>top命令使用方法补遗</title>
     <link href="https://decodezp.github.io/2018/11/19/topcmd/"/>
     <id>https://decodezp.github.io/2018/11/19/topcmd/</id>
     <published>2018-11-19T13:25:58.000Z</published>
-    <updated>2018-11-19T13:32:42.827Z</updated>
+    <updated>2018-11-20T12:11:01.048Z</updated>
     
     <summary type="html">
     

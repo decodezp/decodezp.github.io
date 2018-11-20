@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>category: tech | DecodeZ</title>
+  <title>几句话说清楚:为什么cpu l1缓存容量始终很小 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,16 +45,20 @@
   
   
   
-  <meta name="description" content="刚日读经，柔日读史">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DecodeZ">
-<meta property="og:url" content="https://decodezp.github.io/categories/tech/index.html">
+  <meta name="description" content="问题CPU缓存是影响软件性能的关键因素之一。在做性能调优时，经常关注的一个指标就是缓存的命中率(hit rate)。缓存之所以不会达到100%的命中率，是因为缓存容量有限，不能将内存中的全部数据都同时放入其中。只能将当前最热，相邻最近的数据存入，同时还受多核CPU中缓存同步机制的影响。奇怪的是，CPU的制程、晶体管数量、核心数量一直都在增加，但L1缓存的容量始终维持在一个相当低的水平。为什么不加大">
+<meta name="keywords" content="tech,hardware,CPU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几句话说清楚:为什么CPU L1缓存容量始终很小">
+<meta property="og:url" content="https://decodezp.github.io/2018/11/20/cachesize/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="刚日读经，柔日读史">
+<meta property="og:description" content="问题CPU缓存是影响软件性能的关键因素之一。在做性能调优时，经常关注的一个指标就是缓存的命中率(hit rate)。缓存之所以不会达到100%的命中率，是因为缓存容量有限，不能将内存中的全部数据都同时放入其中。只能将当前最热，相邻最近的数据存入，同时还受多核CPU中缓存同步机制的影响。奇怪的是，CPU的制程、晶体管数量、核心数量一直都在增加，但L1缓存的容量始终维持在一个相当低的水平。为什么不加大">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://www.build-your-own-computer.net/image-files/cache-01.jpg">
+<meta property="og:updated_time" content="2018-11-20T12:15:52.628Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DecodeZ">
-<meta name="twitter:description" content="刚日读经，柔日读史">
+<meta name="twitter:title" content="几句话说清楚:为什么CPU L1缓存容量始终很小">
+<meta name="twitter:description" content="问题CPU缓存是影响软件性能的关键因素之一。在做性能调优时，经常关注的一个指标就是缓存的命中率(hit rate)。缓存之所以不会达到100%的命中率，是因为缓存容量有限，不能将内存中的全部数据都同时放入其中。只能将当前最热，相邻最近的数据存入，同时还受多核CPU中缓存同步机制的影响。奇怪的是，CPU的制程、晶体管数量、核心数量一直都在增加，但L1缓存的容量始终维持在一个相当低的水平。为什么不加大">
+<meta name="twitter:image" content="https://www.build-your-own-computer.net/image-files/cache-01.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -110,7 +114,7 @@ var themeMenus = {};
 </script>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <header id="allheader" class="site-header" role="banner">
@@ -186,235 +190,122 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main">
-  
-  
-  
+          <section id="main" style="float:none;"><article id="post-cachesize" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
+<div class="article-gallery">
+  <div class="article-gallery-photos">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2018" class="archive-year">2018</a></h1>
-        </div>
-        <div class="archives">
+      <a class="article-gallery-img fancybox" href="https://www.build-your-own-computer.net/image-files/cache-01.jpg" rel="gallery_cjoppag400000o4fy150fzind">
+        <img src="https://www.build-your-own-computer.net/image-files/cache-01.jpg" itemprop="image">
+      </a>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
+  </div>
+</div>
 
-      <a href="/2018/11/20/cachesize/" class="archive-article-date">
-		  <time datetime="2018-11-20T11:45:45.000Z" itemprop="datePublished">Nov 20, 2018</time>
-	  </a>
-      
+    
+      <header class="article-header">
+        
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/11/20/cachesize/">几句话说清楚:为什么CPU L1缓存容量始终很小</a>
+      几句话说清楚:为什么CPU L1缓存容量始终很小
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="/2018/11/19/topcmd/" class="archive-article-date">
-		  <time datetime="2018-11-19T13:25:58.000Z" itemprop="datePublished">Nov 19, 2018</time>
-	  </a>
+    <div class="article-meta">
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/11/19/topcmd/">top命令使用方法补遗</a>
-    </h1>
-  
+	Posted on <a href="/2018/11/20/cachesize/" class="article-date">
+	  <time datetime="2018-11-20T11:45:45.000Z" itemprop="datePublished">November 20, 2018</time>
+	</a>
 
-    </header>
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>CPU缓存是影响软件性能的关键因素之一。在做性能调优时，经常关注的一个指标就是缓存的命中率(hit rate)。<br>缓存之所以不会达到100%的命中率，是因为缓存容量有限，不能将内存中的全部数据都同时放入其中。只能将当前最热，相邻最近的数据存入，同时还受多核CPU中缓存同步机制的影响。<br>奇怪的是，CPU的制程、晶体管数量、核心数量一直都在增加，但L1缓存的容量始终维持在一个相当低的水平。为什么不加大L1缓存呢？<br><a id="more"></a></p>
+<p><img src="https://cenalulu.github.io/images/linux/cache_line/latency.png" alt=""></p>
+<h2 id="缓存组织形式"><a href="#缓存组织形式" class="headerlink" title="缓存组织形式"></a>缓存组织形式</h2><p>当然要考虑到成本和功耗，以及边界效益的问题，但这些不是本文讨论的重点。<br>缓存存在的意义是当CPU需要某些数据时，能够以最快的速度给它。<br>这个速度是以CPU时钟周期为计量单位的。在这一个周期内，CPU能处理的数据量并不大。<br>作为L1缓存，首先需要做的就是把这几个周期内的数据保存好，这个确实缓存容量越大，可以做得越好。<br>但把数据喂给CPU，还需要另外一步工作——缓存的查找。<br>种种不同的缓存组织方式和对应的查找机制，其实是在命中率以及查找效率中寻找平衡。</p>
+<p><img src="https://cs.nyu.edu/~gottlieb/courses/2000s/2007-08-fall/arch/lectures/diagrams/cache-set-assoc.png" alt=""></p>
+<ul>
+<li>直接映射(Direct Mapping)查找效率高，但命中率很低</li>
+<li>全关联映射(Fully Associative Mapping)命中率会提高，但查找效率非常低，与缓存容量成反比</li>
+<li>N路组相联映射(N-ways Set-Associative Mapping)折衷方案，平衡命中率和查找效率，也是缓存采用的组织方式</li>
+</ul>
+<h2 id="L1"><a href="#L1" class="headerlink" title="L1$"></a>L1$</h2><p>对L1缓存来说，任务很艰巨，既要追求命中率，同时也要保证查找效率，那么解决方法就是缩小体积。既享受N-ways Set-Associative Mapping带来的命中率，同时因为每个Set的尺寸不大，仍然会有很高的查找效率。<br>如果将缓存的容量增大，不仅仅是成本和功耗上得不偿失，也将会让缓存的查找效率降低而使缓存丧失意义。</p>
+<p>“大曰逝，逝曰远，远曰反”，以退为进，以曲为直的道理在缓存中有了很好的体现。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/19/topcmd/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">top命令使用方法补遗</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
+<!-- Table of Contents -->
 
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存组织形式"><span class="nav-number">2.</span> <span class="nav-text">缓存组织形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L1"><span class="nav-number">3.</span> <span class="nav-text">L1$</span></a></li></ol>
+    
+    </div>
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form" method="GET" action="https://www.baidu.com/s?">
-    <input name="wd" type="text" class="search-form-input" style="height: 42px; width: 75%;" placeholder="Search...">
-    <button type="submit" class="search-form-submit">Search</button>
-</form>
-<script>
-(function ($) {
-    $('.search-form').on('submit', function (e) {
-        var keyword = $('.search-form-input[name="wd"]').val();
-        window.location = 'https://www.baidu.com/s?wd=site:decodezp.github.io ' + keyword;
-        return false;
-    });
-})(jQuery);
-</script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-            <li><a href="mailto:dazhangpan@gmail.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://github.com/panzhangg" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2018/11/20/cachesize/" title=""><img width="50" height="50" src="https://www.build-your-own-computer.net/image-files/cache-01.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/11/20/cachesize/">几句话说清楚:为什么CPU L1缓存容量始终很小</a></h6>
-              <span>November 20, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2018/11/19/topcmd/" title=""><img width="50" height="50" src="https://www.binarytides.com/blog/wp-content/uploads/2016/03/top-highlight-column-background.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/11/19/topcmd/">top命令使用方法补遗</a></h6>
-              <span>November 19, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2018/11/18/gangrirouri/" title=""><img width="50" height="50" src="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/11/18/gangrirouri/">刚日读经，柔日读史</a></h6>
-              <span>November 18, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2018/11/17/duckduckgo/" title=""><img width="50" height="50" src="https://i.loli.net/2018/11/05/5be05bcd76453.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/11/17/duckduckgo/">如何在偷偷搜索关键字后避免令人尴尬的广告</a></h6>
-              <span>November 17, 2018</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/thoughts/">thoughts</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wonder/">wonder</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU/">CPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hardware/">hardware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resources/">resources</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/">tech</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/">thoughts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wonder/">wonder</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CPU/" style="font-size: 10px;">CPU</a> <a href="/tags/hardware/" style="font-size: 10px;">hardware</a> <a href="/tags/resources/" style="font-size: 10px;">resources</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/wonder/" style="font-size: 10px;">wonder</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
       <footer id="footer" class="site-footer">

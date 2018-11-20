@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚:为什么CPU L1缓存容量始终很小</title>
+      <link href="/2018/11/20/cachesize/"/>
+      <url>/2018/11/20/cachesize/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>CPU缓存是影响软件性能的关键因素之一。在做性能调优时，经常关注的一个指标就是缓存的命中率(hit rate)。<br>缓存之所以不会达到100%的命中率，是因为缓存容量有限，不能将内存中的全部数据都同时放入其中。只能将当前最热，相邻最近的数据存入，同时还受多核CPU中缓存同步机制的影响。<br>奇怪的是，CPU的制程、晶体管数量、核心数量一直都在增加，但L1缓存的容量始终维持在一个相当低的水平。为什么不加大L1缓存呢？<br><a id="more"></a></p><p><img src="https://cenalulu.github.io/images/linux/cache_line/latency.png" alt=""></p><h2 id="缓存组织形式"><a href="#缓存组织形式" class="headerlink" title="缓存组织形式"></a>缓存组织形式</h2><p>当然要考虑到成本和功耗，以及边界效益的问题，但这些不是本文讨论的重点。<br>缓存存在的意义是当CPU需要某些数据时，能够以最快的速度给它。<br>这个速度是以CPU时钟周期为计量单位的。在这一个周期内，CPU能处理的数据量并不大。<br>作为L1缓存，首先需要做的就是把这几个周期内的数据保存好，这个确实缓存容量越大，可以做得越好。<br>但把数据喂给CPU，还需要另外一步工作——缓存的查找。<br>种种不同的缓存组织方式和对应的查找机制，其实是在命中率以及查找效率中寻找平衡。</p><p><img src="https://cs.nyu.edu/~gottlieb/courses/2000s/2007-08-fall/arch/lectures/diagrams/cache-set-assoc.png" alt=""></p><ul><li>直接映射(Direct Mapping)查找效率高，但命中率很低</li><li>全关联映射(Fully Associative Mapping)命中率会提高，但查找效率非常低，与缓存容量成反比</li><li>N路组相联映射(N-ways Set-Associative Mapping)折衷方案，平衡命中率和查找效率，也是缓存采用的组织方式</li></ul><h2 id="L1"><a href="#L1" class="headerlink" title="L1$"></a>L1$</h2><p>对L1缓存来说，任务很艰巨，既要追求命中率，同时也要保证查找效率，那么解决方法就是缩小体积。既享受N-ways Set-Associative Mapping带来的命中率，同时因为每个Set的尺寸不大，仍然会有很高的查找效率。<br>如果将缓存的容量增大，不仅仅是成本和功耗上得不偿失，也将会让缓存的查找效率降低而使缓存丧失意义。</p><p>“大曰逝，逝曰远，远曰反”，以退为进，以曲为直的道理在缓存中有了很好的体现。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>top命令使用方法补遗</title>
       <link href="/2018/11/19/topcmd/"/>
       <url>/2018/11/19/topcmd/</url>

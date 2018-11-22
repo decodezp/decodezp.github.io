@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-20T12:15:52.628Z</updated>
+  <updated>2018-11-22T13:13:43.256Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>程序员和工厂劳工有何不同</title>
+    <link href="https://decodezp.github.io/2018/11/22/programmer-worker/"/>
+    <id>https://decodezp.github.io/2018/11/22/programmer-worker/</id>
+    <published>2018-11-22T12:54:07.000Z</published>
+    <updated>2018-11-22T13:13:43.256Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如今流行的一个说法是，现在的程序员与工业时期的工厂工人并无二致。&lt;br&gt;均是富集于人口密集的城市、均是超时劳动、均是遭受资本家的盘剥、均是一架大机器上的螺丝钉，在超过“劳动年龄”之后被弃如敝屣。&lt;br&gt;基于这些相似点，有些人得出结论，程序员不过是这个时代的“无产阶级”，和以前的流水线工人，纺织厂女工属于同一社会分工和定位。&lt;br&gt;是否当真如此，这个问题值得仔细推敲一下。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
+  
+  <entry>
     <title>几句话说清楚:为什么CPU L1缓存容量始终很小</title>
     <link href="https://decodezp.github.io/2018/11/20/cachesize/"/>
     <id>https://decodezp.github.io/2018/11/20/cachesize/</id>
     <published>2018-11-20T11:45:45.000Z</published>
-    <updated>2018-11-20T12:15:52.628Z</updated>
+    <updated>2018-11-22T13:08:24.183Z</updated>
     
     <summary type="html">
     

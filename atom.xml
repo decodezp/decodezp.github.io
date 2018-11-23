@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-22T13:23:21.430Z</updated>
+  <updated>2018-11-23T11:31:44.132Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XXV710网卡Target Link Speed探秘</title>
+    <link href="https://decodezp.github.io/2018/11/23/x710-target-link-speed/"/>
+    <id>https://decodezp.github.io/2018/11/23/x710-target-link-speed/</id>
+    <published>2018-11-23T11:26:48.000Z</published>
+    <updated>2018-11-23T11:31:44.132Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;发现&quot;&gt;&lt;a href=&quot;#发现&quot; class=&quot;headerlink&quot; title=&quot;发现&quot;&gt;&lt;/a&gt;发现&lt;/h2&gt;&lt;p&gt;用lspci指令查看PCIe设备，特别是网卡设备经常会查看LnkCap及LnkSta字段，以确保网卡运行在期望的PCIe总线类型/带宽上，从而保证网卡的性能。&lt;/p&gt;
+&lt;p&gt;最近拿到一块XXV710-DA2，插上之后简单看了一下状态。LnkCap和LnkSta均显示为Speed 8GT/s，Width x8，没太大问题。这时候无意中瞥见LnkCtl2中Target Link Speed显示为2.5GT/s，引发了兴趣。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+  </entry>
   
   <entry>
     <title>程序员和工厂劳工有何不同</title>

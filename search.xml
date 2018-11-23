@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>XXV710网卡Target Link Speed探秘</title>
+      <link href="/2018/11/23/x710-target-link-speed/"/>
+      <url>/2018/11/23/x710-target-link-speed/</url>
+      
+        <content type="html"><![CDATA[<h2 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h2><p>用lspci指令查看PCIe设备，特别是网卡设备经常会查看LnkCap及LnkSta字段，以确保网卡运行在期望的PCIe总线类型/带宽上，从而保证网卡的性能。</p><p>最近拿到一块XXV710-DA2，插上之后简单看了一下状态。LnkCap和LnkSta均显示为Speed 8GT/s，Width x8，没太大问题。这时候无意中瞥见LnkCtl2中Target Link Speed显示为2.5GT/s，引发了兴趣。<br><a id="more"></a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LnkSta:Speed 8GT/s, Width x8, TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-</span><br><span class="line">DevCap2: Completion Timeout: Range ABCD, TimeoutDis+, LTR-, OBFF Not Supported</span><br><span class="line">DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-, LTR-, OBFF Disabled</span><br><span class="line">LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-Transmit Margin: Normal Operating Range, EnterModifiedCompliance-ComplianceSOS-Compliance De-emphasis: -6dB</span><br></pre></td></tr></table></figure><h2 id="Target-Link-Speed"><a href="#Target-Link-Speed" class="headerlink" title="Target Link Speed"></a>Target Link Speed</h2><p>关于Target Link Speed是什么，查找到了Intel Skylake Processor External Design Specification(EDS)中的定义：</p><blockquote><p>For Downstream Ports, this field sets an upper limit on Link operational speed by restricting the values advertised by the Upstream component in its training sequences.</p></blockquote><p>基本上LnkCap表示支持的速度，LnkCtl2设置你需要的速度，LnkSta显示实际Training好的速度，如果想要修改的话，都是改LnkCtl2的值。</p><p>现在的问题就是LnkSta和LnkCtl2矛盾。那么我们现在这块网卡的速度到底是多少？只能实际测试一下。</p><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>起个<code>pktgen</code>打个性能，是能直接到线速的，也就是说Target Link Speed没有实际起到限制速度的作用。</p><p>又查询了一些资料，从这里看到一个帖子：<a href="https://communities.intel.com/thread/106568" target="_blank" rel="noopener">https://communities.intel.com/thread/106568</a></p><p>最终Intel的官方回复是，这个寄存器的值确实和实际速度没有关系。</p><p>规范也是你们写的，帖子也是你们回的，现在正话反话都让你说了，搞什么鬼。</p><p>最后查到了该寄存器的位置(D0h)，暴力修改一下：</p><p><code>setpci -s 0000:18:00.0 d0.B=3</code></p><p>然后就乖乖地显示为8GT/s了，真是个毫无脾气的寄存器，你让别的遵守规范的设备如何自处。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LnkSta:Speed 8GT/s, Width x8, TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-</span><br><span class="line">DevCap2: Completion Timeout: Range ABCD, TimeoutDis+, LTR-, OBFF Not Supported</span><br><span class="line">DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-, LTR-, OBFF Disabled</span><br><span class="line">LnkCtl2: Target Link Speed: 8GT/s, EnterCompliance- SpeedDis-Transmit Margin: Normal Operating Range, EnterModifiedCompliance-ComplianceSOS-Compliance De-emphasis: -6dB</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> network </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>程序员和工厂劳工有何不同</title>
       <link href="/2018/11/22/programmer-worker/"/>
       <url>/2018/11/22/programmer-worker/</url>

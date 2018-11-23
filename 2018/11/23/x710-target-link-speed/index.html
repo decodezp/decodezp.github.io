@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>刚日读经，柔日读史 | DecodeZ</title>
+  <title>xxv710网卡target link speed探秘 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
-<meta name="keywords" content="thoughts">
+  <meta name="description" content="发现用lspci指令查看PCIe设备，特别是网卡设备经常会查看LnkCap及LnkSta字段，以确保网卡运行在期望的PCIe总线类型/带宽上，从而保证网卡的性能。 最近拿到一块XXV710-DA2，插上之后简单看了一下状态。LnkCap和LnkSta均显示为Speed 8GT/s，Width x8，没太大问题。这时候无意中瞥见LnkCtl2中Target Link Speed显示为2.5GT/s，">
+<meta name="keywords" content="tech,hardware,network">
 <meta property="og:type" content="article">
-<meta property="og:title" content="刚日读经，柔日读史">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/18/gangrirouri/index.html">
+<meta property="og:title" content="XXV710网卡Target Link Speed探秘">
+<meta property="og:url" content="https://decodezp.github.io/2018/11/23/x710-target-link-speed/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
+<meta property="og:description" content="发现用lspci指令查看PCIe设备，特别是网卡设备经常会查看LnkCap及LnkSta字段，以确保网卡运行在期望的PCIe总线类型/带宽上，从而保证网卡的性能。 最近拿到一块XXV710-DA2，插上之后简单看了一下状态。LnkCap和LnkSta均显示为Speed 8GT/s，Width x8，没太大问题。这时候无意中瞥见LnkCtl2中Target Link Speed显示为2.5GT/s，">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg">
-<meta property="og:updated_time" content="2018-11-19T13:32:44.873Z">
+<meta property="og:image" content="https://service.pcconnection.com/images/inhouse/6194BD1A-78E7-4393-AD3B-86817E2D9207.jpg">
+<meta property="og:updated_time" content="2018-11-23T11:31:44.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刚日读经，柔日读史">
-<meta name="twitter:description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
-<meta name="twitter:image" content="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg">
+<meta name="twitter:title" content="XXV710网卡Target Link Speed探秘">
+<meta name="twitter:description" content="发现用lspci指令查看PCIe设备，特别是网卡设备经常会查看LnkCap及LnkSta字段，以确保网卡运行在期望的PCIe总线类型/带宽上，从而保证网卡的性能。 最近拿到一块XXV710-DA2，插上之后简单看了一下状态。LnkCap和LnkSta均显示为Speed 8GT/s，Width x8，没太大问题。这时候无意中瞥见LnkCtl2中Target Link Speed显示为2.5GT/s，">
+<meta name="twitter:image" content="https://service.pcconnection.com/images/inhouse/6194BD1A-78E7-4393-AD3B-86817E2D9207.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -190,14 +190,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-gangrirouri" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-x710-target-link-speed" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" rel="gallery_cjoty2yu7000brcfyv0e17my5">
-        <img src="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://service.pcconnection.com/images/inhouse/6194BD1A-78E7-4393-AD3B-86817E2D9207.jpg" rel="gallery_cjoty2yu50008rcfyx69hmugt">
+        <img src="https://service.pcconnection.com/images/inhouse/6194BD1A-78E7-4393-AD3B-86817E2D9207.jpg" itemprop="image">
       </a>
     
   </div>
@@ -208,7 +208,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      刚日读经，柔日读史
+      XXV710网卡Target Link Speed探秘
     </h1>
   
 
@@ -216,8 +216,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/18/gangrirouri/" class="article-date">
-	  <time datetime="2018-11-18T11:27:23.000Z" itemprop="datePublished">November 18, 2018</time>
+	Posted on <a href="/2018/11/23/x710-target-link-speed/" class="article-date">
+	  <time datetime="2018-11-23T11:26:48.000Z" itemprop="datePublished">November 23, 2018</time>
 	</a>
 
       
@@ -228,24 +228,34 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。<br>资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。</p>
-<a id="more"></a>
-<p>刚日读经，柔日读史，“刚日”就是阳数的日子，“柔日”就是阴数的日子。因为阴阳要互补，所以刚日要读致虚守弱恒常静笃的经；柔日便要读变动不居周行不殆的史。<br>为此还有各位理论导师的笺注，比如南怀瑾：</p>
+        <h2 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h2><p>用lspci指令查看PCIe设备，特别是网卡设备经常会查看LnkCap及LnkSta字段，以确保网卡运行在期望的PCIe总线类型/带宽上，从而保证网卡的性能。</p>
+<p>最近拿到一块XXV710-DA2，插上之后简单看了一下状态。LnkCap和LnkSta均显示为Speed 8GT/s，Width x8，没太大问题。这时候无意中瞥见LnkCtl2中Target Link Speed显示为2.5GT/s，引发了兴趣。<br><a id="more"></a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LnkSta:Speed 8GT/s, Width x8, TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-</span><br><span class="line">DevCap2: Completion Timeout: Range ABCD, TimeoutDis+, LTR-, OBFF Not Supported</span><br><span class="line">DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-, LTR-, OBFF Disabled</span><br><span class="line">LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-Transmit Margin: Normal Operating Range, EnterModifiedCompliance-ComplianceSOS-Compliance De-emphasis: -6dB</span><br></pre></td></tr></table></figure>
+<h2 id="Target-Link-Speed"><a href="#Target-Link-Speed" class="headerlink" title="Target Link Speed"></a>Target Link Speed</h2><p>关于Target Link Speed是什么，查找到了Intel Skylake Processor External Design Specification(EDS)中的定义：</p>
 <blockquote>
-<p>亢阳激扬，刚也；卑幽忧昧，柔也。经主常，史主变。故刚日读经，理气养生也；柔日读史，生情造意也。有生有息，合乎天理，何乐而不为哉！</p>
+<p>For Downstream Ports, this field sets an upper limit on Link operational speed by restricting the values advertised by the Upstream component in its training sequences.</p>
 </blockquote>
-<p>感觉并不如我总结得那般言简意赅提要钩玄。<br>如果说这种“互补”确实在指导我们的行为，那也无可厚非。而实际上我们日常行事，却和这种思想观念有很大出入。<br>饮食上要以形补形，想要强要壮，自然是找来更强更壮的，绝对不会找短小“互补”的食材。<br>婚嫁上要强强联合，至少至少也要找个“门当户对”的。至于相互互补的情节，不是出现在少儿童话故事里，就是出现在成人童话故事里。<br>嘴里说的是阴阳互补，做的却是采阴补阳的勾当。<br>而最重要的是，没有人觉得有问题。我们妄自接受了这些观念，很少去问这些到底是什么。只是在需要的场合，程式化地提出这一观念。<br>什么是互补，什么是阴，什么是阳，什么是刚，什么是柔。如果我脑中只是一些不明来源，未经考究过的观念，那么什么是我自己。<br>更诡吊的是，人与人之间最大的仇恨与惨剧，都滥觞于这种我们根本自己也没搞清楚的观念。<br>不要说“互补”，即便是稍有不同，那便是异端邪说、是外族、是异教徒、是政治犯；那便会有党争、门户、正宗、政治清洗和宗教审判。<br>信不知凭何而信，恨不知因何而恨。被左右的观念所左右，被迷惑的语言所迷惑，操纵感官输出的表象又被表象所操纵。<br>无论刚日柔日，翻开经史，里面都是这样的故事。只要稍微读几页就会发现，与先前想的正好相反，教给你变化的其实是经，而教给你不变的是史。<br>所以这句话并不是要教给你刚柔相济之道，而是提醒你认清人心之妄作，行为之颠倒，以及，追求真实的难能可贵。<br>谨录于上，念念不忘。</p>
+<p>基本上LnkCap表示支持的速度，LnkCtl2设置你需要的速度，LnkSta显示实际Training好的速度，如果想要修改的话，都是改LnkCtl2的值。</p>
+<p>现在的问题就是LnkSta和LnkCtl2矛盾。那么我们现在这块网卡的速度到底是多少？只能实际测试一下。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>起个<code>pktgen</code>打个性能，是能直接到线速的，也就是说Target Link Speed没有实际起到限制速度的作用。</p>
+<p>又查询了一些资料，从这里看到一个帖子：<a href="https://communities.intel.com/thread/106568" target="_blank" rel="noopener">https://communities.intel.com/thread/106568</a></p>
+<p>最终Intel的官方回复是，这个寄存器的值确实和实际速度没有关系。</p>
+<p>规范也是你们写的，帖子也是你们回的，现在正话反话都让你说了，搞什么鬼。</p>
+<p>最后查到了该寄存器的位置(D0h)，暴力修改一下：</p>
+<p><code>setpci -s 0000:18:00.0 d0.B=3</code></p>
+<p>然后就乖乖地显示为8GT/s了，真是个毫无脾气的寄存器，你让别的遵守规范的设备如何自处。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LnkSta:Speed 8GT/s, Width x8, TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-</span><br><span class="line">DevCap2: Completion Timeout: Range ABCD, TimeoutDis+, LTR-, OBFF Not Supported</span><br><span class="line">DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-, LTR-, OBFF Disabled</span><br><span class="line">LnkCtl2: Target Link Speed: 8GT/s, EnterCompliance- SpeedDis-Transmit Margin: Normal Operating Range, EnterModifiedCompliance-ComplianceSOS-Compliance De-emphasis: -6dB</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -280,19 +290,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/19/topcmd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          top命令使用方法补遗
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/17/duckduckgo/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/11/22/programmer-worker/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">如何在偷偷搜索关键字后避免令人尴尬的广告</div>
+      <div class="article-nav-title">程序员和工厂劳工有何不同</div>
     </a>
   
 </nav>
@@ -306,7 +307,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发现"><span class="nav-number">1.</span> <span class="nav-text">发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Target-Link-Speed"><span class="nav-number">2.</span> <span class="nav-text">Target Link Speed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.</span> <span class="nav-text">测试</span></a></li></ol>
     
     </div>
   </aside>

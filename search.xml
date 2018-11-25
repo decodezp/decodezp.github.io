@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>几句话说清楚2:CPU缓存的组织形式</title>
+      <link href="/2018/11/25/quickwords2-cacheassociativity/"/>
+      <url>/2018/11/25/quickwords2-cacheassociativity/</url>
+      
+        <content type="html"><![CDATA[<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>缓存和其他存储形式在功能形式上没有太大区别，均是输入一个地址，还你一个数据。但作为一个缓存，要考虑如何在有限的容量下保证较高的命中率以及查找效率(<a href="https://decodezp.github.io/2018/11/20/cachesize/">相关阅读</a>)。这个问题从本质上来说，就是如何建立缓存地址与内存地址的映射关系。</p><a id="more"></a><h2 id="组织形式"><a href="#组织形式" class="headerlink" title="组织形式"></a>组织形式</h2><p>缓存按照一个Cache Line的长度（主流长度为64Byte）为粒度来组织：</p><p><img src="https://s3.amazonaws.com/hs-wordpress/wp-content/uploads/2017/12/13140538/481_051.gif" alt=""><br>各种不同的映射形式就是在决定内存中某一个特定地址范围内的数据，具体可以放到哪一个Cacha Line里去。</p><p>能想出来的方式也无外乎三种：</p><ul><li>哪个都可以放</li><li>只能放到第N个（N是内存地址的函数）</li><li>只能放到第N个至第M个（M也是内存地址的函数）</li></ul><blockquote><p>其实基本上这篇文章可以结束了，很多技术都不是什么新鲜的“创想”，只是给朴素的思想内核穿上了一层“术语”的外衣。</p></blockquote><h3 id="Direct-Mapping直接映射"><a href="#Direct-Mapping直接映射" class="headerlink" title="Direct Mapping直接映射"></a>Direct Mapping直接映射</h3><p>直接映射<br><img src="https://s3.amazonaws.com/hs-wordpress/wp-content/uploads/2017/12/13140525/481_061.gif" alt=""><br>这就是上面说的第二种方式，某一个内存地址段的数据，只能放在第N个Cache Line里</p><ul><li>Pros:查找快，一次寻址，有就是有，没有就是没有，不啰嗦（因为只需要验证一个Cache Line中是否存在该地址）</li><li>Cons:命中率低，CPU经常需要相邻地址的数据，而根据规则，同属于第N个Cache Line的数据会互相排斥，不会同时出现在缓存里</li></ul><h3 id="Fully-Associative"><a href="#Fully-Associative" class="headerlink" title="Fully Associative"></a>Fully Associative</h3><p>这就是第一种方式，随便放。</p><ul><li>Pros:命中率高，过去和未来一段时间内需要的数据都可以被放在缓存内，同时不用担心被相邻地址上的数据踢出</li><li>Cons:查找慢，确认一个地址是否在缓存里通常需要遍历整个缓存（Miss的情况）</li></ul><h3 id="n-Way-Set-Associative-Cache"><a href="#n-Way-Set-Associative-Cache" class="headerlink" title="n-Way Set Associative Cache"></a>n-Way Set Associative Cache</h3><p><img src="https://s3.amazonaws.com/hs-wordpress/wp-content/uploads/2017/12/13140450/481_081.gif" alt=""><br>这就是第三种方式了，颜色相同的内存地址范围和缓存Cache Line互相对应，不能越界。每一个颜色就是一个Way。</p><p>但如果单独拿出某一个颜色来看，是Fully Associative的方式。</p><p>这么做当然是为了充分发挥前两种方式的优势。既可以存在相邻内存中的数据以提高命中，同时也一定程度上减少了查找范围，提升查找效率。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+          <category> quickwords </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>XXV710网卡Target Link Speed探秘</title>
       <link href="/2018/11/23/x710-target-link-speed/"/>
       <url>/2018/11/23/x710-target-link-speed/</url>
@@ -53,7 +82,7 @@
     </entry>
     
     <entry>
-      <title>几句话说清楚:为什么CPU L1缓存容量始终很小</title>
+      <title>几句话说清楚1:为什么CPU L1缓存容量始终很小</title>
       <link href="/2018/11/20/cachesize/"/>
       <url>/2018/11/20/cachesize/</url>
       
@@ -63,6 +92,8 @@
       <categories>
           
           <category> tech </category>
+          
+          <category> quickwords </category>
           
       </categories>
       

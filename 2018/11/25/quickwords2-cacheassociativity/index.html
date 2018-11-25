@@ -54,7 +54,7 @@
 <meta property="og:description" content="缓存缓存和其他存储形式在功能形式上没有太大区别，均是输入一个地址，还你一个数据。但作为一个缓存，要考虑如何在有限的容量下保证较高的命中率以及查找效率(相关阅读)。这个问题从本质上来说，就是如何建立缓存地址与内存地址的映射关系。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.stack.imgur.com/r2Wic.png">
-<meta property="og:updated_time" content="2018-11-25T07:29:43.209Z">
+<meta property="og:updated_time" content="2018-11-25T07:34:15.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几句话说清楚2:CPU缓存的组织形式">
 <meta name="twitter:description" content="缓存缓存和其他存储形式在功能形式上没有太大区别，均是输入一个地址，还你一个数据。但作为一个缓存，要考虑如何在有限的容量下保证较高的命中率以及查找效率(相关阅读)。这个问题从本质上来说，就是如何建立缓存地址与内存地址的映射关系。">
@@ -196,7 +196,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i.stack.imgur.com/r2Wic.png" rel="gallery_cjowk6hy00000p4fymtcc1pz3">
+      <a class="article-gallery-img fancybox" href="https://i.stack.imgur.com/r2Wic.png" rel="gallery_cjowkic6f00059gfyqyx9pxtw">
         <img src="https://i.stack.imgur.com/r2Wic.png" itemprop="image">
       </a>
     
@@ -241,7 +241,7 @@ var themeMenus = {};
 <blockquote>
 <p>其实基本上这篇文章可以结束了，很多技术都不是什么新鲜的“创想”，只是给朴素的思想内核穿上了一层“术语”的外衣。</p>
 </blockquote>
-<h3 id="Direct-Mapping直接映射"><a href="#Direct-Mapping直接映射" class="headerlink" title="Direct Mapping直接映射"></a>Direct Mapping直接映射</h3><p>直接映射<br><img src="https://s3.amazonaws.com/hs-wordpress/wp-content/uploads/2017/12/13140525/481_061.gif" alt=""><br>这就是上面说的第二种方式，某一个内存地址段的数据，只能放在第N个Cache Line里</p>
+<h3 id="Direct-Mapping"><a href="#Direct-Mapping" class="headerlink" title="Direct Mapping"></a>Direct Mapping</h3><p><img src="https://s3.amazonaws.com/hs-wordpress/wp-content/uploads/2017/12/13140525/481_061.gif" alt=""><br>这就是上面说的第二种方式，某一个内存地址段的数据，只能放在第N个Cache Line里</p>
 <ul>
 <li>Pros:查找快，一次寻址，有就是有，没有就是没有，不啰嗦（因为只需要验证一个Cache Line中是否存在该地址）</li>
 <li>Cons:命中率低，CPU经常需要相邻地址的数据，而根据规则，同属于第N个Cache Line的数据会互相排斥，不会同时出现在缓存里</li>
@@ -316,7 +316,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组织形式"><span class="nav-number">2.</span> <span class="nav-text">组织形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Direct-Mapping直接映射"><span class="nav-number">2.1.</span> <span class="nav-text">Direct Mapping直接映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fully-Associative"><span class="nav-number">2.2.</span> <span class="nav-text">Fully Associative</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-Way-Set-Associative-Cache"><span class="nav-number">2.3.</span> <span class="nav-text">n-Way Set Associative Cache</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组织形式"><span class="nav-number">2.</span> <span class="nav-text">组织形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Direct-Mapping"><span class="nav-number">2.1.</span> <span class="nav-text">Direct Mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fully-Associative"><span class="nav-number">2.2.</span> <span class="nav-text">Fully Associative</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-Way-Set-Associative-Cache"><span class="nav-number">2.3.</span> <span class="nav-text">n-Way Set Associative Cache</span></a></li></ol></li></ol>
     
     </div>
   </aside>

@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>几句话说清楚3:什么是False Sharing</title>
+      <link href="/2018/11/27/quickwords3-falsesharing/"/>
+      <url>/2018/11/27/quickwords3-falsesharing/</url>
+      
+        <content type="html"><![CDATA[<h2 id="不用图"><a href="#不用图" class="headerlink" title="不用图"></a>不用图</h2><p>以为又要见到那几张网上已经用烂了的图了是不是？这次我们不用图来讲这个事。<br><a id="more"></a></p><p>Cache line是64个Byte，我们经常操作(R/W)的变量是4个或者8个Byte。</p><p>于是一个Cache line里就可以放好几个变量，比如说其中有两个变量A和B。</p><p>当CPU0写入A，CPU1写入B的时候，就发生了False Sharing，就这么简单。</p><p>所谓“假共享”，其实就是你以为你俩自己操作自己的变量是共产国际按需分配互不影响，其实都是假象。</p><p>很多材料上说是因为不同的CPU核共享了相同的Cache Line，其实并不严谨。根本因素是不同的CPU核需要更新的缓存出现了地址上的重叠。</p><p>那么当其中一个核更新了它的变量A之后，CPU并不能识别出是哪4个Byte或8个Byte地址上的数据被更新，而只能认为该变量所在的整条64Byte Cache Line都应该被更新。</p><p>所有有和这64Byte重叠的Cache Line，不管在哪个CPU核上，都需要被更新，这样才能保证大家手头的数据是一致的。</p><p>于是乎，和这64Byte地址存在重叠的变量B所在的CPU1中的缓存也需要被更新，自然就影响到了性能。</p><p>如果只是读，就没有这个问题，因为不需要关心缓存一致这个事。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>这里有一个活生生的代码的例子：</p><p><a href="https://github.com/PanZhangg/x86perf/blob/master/false_sharing_padding.c" target="_blank" rel="noopener">https://github.com/PanZhangg/x86perf/blob/master/false_sharing_padding.c</a></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">counter_t</span> &#123;</span></span><br><span class="line">    <span class="keyword">uint32_t</span> c1;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> PADDING_64_BYTE</span></span><br><span class="line">    <span class="keyword">uint32_t</span> padding[<span class="number">15</span>];</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">elif</span> PADDING_128_BYTE</span></span><br><span class="line">    <span class="keyword">uint32_t</span> padding[<span class="number">31</span>];</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">uint32_t</span> c2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>本来是打算用来验证在CPU预取开启的情况下到底是应该Padding 64还是128，但在Haswell和Skylake上验证，这两个长度都没有区别。</p><p>后来查找资料是在Sandy bridge上需要padding到128，但我这里没有这么老的CPU….先这样吧..</p><p>上面的代码注意用<code>-O0</code>编译。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+          <category> quickwords </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚2:CPU缓存的组织形式</title>
       <link href="/2018/11/25/quickwords2-cacheassociativity/"/>
       <url>/2018/11/25/quickwords2-cacheassociativity/</url>

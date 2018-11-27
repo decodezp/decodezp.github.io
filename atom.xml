@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-25T07:34:15.623Z</updated>
+  <updated>2018-11-27T05:22:37.184Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚3:什么是False Sharing</title>
+    <link href="https://decodezp.github.io/2018/11/27/quickwords3-falsesharing/"/>
+    <id>https://decodezp.github.io/2018/11/27/quickwords3-falsesharing/</id>
+    <published>2018-11-27T05:12:54.000Z</published>
+    <updated>2018-11-27T05:22:37.184Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;不用图&quot;&gt;&lt;a href=&quot;#不用图&quot; class=&quot;headerlink&quot; title=&quot;不用图&quot;&gt;&lt;/a&gt;不用图&lt;/h2&gt;&lt;p&gt;以为又要见到那几张网上已经用烂了的图了是不是？这次我们不用图来讲这个事。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚2:CPU缓存的组织形式</title>

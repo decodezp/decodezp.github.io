@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-27T05:22:37.184Z</updated>
+  <updated>2018-11-28T05:53:19.517Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>云计算的发展需要向社区街道管理看齐</title>
+    <link href="https://decodezp.github.io/2018/11/28/thoughts1-cloud-community/"/>
+    <id>https://decodezp.github.io/2018/11/28/thoughts1-cloud-community/</id>
+    <published>2018-11-28T05:47:57.000Z</published>
+    <updated>2018-11-28T05:53:19.517Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;服务&quot;&gt;&lt;a href=&quot;#服务&quot; class=&quot;headerlink&quot; title=&quot;服务&quot;&gt;&lt;/a&gt;服务&lt;/h2&gt;&lt;p&gt;云计算本质上是一种服务。由各种不同的组件为租户提供计算、网络和存储服务。&lt;/p&gt;
+&lt;p&gt;用户对这些服务的要求除了功能之外，还有安全性、可用性、性能、成本、迁移难度、SLA等一系列要求。&lt;/p&gt;
+&lt;p&gt;与之类比，社区街道作为一个完整的功能单元，各个基层职能部门，也为社区内的居民提供各类生活服务。&lt;/p&gt;
+&lt;p&gt;如何做好基层工作，是需要费一番脑筋的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="cloud" scheme="https://decodezp.github.io/tags/cloud/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚3:什么是False Sharing</title>
@@ -118,7 +145,7 @@
     <link href="https://decodezp.github.io/2018/11/20/cachesize/"/>
     <id>https://decodezp.github.io/2018/11/20/cachesize/</id>
     <published>2018-11-20T11:45:45.000Z</published>
-    <updated>2018-11-25T07:29:45.224Z</updated>
+    <updated>2018-11-28T05:52:44.782Z</updated>
     
     <summary type="html">
     

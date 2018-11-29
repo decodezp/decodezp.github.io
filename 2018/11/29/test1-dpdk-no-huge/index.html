@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>刚日读经，柔日读史 | DecodeZ</title>
+  <title>测来测去1：dpdk no-huge模式性能对比测试 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
-<meta name="keywords" content="thoughts">
+  <meta name="description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
+<meta name="keywords" content="tech,test,dpdk">
 <meta property="og:type" content="article">
-<meta property="og:title" content="刚日读经，柔日读史">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/18/gangrirouri/index.html">
+<meta property="og:title" content="测来测去1：DPDK no-huge模式性能对比测试">
+<meta property="og:url" content="https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
+<meta property="og:description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg">
-<meta property="og:updated_time" content="2018-11-19T13:32:44.873Z">
+<meta property="og:image" content="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg">
+<meta property="og:updated_time" content="2018-11-29T05:26:59.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刚日读经，柔日读史">
-<meta name="twitter:description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
-<meta name="twitter:image" content="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg">
+<meta name="twitter:title" content="测来测去1：DPDK no-huge模式性能对比测试">
+<meta name="twitter:description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
+<meta name="twitter:image" content="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -190,14 +190,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-gangrirouri" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-test1-dpdk-no-huge" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" rel="gallery_cjp25nr8k0006affybgl9h6yi">
-        <img src="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg" rel="gallery_cjp25nr8n000baffy078caihg">
+        <img src="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg" itemprop="image">
       </a>
     
   </div>
@@ -208,7 +208,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      刚日读经，柔日读史
+      测来测去1：DPDK no-huge模式性能对比测试
     </h1>
   
 
@@ -216,8 +216,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/18/gangrirouri/" class="article-date">
-	  <time datetime="2018-11-18T11:27:23.000Z" itemprop="datePublished">November 18, 2018</time>
+	Posted on <a href="/2018/11/29/test1-dpdk-no-huge/" class="article-date">
+	  <time datetime="2018-11-29T05:20:58.000Z" itemprop="datePublished">November 29, 2018</time>
 	</a>
 
       
@@ -228,24 +228,24 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。<br>资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。</p>
-<a id="more"></a>
-<p>刚日读经，柔日读史，“刚日”就是阳数的日子，“柔日”就是阴数的日子。因为阴阳要互补，所以刚日要读致虚守弱恒常静笃的经；柔日便要读变动不居周行不殆的史。<br>为此还有各位理论导师的笺注，比如南怀瑾：</p>
-<blockquote>
-<p>亢阳激扬，刚也；卑幽忧昧，柔也。经主常，史主变。故刚日读经，理气养生也；柔日读史，生情造意也。有生有息，合乎天理，何乐而不为哉！</p>
-</blockquote>
-<p>感觉并不如我总结得那般言简意赅提要钩玄。<br>如果说这种“互补”确实在指导我们的行为，那也无可厚非。而实际上我们日常行事，却和这种思想观念有很大出入。<br>饮食上要以形补形，想要强要壮，自然是找来更强更壮的，绝对不会找短小“互补”的食材。<br>婚嫁上要强强联合，至少至少也要找个“门当户对”的。至于相互互补的情节，不是出现在少儿童话故事里，就是出现在成人童话故事里。<br>嘴里说的是阴阳互补，做的却是采阴补阳的勾当。<br>而最重要的是，没有人觉得有问题。我们妄自接受了这些观念，很少去问这些到底是什么。只是在需要的场合，程式化地提出这一观念。<br>什么是互补，什么是阴，什么是阳，什么是刚，什么是柔。如果我脑中只是一些不明来源，未经考究过的观念，那么什么是我自己。<br>更诡吊的是，人与人之间最大的仇恨与惨剧，都滥觞于这种我们根本自己也没搞清楚的观念。<br>不要说“互补”，即便是稍有不同，那便是异端邪说、是外族、是异教徒、是政治犯；那便会有党争、门户、正宗、政治清洗和宗教审判。<br>信不知凭何而信，恨不知因何而恨。被左右的观念所左右，被迷惑的语言所迷惑，操纵感官输出的表象又被表象所操纵。<br>无论刚日柔日，翻开经史，里面都是这样的故事。只要稍微读几页就会发现，与先前想的正好相反，教给你变化的其实是经，而教给你不变的是史。<br>所以这句话并不是要教给你刚柔相济之道，而是提醒你认清人心之妄作，行为之颠倒，以及，追求真实的难能可贵。<br>谨录于上，念念不忘。</p>
+        <h2 id="no-huge"><a href="#no-huge" class="headerlink" title="no-huge"></a>no-huge</h2><p>DPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。</p>
+<p>那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。<br><a id="more"></a></p>
+<h2 id="测试平台"><a href="#测试平台" class="headerlink" title="测试平台"></a>测试平台</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">lscpu</span><br><span class="line">Architecture:          x86_64</span><br><span class="line">CPU op-mode(s):        32-bit, 64-bit</span><br><span class="line">Byte Order:            Little Endian</span><br><span class="line">CPU(s):                88</span><br><span class="line">On-line CPU(s) list:   0-87</span><br><span class="line">Thread(s) per core:    2</span><br><span class="line">Core(s) per socket:    22</span><br><span class="line">Socket(s):             2</span><br><span class="line">NUMA node(s):          2</span><br><span class="line">Vendor ID:             GenuineIntel</span><br><span class="line">CPU family:            6</span><br><span class="line">Model:                 85</span><br><span class="line">Model name:            Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz</span><br><span class="line">Stepping:              4</span><br><span class="line">CPU MHz:               2100.393</span><br><span class="line">BogoMIPS:              4201.72</span><br><span class="line">Virtualization:        VT-x</span><br><span class="line">L1d cache:             32K</span><br><span class="line">L1i cache:             32K</span><br><span class="line">L2 cache:              1024K</span><br><span class="line">L3 cache:              30976K</span><br><span class="line">NUMA node0 CPU(s):     0-21,44-65</span><br><span class="line">NUMA node1 CPU(s):     22-43,66-87</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep Ether</span><br><span class="line">86:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.2 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.3 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br></pre></td></tr></table></figure>
+<p>DPDK Version: <code>18.05.1</code><br>Tester: IXIA<br>Test Plan: RFC2544<br>DPDK APP: <code>./l2fwd -l 22-24 --no-huge  -- -p 0x3 -T 5</code></p>
+<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p><img src="https://s1.ax1x.com/2018/11/29/FZIYcT.png" alt=""></p>
+<p>在64Byte包长时丢包率达到了50%以上，而使用大页内存时丢包率可以控制在0.05%以内。<br>其他长度丢包和吞吐情况基本相同。<br>根据业务情况，平均包长如果在300Byte以上–no-huge模式不妨一试。<br>后续添加针对更大链路带宽(25Gbps/100Gbps)的网卡以及不同Xeon平台的测试结果。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
+    <a class="article-category-link" href="/categories/test/">test</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dpdk/">dpdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
 
       
             
@@ -280,19 +280,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/19/topcmd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          top命令使用方法补遗
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/17/duckduckgo/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/11/28/thoughts1-cloud-community/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">如何在偷偷搜索关键字后避免令人尴尬的广告</div>
+      <div class="article-nav-title">云计算的发展需要向社区街道管理看齐</div>
     </a>
   
 </nav>
@@ -306,7 +297,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#no-huge"><span class="nav-number">1.</span> <span class="nav-text">no-huge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试平台"><span class="nav-number">2.</span> <span class="nav-text">测试平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试结果"><span class="nav-number">3.</span> <span class="nav-text">测试结果</span></a></li></ol>
     
     </div>
   </aside>

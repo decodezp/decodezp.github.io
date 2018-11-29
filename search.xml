@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>测来测去1：DPDK no-huge模式性能对比测试</title>
+      <link href="/2018/11/29/test1-dpdk-no-huge/"/>
+      <url>/2018/11/29/test1-dpdk-no-huge/</url>
+      
+        <content type="html"><![CDATA[<h2 id="no-huge"><a href="#no-huge" class="headerlink" title="no-huge"></a>no-huge</h2><p>DPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。</p><p>那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。<br><a id="more"></a></p><h2 id="测试平台"><a href="#测试平台" class="headerlink" title="测试平台"></a>测试平台</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">lscpu</span><br><span class="line">Architecture:          x86_64</span><br><span class="line">CPU op-mode(s):        32-bit, 64-bit</span><br><span class="line">Byte Order:            Little Endian</span><br><span class="line">CPU(s):                88</span><br><span class="line">On-line CPU(s) list:   0-87</span><br><span class="line">Thread(s) per core:    2</span><br><span class="line">Core(s) per socket:    22</span><br><span class="line">Socket(s):             2</span><br><span class="line">NUMA node(s):          2</span><br><span class="line">Vendor ID:             GenuineIntel</span><br><span class="line">CPU family:            6</span><br><span class="line">Model:                 85</span><br><span class="line">Model name:            Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz</span><br><span class="line">Stepping:              4</span><br><span class="line">CPU MHz:               2100.393</span><br><span class="line">BogoMIPS:              4201.72</span><br><span class="line">Virtualization:        VT-x</span><br><span class="line">L1d cache:             32K</span><br><span class="line">L1i cache:             32K</span><br><span class="line">L2 cache:              1024K</span><br><span class="line">L3 cache:              30976K</span><br><span class="line">NUMA node0 CPU(s):     0-21,44-65</span><br><span class="line">NUMA node1 CPU(s):     22-43,66-87</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep Ether</span><br><span class="line">86:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.2 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.3 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br></pre></td></tr></table></figure><p>DPDK Version: <code>18.05.1</code><br>Tester: IXIA<br>Test Plan: RFC2544<br>DPDK APP: <code>./l2fwd -l 22-24 --no-huge  -- -p 0x3 -T 5</code></p><h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p><img src="https://s1.ax1x.com/2018/11/29/FZIYcT.png" alt=""></p><p>在64Byte包长时丢包率达到了50%以上，而使用大页内存时丢包率可以控制在0.05%以内。<br>其他长度丢包和吞吐情况基本相同。<br>根据业务情况，平均包长如果在300Byte以上–no-huge模式不妨一试。<br>后续添加针对更大链路带宽(25Gbps/100Gbps)的网卡以及不同Xeon平台的测试结果。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> test </tag>
+            
+            <tag> dpdk </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>云计算的发展需要向社区街道管理看齐</title>
       <link href="/2018/11/28/thoughts1-cloud-community/"/>
       <url>/2018/11/28/thoughts1-cloud-community/</url>

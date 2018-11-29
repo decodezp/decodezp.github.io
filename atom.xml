@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-28T05:53:19.517Z</updated>
+  <updated>2018-11-29T05:26:59.146Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去1：DPDK no-huge模式性能对比测试</title>
+    <link href="https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/"/>
+    <id>https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/</id>
+    <published>2018-11-29T05:20:58.000Z</published>
+    <updated>2018-11-29T05:26:59.146Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;no-huge&quot;&gt;&lt;a href=&quot;#no-huge&quot; class=&quot;headerlink&quot; title=&quot;no-huge&quot;&gt;&lt;/a&gt;no-huge&lt;/h2&gt;&lt;p&gt;DPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。&lt;/p&gt;
+&lt;p&gt;那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
+    
+  </entry>
   
   <entry>
     <title>云计算的发展需要向社区街道管理看齐</title>
@@ -145,7 +170,7 @@
     <link href="https://decodezp.github.io/2018/11/20/cachesize/"/>
     <id>https://decodezp.github.io/2018/11/20/cachesize/</id>
     <published>2018-11-20T11:45:45.000Z</published>
-    <updated>2018-11-28T05:52:44.782Z</updated>
+    <updated>2018-11-28T05:53:21.279Z</updated>
     
     <summary type="html">
     

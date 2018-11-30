@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-29T05:26:59.146Z</updated>
+  <updated>2018-11-30T06:30:51.363Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ftrace trace-cmd kernelshark资料汇总</title>
+    <link href="https://decodezp.github.io/2018/11/30/ftrace/"/>
+    <id>https://decodezp.github.io/2018/11/30/ftrace/</id>
+    <published>2018-11-30T06:22:55.000Z</published>
+    <updated>2018-11-30T06:30:51.363Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一些关于这一类技术的资料和文档汇总。&lt;br&gt;文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读&lt;code&gt;linux/Documentation/trace&lt;/code&gt;下的文档以及源码。&lt;/p&gt;
+&lt;p&gt;以及&lt;code&gt;git log ./kernel/trace&lt;/code&gt; :)&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+      <category term="linux" scheme="https://decodezp.github.io/categories/tech/linux/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
+    
+      <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
+    
+  </entry>
+  
+  <entry>
     <title>测来测去1：DPDK no-huge模式性能对比测试</title>
     <link href="https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/"/>
     <id>https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/</id>
     <published>2018-11-29T05:20:58.000Z</published>
-    <updated>2018-11-29T05:26:59.146Z</updated>
+    <updated>2018-11-29T05:30:48.738Z</updated>
     
     <summary type="html">
     

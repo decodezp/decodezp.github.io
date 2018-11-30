@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>top命令使用方法补遗 | DecodeZ</title>
+  <title>ftrace trace-cmd kernelshark资料汇总 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="更改界面刷新频率 自动刷新  topd输入刷新时间（默认3秒，可调至0.5）  手动刷新空格">
-<meta name="keywords" content="tech">
+  <meta name="description" content="一些关于这一类技术的资料和文档汇总。文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读linux/Documentation/trace下的文档以及源码。 以及git log ./kernel/trace :)">
+<meta name="keywords" content="tech,linux,ftrace">
 <meta property="og:type" content="article">
-<meta property="og:title" content="top命令使用方法补遗">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/19/topcmd/index.html">
+<meta property="og:title" content="ftrace trace-cmd kernelshark资料汇总">
+<meta property="og:url" content="https://decodezp.github.io/2018/11/30/ftrace/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="更改界面刷新频率 自动刷新  topd输入刷新时间（默认3秒，可调至0.5）  手动刷新空格">
+<meta property="og:description" content="一些关于这一类技术的资料和文档汇总。文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读linux/Documentation/trace下的文档以及源码。 以及git log ./kernel/trace :)">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.binarytides.com/blog/wp-content/uploads/2016/03/top-highlight-column-background.png">
-<meta property="og:updated_time" content="2018-11-20T12:11:01.048Z">
+<meta property="og:image" content="https://i1.wp.com/www.opensourceforu.com/wp-content/uploads/2010/12/ftrace7.png">
+<meta property="og:updated_time" content="2018-11-30T06:30:51.363Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="top命令使用方法补遗">
-<meta name="twitter:description" content="更改界面刷新频率 自动刷新  topd输入刷新时间（默认3秒，可调至0.5）  手动刷新空格">
-<meta name="twitter:image" content="https://www.binarytides.com/blog/wp-content/uploads/2016/03/top-highlight-column-background.png">
+<meta name="twitter:title" content="ftrace trace-cmd kernelshark资料汇总">
+<meta name="twitter:description" content="一些关于这一类技术的资料和文档汇总。文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读linux/Documentation/trace下的文档以及源码。 以及git log ./kernel/trace :)">
+<meta name="twitter:image" content="https://i1.wp.com/www.opensourceforu.com/wp-content/uploads/2010/12/ftrace7.png">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -190,14 +190,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-topcmd" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-ftrace" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://www.binarytides.com/blog/wp-content/uploads/2016/03/top-highlight-column-background.png" rel="gallery_cjp3n8h5q000lo6fyzwug7rr0">
-        <img src="https://www.binarytides.com/blog/wp-content/uploads/2016/03/top-highlight-column-background.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://i1.wp.com/www.opensourceforu.com/wp-content/uploads/2010/12/ftrace7.png" rel="gallery_cjp3n8h5k0009o6fym5fyyvi1">
+        <img src="https://i1.wp.com/www.opensourceforu.com/wp-content/uploads/2010/12/ftrace7.png" itemprop="image">
       </a>
     
   </div>
@@ -208,7 +208,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      top命令使用方法补遗
+      ftrace trace-cmd kernelshark资料汇总
     </h1>
   
 
@@ -216,8 +216,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/19/topcmd/" class="article-date">
-	  <time datetime="2018-11-19T13:25:58.000Z" itemprop="datePublished">November 19, 2018</time>
+	Posted on <a href="/2018/11/30/ftrace/" class="article-date">
+	  <time datetime="2018-11-30T06:22:55.000Z" itemprop="datePublished">November 30, 2018</time>
 	</a>
 
       
@@ -228,35 +228,43 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="更改界面刷新频率"><a href="#更改界面刷新频率" class="headerlink" title="更改界面刷新频率"></a>更改界面刷新频率</h2><ul>
-<li>自动刷新</li>
+        <p>一些关于这一类技术的资料和文档汇总。<br>文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读<code>linux/Documentation/trace</code>下的文档以及源码。</p>
+<p>以及<code>git log ./kernel/trace</code> :)<br><a id="more"></a></p>
+<h2 id="ftrace"><a href="#ftrace" class="headerlink" title="ftrace"></a>ftrace</h2><ul>
+<li><a href="https://lwn.net/Articles/365835/" target="_blank" rel="noopener">Debugging the kernel using Ftrace - part 1</a></li>
+<li><p><a href="https://lwn.net/Articles/366796/" target="_blank" rel="noopener">Debugging the kernel using ftrace - part 2</a></p>
+</li>
+<li><p><a href="https://www.kernel.org/doc/Documentation/trace/ftrace.txt" target="_blank" rel="noopener">Kernel Documents: ftrace</a></p>
+</li>
+<li><a href="https://lwn.net/Articles/370423/" target="_blank" rel="noopener">Secrets of the Ftrace function tracer</a></li>
+<li><a href="https://people.canonical.com/~acelan/coscup-2010/Debugging%20Linux%20Kernel%20by%20Ftrace.pdf" target="_blank" rel="noopener">PDF:Debugging Linux Kernel by ftrace</a></li>
+<li><a href="https://opensourceforu.com/2010/11/kernel-tracing-with-ftrace-part-1/" target="_blank" rel="noopener">Kernel Tracing with ftrace, Part 1</a></li>
+<li><a href="http://opensourceforu.com/2010/12/kernel-tracing-with-ftrace-part-2/" target="_blank" rel="noopener">Kernel Tracing with ftrace, Part 2</a></li>
+<li><a href="https://jvns.ca/blog/2017/03/19/getting-started-with-ftrace/" target="_blank" rel="noopener">ftrace: trace your kernel functions!</a></li>
+<li><a href="https://movaxbx.ru/2018/10/12/hooking-linux-kernel-functions-how-to-hook-functions-with-ftrace/" target="_blank" rel="noopener">Hooking Linux Kernel Functions, how to Hook Functions with Ftrace</a></li>
+<li><a href="https://www.slideshare.net/ennael/kernel-recipes-2017-understanding-the-linux-kernel-via-ftrace-steven-rostedt" target="_blank" rel="noopener">Understanding the Linux kernel via ftrace</a></li>
 </ul>
-<p><code>top</code><br><code>d</code><br>输入刷新时间（默认3秒，可调至0.5）</p>
-<ul>
-<li>手动刷新<br>空格</li>
+<h2 id="trace-cmd"><a href="#trace-cmd" class="headerlink" title="trace-cmd"></a>trace-cmd</h2><ul>
+<li><a href="https://lwn.net/Articles/410200/" target="_blank" rel="noopener">trace-cmd: A front-end for Ftrace</a></li>
+<li><a href="https://github.com/rostedt/trace-cmd" target="_blank" rel="noopener">Code:trace-cmd</a></li>
 </ul>
-<a id="more"></a>
-<h2 id="屏幕滚动"><a href="#屏幕滚动" class="headerlink" title="屏幕滚动"></a>屏幕滚动</h2><p>一个屏幕显示不完<br><code>C</code><br>使用方向键滚动</p>
-<p>可用在使用<code>c</code>和<code>V</code>开启命令行及Forest view之后</p>
-<h2 id="查看线程top信息"><a href="#查看线程top信息" class="headerlink" title="查看线程top信息"></a>查看线程top信息</h2><p><code>H</code></p>
-<h2 id="查看线程CPU绑定-亲和性状态"><a href="#查看线程CPU绑定-亲和性状态" class="headerlink" title="查看线程CPU绑定/亲和性状态"></a>查看线程CPU绑定/亲和性状态</h2><p><code>F</code><br>移动光标至<code>Last Used Cpu</code><br>空格<br><code>q</code>返回</p>
-<p>与<code>H</code>配合使用<br>可观察各线程是否与对应的CPU核绑定亲和性</p>
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p><code>M</code>按驻留内存大小排序<br><code>P</code>按CPU使用率排序<br><code>T</code>按累计时间排序<br><code>x</code>高亮排序的列</p>
-<h2 id="按NUMA查看CPU使用情况"><a href="#按NUMA查看CPU使用情况" class="headerlink" title="按NUMA查看CPU使用情况"></a>按NUMA查看CPU使用情况</h2><p><code>2</code>查看各NUMA节点CPU汇总使用信息<br><code>3</code>输入节点号，查看该节点各CPU使用信息</p>
-<h2 id="按条件过滤"><a href="#按条件过滤" class="headerlink" title="按条件过滤"></a>按条件过滤</h2><p>‘O’<br>输入过滤条件，如:<br><code>!COMMAND=top</code> COMMAND栏中不包含top<br><code>%CPU&gt;3.0</code> CPU占用率大于3%<br>清除全部过滤条件 <code>=</code></p>
-<h2 id="保存当前命令配置"><a href="#保存当前命令配置" class="headerlink" title="保存当前命令配置"></a>保存当前命令配置</h2><p><code>W</code><br>下次再启动时恢复当前配置形式</p>
-<h2 id="其他信息"><a href="#其他信息" class="headerlink" title="其他信息"></a>其他信息</h2><p><code>man top</code></p>
+<h2 id="kernelshark"><a href="#kernelshark" class="headerlink" title="kernelshark"></a>kernelshark</h2><ul>
+<li><a href="https://lwn.net/Articles/425583/" target="_blank" rel="noopener">Using KernelShark to analyze the real-time scheduler</a></li>
+<li><a href="https://kernel-recipes.org/en/2018/talks/kernelshark-1-0-whats-new-and-whats-coming/" target="_blank" rel="noopener">Video:KERNELSHARK 1.0; WHAT’S NEW AND WHAT’S COMING</a></li>
+<li><a href="https://www.youtube.com/watch?v=RwVnnuGrb_c" target="_blank" rel="noopener">Video:Yordan Karadzhov - What’s Coming in Kernel Shark</a></li>
+<li><a href="https://events.linuxfoundation.org/wp-content/uploads/2017/12/Swimming-with-the-New-KernelShark-Yordan-Karadzhov-VMware.pdf" target="_blank" rel="noopener">PDF:Swimming with the New KernelShark</a></li>
+</ul>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/tech/">tech</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>, <a class="article-category-link" href="/categories/tech/linux/">linux</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ftrace/">ftrace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -291,19 +299,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/20/cachesize/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          几句话说清楚1:为什么CPU L1缓存容量始终很小
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/18/gangrirouri/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/11/29/test1-dpdk-no-huge/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">刚日读经，柔日读史</div>
+      <div class="article-nav-title">测来测去1：DPDK no-huge模式性能对比测试</div>
     </a>
   
 </nav>
@@ -317,7 +316,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#更改界面刷新频率"><span class="nav-number">1.</span> <span class="nav-text">更改界面刷新频率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕滚动"><span class="nav-number">2.</span> <span class="nav-text">屏幕滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看线程top信息"><span class="nav-number">3.</span> <span class="nav-text">查看线程top信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看线程CPU绑定-亲和性状态"><span class="nav-number">4.</span> <span class="nav-text">查看线程CPU绑定/亲和性状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">5.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按NUMA查看CPU使用情况"><span class="nav-number">6.</span> <span class="nav-text">按NUMA查看CPU使用情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按条件过滤"><span class="nav-number">7.</span> <span class="nav-text">按条件过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存当前命令配置"><span class="nav-number">8.</span> <span class="nav-text">保存当前命令配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他信息"><span class="nav-number">9.</span> <span class="nav-text">其他信息</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ftrace"><span class="nav-number">1.</span> <span class="nav-text">ftrace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trace-cmd"><span class="nav-number">2.</span> <span class="nav-text">trace-cmd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kernelshark"><span class="nav-number">3.</span> <span class="nav-text">kernelshark</span></a></li></ol>
     
     </div>
   </aside>

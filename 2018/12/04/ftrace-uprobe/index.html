@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚2:cpu缓存的组织形式 | DecodeZ</title>
+  <title>ftrace uprobe使用填坑历程 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="缓存缓存和其他存储形式在功能形式上没有太大区别，均是输入一个地址，还你一个数据。但作为一个缓存，要考虑如何在有限的容量下保证较高的命中率以及查找效率(相关阅读)。这个问题从本质上来说，就是如何建立缓存地址与内存地址的映射关系。">
-<meta name="keywords" content="tech,hardware,CPU">
+  <meta name="description" content="准备打算用一下ftrace对用户态程序的trace支持。 测试用程序test.c：">
+<meta name="keywords" content="tech,ftrace">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚2:CPU缓存的组织形式">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/25/quickwords2-cacheassociativity/index.html">
+<meta property="og:title" content="ftrace uprobe使用填坑历程">
+<meta property="og:url" content="https://decodezp.github.io/2018/12/04/ftrace-uprobe/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="缓存缓存和其他存储形式在功能形式上没有太大区别，均是输入一个地址，还你一个数据。但作为一个缓存，要考虑如何在有限的容量下保证较高的命中率以及查找效率(相关阅读)。这个问题从本质上来说，就是如何建立缓存地址与内存地址的映射关系。">
+<meta property="og:description" content="准备打算用一下ftrace对用户态程序的trace支持。 测试用程序test.c：">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.stack.imgur.com/r2Wic.png">
-<meta property="og:updated_time" content="2018-11-25T07:34:15.623Z">
+<meta property="og:image" content="https://blog.selectel.com/wp-content/uploads/2017/04/PR-1801-2-2.png">
+<meta property="og:updated_time" content="2018-12-04T04:28:56.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚2:CPU缓存的组织形式">
-<meta name="twitter:description" content="缓存缓存和其他存储形式在功能形式上没有太大区别，均是输入一个地址，还你一个数据。但作为一个缓存，要考虑如何在有限的容量下保证较高的命中率以及查找效率(相关阅读)。这个问题从本质上来说，就是如何建立缓存地址与内存地址的映射关系。">
-<meta name="twitter:image" content="https://i.stack.imgur.com/r2Wic.png">
+<meta name="twitter:title" content="ftrace uprobe使用填坑历程">
+<meta name="twitter:description" content="准备打算用一下ftrace对用户态程序的trace支持。 测试用程序test.c：">
+<meta name="twitter:image" content="https://blog.selectel.com/wp-content/uploads/2017/04/PR-1801-2-2.png">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -190,14 +190,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords2-cacheassociativity" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-ftrace-uprobe" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i.stack.imgur.com/r2Wic.png" rel="gallery_cjp98yuxw000bt1fyyv3m843u">
-        <img src="https://i.stack.imgur.com/r2Wic.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://blog.selectel.com/wp-content/uploads/2017/04/PR-1801-2-2.png" rel="gallery_cjp98yuxt0006t1fy3du5omck">
+        <img src="https://blog.selectel.com/wp-content/uploads/2017/04/PR-1801-2-2.png" itemprop="image">
       </a>
     
   </div>
@@ -208,7 +208,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚2:CPU缓存的组织形式
+      ftrace uprobe使用填坑历程
     </h1>
   
 
@@ -216,8 +216,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/25/quickwords2-cacheassociativity/" class="article-date">
-	  <time datetime="2018-11-25T07:18:27.000Z" itemprop="datePublished">November 25, 2018</time>
+	Posted on <a href="/2018/12/04/ftrace-uprobe/" class="article-date">
+	  <time datetime="2018-12-04T04:25:59.000Z" itemprop="datePublished">December 4, 2018</time>
 	</a>
 
       
@@ -228,43 +228,34 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>缓存和其他存储形式在功能形式上没有太大区别，均是输入一个地址，还你一个数据。但作为一个缓存，要考虑如何在有限的容量下保证较高的命中率以及查找效率(<a href="https://decodezp.github.io/2018/11/20/cachesize/">相关阅读</a>)。这个问题从本质上来说，就是如何建立缓存地址与内存地址的映射关系。</p>
-<a id="more"></a>
-<h2 id="组织形式"><a href="#组织形式" class="headerlink" title="组织形式"></a>组织形式</h2><p>缓存按照一个Cache Line的长度（主流长度为64Byte）为粒度来组织：</p>
-<p><img src="https://s3.amazonaws.com/hs-wordpress/wp-content/uploads/2017/12/13140538/481_051.gif" alt=""><br>各种不同的映射形式就是在决定内存中某一个特定地址范围内的数据，具体可以放到哪一个Cacha Line里去。</p>
-<p>能想出来的方式也无外乎三种：</p>
-<ul>
-<li>哪个都可以放</li>
-<li>只能放到第N个（N是内存地址的函数）</li>
-<li>只能放到第N个至第M个（M也是内存地址的函数）</li>
-</ul>
+        <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>打算用一下<code>ftrace</code>对用户态程序的trace支持。</p>
+<h3 id="测试用程序test-c："><a href="#测试用程序test-c：" class="headerlink" title="测试用程序test.c："></a>测试用程序<code>test.c</code>：</h3><a id="more"></a>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span></span><br><span class="line">print_curr_state_one(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is the print current state one function\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span></span><br><span class="line">print_curr_state_two(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is the print current state two function\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">        print_curr_state_one();</span><br><span class="line">        sleep(<span class="number">1</span>);</span><br><span class="line">        print_curr_state_two();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编译："><a href="#编译：" class="headerlink" title="编译："></a>编译：</h3><p><code>gcc -o test test.c</code></p>
+<h3 id="Obtain-Offset："><a href="#Obtain-Offset：" class="headerlink" title="Obtain Offset："></a>Obtain Offset：</h3><p><code>objdump -d test</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">000000000040055d &lt;print_curr_state_one&gt;:</span><br><span class="line">  40055d:	55                   	push   %rbp</span><br><span class="line">  40055e:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  400561:	bf 30 06 40 00       	mov    $0x400630,%edi</span><br><span class="line">  400566:	e8 c5 fe ff ff       	callq  400430 &lt;puts@plt&gt;</span><br><span class="line">  40056b:	5d                   	pop    %rbp</span><br><span class="line">  40056c:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">000000000040056d &lt;print_curr_state_two&gt;:</span><br><span class="line">  40056d:	55                   	push   %rbp</span><br><span class="line">  40056e:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  400571:	bf 60 06 40 00       	mov    $0x400660,%edi</span><br><span class="line">  400576:	e8 b5 fe ff ff       	callq  400430 &lt;puts@plt&gt;</span><br><span class="line">  40057b:	5d                   	pop    %rbp</span><br><span class="line">  40057c:	c3                   	retq</span><br></pre></td></tr></table></figure>
+<p>添加uprobe trace event：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 'p:print_current_state_one /root/test/uprobe/uprobe:0x55d' &gt;&gt; /sys/kernel/debug/tracing/uprobe_events</span><br><span class="line">echo 'p:print_current_state_two /root/test/uprobe/uprobe:0x56d' &gt;&gt; /sys/kernel/debug/tracing/uprobe_events</span><br></pre></td></tr></table></figure>
+<p>有时会出现Invalid argument的错误。用<code>sudo su</code>获取<code>root</code>权限。</p>
 <blockquote>
-<p>其实基本上这篇文章可以结束了，很多技术都不是什么新鲜的“创想”，只是给朴素的思想内核穿上了一层“术语”的外衣。</p>
+<p>这里注意，偏移的大小只写0x55d，不能写0x40055d</p>
 </blockquote>
-<h3 id="Direct-Mapping"><a href="#Direct-Mapping" class="headerlink" title="Direct Mapping"></a>Direct Mapping</h3><p><img src="https://s3.amazonaws.com/hs-wordpress/wp-content/uploads/2017/12/13140525/481_061.gif" alt=""><br>这就是上面说的第二种方式，某一个内存地址段的数据，只能放在第N个Cache Line里</p>
-<ul>
-<li>Pros:查找快，一次寻址，有就是有，没有就是没有，不啰嗦（因为只需要验证一个Cache Line中是否存在该地址）</li>
-<li>Cons:命中率低，CPU经常需要相邻地址的数据，而根据规则，同属于第N个Cache Line的数据会互相排斥，不会同时出现在缓存里</li>
-</ul>
-<h3 id="Fully-Associative"><a href="#Fully-Associative" class="headerlink" title="Fully Associative"></a>Fully Associative</h3><p>这就是第一种方式，随便放。</p>
-<ul>
-<li>Pros:命中率高，过去和未来一段时间内需要的数据都可以被放在缓存内，同时不用担心被相邻地址上的数据踢出</li>
-<li>Cons:查找慢，确认一个地址是否在缓存里通常需要遍历整个缓存（Miss的情况）</li>
-</ul>
-<h3 id="n-Way-Set-Associative-Cache"><a href="#n-Way-Set-Associative-Cache" class="headerlink" title="n-Way Set Associative Cache"></a>n-Way Set Associative Cache</h3><p><img src="https://s3.amazonaws.com/hs-wordpress/wp-content/uploads/2017/12/13140450/481_081.gif" alt=""><br>这就是第三种方式了，颜色相同的内存地址范围和缓存Cache Line互相对应，不能越界。每一个颜色就是一个Way。</p>
-<p>但如果单独拿出某一个颜色来看，是Fully Associative的方式。</p>
-<p>这么做当然是为了充分发挥前两种方式的优势。既可以存在相邻内存中的数据以提高命中，同时也一定程度上减少了查找范围，提升查找效率。</p>
+<h2 id="开启trace"><a href="#开启trace" class="headerlink" title="开启trace"></a>开启trace</h2><p>先启动<code>test</code>程序：<code>./test</code></p>
+<p><code>echo 1 &gt; /sys/kernel/debug/tracing/event/enable</code></p>
+<p>如果此时<code>cat /sys/kernel/debug/tracing/event/enable</code>显示为<code>X</code></p>
+<p><code>echo 1 &gt; /sys/kernel/debug/tracing/event/uprobes/enable</code></p>
+<p>最后<code>cat /sys/kernel/debug/tracing/trace</code>应该就能看到了</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/tech/">tech</a>, <a class="article-category-link" href="/categories/tech/quickwords/">quickwords</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ftrace/">ftrace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -299,19 +290,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/27/quickwords3-falsesharing/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          几句话说清楚3:什么是False Sharing
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/23/x710-target-link-speed/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/11/30/ftrace/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">XXV710网卡Target Link Speed探秘</div>
+      <div class="article-nav-title">ftrace trace-cmd kernelshark资料汇总</div>
     </a>
   
 </nav>
@@ -325,7 +307,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组织形式"><span class="nav-number">2.</span> <span class="nav-text">组织形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Direct-Mapping"><span class="nav-number">2.1.</span> <span class="nav-text">Direct Mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fully-Associative"><span class="nav-number">2.2.</span> <span class="nav-text">Fully Associative</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-Way-Set-Associative-Cache"><span class="nav-number">2.3.</span> <span class="nav-text">n-Way Set Associative Cache</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试用程序test-c："><span class="nav-number">1.1.</span> <span class="nav-text">测试用程序test.c：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译："><span class="nav-number">1.2.</span> <span class="nav-text">编译：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Obtain-Offset："><span class="nav-number">1.3.</span> <span class="nav-text">Obtain Offset：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启trace"><span class="nav-number">2.</span> <span class="nav-text">开启trace</span></a></li></ol>
     
     </div>
   </aside>

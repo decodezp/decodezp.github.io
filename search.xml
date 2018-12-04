@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>ftrace uprobe使用填坑历程</title>
+      <link href="/2018/12/04/ftrace-uprobe/"/>
+      <url>/2018/12/04/ftrace-uprobe/</url>
+      
+        <content type="html"><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>打算用一下<code>ftrace</code>对用户态程序的trace支持。</p><h3 id="测试用程序test-c："><a href="#测试用程序test-c：" class="headerlink" title="测试用程序test.c："></a>测试用程序<code>test.c</code>：</h3><a id="more"></a><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span></span><br><span class="line">print_curr_state_one(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is the print current state one function\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span></span><br><span class="line">print_curr_state_two(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is the print current state two function\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">        print_curr_state_one();</span><br><span class="line">        sleep(<span class="number">1</span>);</span><br><span class="line">        print_curr_state_two();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="编译："><a href="#编译：" class="headerlink" title="编译："></a>编译：</h3><p><code>gcc -o test test.c</code></p><h3 id="Obtain-Offset："><a href="#Obtain-Offset：" class="headerlink" title="Obtain Offset："></a>Obtain Offset：</h3><p><code>objdump -d test</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">000000000040055d &lt;print_curr_state_one&gt;:</span><br><span class="line">  40055d:55                   push   %rbp</span><br><span class="line">  40055e:48 89 e5             mov    %rsp,%rbp</span><br><span class="line">  400561:bf 30 06 40 00       mov    $0x400630,%edi</span><br><span class="line">  400566:e8 c5 fe ff ff       callq  400430 &lt;puts@plt&gt;</span><br><span class="line">  40056b:5d                   pop    %rbp</span><br><span class="line">  40056c:c3                   retq   </span><br><span class="line"></span><br><span class="line">000000000040056d &lt;print_curr_state_two&gt;:</span><br><span class="line">  40056d:55                   push   %rbp</span><br><span class="line">  40056e:48 89 e5             mov    %rsp,%rbp</span><br><span class="line">  400571:bf 60 06 40 00       mov    $0x400660,%edi</span><br><span class="line">  400576:e8 b5 fe ff ff       callq  400430 &lt;puts@plt&gt;</span><br><span class="line">  40057b:5d                   pop    %rbp</span><br><span class="line">  40057c:c3                   retq</span><br></pre></td></tr></table></figure><p>添加uprobe trace event：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 'p:print_current_state_one /root/test/uprobe/uprobe:0x55d' &gt;&gt; /sys/kernel/debug/tracing/uprobe_events</span><br><span class="line">echo 'p:print_current_state_two /root/test/uprobe/uprobe:0x56d' &gt;&gt; /sys/kernel/debug/tracing/uprobe_events</span><br></pre></td></tr></table></figure><p>有时会出现Invalid argument的错误。用<code>sudo su</code>获取<code>root</code>权限。</p><blockquote><p>这里注意，偏移的大小只写0x55d，不能写0x40055d</p></blockquote><h2 id="开启trace"><a href="#开启trace" class="headerlink" title="开启trace"></a>开启trace</h2><p>先启动<code>test</code>程序：<code>./test</code></p><p><code>echo 1 &gt; /sys/kernel/debug/tracing/event/enable</code></p><p>如果此时<code>cat /sys/kernel/debug/tracing/event/enable</code>显示为<code>X</code></p><p><code>echo 1 &gt; /sys/kernel/debug/tracing/event/uprobes/enable</code></p><p>最后<code>cat /sys/kernel/debug/tracing/trace</code>应该就能看到了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> ftrace </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>ftrace trace-cmd kernelshark资料汇总</title>
       <link href="/2018/11/30/ftrace/"/>
       <url>/2018/11/30/ftrace/</url>
@@ -23,9 +48,9 @@
             
             <tag> tech </tag>
             
-            <tag> linux </tag>
-            
             <tag> ftrace </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       

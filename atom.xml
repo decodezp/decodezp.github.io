@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-11-30T06:39:04.849Z</updated>
+  <updated>2018-12-04T04:28:56.558Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ftrace uprobe使用填坑历程</title>
+    <link href="https://decodezp.github.io/2018/12/04/ftrace-uprobe/"/>
+    <id>https://decodezp.github.io/2018/12/04/ftrace-uprobe/</id>
+    <published>2018-12-04T04:25:59.000Z</published>
+    <updated>2018-12-04T04:28:56.558Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;打算用一下&lt;code&gt;ftrace&lt;/code&gt;对用户态程序的trace支持。&lt;/p&gt;
+&lt;h3 id=&quot;测试用程序test-c：&quot;&gt;&lt;a href=&quot;#测试用程序test-c：&quot; class=&quot;headerlink&quot; title=&quot;测试用程序test.c：&quot;&gt;&lt;/a&gt;测试用程序&lt;code&gt;test.c&lt;/code&gt;：&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
+    
+  </entry>
   
   <entry>
     <title>ftrace trace-cmd kernelshark资料汇总</title>
@@ -37,9 +60,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
-    
       <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
+    
+      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
     
   </entry>
   

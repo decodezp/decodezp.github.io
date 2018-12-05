@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-04T04:28:56.558Z</updated>
+  <updated>2018-12-05T07:14:40.277Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>魏孝文帝教你提proposal</title>
+    <link href="https://decodezp.github.io/2018/12/05/history-tuobahong/"/>
+    <id>https://decodezp.github.io/2018/12/05/history-tuobahong/</id>
+    <published>2018-12-05T07:09:12.000Z</published>
+    <updated>2018-12-05T07:14:40.277Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;艰难的Proposal&quot;&gt;&lt;a href=&quot;#艰难的Proposal&quot; class=&quot;headerlink&quot; title=&quot;艰难的Proposal&quot;&gt;&lt;/a&gt;艰难的Proposal&lt;/h2&gt;&lt;p&gt;每个人都有独自一人面对全世界的时候，即便你是魏孝文帝拓跋宏。&lt;/p&gt;
+&lt;p&gt;北魏太和十七年，承平日久的北魏都城里正在酝酿一件大事——迁都。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="history" scheme="https://decodezp.github.io/categories/history/"/>
+    
+    
+      <category term="history" scheme="https://decodezp.github.io/tags/history/"/>
+    
+  </entry>
   
   <entry>
     <title>ftrace uprobe使用填坑历程</title>

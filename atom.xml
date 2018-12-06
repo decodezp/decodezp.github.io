@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-06T06:29:21.926Z</updated>
+  <updated>2018-12-06T06:45:25.440Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>可以预测交通路况的 APP</title>
+    <link href="https://decodezp.github.io/2018/12/06/life-traffic-prediction/"/>
+    <id>https://decodezp.github.io/2018/12/06/life-traffic-prediction/</id>
+    <published>2018-12-06T06:41:18.000Z</published>
+    <updated>2018-12-06T06:45:25.440Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;能不能有这样一款应用&lt;br&gt;
+    
+    </summary>
+    
+      <category term="life" scheme="https://decodezp.github.io/categories/life/"/>
+    
+    
+      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去2：CPU缓存读入策略</title>

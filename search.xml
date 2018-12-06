@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>可以预测交通路况的 APP</title>
+      <link href="/2018/12/06/life-traffic-prediction/"/>
+      <url>/2018/12/06/life-traffic-prediction/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>能不能有这样一款应用<br><a id="more"></a></p><p>或者地图 APP 实现这样一个功能</p><p>能通过历史路况大数据分析</p><p>告诉我今天晚上几点出发上路</p><p>东北四环不堵</p><p>把什么机器学习人工智能数字孪生</p><p>能加的都给它加上</p><p>感觉又是一个割 VC 韭菜的杀手应用</p><p>只要有人搭出来这个框架</p><p>我愿意帮忙实现所有的业务代码</p><p>因为只需要一句</p><p><code>return &quot;您期望的时间不存在&quot;</code></p></blockquote><p><em><em>2018.12.6</em></em></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> life </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> life </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去2：CPU缓存读入策略</title>
       <link href="/2018/12/06/test2-cache-line-alignment/"/>
       <url>/2018/12/06/test2-cache-line-alignment/</url>

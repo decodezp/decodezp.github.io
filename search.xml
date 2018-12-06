@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>测来测去2：CPU缓存读入策略</title>
+      <link href="/2018/12/06/test2-cache-line-alignment/"/>
+      <url>/2018/12/06/test2-cache-line-alignment/</url>
+      
+        <content type="html"><![CDATA[<h2 id="到底哪些数据写入了CPU缓存"><a href="#到底哪些数据写入了CPU缓存" class="headerlink" title="到底哪些数据写入了CPU缓存"></a>到底哪些数据写入了CPU缓存</h2><p>我们知道CPU会在要读写某个数据时，先将数据写入缓存。</p><p>我们也知道这个操作一般以Cache Line为操作粒度，并且Cache Line的长度一般为64Byte。<br><a id="more"></a></p><p>那么这个Cache Line包含的数据到底是哪64Byte呢？</p><p>如果要读写的数据的地址正好以64Byte对齐，那么肯定是这个数据和它之后的<code>（64 - sizeof(数据)）</code>Byte存在于这个缓存行里。</p><p>但是如果要读写的这个数据地址不以64Byte对齐，而是在两个64Byte对齐的地址中间的某个位置，CPU写入Cache Line里的数据还是它和它之后的64Byte吗？CPU会“向前”对64取整作为Cache Line中的数据吗？</p><h2 id="用False-Sharing证明"><a href="#用False-Sharing证明" class="headerlink" title="用False Sharing证明"></a>用False Sharing证明</h2><p>根据之前介绍False Sharing的原理<a href="https://decodezp.github.io/2018/11/27/quickwords3-falsesharing/">链接</a>，通过判断是否发生False Sharing可以判断某两个数据是否存在于同一条Cache Line里。</p><p>构造如下结构体：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">counter_t</span> &#123;</span></span><br><span class="line">    <span class="keyword">uint32_t</span> front_padding[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">uint32_t</span> c1;</span><br><span class="line">    <span class="comment">/* 64 bytes */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> c2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>其中<code>c1</code>和<code>c2</code>是分别被两个CPU core写入的变量。</p><p>在构造counter_t的实例时，利用<code>GCC attribute</code>确保其起始地址与64Byte对齐：</p><p><code>struct counter_t counter __attribute__((aligned(64)));</code></p><p>在两个CPU核分别开始操作<code>c1</code>和<code>c2</code>之前利用<code>clflush</code>指令清除所有相关缓存：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line">clflush(<span class="keyword">volatile</span> <span class="keyword">void</span> *p)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">asm</span> <span class="title">volatile</span> <span class="params">(<span class="string">"clflush (%0)"</span> :: <span class="string">"r"</span>(p))</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>如果发生了False Sharing，则说明这两个变量在一个Cache Line里，则证明CPU是取欲读写变量及其之后64Byte数据写入缓存<br>如果没有发生False Sharing，则说明这两个变量不在一个Cache Line里，则证明CPU是取欲读写变量向前64取整地址上的数据写入缓存</p></blockquote><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>结果当然是没有发生False Sharing。</p><p>不然还搞什么n-way set associative :)</p><p>代码：<a href="https://github.com/PanZhangg/x86perf/blob/master/cache_line_alignment.c" target="_blank" rel="noopener">https://github.com/PanZhangg/x86perf/blob/master/cache_line_alignment.c</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>魏孝文帝教你提proposal</title>
       <link href="/2018/12/05/history-tuobahong/"/>
       <url>/2018/12/05/history-tuobahong/</url>

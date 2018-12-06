@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-05T07:14:40.277Z</updated>
+  <updated>2018-12-06T06:29:21.926Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去2：CPU缓存读入策略</title>
+    <link href="https://decodezp.github.io/2018/12/06/test2-cache-line-alignment/"/>
+    <id>https://decodezp.github.io/2018/12/06/test2-cache-line-alignment/</id>
+    <published>2018-12-06T06:18:31.000Z</published>
+    <updated>2018-12-06T06:29:21.926Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;到底哪些数据写入了CPU缓存&quot;&gt;&lt;a href=&quot;#到底哪些数据写入了CPU缓存&quot; class=&quot;headerlink&quot; title=&quot;到底哪些数据写入了CPU缓存&quot;&gt;&lt;/a&gt;到底哪些数据写入了CPU缓存&lt;/h2&gt;&lt;p&gt;我们知道CPU会在要读写某个数据时，先将数据写入缓存。&lt;/p&gt;
+&lt;p&gt;我们也知道这个操作一般以Cache Line为操作粒度，并且Cache Line的长度一般为64Byte。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>魏孝文帝教你提proposal</title>

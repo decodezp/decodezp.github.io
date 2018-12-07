@@ -212,36 +212,20 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">最近机缘巧合之下接触到了华为FabricInsight这款产品，简要谈谈看法。</span><br><span class="line">只针对2018年8月份左右发布的版本。</span><br><span class="line">另外注意，在Google搜索相关资料的时候，记得要把Fabric Insight这两个单词合并在一起搜索，中间不要加空格，别问我怎么知道的。</span><br></pre></td></tr></table></figure>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="信息采集"><a href="#信息采集" class="headerlink" title="信息采集"></a>信息采集</h3><h4 id="SNMP"><a href="#SNMP" class="headerlink" title="SNMP"></a>SNMP</h4><p>在使用Fabric Insight之前需要配置华为设备的SNMP协议，主要作用为获取设备的MIB信息，<br>并进行其他管理操作。</p>
-<h4 id="LLDP"><a href="#LLDP" class="headerlink" title="LLDP"></a>LLDP</h4><p>使能各设备的LLDP功能，以便FabricInsight据此（以及通过SNMP上送的MIB信息）绘制硬<br>件连接拓扑图。</p>
-<h4 id="NetConf"><a href="#NetConf" class="headerlink" title="NetConf"></a>NetConf</h4><p>使能各设备的NetConf配置，以便FabricInsight能通过NetConf协议配置各设备的ERSPAN功<br>能。</p>
-<h4 id="ERSPAN"><a href="#ERSPAN" class="headerlink" title="ERSPAN"></a>ERSPAN</h4><p>配置ERSPAN功能，destination IP配置为FabricInsight collector的地址。底层实现为：通过<br>GRE隧道的方式将远程设备的流量路由/镜像至分析节点，以实现对流量可视化分析。<br>ERSPAN可配置筛选特定的流量，并非全量镜像。从华为对交换机的配置： </p>
-<pre><code class="shell">[~Device] observe-port 1
-​
- destination-ip 10.10.10.20
-​
- source-ip 10.1.1.1 
-[*Device] traffic-mirroring vxlan tag-format none tcp-flag fin syn rst observe-port 1 inbound 
-[*Device] traffic-mirroring tcp-flag fin syn rst observe-port 1 inbound 
-[*Device] commit
-</code></pre>
-<p>通过ERSPAN镜像给Fabric Insight的流量包括带有FIN/SYN/RST等TCP flag的网包。对应其<br>产品中对TCP事件的可视化能力。<br><em>注*：据此可以看出Fabric Insight没有全量流量镜像&amp;分析能力</em><br><em>注*：命令中的vxlan可能是将流量通过vxlan封装，做三层转发，而非镜像全部vxlan流量</em></p>
-<h4 id="Telemetry"><a href="#Telemetry" class="headerlink" title="Telemetry"></a>Telemetry</h4><p>华为的Telemetry指设备主动、以固定周期上报的一些设备信息，包括CPU\MEM\QUEUE等信<br>息。 </p>
-<h4 id="手动录入"><a href="#手动录入" class="headerlink" title="手动录入"></a>手动录入</h4><p>主要为用户业务信息，每一个业务的定义为一组IP和某一固定端口号的集合，需要用户手工录<br>入。</p>
-<p><img src="https://i.ytimg.com/vi/uVcXxn30qqY/maxresdefault.jpg" alt=""></p>
-<h3 id="功能分类"><a href="#功能分类" class="headerlink" title="功能分类"></a>功能分类</h3><h4 id="Underlay拓扑可视化"><a href="#Underlay拓扑可视化" class="headerlink" title="Underlay拓扑可视化"></a>Underlay拓扑可视化</h4><p>依据LLDP生成及SNMP上报的信息，可生成Underlay设备间的拓扑信息。<br>流量事件统计<br>依据ERSPAN镜像的含有SYN\FIN\RST等flag的TCP网包，可统计一条流（五元组）中的事件<br>发生次数、时间及类型。并可据此进行简单的SYN重传、建立连接RTT、建连成功率分析。但<br>缺少对网流完整过程（e.g.流量传输数据总量、pps、整体平均时延等）的统计和分析。 </p>
-<h4 id="设备信息统计"><a href="#设备信息统计" class="headerlink" title="设备信息统计"></a>设备信息统计</h4><p>根据Telemetry信息给出CPU\MEM等设备运行状态统计信息，以及对各网络端口IN/OUT总<br>量、drop、error数量等的统计信息。 </p>
-<h4 id="应用流量分类过滤"><a href="#应用流量分类过滤" class="headerlink" title="应用流量分类过滤"></a>应用流量分类过滤</h4><p>其应用功能，本质为手动设置IP+端口号过滤规则，通过过滤的流量即为一个应用。应用间的<br>流量状态展现，即为在流量事件统计数据库中分别为起止两端的流量配置两个应用的过滤规则<br>，筛选出的流量即可作为应用间的流量状态展示。 </p>
-<h2 id="Fabric-Insight特点"><a href="#Fabric-Insight特点" class="headerlink" title="Fabric Insight特点"></a>Fabric Insight特点</h2><h3 id="强绑定性"><a href="#强绑定性" class="headerlink" title="强绑定性"></a>强绑定性</h3><p>只能用于华为的硬件设备。并且后期会形成双向绑定，如若依赖FabricInsight，扩容时只能继<br>续采购华为设备。 </p>
-<h3 id="基于流量事件"><a href="#基于流量事件" class="headerlink" title="基于流量事件"></a>基于流量事件</h3><p>对于流的分析仅涉及五元组和TCP流量事件。可依据SYN、FIN、RST等TCP流量事件完成<br>TCP SYN重传、RST等事件的侦测，并作为报警依据。 </p>
-<h3 id="无流量全量分析"><a href="#无流量全量分析" class="headerlink" title="无流量全量分析"></a>无流量全量分析</h3><p>当前观察，仅有TCP流量的事件信息，对UDP、ICMP、ARP等网络流量无采集分析能力。仅<br>针对TCP流量，亦无流量全量分析能力，无法获取诸如流量总字节数、总包数、pps、平均时<br>延、最大时延等信息。</p>
-<h3 id="Overlay能力暂无"><a href="#Overlay能力暂无" class="headerlink" title="Overlay能力暂无"></a>Overlay能力暂无</h3><p>当前FabricInsight宣称的可分析虚拟网络是指，手工指定某一虚拟网元（Virtual NE）IP地址<br>，手工指定其角色（e.g. FW\LB\Router）其与外界通讯的流量可以以与Underlay网络相同的<br>方式采集。<br>未发现针对虚拟网络VM间的采集分析能力。从其官方手册中针对ERSPAN的配置来看，可能<br>或未来会具有一定的VXLAN隧道解封装及关联对应能力。但即便如此，在大规模网络流量的<br>情况下，对全部VXLAN流量分析亦将为设备带来压力。<br>另外，主机内的虚拟网络流量，FabricInsight以现在的形式是绝对无法取得的。 </p>
-<h2 id="Fabric-Insight未来演进趋势推测"><a href="#Fabric-Insight未来演进趋势推测" class="headerlink" title="Fabric Insight未来演进趋势推测"></a>Fabric Insight未来演进趋势推测</h2><h3 id="In-band-Telemetry"><a href="#In-band-Telemetry" class="headerlink" title="In-band Telemetry"></a>In-band Telemetry</h3><p>Fabric Insight的数据采集能力全部来自于设备提供的能力。在设备/芯片领域的发展趋势是提<br>供更加精细化的In-band Telemetry遥测能力。从Cisco/Barefoot等厂商近期对P4芯片的动态来<br>看，华为跟风也是早晚的事。In-band Telemetry可以提供诸如per packet的全生命周期、匹配<br>的具体转发规则、更加精细的时间戳等能力。但如若采用新的芯片组提供In-band Telemetry<br>，则会仅支持新款产品。<br>除此之外，也将不仅仅将流量分析的范畴局限于TCP流量。 </p>
-<h3 id="虚拟网络"><a href="#虚拟网络" class="headerlink" title="虚拟网络"></a>虚拟网络</h3><p>虚拟网络是行业演进的趋势，但需要考虑华为对FabricInsight这款产品本身的定位。如果添加<br>虚拟网络能力，则其品牌名称、目标人群都将会有较大调整。但华为整体上缺乏虚拟网络可视<br>化的产品和能力，因此推断会先对接华为自己的云平台FusionCloud，计算节点绑定探针。但<br>先期仍会仅采用TCP流量事件的分析模式，不会全量采集和分析。 </p>
-<h3 id="AIops"><a href="#AIops" class="headerlink" title="AIops"></a>AIops</h3><p>AI的概念在当前版本的Fabric Insight中已有所体现，但当前仅是一些标准差方差的统计计算。<br>演进的方式将是对网络中断和延迟的诊断以及自调优的赋能。但这种分析首先要求用户能够输<br>入一定的专家经验作为数据训练的标记，同时对分析节点的部署要求较高（支持大数据分布式<br>计算和存储）。 </p>
-<h3 id="安全防御"><a href="#安全防御" class="headerlink" title="安全防御"></a>安全防御</h3><p>这是当前看起来最有实际效能的功能。其本身具有的TCP事件分析能力完全可以用来完成<br>DDoS攻击的侦测和防御。 </p>
+        
+          <div class="entry-thumbnail">
+            <a href="/2018/12/08/product1-huawei-fabricinsight/"><img width="250" height="175" src="https://e-file.huawei.com/-/media/EBG/Video/images/large/en/Cebit-2017/FabricInsight-Visualizing-Network-Applications-en.PNG?h=264&amp;la=en&amp;w=470" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          123最近机缘巧合之下接触到了华为FabricInsight这款产品，简要谈谈看法。只针对2018年8月份左右发布的版本。另外注意，在Google搜索相关资料的时候，记得要把Fabric Insight这两个单词合并在一起搜索，中间不要加空格，别问我怎么知道的。
 
+概述信息采集SNMP在使用Fabric Insight之前需要配置华为设备的SNMP协议，主要作用为获取设备的MIB信息，并进行...
+
+        
+          <p class="article-more-link">
+            <a href="/2018/12/08/product1-huawei-fabricinsight/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">

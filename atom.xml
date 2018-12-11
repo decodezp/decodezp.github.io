@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-07T22:38:54.500Z</updated>
+  <updated>2018-12-11T11:45:43.584Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚4：什么是Pointer Aliasing</title>
+    <link href="https://decodezp.github.io/2018/12/11/quickwords4-pointer-aliasing/"/>
+    <id>https://decodezp.github.io/2018/12/11/quickwords4-pointer-aliasing/</id>
+    <published>2018-12-11T11:33:46.000Z</published>
+    <updated>2018-12-11T11:45:43.584Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;指向同一地址的两个相同类型的指针&quot;&gt;&lt;a href=&quot;#指向同一地址的两个相同类型的指针&quot; class=&quot;headerlink&quot; title=&quot;指向同一地址的两个相同类型的指针&quot;&gt;&lt;/a&gt;指向同一地址的两个相同类型的指针&lt;/h2&gt;&lt;p&gt;&lt;code&gt;aliasing&lt;/code&gt;本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。&lt;/p&gt;
+&lt;p&gt;如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。&lt;br&gt;&lt;img src=&quot;https://svi.nl/wikiimg/StFargeaux_kasteel_buiten1_aliased.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+  </entry>
   
   <entry>
     <title>产品观察1：华为FabricInsight产品简要分析</title>

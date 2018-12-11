@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>几句话说清楚4：什么是Pointer Aliasing</title>
+      <link href="/2018/12/11/quickwords4-pointer-aliasing/"/>
+      <url>/2018/12/11/quickwords4-pointer-aliasing/</url>
+      
+        <content type="html"><![CDATA[<h2 id="指向同一地址的两个相同类型的指针"><a href="#指向同一地址的两个相同类型的指针" class="headerlink" title="指向同一地址的两个相同类型的指针"></a>指向同一地址的两个相同类型的指针</h2><p><code>aliasing</code>本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。</p><p>如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。<br><img src="https://svi.nl/wikiimg/StFargeaux_kasteel_buiten1_aliased.jpg" alt=""></p><a id="more"></a><p>同样的现象也会出现在程序员穿着“高密度”的格子衬衫接受电视采访时。</p><p>墙砖缝隙出现<code>aliasing</code>后无法再行区分，从字面意义来说，<code>Pointer Aliasing</code>就是不同的指针也无法区分。</p><p>指针无法区分，只有一种情况，就是指针的类型和指向的地址都是相同的，这就是<code>Pointer Aliasing</code>。</p><h2 id="为什么会有性能影响"><a href="#为什么会有性能影响" class="headerlink" title="为什么会有性能影响"></a>为什么会有性能影响</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> *<span class="built_in">array</span>, <span class="keyword">int</span> *size, <span class="keyword">int</span> *value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; *size; ++i) &#123;</span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="number">2</span> * *value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果让我们自己“优化”一下这段代码，我们可能会首先将<code>value</code>指向的值存入一个临时变量里，然后将临时变量在循环中直接赋值给<code>array</code>。</p><p>我们假设个<code>array</code>的初始状态：<code>[0, 1, 2, 3, 4]</code></p><p>如果<code>value</code>指向的值等于3，那么按我们优化的方式，<code>array</code>最终的状态是：<code>[6, 6, 6, 6, 6]</code></p><p>但这里存在一个问题，如果<code>value</code>指向<code>array[3]</code>，那么<code>array</code>最终的状态就是：<code>[6, 6, 6, 12, 24]</code></p><p><code>value</code>和<code>array[3]</code>就是指向相同地址类型相同的指针。</p><p>编译器为了得到最终正确的结果，就不得不取消我们之前提到的”优化”方式。</p><h2 id="预防方法"><a href="#预防方法" class="headerlink" title="预防方法"></a>预防方法</h2><p>使用<code>__restrict</code>关键字：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> * __restrict <span class="built_in">array</span>, <span class="keyword">int</span> *__restrict size, <span class="keyword">int</span> *__restrict value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; *size; ++i) &#123;</span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="number">2</span> * *value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当然，前提是自己可以确定代码逻辑中不会引入<code>aliasing</code>。</p><h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>首先明确一点，不是加上了<code>__restrict</code>性能就会提升。</p><blockquote><p><code>Pointer aliasing</code>对性能根本的伤害不是需要每次重新去某个地址取值，而是因为引入了潜在的数据依赖关系，从而关闭了很多编译器优化代码的能力。</p></blockquote><p>上面两段代码，在<code>-O0</code>优化时生成的汇编代码(<code>gcc 4.8.5</code>)完全相同。不同的地方在于，第一段代码在<code>-O2</code>和<code>-O3</code>时生成的汇编代码仍然相同；而第二段做了<code>__restrict</code>处理的代码则会在<code>-O3</code>时加入大量循环展开等优化方式。</p><p>在线查看汇编代码：<a href="https://godbolt.org/z/2nXlNa" target="_blank" rel="noopener">链接</a></p><p>所以<code>__restrict</code>需要在打开较高等级的编译器优化的情况下使用才会有效果。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+          <category> quickwords </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> CPU </tag>
+            
+            <tag> performance </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>产品观察1：华为FabricInsight产品简要分析</title>
       <link href="/2018/12/08/product1-huawei-fabricinsight/"/>
       <url>/2018/12/08/product1-huawei-fabricinsight/</url>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-12T15:09:49.362Z</updated>
+  <updated>2018-12-13T14:23:45.642Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚5：影响服务器内存性能的硬件知识</title>
+    <link href="https://decodezp.github.io/2018/12/13/quickwords5-server-memory/"/>
+    <id>https://decodezp.github.io/2018/12/13/quickwords5-server-memory/</id>
+    <published>2018-12-13T14:20:51.000Z</published>
+    <updated>2018-12-13T14:23:45.642Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;发挥内存条理财的最大收益率&quot;&gt;&lt;a href=&quot;#发挥内存条理财的最大收益率&quot; class=&quot;headerlink&quot; title=&quot;发挥内存条理财的最大收益率&quot;&gt;&lt;/a&gt;发挥内存条理财的最大收益率&lt;/h2&gt;&lt;p&gt;内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。&lt;/p&gt;
+&lt;p&gt;在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的&lt;code&gt;Memory Controller&lt;/code&gt;就需要去内存中读取内容。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+      <category term="memory" scheme="https://decodezp.github.io/tags/memory/"/>
+    
+  </entry>
   
   <entry>
     <title>5分钟经典英文技术演讲1：如何快速掌握新技术 - Kathy Sierra</title>
@@ -212,9 +241,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
-    
       <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
+    
+      <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
     
   </entry>
   
@@ -372,7 +401,7 @@
     <link href="https://decodezp.github.io/2018/11/20/cachesize/"/>
     <id>https://decodezp.github.io/2018/11/20/cachesize/</id>
     <published>2018-11-20T11:45:45.000Z</published>
-    <updated>2018-12-07T22:34:43.000Z</updated>
+    <updated>2018-12-12T15:09:51.135Z</updated>
     
     <summary type="html">
     

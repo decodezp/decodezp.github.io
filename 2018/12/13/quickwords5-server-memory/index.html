@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>测来测去2：cpu缓存读入策略 | DecodeZ</title>
+  <title>几句话说清楚5：影响服务器内存性能的硬件知识 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="到底哪些数据写入了CPU缓存我们知道CPU会在要读写某个数据时，先将数据写入缓存。 我们也知道这个操作一般以Cache Line为操作粒度，并且Cache Line的长度一般为64Byte。">
-<meta name="keywords" content="tech,hardware,CPU,test">
+  <meta name="description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
+<meta name="keywords" content="tech,hardware,performance,memory">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测来测去2：CPU缓存读入策略">
-<meta property="og:url" content="https://decodezp.github.io/2018/12/06/test2-cache-line-alignment/index.html">
+<meta property="og:title" content="几句话说清楚5：影响服务器内存性能的硬件知识">
+<meta property="og:url" content="https://decodezp.github.io/2018/12/13/quickwords5-server-memory/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="到底哪些数据写入了CPU缓存我们知道CPU会在要读写某个数据时，先将数据写入缓存。 我们也知道这个操作一般以Cache Line为操作粒度，并且Cache Line的长度一般为64Byte。">
+<meta property="og:description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://1.bp.blogspot.com/-_rreUS6uUzs/TicrO8neu9I/AAAAAAAAIIs/1GVO_DbXcQo/s400/CPUCache.png">
-<meta property="og:updated_time" content="2018-12-06T06:29:21.926Z">
+<meta property="og:image" content="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png">
+<meta property="og:updated_time" content="2018-12-13T14:23:45.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测来测去2：CPU缓存读入策略">
-<meta name="twitter:description" content="到底哪些数据写入了CPU缓存我们知道CPU会在要读写某个数据时，先将数据写入缓存。 我们也知道这个操作一般以Cache Line为操作粒度，并且Cache Line的长度一般为64Byte。">
-<meta name="twitter:image" content="http://1.bp.blogspot.com/-_rreUS6uUzs/TicrO8neu9I/AAAAAAAAIIs/1GVO_DbXcQo/s400/CPUCache.png">
+<meta name="twitter:title" content="几句话说清楚5：影响服务器内存性能的硬件知识">
+<meta name="twitter:description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
+<meta name="twitter:image" content="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -190,14 +190,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-test2-cache-line-alignment" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords5-server-memory" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://1.bp.blogspot.com/-_rreUS6uUzs/TicrO8neu9I/AAAAAAAAIIs/1GVO_DbXcQo/s400/CPUCache.png" rel="gallery_cjpmp1s8n0014qyfyn4pds3v4">
-        <img src="http://1.bp.blogspot.com/-_rreUS6uUzs/TicrO8neu9I/AAAAAAAAIIs/1GVO_DbXcQo/s400/CPUCache.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png" rel="gallery_cjpmp1s8k000uqyfyxy76d16a">
+        <img src="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png" itemprop="image">
       </a>
     
   </div>
@@ -208,7 +208,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      测来测去2：CPU缓存读入策略
+      几句话说清楚5：影响服务器内存性能的硬件知识
     </h1>
   
 
@@ -216,8 +216,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/12/06/test2-cache-line-alignment/" class="article-date">
-	  <time datetime="2018-12-06T06:18:31.000Z" itemprop="datePublished">December 6, 2018</time>
+	Posted on <a href="/2018/12/13/quickwords5-server-memory/" class="article-date">
+	  <time datetime="2018-12-13T14:20:51.000Z" itemprop="datePublished">December 13, 2018</time>
 	</a>
 
       
@@ -228,36 +228,39 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="到底哪些数据写入了CPU缓存"><a href="#到底哪些数据写入了CPU缓存" class="headerlink" title="到底哪些数据写入了CPU缓存"></a>到底哪些数据写入了CPU缓存</h2><p>我们知道CPU会在要读写某个数据时，先将数据写入缓存。</p>
-<p>我们也知道这个操作一般以Cache Line为操作粒度，并且Cache Line的长度一般为64Byte。<br><a id="more"></a></p>
-<p>那么这个Cache Line包含的数据到底是哪64Byte呢？</p>
-<p>如果要读写的数据的地址正好以64Byte对齐，那么肯定是这个数据和它之后的<code>（64 - sizeof(数据)）</code>Byte存在于这个缓存行里。</p>
-<p>但是如果要读写的这个数据地址不以64Byte对齐，而是在两个64Byte对齐的地址中间的某个位置，CPU写入Cache Line里的数据还是它和它之后的64Byte吗？CPU会“向前”对64取整作为Cache Line中的数据吗？</p>
-<h2 id="用False-Sharing证明"><a href="#用False-Sharing证明" class="headerlink" title="用False Sharing证明"></a>用False Sharing证明</h2><p>根据之前介绍False Sharing的原理<a href="https://decodezp.github.io/2018/11/27/quickwords3-falsesharing/">链接</a>，通过判断是否发生False Sharing可以判断某两个数据是否存在于同一条Cache Line里。</p>
-<p>构造如下结构体：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">counter_t</span> &#123;</span></span><br><span class="line">    <span class="keyword">uint32_t</span> front_padding[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">uint32_t</span> c1;</span><br><span class="line">    <span class="comment">/* 64 bytes */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> c2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>其中<code>c1</code>和<code>c2</code>是分别被两个CPU core写入的变量。</p>
-<p>在构造counter_t的实例时，利用<code>GCC attribute</code>确保其起始地址与64Byte对齐：</p>
-<p><code>struct counter_t counter __attribute__((aligned(64)));</code></p>
-<p>在两个CPU核分别开始操作<code>c1</code>和<code>c2</code>之前利用<code>clflush</code>指令清除所有相关缓存：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line">clflush(<span class="keyword">volatile</span> <span class="keyword">void</span> *p)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">asm</span> <span class="title">volatile</span> <span class="params">(<span class="string">"clflush (%0)"</span> :: <span class="string">"r"</span>(p))</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="发挥内存条理财的最大收益率"><a href="#发挥内存条理财的最大收益率" class="headerlink" title="发挥内存条理财的最大收益率"></a>发挥内存条理财的最大收益率</h2><p>内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。</p>
+<p>在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的<code>Memory Controller</code>就需要去内存中读取内容。<br><a id="more"></a></p>
+<p>而<code>Memory Controller</code>为了尽快完成CPU交代的任务，用了<code>多通道</code>的方式增大内存存取带宽。</p>
+<p><code>多通道</code>这个概念很好理解，和多条车道是一个意思。比如CPU需要1MB大小的数据，单通道的话数据就只能在一条通道上老老实实排队；双通道就可以并行两个512KB的读取；四通道就是并行四个256KB的读取。</p>
+<p>我知道你要问什么，这1MB大小的数据已经被<code>Memory Controller</code>通过一种叫做<code>Interleave(交织)</code>的技术“打散”在了两个通道或者四个通道对应的物理内存上。<code>Interleave</code>由硬件实现，细节不在这里深究，我们想说明的是发挥这些硬件组件的最大能力需要外界条件配合。</p>
+<p>内存在硬件方面的性能优化，就围绕这个主题。</p>
+<h2 id="内存相关概念"><a href="#内存相关概念" class="headerlink" title="内存相关概念"></a>内存相关概念</h2><p>现在主流Intel E5 CPU的配置是一颗CPU上两个<code>Memory Controller</code>，每个Controller有两个通道，每个通道对应主板上三个内存插槽(DIMM)。</p>
+<p><img src="http://1.bp.blogspot.com/-Iaf9qQgC-zM/VdDIBPzscoI/AAAAAAAAABs/AU-vcOrCSck/s1600/6101_48_supermicro_x9dr7_tf_intel_c602j_server_motherboard_review.jpg" alt="内存插槽"></p>
+<p><code>Interleave</code>首先发生在通道层面，进而发生在通道的DIMM层面（使用的DIMM越多，交织得越充分）</p>
+<p>同时每根内存条还有一个<code>Rank</code>的概念。这个概念可以理解为更进一步的<code>Interleave</code>，多<code>Rank</code>的内存条可以再进行一次<code>Interleave</code>。</p>
+<p><img src="https://cdn3.bigcommerce.com/s-3jjekk/product_images/uploaded_images/memory-rank.png?t=1518214379&amp;_ga=2.27767868.1254827790.1518192896-72491761.1493653618" alt="看序列号读取内存信息"></p>
+<h2 id="充分平衡"><a href="#充分平衡" class="headerlink" title="充分平衡"></a>充分平衡</h2><p>满足最优的内存配置就是四个字：充分平衡。</p>
+<p>-充分：并不是要你插满所有插槽，而是充分利用每个<code>Memory Controller</code>和每条通道<br>-平衡：每个<code>Memory Controller</code>和通道上的内存配置(Size, Rank和频率)都相同。</p>
+<p>在实际应用中，首先绘制一个内存拓扑，如下图：</p>
 <blockquote>
-<p>如果发生了False Sharing，则说明这两个变量在一个Cache Line里，则证明CPU是取欲读写变量及其之后64Byte数据写入缓存<br>如果没有发生False Sharing，则说明这两个变量不在一个Cache Line里，则证明CPU是取欲读写变量向前64取整地址上的数据写入缓存</p>
+<p>如何检查是否充分？看一下每个<code>Memory Controller</code>中的每个通道是否都有内存条<br>如何检查是否平衡？将拓扑图从中垂线对折一次，检查图像是否能重合；再从水平中位线对折一次，检查是否能重合。如果两次回答都是yes，就平衡了。</p>
 </blockquote>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>结果当然是没有发生False Sharing。</p>
-<p>不然还搞什么n-way set associative :)</p>
-<p>代码：<a href="https://github.com/PanZhangg/x86perf/blob/master/cache_line_alignment.c" target="_blank" rel="noopener">https://github.com/PanZhangg/x86perf/blob/master/cache_line_alignment.c</a></p>
+<h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNdSBT.png" alt="充分平衡"></p>
+<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNazuV.png" alt="充分不平衡"></p>
+<h3 id="实例3"><a href="#实例3" class="headerlink" title="实例3"></a>实例3</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNajcq.png" alt="不充分不平衡"></p>
+<h3 id="实例4"><a href="#实例4" class="headerlink" title="实例4"></a>实例4</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNavj0.png" alt="充分平衡"></p>
+<h2 id="软件检查工具"><a href="#软件检查工具" class="headerlink" title="软件检查工具"></a>软件检查工具</h2><p>为了不让每次内存检测都需要打开机箱…有一个开源工具可以通过读取<code>dmidecode</code>的信息自动化做检验：<a href="https://github.com/PanZhangg/DPDKick" target="_blank" rel="noopener">DPDKick</a></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/test/">test</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>, <a class="article-category-link" href="/categories/tech/quickwords/">quickwords</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory/">memory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -292,19 +295,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/06/life-traffic-prediction/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          可以预测交通路况的 APP
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/05/history-tuobahong/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/12/12/eng-talk1-fast-learn/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">魏孝文帝教你提proposal</div>
+      <div class="article-nav-title">5分钟经典英文技术演讲1：如何快速掌握新技术 - Kathy Sierra</div>
     </a>
   
 </nav>
@@ -318,7 +312,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#到底哪些数据写入了CPU缓存"><span class="nav-number">1.</span> <span class="nav-text">到底哪些数据写入了CPU缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用False-Sharing证明"><span class="nav-number">2.</span> <span class="nav-text">用False Sharing证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果"><span class="nav-number">3.</span> <span class="nav-text">结果</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发挥内存条理财的最大收益率"><span class="nav-number">1.</span> <span class="nav-text">发挥内存条理财的最大收益率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存相关概念"><span class="nav-number">2.</span> <span class="nav-text">内存相关概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#充分平衡"><span class="nav-number">3.</span> <span class="nav-text">充分平衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1"><span class="nav-number">3.1.</span> <span class="nav-text">实例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2"><span class="nav-number">3.2.</span> <span class="nav-text">实例2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例3"><span class="nav-number">3.3.</span> <span class="nav-text">实例3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例4"><span class="nav-number">3.4.</span> <span class="nav-text">实例4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件检查工具"><span class="nav-number">4.</span> <span class="nav-text">软件检查工具</span></a></li></ol>
     
     </div>
   </aside>

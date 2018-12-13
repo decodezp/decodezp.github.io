@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-13T14:23:45.642Z</updated>
+  <updated>2018-12-13T14:38:25.712Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://decodezp.github.io/2018/12/13/quickwords5-server-memory/"/>
     <id>https://decodezp.github.io/2018/12/13/quickwords5-server-memory/</id>
     <published>2018-12-13T14:20:51.000Z</published>
-    <updated>2018-12-13T14:23:45.642Z</updated>
+    <updated>2018-12-13T14:38:25.712Z</updated>
     
     <summary type="html">
     
@@ -241,9 +241,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
-    
       <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
+    
+      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
     
   </entry>
   

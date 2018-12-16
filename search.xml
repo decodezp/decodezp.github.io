@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>谁不是在像CPU一样活着</title>
+      <link href="/2018/12/16/cpulized-life/"/>
+      <url>/2018/12/16/cpulized-life/</url>
+      
+        <content type="html"><![CDATA[<p>上一次兴奋到浑身发热，还是把赛扬300A超频到450兆赫的时候。身体如摩尔定律般长高，觉得距离1GHz只差一罐液氮，心里装着只有一心一意才能装下的事情。</p><p>记得那时看到一篇报道，英特尔说“到2011年的时候，我们都能用上10GHz的电脑”。十几岁的你笑这家美国公司野心不大，现在你说出这件事，只是想给大家讲个笑话。<br><a id="more"></a></p><p>2018年，没等来10GHz的电脑，也再也没有一心一意的机会。学会了MMX、SSE、AVX，TSX和AEX等十八般武艺，领导说你是“业务中坚”，其实你知道你只是个挣扎着适应环境的执行人员。</p><p>好在熟稔让你变得老练，打点好前端后端的各种关系，再低的IPC也可以不动声色。毫无指摘地把锅甩给温吞的硬盘，你想你可能明白了什么是sophisticated，就是心里只寻思自己那点14nm的柴米。</p><p>但越是老练越让你厌恶风险，你给自己加了iCache、dCache、iTLB、dTLB，IOTLB等各种保险，但每次分支预测失败还是要彻底打乱你的流水线。即便凭借经验已能做到99%的正确，却能又让你掉入Spectre的窠臼。</p><p>真是怕什么来什么，左右为难的时候，自己的窘样又让心里有一点点好笑，能用一罐液氮解决的事情，偏要搞这么复杂。</p><p>突然有些怀念那个为450兆赫兴奋的自己，当时你只想完成这一件事。但此刻你心里不再只住着你自己，每个人都同时在跑好几个角色，你号称你是3GHz还能hyperthread，其实你知道你早已没了章法，所有的事情都不过是水来土掩的乱序执行。</p><p>但好在还有一块L3缓存，和你那些sophisticated的L1缓存相比，这里虽然慢，慢得就像曾经的赛扬300A，但却有一心一意的完整。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> thoughts </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> thoughts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚5：影响服务器内存性能的硬件知识</title>
       <link href="/2018/12/13/quickwords5-server-memory/"/>
       <url>/2018/12/13/quickwords5-server-memory/</url>
@@ -289,9 +312,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
             <tag> cloud </tag>
             

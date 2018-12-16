@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-13T14:38:25.712Z</updated>
+  <updated>2018-12-16T10:12:04.758Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>谁不是在像CPU一样活着</title>
+    <link href="https://decodezp.github.io/2018/12/16/cpulized-life/"/>
+    <id>https://decodezp.github.io/2018/12/16/cpulized-life/</id>
+    <published>2018-12-16T10:06:40.000Z</published>
+    <updated>2018-12-16T10:12:04.758Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上一次兴奋到浑身发热，还是把赛扬300A超频到450兆赫的时候。身体如摩尔定律般长高，觉得距离1GHz只差一罐液氮，心里装着只有一心一意才能装下的事情。&lt;/p&gt;
+&lt;p&gt;记得那时看到一篇报道，英特尔说“到2011年的时候，我们都能用上10GHz的电脑”。十几岁的你笑这家美国公司野心不大，现在你说出这件事，只是想给大家讲个笑话。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚5：影响服务器内存性能的硬件知识</title>
@@ -291,9 +312,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="cloud" scheme="https://decodezp.github.io/tags/cloud/"/>
     
@@ -453,7 +474,7 @@
     <link href="https://decodezp.github.io/2018/11/18/gangrirouri/"/>
     <id>https://decodezp.github.io/2018/11/18/gangrirouri/</id>
     <published>2018-11-18T11:27:23.000Z</published>
-    <updated>2018-11-19T13:32:44.873Z</updated>
+    <updated>2018-12-16T10:10:55.644Z</updated>
     
     <summary type="html">
     

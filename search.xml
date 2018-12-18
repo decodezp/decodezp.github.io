@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚6：什么是DDP(Dynamic Device Personalization)</title>
+      <link href="/2018/12/18/quickwords6-ddp/"/>
+      <url>/2018/12/18/quickwords6-ddp/</url>
+      
+        <content type="html"><![CDATA[<h2 id="要解决的问题"><a href="#要解决的问题" class="headerlink" title="要解决的问题"></a>要解决的问题</h2><p>通过网卡的多队列和RSS将网包根据一些关键字段散列(hash)到不同的队列已成为一种主流的在x86平台开发信通以及云计算领域产品的方式。</p><p>在整体产品架构规划中，不同的网卡队列(Rx/Tx Queues)往往对应/绑定着不同的CPU核(Worker)，以利用资源隔离的方式提高性能。</p><p>传统的RSS，往往是依据header的五元组来做散列。通常，网卡可以识别出的报文类型包括<code>ipv4-tcp|ipv4-udp|ipv4-other|ipv6-tcp|l2-payload</code>等等，然后根据能识别出的类型进行关键字段的提取。</p><p>但现在如此简单的识别能力已经不能满足业务的需求。在复杂的协议和隧道通讯场景下，往往还需要识别隧道内层header甚至私有字段才能实现业务能力的最优化。<br><a id="more"></a></p><p>所以对RSS/Fdir来说，首先需要能“识别”出特定的协议报文，才能找到关键的字段进行散列操作。</p><p>在网卡出厂的时候，是可以预置一些协议类型的，但还是最好能有自定义的动态调整的能力。</p><h2 id="DDP-Dynamic-Device-Personalization"><a href="#DDP-Dynamic-Device-Personalization" class="headerlink" title="DDP(Dynamic Device Personalization)"></a>DDP(Dynamic Device Personalization)</h2><p>名字起得很“大”，不过就是上面说的定制化的技能——动态地赋予网卡识别新协议的能力。</p><p>具有这种能力之后，就可以把任意协议的网包按用户意愿提取出关键字段(Key)，然后散列到网卡各个Rx队列里。比如VxLAN协议中的内层DIP等等。</p><p>下图是一个赋予网卡<code>GTP-U</code>协议(好吧，我并不知道这是什么…)识别能力，并可以依据<code>TEID</code>字段的值进行RSS计算的示例：</p><p><img src="https://s1.ax1x.com/2018/12/18/FBJ5q0.png" alt="绿色的可以被用来RSS的字段增多"></p><p>现在已经能被识别出的包括L2TPv3\QUIC\PPPOE\SRv6\RoE\MQTT-SNoUDP等等，还有一些大客户做了自己私有协议的定制。</p><p>总得来说就是，可以把这部分classification的活儿offload到硬件上，减轻后续CPU处理/分发时的压力，同时均衡一下负载，提升整体性能。</p><h2 id="DDP的需求："><a href="#DDP的需求：" class="headerlink" title="DDP的需求："></a>DDP的需求：</h2><ul><li>Intel 700系列网卡以上</li><li>固件版本6.01以上</li><li>一个由Intel官方出品的特定协议识别的binary package file(需要到官网下载)</li><li>DPDK提供的配置接口</li></ul><p>具体在DPDK上怎么搞后续会有文章说明。</p><h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><blockquote><p>Q:如何自己制作binary package file?<br>A:目前不支持自己制作，只能由Intel提供。</p><p>Q:一张网卡最多支持载入多少个binary package file(profile)?<br>A:最多支持16个，但不推荐这么做，推荐同时只载入一个。</p><p>Q:载入之前需要首先关闭网卡设备吗？<br>A:不需要，支持运行时直接载入，但会引起一些丢包</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> network </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>谁不是在像CPU一样活着</title>
       <link href="/2018/12/16/cpulized-life/"/>
       <url>/2018/12/16/cpulized-life/</url>
@@ -312,9 +339,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
             <tag> cloud </tag>
             

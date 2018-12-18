@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-16T10:12:04.758Z</updated>
+  <updated>2018-12-18T12:28:33.598Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚6：什么是DDP(Dynamic Device Personalization)</title>
+    <link href="https://decodezp.github.io/2018/12/18/quickwords6-ddp/"/>
+    <id>https://decodezp.github.io/2018/12/18/quickwords6-ddp/</id>
+    <published>2018-12-18T12:25:40.000Z</published>
+    <updated>2018-12-18T12:28:33.598Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要解决的问题&quot;&gt;&lt;a href=&quot;#要解决的问题&quot; class=&quot;headerlink&quot; title=&quot;要解决的问题&quot;&gt;&lt;/a&gt;要解决的问题&lt;/h2&gt;&lt;p&gt;通过网卡的多队列和RSS将网包根据一些关键字段散列(hash)到不同的队列已成为一种主流的在x86平台开发信通以及云计算领域产品的方式。&lt;/p&gt;
+&lt;p&gt;在整体产品架构规划中，不同的网卡队列(Rx/Tx Queues)往往对应/绑定着不同的CPU核(Worker)，以利用资源隔离的方式提高性能。&lt;/p&gt;
+&lt;p&gt;传统的RSS，往往是依据header的五元组来做散列。通常，网卡可以识别出的报文类型包括&lt;code&gt;ipv4-tcp|ipv4-udp|ipv4-other|ipv6-tcp|l2-payload&lt;/code&gt;等等，然后根据能识别出的类型进行关键字段的提取。&lt;/p&gt;
+&lt;p&gt;但现在如此简单的识别能力已经不能满足业务的需求。在复杂的协议和隧道通讯场景下，往往还需要识别隧道内层header甚至私有字段才能实现业务能力的最优化。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+  </entry>
   
   <entry>
     <title>谁不是在像CPU一样活着</title>
@@ -312,9 +339,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
       <category term="cloud" scheme="https://decodezp.github.io/tags/cloud/"/>
     
@@ -486,32 +513,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何在偷偷搜索关键字后避免令人尴尬的广告</title>
-    <link href="https://decodezp.github.io/2018/11/17/duckduckgo/"/>
-    <id>https://decodezp.github.io/2018/11/17/duckduckgo/</id>
-    <published>2018-11-17T13:13:36.000Z</published>
-    <updated>2018-11-18T11:48:05.706Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自&lt;a href=&quot;https://cloudwonders.info&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;cloudwonders.info&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;当你在任意一个搜索引擎输入一个关键词之后，你就成了全网全平台追逐的流量热点。&lt;/p&gt;
-&lt;p&gt;平时大打口水战的各大平台在共享你的隐私数据方面异常团结，在B系网站搜索，在A系T系的应用APP上都会看到为你“量身定制”的推送和广告，延迟不超过一分钟。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="wonder" scheme="https://decodezp.github.io/categories/wonder/"/>
-    
-    
-      <category term="resources" scheme="https://decodezp.github.io/tags/resources/"/>
-    
-      <category term="wonder" scheme="https://decodezp.github.io/tags/wonder/"/>
     
   </entry>
   

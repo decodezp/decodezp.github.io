@@ -374,9 +374,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
       <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   
@@ -399,9 +399,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
       <category term="cloud" scheme="https://decodezp.github.io/tags/cloud/"/>
     

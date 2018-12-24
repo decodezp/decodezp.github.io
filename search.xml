@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题</title>
+      <link href="/2018/12/24/quickwords7-dpdk-cross-compile/"/>
+      <url>/2018/12/24/quickwords7-dpdk-cross-compile/</url>
+      
+        <content type="html"><![CDATA[<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>在比较高级的CPU平台(比如skylake)编译DPDK，会在编译的目标文件中加入一些高级指令集中的指令，比如AVX512。</p><p>如果运行最终可执行文件的机器的CPU架构(比如broadwell)不支持编译机器中的指令，则会在执行时报类似这种错误：<br><a id="more"></a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">174146:Dec 21 10:56:30 n10-023-013 kernel: [57619.700220] traps: obj-name[861199] trap invalid opcode ip:501c31 sp:7fff9782d090 error:0</span><br></pre></td></tr></table></figure><p>其实就是在0x501c31(ip是instruction pointer)这个位置上的指令不支持(invalid)。</p><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>那么如何查看具体是哪条指令呢? </p><p>用<code>objdump -D obj-name</code>查看一下目标文件的汇编代码，找到该位置上的指令。</p><p>我这里的例子中，这个指令是<code>vmovdqa64</code>，简单搜索一下可以知道这是个<code>AVX512f</code>的指令。</p><blockquote><p>其他详细内容可以查看Intel SDM(Software Development Manual)<a href="https://software.intel.com/en-us/articles/intel-sdm" target="_blank" rel="noopener">下载链接</a></p></blockquote><p>而这个指令在<code>skylake</code>上支持，<code>broadwell</code>上不支持。</p><p>可以通过在两个机器上执行<code>cat /proc/cpuinfo | grep flags</code>查看支持的指令集。或者执行<code>gcc -march=native -Q --help=target</code>查看。</p><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>在编译机器(skylake)DPDK的/mk/machine/native/rte.vars.mk中，设置<code>MACHINE_CFLAGS= -march=native</code>为<code>-march=broadwell</code>就可以了。</p><p>当然还有一些详细的交叉编译方法，可以参考这篇<a href="http://syswift.com/355.html" target="_blank" rel="noopener">文章</a>。</p><p>另外还有一点要提醒的是，如果你是在编译某些基于DPDK的应用，比如DPVS，要一并修改应用中的编译配置，例如DPVS就是在<code>./src/dpdk.mk</code>中，需要修改<code>CFLAGS += -march=broadwell</code>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+          <category> quickwords </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> dpdk </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>5分钟经典英文技术演讲2：软件设计真正的精髓-Scott Meyer</title>
       <link href="/2018/12/21/eng-talk2-things-matter/"/>
       <url>/2018/12/21/eng-talk2-things-matter/</url>
@@ -339,9 +366,9 @@
             
             <tag> tech </tag>
             
-            <tag> test </tag>
-            
             <tag> dpdk </tag>
+            
+            <tag> test </tag>
             
         </tags>
       

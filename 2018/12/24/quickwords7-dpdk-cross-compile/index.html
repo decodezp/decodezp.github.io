@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚4：什么是pointer aliasing | DecodeZ</title>
+  <title>几句话说清楚7：dpdk不同cpu平台交叉编译指令不支持的问题 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="指向同一地址的两个相同类型的指针aliasing本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。 如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。">
-<meta name="keywords" content="tech,CPU,performance">
+  <meta name="description" content="现象在比较高级的CPU平台(比如skylake)编译DPDK，会在编译的目标文件中加入一些高级指令集中的指令，比如AVX512。 如果运行最终可执行文件的机器的CPU架构(比如broadwell)不支持编译机器中的指令，则会在执行时报类似这种错误：">
+<meta name="keywords" content="tech,dpdk">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚4：什么是Pointer Aliasing">
-<meta property="og:url" content="https://decodezp.github.io/2018/12/11/quickwords4-pointer-aliasing/index.html">
+<meta property="og:title" content="几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题">
+<meta property="og:url" content="https://decodezp.github.io/2018/12/24/quickwords7-dpdk-cross-compile/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="指向同一地址的两个相同类型的指针aliasing本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。 如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。">
+<meta property="og:description" content="现象在比较高级的CPU平台(比如skylake)编译DPDK，会在编译的目标文件中加入一些高级指令集中的指令，比如AVX512。 如果运行最终可执行文件的机器的CPU架构(比如broadwell)不支持编译机器中的指令，则会在执行时报类似这种错误：">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.stack.imgur.com/96hya.png">
-<meta property="og:updated_time" content="2018-12-11T11:45:43.584Z">
+<meta property="og:image" content="http://1.bp.blogspot.com/-vcFB6vudSTs/UvIFwsB5zMI/AAAAAAAADw8/sIuPoi6Fkes/s1600/toolchain_definintion.bmp">
+<meta property="og:updated_time" content="2018-12-24T13:11:48.307Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚4：什么是Pointer Aliasing">
-<meta name="twitter:description" content="指向同一地址的两个相同类型的指针aliasing本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。 如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。">
-<meta name="twitter:image" content="https://i.stack.imgur.com/96hya.png">
+<meta name="twitter:title" content="几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题">
+<meta name="twitter:description" content="现象在比较高级的CPU平台(比如skylake)编译DPDK，会在编译的目标文件中加入一些高级指令集中的指令，比如AVX512。 如果运行最终可执行文件的机器的CPU架构(比如broadwell)不支持编译机器中的指令，则会在执行时报类似这种错误：">
+<meta name="twitter:image" content="http://1.bp.blogspot.com/-vcFB6vudSTs/UvIFwsB5zMI/AAAAAAAADw8/sIuPoi6Fkes/s1600/toolchain_definintion.bmp">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -190,14 +190,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords4-pointer-aliasing" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords7-dpdk-cross-compile" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i.stack.imgur.com/96hya.png" rel="gallery_cjq2c9tp9000zmyfylxrqm2cn">
-        <img src="https://i.stack.imgur.com/96hya.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://1.bp.blogspot.com/-vcFB6vudSTs/UvIFwsB5zMI/AAAAAAAADw8/sIuPoi6Fkes/s1600/toolchain_definintion.bmp" rel="gallery_cjq2c9tpc001bmyfyn9w2o61k">
+        <img src="http://1.bp.blogspot.com/-vcFB6vudSTs/UvIFwsB5zMI/AAAAAAAADw8/sIuPoi6Fkes/s1600/toolchain_definintion.bmp" itemprop="image">
       </a>
     
   </div>
@@ -208,7 +208,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚4：什么是Pointer Aliasing
+      几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题
     </h1>
   
 
@@ -216,8 +216,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/12/11/quickwords4-pointer-aliasing/" class="article-date">
-	  <time datetime="2018-12-11T11:33:46.000Z" itemprop="datePublished">December 11, 2018</time>
+	Posted on <a href="/2018/12/24/quickwords7-dpdk-cross-compile/" class="article-date">
+	  <time datetime="2018-12-24T13:06:12.000Z" itemprop="datePublished">December 24, 2018</time>
 	</a>
 
       
@@ -228,29 +228,21 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="指向同一地址的两个相同类型的指针"><a href="#指向同一地址的两个相同类型的指针" class="headerlink" title="指向同一地址的两个相同类型的指针"></a>指向同一地址的两个相同类型的指针</h2><p><code>aliasing</code>本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。</p>
-<p>如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。<br><img src="https://svi.nl/wikiimg/StFargeaux_kasteel_buiten1_aliased.jpg" alt=""></p>
-<a id="more"></a>
-<p>同样的现象也会出现在程序员穿着“高密度”的格子衬衫接受电视采访时。</p>
-<p>墙砖缝隙出现<code>aliasing</code>后无法再行区分，从字面意义来说，<code>Pointer Aliasing</code>就是不同的指针也无法区分。</p>
-<p>指针无法区分，只有一种情况，就是指针的类型和指向的地址都是相同的，这就是<code>Pointer Aliasing</code>。</p>
-<h2 id="为什么会有性能影响"><a href="#为什么会有性能影响" class="headerlink" title="为什么会有性能影响"></a>为什么会有性能影响</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> *<span class="built_in">array</span>, <span class="keyword">int</span> *size, <span class="keyword">int</span> *value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; *size; ++i) &#123;</span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="number">2</span> * *value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果让我们自己“优化”一下这段代码，我们可能会首先将<code>value</code>指向的值存入一个临时变量里，然后将临时变量在循环中直接赋值给<code>array</code>。</p>
-<p>我们假设个<code>array</code>的初始状态：<code>[0, 1, 2, 3, 4]</code></p>
-<p>如果<code>value</code>指向的值等于3，那么按我们优化的方式，<code>array</code>最终的状态是：<code>[6, 6, 6, 6, 6]</code></p>
-<p>但这里存在一个问题，如果<code>value</code>指向<code>array[3]</code>，那么<code>array</code>最终的状态就是：<code>[6, 6, 6, 12, 24]</code></p>
-<p><code>value</code>和<code>array[3]</code>就是指向相同地址类型相同的指针。</p>
-<p>编译器为了得到最终正确的结果，就不得不取消我们之前提到的”优化”方式。</p>
-<h2 id="预防方法"><a href="#预防方法" class="headerlink" title="预防方法"></a>预防方法</h2><p>使用<code>__restrict</code>关键字：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> * __restrict <span class="built_in">array</span>, <span class="keyword">int</span> *__restrict size, <span class="keyword">int</span> *__restrict value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; *size; ++i) &#123;</span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="number">2</span> * *value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当然，前提是自己可以确定代码逻辑中不会引入<code>aliasing</code>。</p>
-<h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>首先明确一点，不是加上了<code>__restrict</code>性能就会提升。</p>
+        <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>在比较高级的CPU平台(比如skylake)编译DPDK，会在编译的目标文件中加入一些高级指令集中的指令，比如AVX512。</p>
+<p>如果运行最终可执行文件的机器的CPU架构(比如broadwell)不支持编译机器中的指令，则会在执行时报类似这种错误：<br><a id="more"></a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">174146:Dec 21 10:56:30 n10-023-013 kernel: [57619.700220] traps: obj-name[861199] trap invalid opcode ip:501c31 sp:7fff9782d090 error:0</span><br></pre></td></tr></table></figure>
+<p>其实就是在0x501c31(ip是instruction pointer)这个位置上的指令不支持(invalid)。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>那么如何查看具体是哪条指令呢? </p>
+<p>用<code>objdump -D obj-name</code>查看一下目标文件的汇编代码，找到该位置上的指令。</p>
+<p>我这里的例子中，这个指令是<code>vmovdqa64</code>，简单搜索一下可以知道这是个<code>AVX512f</code>的指令。</p>
 <blockquote>
-<p><code>Pointer aliasing</code>对性能根本的伤害不是需要每次重新去某个地址取值，而是因为引入了潜在的数据依赖关系，从而关闭了很多编译器优化代码的能力。</p>
+<p>其他详细内容可以查看Intel SDM(Software Development Manual)<a href="https://software.intel.com/en-us/articles/intel-sdm" target="_blank" rel="noopener">下载链接</a></p>
 </blockquote>
-<p>上面两段代码，在<code>-O0</code>优化时生成的汇编代码(<code>gcc 4.8.5</code>)完全相同。不同的地方在于，第一段代码在<code>-O2</code>和<code>-O3</code>时生成的汇编代码仍然相同；而第二段做了<code>__restrict</code>处理的代码则会在<code>-O3</code>时加入大量循环展开等优化方式。</p>
-<p>在线查看汇编代码：<a href="https://godbolt.org/z/2nXlNa" target="_blank" rel="noopener">链接</a></p>
-<p>所以<code>__restrict</code>需要在打开较高等级的编译器优化的情况下使用才会有效果。</p>
+<p>而这个指令在<code>skylake</code>上支持，<code>broadwell</code>上不支持。</p>
+<p>可以通过在两个机器上执行<code>cat /proc/cpuinfo | grep flags</code>查看支持的指令集。或者执行<code>gcc -march=native -Q --help=target</code>查看。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>在编译机器(skylake)DPDK的/mk/machine/native/rte.vars.mk中，设置<code>MACHINE_CFLAGS= -march=native</code>为<code>-march=broadwell</code>就可以了。</p>
+<p>当然还有一些详细的交叉编译方法，可以参考这篇<a href="http://syswift.com/355.html" target="_blank" rel="noopener">文章</a>。</p>
+<p>另外还有一点要提醒的是，如果你是在编译某些基于DPDK的应用，比如DPVS，要一并修改应用中的编译配置，例如DPVS就是在<code>./src/dpdk.mk</code>中，需要修改<code>CFLAGS += -march=broadwell</code>。</p>
 
       
     </div>
@@ -261,7 +253,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dpdk/">dpdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -296,19 +288,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/12/eng-talk1-fast-learn/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          5分钟经典英文技术演讲1：如何快速掌握新技术 - Kathy Sierra
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/08/product1-huawei-fabricinsight/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/12/21/eng-talk2-things-matter/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">产品观察1：华为FabricInsight产品简要分析</div>
+      <div class="article-nav-title">5分钟经典英文技术演讲2：软件设计真正的精髓-Scott Meyer</div>
     </a>
   
 </nav>
@@ -322,7 +305,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#指向同一地址的两个相同类型的指针"><span class="nav-number">1.</span> <span class="nav-text">指向同一地址的两个相同类型的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会有性能影响"><span class="nav-number">2.</span> <span class="nav-text">为什么会有性能影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预防方法"><span class="nav-number">3.</span> <span class="nav-text">预防方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么使用"><span class="nav-number">4.</span> <span class="nav-text">怎么使用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#现象"><span class="nav-number">1.</span> <span class="nav-text">现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a></li></ol>
     
     </div>
   </aside>

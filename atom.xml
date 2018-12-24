@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-21T13:20:43.840Z</updated>
+  <updated>2018-12-24T13:11:48.307Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题</title>
+    <link href="https://decodezp.github.io/2018/12/24/quickwords7-dpdk-cross-compile/"/>
+    <id>https://decodezp.github.io/2018/12/24/quickwords7-dpdk-cross-compile/</id>
+    <published>2018-12-24T13:06:12.000Z</published>
+    <updated>2018-12-24T13:11:48.307Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;现象&quot;&gt;&lt;a href=&quot;#现象&quot; class=&quot;headerlink&quot; title=&quot;现象&quot;&gt;&lt;/a&gt;现象&lt;/h2&gt;&lt;p&gt;在比较高级的CPU平台(比如skylake)编译DPDK，会在编译的目标文件中加入一些高级指令集中的指令，比如AVX512。&lt;/p&gt;
+&lt;p&gt;如果运行最终可执行文件的机器的CPU架构(比如broadwell)不支持编译机器中的指令，则会在执行时报类似这种错误：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
+    
+  </entry>
   
   <entry>
     <title>5分钟经典英文技术演讲2：软件设计真正的精髓-Scott Meyer</title>
@@ -349,9 +374,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
       <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   
@@ -502,32 +527,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>top命令使用方法补遗</title>
-    <link href="https://decodezp.github.io/2018/11/19/topcmd/"/>
-    <id>https://decodezp.github.io/2018/11/19/topcmd/</id>
-    <published>2018-11-19T13:25:58.000Z</published>
-    <updated>2018-11-20T12:11:01.048Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;更改界面刷新频率&quot;&gt;&lt;a href=&quot;#更改界面刷新频率&quot; class=&quot;headerlink&quot; title=&quot;更改界面刷新频率&quot;&gt;&lt;/a&gt;更改界面刷新频率&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;自动刷新&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;top&lt;/code&gt;&lt;br&gt;&lt;code&gt;d&lt;/code&gt;&lt;br&gt;输入刷新时间（默认3秒，可调至0.5）&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;手动刷新&lt;br&gt;空格&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

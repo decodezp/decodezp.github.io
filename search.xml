@@ -366,9 +366,9 @@
             
             <tag> tech </tag>
             
-            <tag> dpdk </tag>
-            
             <tag> test </tag>
+            
+            <tag> dpdk </tag>
             
         </tags>
       
@@ -391,9 +391,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
             <tag> cloud </tag>
             

@@ -374,9 +374,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
-    
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
     
   </entry>
   

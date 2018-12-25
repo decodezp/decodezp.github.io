@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>魏孝文帝教你提proposal | DecodeZ</title>
+  <title>几句话说清楚8：intel 700系列网卡内部结构概览 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="艰难的Proposal每个人都有独自一人面对全世界的时候，即便你是魏孝文帝拓跋宏。 北魏太和十七年，承平日久的北魏都城里正在酝酿一件大事——迁都。">
-<meta name="keywords" content="history">
+  <meta name="description" content="一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。">
+<meta name="keywords" content="tech,network,hardware">
 <meta property="og:type" content="article">
-<meta property="og:title" content="魏孝文帝教你提proposal">
-<meta property="og:url" content="https://decodezp.github.io/2018/12/05/history-tuobahong/index.html">
+<meta property="og:title" content="几句话说清楚8：Intel 700系列网卡内部结构概览">
+<meta property="og:url" content="https://decodezp.github.io/2018/12/25/quickwords8-700-nic-arch/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="艰难的Proposal每个人都有独自一人面对全世界的时候，即便你是魏孝文帝拓跋宏。 北魏太和十七年，承平日久的北魏都城里正在酝酿一件大事——迁都。">
+<meta property="og:description" content="一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://a4.att.hudong.com/17/93/20300542519409139946932657235_s.jpg">
-<meta property="og:updated_time" content="2018-12-05T07:14:40.277Z">
+<meta property="og:image" content="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg">
+<meta property="og:updated_time" content="2018-12-25T09:23:59.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="魏孝文帝教你提proposal">
-<meta name="twitter:description" content="艰难的Proposal每个人都有独自一人面对全世界的时候，即便你是魏孝文帝拓跋宏。 北魏太和十七年，承平日久的北魏都城里正在酝酿一件大事——迁都。">
-<meta name="twitter:image" content="http://a4.att.hudong.com/17/93/20300542519409139946932657235_s.jpg">
+<meta name="twitter:title" content="几句话说清楚8：Intel 700系列网卡内部结构概览">
+<meta name="twitter:description" content="一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。">
+<meta name="twitter:image" content="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -190,14 +190,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-history-tuobahong" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords8-700-nic-arch" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://a4.att.hudong.com/17/93/20300542519409139946932657235_s.jpg" rel="gallery_cjq3jkvm0000hmzfyugmyllvl">
-        <img src="http://a4.att.hudong.com/17/93/20300542519409139946932657235_s.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg" rel="gallery_cjq3jkvmc001bmzfycveos0rt">
+        <img src="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg" itemprop="image">
       </a>
     
   </div>
@@ -208,7 +208,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      魏孝文帝教你提proposal
+      几句话说清楚8：Intel 700系列网卡内部结构概览
     </h1>
   
 
@@ -216,8 +216,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/12/05/history-tuobahong/" class="article-date">
-	  <time datetime="2018-12-05T07:09:12.000Z" itemprop="datePublished">December 5, 2018</time>
+	Posted on <a href="/2018/12/25/quickwords8-700-nic-arch/" class="article-date">
+	  <time datetime="2018-12-25T09:17:39.000Z" itemprop="datePublished">December 25, 2018</time>
 	</a>
 
       
@@ -228,52 +228,36 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="艰难的Proposal"><a href="#艰难的Proposal" class="headerlink" title="艰难的Proposal"></a>艰难的Proposal</h2><p>每个人都有独自一人面对全世界的时候，即便你是魏孝文帝拓跋宏。</p>
-<p>北魏太和十七年，承平日久的北魏都城里正在酝酿一件大事——迁都。<br><a id="more"></a></p>
-<p>自天兴元年拓跋圭定都平城起，北魏在此地经营了九十余年。此时的平城，早已是北魏王公贵族富商巨贾的乐土。</p>
-<p>而拓跋宏却不想在这呆了，对这位一心思慕华夏风仪的少数民族首领来说，城狭地偏的平城终究不是久居之地。</p>
-<p>迁都，迁往洛阳，只有住在这座每块城砖上都写满了厚重的城邑的中心，才是北漂买房落户的那一刻。</p>
-<p>但除了拓跋宏，没有人愿意当拆迁户，被连根拔起。拓跋宏自己也知道这一点。晓以大义？没用的，天底下最难的事，就是劝说别人放弃眼前的利益，去追求什么万世之业；</p>
-<p>以皇帝的权威一意孤行？没有问题，但人心不齐，效果打折扣，既损威严，又于事无益。</p>
-<p>那么迁都这个Proposal，到底怎么提呢？</p>
-<h2 id="魏孝文帝的方式"><a href="#魏孝文帝的方式" class="headerlink" title="魏孝文帝的方式"></a>魏孝文帝的方式</h2><p>拓跋宏并没有在一开始就透露自己的意图，而是提出了一个更加”不得人心”的Proposal——亲自带队，攻打南朝。</p>
-<p>如果说迁都不得人心，那么发动战争就更加让改革的主要阻力——深居平城的皇亲贵胄们如坐针毡。</p>
-<p>因为迁都或许还可以讨论讨论，但南下伐齐“一统中国”那是北魏政权不容辩驳的“正统思想”，是政治正确，有拓跋氏列祖列宗的加持，以及冯太后的附魔。</p>
-<p>这一年的八月，拓跋宏亲率三军开拔南下。</p>
-<p>当然，皇帝都出去打仗了，除了太子监国以外，平日里的文武百官哪有在家呆着的道理，一起走吧！</p>
-<p>从山西大同往南，大军在秋雨连绵的泥泞中走了整整一个月，终于到达了宿命的重点——洛阳。</p>
-<p>这个时候所有人都不想再走了。一路的狼狈或可忍受，但后面还有与齐国的恶战。而拓跋宏依然兴致不减，号令即刻开拔，继续南进。</p>
-<p>这下文武百官们可都要“犯颜进谏”了，纷纷叩头不止，甚至不惜死谏以请求拓跋宏停止南征。</p>
-<p>这个时候拓跋宏才说出他真正的目的：</p>
-<blockquote>
-<p>今者兴动不小，动而无成，何以示后？苟欲班师，无以重之千载！朕世居幽朔，欲南迁中土，苟不南伐，当迁都于此，王公以为如何？欲迁者左，不欲者右！——《资治通鉴》</p>
-</blockquote>
-<p>这里有三个要素：</p>
-<ol>
-<li>我可以在南伐之事上让步</li>
-<li>但我的让步有条件</li>
-<li>不许考虑太久</li>
-</ol>
-<p>最终的结果自然是大家都站到了左边。迁都这件事，就这么“取得”了大家的同意。</p>
-<p><img src="http://5b0988e595225.cdn.sohucs.com/images/20170720/b36a2fde600f4b909885b0a76ada9876.jpeg" alt=""></p>
-<h2 id="抽象提取"><a href="#抽象提取" class="headerlink" title="抽象提取"></a>抽象提取</h2><p>在谈判领域存在一个让步/妥协的谈判技巧。</p>
-<p>对每个人来说，如果对面已有所让步，那么心里将会产生同样让步的压力，趋向于同意对方提出的让步条件。</p>
-<p>这种场景在生活中非常常见，例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">多少钱？</span><br><span class="line">100</span><br><span class="line">30吧</span><br><span class="line">最低90</span><br><span class="line">40</span><br><span class="line">低于85就赔本了</span><br><span class="line">你看我就50块钱</span><br><span class="line">行了80吧，今天好不容易开张</span><br></pre></td></tr></table></figure>
-<p>如果能成交，说明买家和卖家一开始的心理价位就都是80元左右，但买家必须要首先压到30，卖家也要提到100，互相留出这个让步的空间。</p>
-<p>也许你觉得这种技巧太市侩，但它其实有很多变种版本，也许自己已经身堕瓠中而不自知。<br>E.g.<br>房产中介请你看房，首先是一间各方面条件都很差的房间，但却有一个让你惊讶的高额租金。然后带你看了一套各方面比第一间好非常多的房间，租金却和第一间一样，或者略多而已。<br>如此你会觉得租了第二间是占了便宜。但其实中介的目标就是租给你第二间房，第一间就是让你产生这种对比让步的错觉的。</p>
-<p>所以，每当打算提一个艰难的Proposal的时候，我都会效仿这种形式。</p>
+        <p>一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。<br><a id="more"></a></p>
+<h2 id="Intel-700系列网卡的内部架构"><a href="#Intel-700系列网卡的内部架构" class="headerlink" title="Intel 700系列网卡的内部架构"></a>Intel 700系列网卡的内部架构</h2><p>在处理完物理层的事情之后，数据包会进入网卡内部的处理流水线。</p>
+<p>对于网络中的事情，所有参与者基本上就在做一个事情：分类-&gt;转发。大到核心路由器，小到iptables都是一样。只不过有些按IP地址的前缀分类，有些按报文的协议类型分类，有些按某些header字段分类罢了。</p>
+<p>所以对Intel 700系列网卡来说，在物理层接收到帧之后，首先要做的就是”解析“一下，这个帧到底属于哪一类。</p>
+<p><img src="https://software.intel.com/sites/default/files/managed/f3/d2/Intel-Ethernet-Controller-700-series-Hash-and-Flow-Filters-fig01.png" alt="700系列网卡简易架构图"></p>
+<p>因此Parser解析器就是流水线的第一环。它会根据帧本身的特点，以及自己的识别解析能力，给每个包都打上一个标签(PTYPE和PCTYPE)。</p>
+<p>而根据这些标签，会抽取帧中相应的字段(一般是标签所代表的协议中比较关键的字段)存入<code>Field Vector</code>，以备后用。</p>
+<p>后面的<code>Switch</code>主要就是用<code>Field Vector</code>中的数据，包括<code>DMAC</code> <code>VLAN ID</code>等等，来决定该帧是应该进入PF还是VF。</p>
+<h2 id="流分类-RSS和fdir"><a href="#流分类-RSS和fdir" class="headerlink" title="流分类(RSS和fdir)"></a>流分类(RSS和fdir)</h2><p>在确定了进入哪一个PF或VF之后，就可以对帧进行RSS或者fdir的操作，来决定根据预设的配置，这个帧最终进入哪个队列，进而被哪些上层进程所消费。</p>
+<p><code>Field Vector</code>中的数据在这个时候就会被拿过来做Hash或者过滤，来计算出最终的结果。</p>
+<p>而上面提到的<code>PCTYPE</code>，其为”Packet Classifier Type”的缩写。其实是每一种<code>PCTYPE</code>对应后面一套预设的处理过滤规则(Classifier)。比如<code>IPV4 TCP</code>和<code>IPV6 TPC</code>就分别是两种<code>PCTYPE</code>，那么对于这两种报文的处理就可以分别设定规则。e.g. <code>IPV4 TCP</code>的报文进入Queue2, <code>IPV6 TCP</code>的报文进入Queue3。</p>
+<p>700系列网卡所谓的“灵活性”和“可编程性”也主要基于此。</p>
+<p>最大支持64种<code>PCTYPE</code>，但网卡默认支持的只有…呃..几种。但可以通过DDP动态添加。可以参考前一篇关于DDP的说明<a href="https://decodezp.github.io/2018/12/18/quickwords6-ddp/">文章</a>。</p>
+<h2 id="收包流程"><a href="#收包流程" class="headerlink" title="收包流程"></a>收包流程</h2><p>再简单总结一下700系列网卡的收包流程。</p>
+<p>二层帧到达之后，首先进入<code>Parser</code>解析器。解析器根据协议类型，给二层帧打上<code>PTYPE</code>和<code>PCTYPE</code>的“标签”。</p>
+<p>同时，根据这些标签，提取标签规定的字段，存入到<code>Field Vector</code>中。<code>Field Vector</code>相当于该二层帧的一个meta data，一直跟随到从某一端口或队列发送出去。</p>
+<p>然后在<code>Switch</code>阶段，网卡会根据该二层帧<code>Field Vector</code>中的某些字段判断该帧进入哪个PF或VF。</p>
+<p>在进入PF和VF之后，会根据帧各自的<code>PCTYPE</code>，从<code>Field Vector</code>取数据(其实也就是各协议的关键字段e.g. 目的IP地址，VNI等等)参与计算或过滤规则匹配。最后按照规则转发或丢弃。</p>
+<p>严格来说，是先经过fdir，再去RSS。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/history/">history</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/history/">history</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -308,19 +292,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/06/test2-cache-line-alignment/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          测来测去2：CPU缓存读入策略
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/04/ftrace-uprobe/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/12/24/quickwords7-dpdk-cross-compile/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ftrace uprobe使用填坑历程</div>
+      <div class="article-nav-title">几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题</div>
     </a>
   
 </nav>
@@ -334,7 +309,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#艰难的Proposal"><span class="nav-number">1.</span> <span class="nav-text">艰难的Proposal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#魏孝文帝的方式"><span class="nav-number">2.</span> <span class="nav-text">魏孝文帝的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象提取"><span class="nav-number">3.</span> <span class="nav-text">抽象提取</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intel-700系列网卡的内部架构"><span class="nav-number">1.</span> <span class="nav-text">Intel 700系列网卡的内部架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流分类-RSS和fdir"><span class="nav-number">2.</span> <span class="nav-text">流分类(RSS和fdir)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收包流程"><span class="nav-number">3.</span> <span class="nav-text">收包流程</span></a></li></ol>
     
     </div>
   </aside>

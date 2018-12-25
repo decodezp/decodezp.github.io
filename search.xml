@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚8：Intel 700系列网卡内部结构概览</title>
+      <link href="/2018/12/25/quickwords8-700-nic-arch/"/>
+      <url>/2018/12/25/quickwords8-700-nic-arch/</url>
+      
+        <content type="html"><![CDATA[<p>一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。<br><a id="more"></a></p><h2 id="Intel-700系列网卡的内部架构"><a href="#Intel-700系列网卡的内部架构" class="headerlink" title="Intel 700系列网卡的内部架构"></a>Intel 700系列网卡的内部架构</h2><p>在处理完物理层的事情之后，数据包会进入网卡内部的处理流水线。</p><p>对于网络中的事情，所有参与者基本上就在做一个事情：分类-&gt;转发。大到核心路由器，小到iptables都是一样。只不过有些按IP地址的前缀分类，有些按报文的协议类型分类，有些按某些header字段分类罢了。</p><p>所以对Intel 700系列网卡来说，在物理层接收到帧之后，首先要做的就是”解析“一下，这个帧到底属于哪一类。</p><p><img src="https://software.intel.com/sites/default/files/managed/f3/d2/Intel-Ethernet-Controller-700-series-Hash-and-Flow-Filters-fig01.png" alt="700系列网卡简易架构图"></p><p>因此Parser解析器就是流水线的第一环。它会根据帧本身的特点，以及自己的识别解析能力，给每个包都打上一个标签(PTYPE和PCTYPE)。</p><p>而根据这些标签，会抽取帧中相应的字段(一般是标签所代表的协议中比较关键的字段)存入<code>Field Vector</code>，以备后用。</p><p>后面的<code>Switch</code>主要就是用<code>Field Vector</code>中的数据，包括<code>DMAC</code> <code>VLAN ID</code>等等，来决定该帧是应该进入PF还是VF。</p><h2 id="流分类-RSS和fdir"><a href="#流分类-RSS和fdir" class="headerlink" title="流分类(RSS和fdir)"></a>流分类(RSS和fdir)</h2><p>在确定了进入哪一个PF或VF之后，就可以对帧进行RSS或者fdir的操作，来决定根据预设的配置，这个帧最终进入哪个队列，进而被哪些上层进程所消费。</p><p><code>Field Vector</code>中的数据在这个时候就会被拿过来做Hash或者过滤，来计算出最终的结果。</p><p>而上面提到的<code>PCTYPE</code>，其为”Packet Classifier Type”的缩写。其实是每一种<code>PCTYPE</code>对应后面一套预设的处理过滤规则(Classifier)。比如<code>IPV4 TCP</code>和<code>IPV6 TPC</code>就分别是两种<code>PCTYPE</code>，那么对于这两种报文的处理就可以分别设定规则。e.g. <code>IPV4 TCP</code>的报文进入Queue2, <code>IPV6 TCP</code>的报文进入Queue3。</p><p>700系列网卡所谓的“灵活性”和“可编程性”也主要基于此。</p><p>最大支持64种<code>PCTYPE</code>，但网卡默认支持的只有…呃..几种。但可以通过DDP动态添加。可以参考前一篇关于DDP的说明<a href="https://decodezp.github.io/2018/12/18/quickwords6-ddp/">文章</a>。</p><h2 id="收包流程"><a href="#收包流程" class="headerlink" title="收包流程"></a>收包流程</h2><p>再简单总结一下700系列网卡的收包流程。</p><p>二层帧到达之后，首先进入<code>Parser</code>解析器。解析器根据协议类型，给二层帧打上<code>PTYPE</code>和<code>PCTYPE</code>的“标签”。</p><p>同时，根据这些标签，提取标签规定的字段，存入到<code>Field Vector</code>中。<code>Field Vector</code>相当于该二层帧的一个meta data，一直跟随到从某一端口或队列发送出去。</p><p>然后在<code>Switch</code>阶段，网卡会根据该二层帧<code>Field Vector</code>中的某些字段判断该帧进入哪个PF或VF。</p><p>在进入PF和VF之后，会根据帧各自的<code>PCTYPE</code>，从<code>Field Vector</code>取数据(其实也就是各协议的关键字段e.g. 目的IP地址，VNI等等)参与计算或过滤规则匹配。最后按照规则转发或丢弃。</p><p>严格来说，是先经过fdir，再去RSS。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> network </tag>
+            
+            <tag> hardware </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题</title>
       <link href="/2018/12/24/quickwords7-dpdk-cross-compile/"/>
       <url>/2018/12/24/quickwords7-dpdk-cross-compile/</url>
@@ -73,9 +100,9 @@
             
             <tag> tech </tag>
             
-            <tag> hardware </tag>
-            
             <tag> network </tag>
+            
+            <tag> hardware </tag>
             
         </tags>
       
@@ -366,9 +393,9 @@
             
             <tag> tech </tag>
             
-            <tag> test </tag>
-            
             <tag> dpdk </tag>
+            
+            <tag> test </tag>
             
         </tags>
       
@@ -391,9 +418,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
             <tag> cloud </tag>
             
@@ -478,9 +505,9 @@
             
             <tag> tech </tag>
             
-            <tag> hardware </tag>
-            
             <tag> network </tag>
+            
+            <tag> hardware </tag>
             
         </tags>
       

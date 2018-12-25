@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-24T13:11:48.307Z</updated>
+  <updated>2018-12-25T09:23:59.044Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚8：Intel 700系列网卡内部结构概览</title>
+    <link href="https://decodezp.github.io/2018/12/25/quickwords8-700-nic-arch/"/>
+    <id>https://decodezp.github.io/2018/12/25/quickwords8-700-nic-arch/</id>
+    <published>2018-12-25T09:17:39.000Z</published>
+    <updated>2018-12-25T09:23:59.044Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题</title>
@@ -97,9 +121,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
   </entry>
   
@@ -374,9 +398,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
       <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   
@@ -399,9 +423,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="cloud" scheme="https://decodezp.github.io/tags/cloud/"/>
     
@@ -478,9 +502,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
   </entry>
   
@@ -501,32 +525,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚1:为什么CPU L1缓存容量始终很小</title>
-    <link href="https://decodezp.github.io/2018/11/20/cachesize/"/>
-    <id>https://decodezp.github.io/2018/11/20/cachesize/</id>
-    <published>2018-11-20T11:45:45.000Z</published>
-    <updated>2018-12-12T15:09:51.135Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;CPU缓存是影响软件性能的关键因素之一。在做性能调优时，经常关注的一个指标就是缓存的命中率(hit rate)。&lt;br&gt;缓存之所以不会达到100%的命中率，是因为缓存容量有限，不能将内存中的全部数据都同时放入其中。只能将当前最热，相邻最近的数据存入，同时还受多核CPU中缓存同步机制的影响。&lt;br&gt;奇怪的是，CPU的制程、晶体管数量、核心数量一直都在增加，但L1缓存的容量始终维持在一个相当低的水平。为什么不加大L1缓存呢？&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

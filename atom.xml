@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-25T09:23:59.044Z</updated>
+  <updated>2018-12-27T12:49:18.335Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>测来测去3：抽象层直接调用实例方法性能提高百分之20</title>
+    <link href="https://decodezp.github.io/2018/12/27/test3-indirectcall/"/>
+    <id>https://decodezp.github.io/2018/12/27/test3-indirectcall/</id>
+    <published>2018-12-27T12:40:30.000Z</published>
+    <updated>2018-12-27T12:49:18.335Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;首先吐槽一下hexo标题不能以%结尾 -_-||&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;抽象层&quot;&gt;&lt;a href=&quot;#抽象层&quot; class=&quot;headerlink&quot; title=&quot;抽象层&quot;&gt;&lt;/a&gt;抽象层&lt;/h2&gt;&lt;p&gt;经常，我们会在相对比较成熟的软件中见到这样一类结构体：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
     <title>几句话说清楚8：Intel 700系列网卡内部结构概览</title>
     <link href="https://decodezp.github.io/2018/12/25/quickwords8-700-nic-arch/"/>
     <id>https://decodezp.github.io/2018/12/25/quickwords8-700-nic-arch/</id>
     <published>2018-12-25T09:17:39.000Z</published>
-    <updated>2018-12-25T09:23:59.044Z</updated>
+    <updated>2018-12-27T12:39:54.302Z</updated>
     
     <summary type="html">
     
@@ -423,9 +450,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="cloud" scheme="https://decodezp.github.io/tags/cloud/"/>
     
@@ -505,26 +532,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程序员和工厂劳工有何不同</title>
-    <link href="https://decodezp.github.io/2018/11/22/programmer-worker/"/>
-    <id>https://decodezp.github.io/2018/11/22/programmer-worker/</id>
-    <published>2018-11-22T12:54:07.000Z</published>
-    <updated>2018-11-22T13:23:21.430Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;如今流行的一个说法是，现在的程序员与工业时期的工厂工人并无二致。&lt;br&gt;均是富集于人口密集的城市、均是超时劳动、均是遭受资本家的盘剥、均是一架大机器上的螺丝钉，在超过“劳动年龄”之后被弃如敝屣。&lt;br&gt;基于这些相似点，有些人得出结论，程序员不过是这个时代的“无产阶级”，和以前的流水线工人，纺织厂女工属于同一社会分工和定位。&lt;br&gt;是否当真如此，这个问题值得仔细推敲一下。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

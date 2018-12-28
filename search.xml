@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>吃牛排的技术</title>
+      <link href="/2018/12/28/steak/"/>
+      <url>/2018/12/28/steak/</url>
+      
+        <content type="html"><![CDATA[<p>虽然不知道背后是什么原理，但烤出好吃的牛排一定是一门重要的技术。</p><p>因为重要的技术，门槛一般都很高。它的高不仅体现在如何掌握这门技术，还体现在如何使用这门技术。<br><a id="more"></a></p><p>作为一个普通的食客，一个“烤牛排”这门技术的用户，你首先得学会实例化牛的各个部位。必须要准确给出Rib Eye、T-Bone、Filet的名字，大小写敏感，但也许其实你根本不知道这具体是牛身上的哪个部分。</p><p>然后要学会在不同场景下调用一分熟、五分熟、九分熟和rare、medium、well-done这种多态接口，以及不要设置“十分熟”这种非法参数。</p><p>对于高级用户自然还会有cru、à point、bien cuit来丰富抽象接口的实现；同时还会用一杯Pinot Noir或者Sauvignon Blac作为必不可少的语法糖点缀。</p><p>但当品尝了食客、厨师、还有牛都付出了如此努力才端上来的珍馐之后，你很难在第二天回味起它是什么味道——仿佛残留在唇齿间的始终是当时在餐桌上没说的心思。</p><p>见过一个人吃火锅，但我始终没见过一个人吃牛排。似乎“技术”可以用来掩盖目的，越是高深的技术，掩盖得越不动声色，掩盖得越托物言志。</p><p>我也从来不自己一个人来这家店。周五的中午，没有太多项目和进度报表，没有轻描淡写的握手和佶屈聱牙的名片，更没有迷离的夜色温柔；我所仰仗的“技术”，不过是打开APP找一找团购的套餐，然后在咬上一口汁液四溢时捂住嘴，和对面的人说上一句含混不清的：</p><p>“新年快乐”   emmmm..</p><p><img src="https://s1.ax1x.com/2018/12/28/FWrgiV.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> thoughts </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> thoughts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去3：抽象层直接调用实例方法性能提高百分之20</title>
       <link href="/2018/12/27/test3-indirectcall/"/>
       <url>/2018/12/27/test3-indirectcall/</url>
@@ -445,9 +468,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
             <tag> cloud </tag>
             

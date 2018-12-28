@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>测来测去1：dpdk no-huge模式性能对比测试 | DecodeZ</title>
+  <title>吃牛排的技术 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
-<meta name="keywords" content="tech,dpdk,test">
+  <meta name="description" content="虽然不知道背后是什么原理，但烤出好吃的牛排一定是一门重要的技术。 因为重要的技术，门槛一般都很高。它的高不仅体现在如何掌握这门技术，还体现在如何使用这门技术。">
+<meta name="keywords" content="thoughts">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测来测去1：DPDK no-huge模式性能对比测试">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/index.html">
+<meta property="og:title" content="吃牛排的技术">
+<meta property="og:url" content="https://decodezp.github.io/2018/12/28/steak/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
+<meta property="og:description" content="虽然不知道背后是什么原理，但烤出好吃的牛排一定是一门重要的技术。 因为重要的技术，门槛一般都很高。它的高不仅体现在如何掌握这门技术，还体现在如何使用这门技术。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg">
-<meta property="og:updated_time" content="2018-11-29T05:30:48.738Z">
+<meta property="og:image" content="https://static.careerengine.us/api/aov2/http%3A_%7C__%7C_mmbiz.qpic.cn_%7C_mmbiz_%7C_8BX9qhel1PFhbMict7x6M4ZPqvXSGChUhl0ibP53iaqu87nX60hanLxYIKG2LibatTg38pxI0Bt8UrUlrfQXicuHleA_%7C_0%3Fwx_fmt%3Djpeg">
+<meta property="og:updated_time" content="2018-12-28T09:39:19.317Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测来测去1：DPDK no-huge模式性能对比测试">
-<meta name="twitter:description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
-<meta name="twitter:image" content="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg">
+<meta name="twitter:title" content="吃牛排的技术">
+<meta name="twitter:description" content="虽然不知道背后是什么原理，但烤出好吃的牛排一定是一门重要的技术。 因为重要的技术，门槛一般都很高。它的高不仅体现在如何掌握这门技术，还体现在如何使用这门技术。">
+<meta name="twitter:image" content="https://static.careerengine.us/api/aov2/http%3A_%7C__%7C_mmbiz.qpic.cn_%7C_mmbiz_%7C_8BX9qhel1PFhbMict7x6M4ZPqvXSGChUhl0ibP53iaqu87nX60hanLxYIKG2LibatTg38pxI0Bt8UrUlrfQXicuHleA_%7C_0%3Fwx_fmt%3Djpeg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-test1-dpdk-no-huge" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-steak" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg" rel="gallery_cjq7uic4p001rmxfynm352gqz">
-        <img src="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://static.careerengine.us/api/aov2/http%3A_%7C__%7C_mmbiz.qpic.cn_%7C_mmbiz_%7C_8BX9qhel1PFhbMict7x6M4ZPqvXSGChUhl0ibP53iaqu87nX60hanLxYIKG2LibatTg38pxI0Bt8UrUlrfQXicuHleA_%7C_0%3Fwx_fmt%3Djpeg" rel="gallery_cjq7uic4o001mmxfyez0s02y4">
+        <img src="https://static.careerengine.us/api/aov2/http%3A_%7C__%7C_mmbiz.qpic.cn_%7C_mmbiz_%7C_8BX9qhel1PFhbMict7x6M4ZPqvXSGChUhl0ibP53iaqu87nX60hanLxYIKG2LibatTg38pxI0Bt8UrUlrfQXicuHleA_%7C_0%3Fwx_fmt%3Djpeg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      测来测去1：DPDK no-huge模式性能对比测试
+      吃牛排的技术
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/29/test1-dpdk-no-huge/" class="article-date">
-	  <time datetime="2018-11-29T05:20:58.000Z" itemprop="datePublished">November 29, 2018</time>
+	Posted on <a href="/2018/12/28/steak/" class="article-date">
+	  <time datetime="2018-12-28T09:35:26.000Z" itemprop="datePublished">December 28, 2018</time>
 	</a>
 
       
@@ -232,24 +232,27 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="no-huge"><a href="#no-huge" class="headerlink" title="no-huge"></a>no-huge</h2><p>DPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。</p>
-<p>那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。<br><a id="more"></a></p>
-<h2 id="测试平台"><a href="#测试平台" class="headerlink" title="测试平台"></a>测试平台</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">lscpu</span><br><span class="line">Architecture:          x86_64</span><br><span class="line">CPU op-mode(s):        32-bit, 64-bit</span><br><span class="line">Byte Order:            Little Endian</span><br><span class="line">CPU(s):                88</span><br><span class="line">On-line CPU(s) list:   0-87</span><br><span class="line">Thread(s) per core:    2</span><br><span class="line">Core(s) per socket:    22</span><br><span class="line">Socket(s):             2</span><br><span class="line">NUMA node(s):          2</span><br><span class="line">Vendor ID:             GenuineIntel</span><br><span class="line">CPU family:            6</span><br><span class="line">Model:                 85</span><br><span class="line">Model name:            Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz</span><br><span class="line">Stepping:              4</span><br><span class="line">CPU MHz:               2100.393</span><br><span class="line">BogoMIPS:              4201.72</span><br><span class="line">Virtualization:        VT-x</span><br><span class="line">L1d cache:             32K</span><br><span class="line">L1i cache:             32K</span><br><span class="line">L2 cache:              1024K</span><br><span class="line">L3 cache:              30976K</span><br><span class="line">NUMA node0 CPU(s):     0-21,44-65</span><br><span class="line">NUMA node1 CPU(s):     22-43,66-87</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep Ether</span><br><span class="line">86:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.2 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.3 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br></pre></td></tr></table></figure>
-<p>DPDK Version: <code>18.05.1</code><br>Tester: IXIA<br>Test Plan: RFC2544<br>DPDK APP: <code>./l2fwd -l 22-24 --no-huge  -- -p 0x3 -T 5</code></p>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p><img src="https://s1.ax1x.com/2018/11/29/FZIYcT.png" alt=""></p>
-<p>在64Byte包长时丢包率达到了50%以上，而使用大页内存时丢包率可以控制在0.05%以内。<br>其他长度丢包和吞吐情况基本相同。<br>根据业务情况，平均包长如果在300Byte以上–no-huge模式不妨一试。<br>后续添加针对更大链路带宽(25Gbps/100Gbps)的网卡以及不同Xeon平台的测试结果。</p>
+        <p>虽然不知道背后是什么原理，但烤出好吃的牛排一定是一门重要的技术。</p>
+<p>因为重要的技术，门槛一般都很高。它的高不仅体现在如何掌握这门技术，还体现在如何使用这门技术。<br><a id="more"></a></p>
+<p>作为一个普通的食客，一个“烤牛排”这门技术的用户，你首先得学会实例化牛的各个部位。必须要准确给出Rib Eye、T-Bone、Filet的名字，大小写敏感，但也许其实你根本不知道这具体是牛身上的哪个部分。</p>
+<p>然后要学会在不同场景下调用一分熟、五分熟、九分熟和rare、medium、well-done这种多态接口，以及不要设置“十分熟”这种非法参数。</p>
+<p>对于高级用户自然还会有cru、à point、bien cuit来丰富抽象接口的实现；同时还会用一杯Pinot Noir或者Sauvignon Blac作为必不可少的语法糖点缀。</p>
+<p>但当品尝了食客、厨师、还有牛都付出了如此努力才端上来的珍馐之后，你很难在第二天回味起它是什么味道——仿佛残留在唇齿间的始终是当时在餐桌上没说的心思。</p>
+<p>见过一个人吃火锅，但我始终没见过一个人吃牛排。似乎“技术”可以用来掩盖目的，越是高深的技术，掩盖得越不动声色，掩盖得越托物言志。</p>
+<p>我也从来不自己一个人来这家店。周五的中午，没有太多项目和进度报表，没有轻描淡写的握手和佶屈聱牙的名片，更没有迷离的夜色温柔；我所仰仗的“技术”，不过是打开APP找一找团购的套餐，然后在咬上一口汁液四溢时捂住嘴，和对面的人说上一句含混不清的：</p>
+<p>“新年快乐”   emmmm..</p>
+<p><img src="https://s1.ax1x.com/2018/12/28/FWrgiV.jpg" alt=""></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/test/">test</a>
+    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dpdk/">dpdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
 
       
             
@@ -284,19 +287,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/30/ftrace/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ftrace trace-cmd kernelshark资料汇总
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/28/thoughts1-cloud-community/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/12/27/test3-indirectcall/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">云计算的发展需要向社区街道管理看齐</div>
+      <div class="article-nav-title">测来测去3：抽象层直接调用实例方法性能提高百分之20</div>
     </a>
   
 </nav>
@@ -310,7 +304,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#no-huge"><span class="nav-number">1.</span> <span class="nav-text">no-huge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试平台"><span class="nav-number">2.</span> <span class="nav-text">测试平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试结果"><span class="nav-number">3.</span> <span class="nav-text">测试结果</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>

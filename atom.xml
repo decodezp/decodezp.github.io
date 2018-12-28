@@ -421,9 +421,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
-    
       <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
+    
+      <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
     
   </entry>
   

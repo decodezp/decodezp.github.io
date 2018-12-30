@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-28T09:39:19.317Z</updated>
+  <updated>2018-12-30T17:26:02.327Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>唯识与C语言指针</title>
+    <link href="https://decodezp.github.io/2018/12/31/thoughts2-weishi-c-pointer/"/>
+    <id>https://decodezp.github.io/2018/12/31/thoughts2-weishi-c-pointer/</id>
+    <published>2018-12-30T17:06:05.000Z</published>
+    <updated>2018-12-30T17:26:02.327Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;旧文虽无殊胜处却最解少年意，重发于此，乃自喜其披坚执锐行而无返之气。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;作者按&quot;&gt;&lt;a href=&quot;#作者按&quot; class=&quot;headerlink&quot; title=&quot;作者按&quot;&gt;&lt;/a&gt;作者按&lt;/h1&gt;&lt;p&gt;丙申孟春，始得熊君十力之微言宏旨，于《新唯识论》中得窥心外无物，体用不二，翕辟成变之理。数年兵、道、史、释之学，终为一脉贯通，于世间纷杂，万相罗织，始有定见。乃身蹈统摄之道，心得自在清凉，不免情动于衷，喜不自胜。&lt;/p&gt;
+&lt;p&gt;熊君为阐唯识之旨，于书中多举譬喻。举“海水与众沤”喻，“绳索与大麻”喻种种；更尝作图形，以穷其本旨，表其胜义，苦口婆心，令人动容，非沐手开卷不能彰其功，焚香斋戒不能铭其德。吾观乎此学，虽能以物物强为譬喻，然万物浩汤，皆为大化，果有以大化喻大化之理乎？终须另觅一人造之物，探幽寻明，见微知著，庶几可得于大化矣。今请试以指针喻之。&lt;/p&gt;
+&lt;p&gt;下面开始正常说话。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>吃牛排的技术</title>
@@ -421,9 +448,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
-    
       <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
+    
+      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
     
   </entry>
   
@@ -489,32 +516,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;不用图&quot;&gt;&lt;a href=&quot;#不用图&quot; class=&quot;headerlink&quot; title=&quot;不用图&quot;&gt;&lt;/a&gt;不用图&lt;/h2&gt;&lt;p&gt;以为又要见到那几张网上已经用烂了的图了是不是？这次我们不用图来讲这个事。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚2:CPU缓存的组织形式</title>
-    <link href="https://decodezp.github.io/2018/11/25/quickwords2-cacheassociativity/"/>
-    <id>https://decodezp.github.io/2018/11/25/quickwords2-cacheassociativity/</id>
-    <published>2018-11-25T07:18:27.000Z</published>
-    <updated>2018-12-24T13:11:50.490Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;缓存&quot;&gt;&lt;a href=&quot;#缓存&quot; class=&quot;headerlink&quot; title=&quot;缓存&quot;&gt;&lt;/a&gt;缓存&lt;/h2&gt;&lt;p&gt;缓存和其他存储形式在功能形式上没有太大区别，均是输入一个地址，还你一个数据。但作为一个缓存，要考虑如何在有限的容量下保证较高的命中率以及查找效率(&lt;a href=&quot;https://decodezp.github.io/2018/11/20/cachesize/&quot;&gt;相关阅读&lt;/a&gt;)。这个问题从本质上来说，就是如何建立缓存地址与内存地址的映射关系。&lt;/p&gt;
     
     </summary>
     

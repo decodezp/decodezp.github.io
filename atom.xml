@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2018-12-30T17:26:02.327Z</updated>
+  <updated>2019-01-04T05:12:04.380Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去4：82599在DPDK下使用fdir</title>
+    <link href="https://decodezp.github.io/2019/01/04/test4-82599-fdir/"/>
+    <id>https://decodezp.github.io/2019/01/04/test4-82599-fdir/</id>
+    <published>2019-01-04T05:09:54.000Z</published>
+    <updated>2019-01-04T05:12:04.380Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;文档过期&quot;&gt;&lt;a href=&quot;#文档过期&quot; class=&quot;headerlink&quot; title=&quot;文档过期&quot;&gt;&lt;/a&gt;文档过期&lt;/h2&gt;&lt;p&gt;近期有客户反馈82599的fdir(flow director)功能在DPDK环境下不生效，本想丢一个DPDK官网上的82599 fdir测试资料过去，但幸好我仔细看了一下测试流程，发现这个&lt;a href=&quot;https://doc.dpdk.org/dts/test_plans/fdir_test_plan.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方文档&lt;/a&gt;里使用的&lt;code&gt;testpmd&lt;/code&gt;命令已经过期了(时间戳：Jan 3rd, 2019)….所以…我自己写一个吧。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>唯识与C语言指针</title>
@@ -503,32 +529,6 @@
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
       <category term="cloud" scheme="https://decodezp.github.io/tags/cloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚3:什么是False Sharing</title>
-    <link href="https://decodezp.github.io/2018/11/27/quickwords3-falsesharing/"/>
-    <id>https://decodezp.github.io/2018/11/27/quickwords3-falsesharing/</id>
-    <published>2018-11-27T05:12:54.000Z</published>
-    <updated>2018-11-27T05:22:37.184Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;不用图&quot;&gt;&lt;a href=&quot;#不用图&quot; class=&quot;headerlink&quot; title=&quot;不用图&quot;&gt;&lt;/a&gt;不用图&lt;/h2&gt;&lt;p&gt;以为又要见到那几张网上已经用烂了的图了是不是？这次我们不用图来讲这个事。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

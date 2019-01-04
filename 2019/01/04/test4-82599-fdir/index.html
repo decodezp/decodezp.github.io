@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>测来测去4：82599在dpdk下使用fdir | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="文档过期近期有客户反馈82599的fdir(flow director)功能在DPDK环境下不生效，本想丢一个DPDK官网上的82599 fdir测试资料过去，但幸好我仔细看了一下测试流程，发现这个官方文档里使用的testpmd命令已经过期了(时间戳：Jan 3rd, 2019)….所以…我自己写一个吧。">
+<meta name="keywords" content="tech,network,dpdk,test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测来测去4：82599在DPDK下使用fdir">
+<meta property="og:url" content="https://decodezp.github.io/2019/01/04/test4-82599-fdir/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="文档过期近期有客户反馈82599的fdir(flow director)功能在DPDK环境下不生效，本想丢一个DPDK官网上的82599 fdir测试资料过去，但幸好我仔细看了一下测试流程，发现这个官方文档里使用的testpmd命令已经过期了(时间戳：Jan 3rd, 2019)….所以…我自己写一个吧。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://mobileimages.lowes.com/product/converted/611942/611942035632.jpg">
+<meta property="og:updated_time" content="2019-01-04T05:12:04.380Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测来测去4：82599在DPDK下使用fdir">
+<meta name="twitter:description" content="文档过期近期有客户反馈82599的fdir(flow director)功能在DPDK环境下不生效，本想丢一个DPDK官网上的82599 fdir测试资料过去，但幸好我仔细看了一下测试流程，发现这个官方文档里使用的testpmd命令已经过期了(时间戳：Jan 3rd, 2019)….所以…我自己写一个吧。">
+<meta name="twitter:image" content="https://mobileimages.lowes.com/product/converted/611942/611942035632.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-test4-82599-fdir" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://mobileimages.lowes.com/product/converted/611942/611942035632.jpg" rel="gallery_cjqhl1kjw001zsefy23vfe8k9">
+        <img src="https://mobileimages.lowes.com/product/converted/611942/611942035632.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      测来测去4：82599在DPDK下使用fdir
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/01/04/test4-82599-fdir/" class="article-date">
+	  <time datetime="2019-01-04T05:09:54.000Z" itemprop="datePublished">January 4, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="文档过期"><a href="#文档过期" class="headerlink" title="文档过期"></a>文档过期</h2><p>近期有客户反馈82599的fdir(flow director)功能在DPDK环境下不生效，本想丢一个DPDK官网上的82599 fdir测试资料过去，但幸好我仔细看了一下测试流程，发现这个<a href="https://doc.dpdk.org/dts/test_plans/fdir_test_plan.html" target="_blank" rel="noopener">官方文档</a>里使用的<code>testpmd</code>命令已经过期了(时间戳：Jan 3rd, 2019)….所以…我自己写一个吧。</p>
+<a id="more"></a>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DPDK Version: 17.11</span><br><span class="line">NIC: 82599</span><br><span class="line">DUT: test-pmd</span><br><span class="line">Traffic Generator: scapy</span><br></pre></td></tr></table></figure>
+<p>其中DUT与Traffic Generator 10G接口直连。</p>
+<h2 id="Test-Cases"><a href="#Test-Cases" class="headerlink" title="Test Cases"></a>Test Cases</h2><h3 id="首先测试对ipv4-tcp报文的支持"><a href="#首先测试对ipv4-tcp报文的支持" class="headerlink" title="首先测试对ipv4-tcp报文的支持"></a>首先测试对<code>ipv4-tcp</code>报文的支持</h3><h4 id="perfect-mode"><a href="#perfect-mode" class="headerlink" title="perfect mode"></a>perfect mode</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./testpmd -c 1ffff -w 02:00.0 -w 02:00.1 -n 4 -- -i --nb-cores=8 --rxq=4 --txq=4 --disable-rss --pkt-filter-mode=perfect --nb-ports=1</span><br><span class="line">set verbose 1</span><br><span class="line">set fwd rxonly</span><br><span class="line"></span><br><span class="line">flow_director_filter 0 mode IP add flow ipv4-tcp src 172.16.182.82 20 dst 2.2.2.3 80 tos 0 ttl 0 vlan 0x0 flexbytes () fwd pf queue 1 fd_id 1</span><br><span class="line"></span><br><span class="line">start</span><br></pre></td></tr></table></figure>
+<p>在Traffic Generator侧构造一个匹配的报文并发送：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1=Ether(src=get_if_hwaddr("ens785f0"))/IP(src="172.16.182.82", dst="2.2.2.3")/TCP(sport=20, dport=80)</span><br><span class="line">sendp(p1, iface="ens785f0")</span><br></pre></td></tr></table></figure>
+<p>应该可以看到<code>testpmd</code>将该报文收到了Queue 1。</p>
+<h4 id="signature-mode"><a href="#signature-mode" class="headerlink" title="signature mode"></a>signature mode</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./testpmd -c 1ffff -w 02:00.0 -w 02:00.1 -n 4 -- -i --nb-cores=8 --rxq=4 --txq=4 --disable-rss --pkt-filter-mode=signature --nb-ports=1</span><br></pre></td></tr></table></figure>
+<p>除在上面的命令行中<code>--pkt-filter-mode=signature</code>之外与前一个测试例完全一致。</p>
+<blockquote>
+<p>对<code>ipv4-udp</code>的测试也基本类似，不再赘述。</p>
+</blockquote>
+<h3 id="测试对ipv6-tcp报文的支持"><a href="#测试对ipv6-tcp报文的支持" class="headerlink" title="测试对ipv6-tcp报文的支持"></a>测试对<code>ipv6-tcp</code>报文的支持</h3><h4 id="Signature-mode"><a href="#Signature-mode" class="headerlink" title="Signature mode"></a>Signature mode</h4><blockquote>
+<p>82599 DPDK ixgbe驱动不支持IPv6报文flow director的<code>perfect mode</code>，所以只能用<code>signature mode</code>。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./testpmd -c 1ffff -w 02:00.0 -w 02:00.1 -n 4 -- -i --nb-cores=8 --rxq=4 --txq=4 --disable-rss --pkt-filter-mode=signature --nb-ports=1</span><br><span class="line">set verbose 1</span><br><span class="line">set fwd rxonly</span><br><span class="line"></span><br><span class="line">flow_director_filter 0 mode IP add flow ipv6-tcp src fcbd:dc01:1:222:0:0:0:3 8000 dst fcbd:dc01:1:222:0:0:0:12 1029 tos 0 ttl 0 vlan 0x0 flexbytes () fwd pf queue 1 fd_id 1</span><br><span class="line"></span><br><span class="line">start</span><br></pre></td></tr></table></figure>
+<p>在Traffic Generator侧构造一个匹配的报文并发送：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1=Ether(src=get_if_hwaddr("ens785f0"))/IPv6(src="fcbd:dc01:1:222:0:0:0:3",dst="fcbd:dc01:1:222:0:0:0:12")/TCP(sport=8000,dport=1029)</span><br><span class="line">sendp(p1, iface="ens785f0")</span><br></pre></td></tr></table></figure>
+<p>应该可以看到<code>testpmd</code>将该报文收到了Queue 1。</p>
+<blockquote>
+<p><code>ipv6-udp</code>报文的支持也基本类似。</p>
+</blockquote>
+<h3 id="添加Mask"><a href="#添加Mask" class="headerlink" title="添加Mask"></a>添加Mask</h3><p>问题主要在对Mask的支持上，首先用<code>ipv4-tcp</code>举个栗子：</p>
+<h4 id="如果想mask掉-通配-全部的src-ip"><a href="#如果想mask掉-通配-全部的src-ip" class="headerlink" title="如果想mask掉(通配)全部的src ip"></a>如果想mask掉(通配)全部的<code>src ip</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./testpmd -c 1ffff -w 02:00.0 -w 02:00.1 -n 4 -- -i --nb-cores=8 --rxq=4 --txq=4 --disable-rss --pkt-filter-mode=signature --nb-ports=1</span><br><span class="line">set verbose 1</span><br><span class="line">set fwd rxonly</span><br><span class="line">port stop 0</span><br><span class="line">flow_director_mask 0 mode IP vlan 0x0 src_mask 0.0.0.0 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 0xFFFF dst_mask 255.255.255.255 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 0xFFFF</span><br><span class="line">port start 0</span><br></pre></td></tr></table></figure>
+<p>这个配mask的命令长得令人发指，同时必须要先stop port 0。通配的方式就是src_mask后写<code>0.0.0.0</code>。<br>这时如果你希望所有源端口号是20，目的IP是2.2.2.3，目的端口号是80的报文都进入Queue 1，那么flow director的命令必须写成：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flow_director_filter 0 mode IP add flow ipv4-tcp src 0.0.0.0 20 dst 2.2.2.3 80 tos 0 ttl 0 vlan 0x0 flexbytes () fwd pf queue 1 fd_id 1</span><br><span class="line">start</span><br></pre></td></tr></table></figure></p>
+<p>一般人的理解，设置了通配mask之后，<code>src IP</code>写成什么都无所谓了，但这里必须要写成<code>0.0.0.0</code>，不然匹配不到。</p>
+<p>Traffic Generator侧构造任意<code>src IP</code>的且满足其他匹配条件的报文，并发送：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p1=Ether(src=get_if_hwaddr("ens785f0"))/IP(src="172.16.182.82", dst="2.2.2.3")/TCP(sport=20, dport=80)</span><br><span class="line">p2=Ether(src=get_if_hwaddr("ens785f0"))/IP(src="172.16.182.8", dst="2.2.2.3")/TCP(sport=20, dport=80)</span><br><span class="line">p3=Ether(src=get_if_hwaddr("ens785f0"))/IP(src="172.16.18.82", dst="2.2.2.3")/TCP(sport=20, dport=80)</span><br><span class="line"></span><br><span class="line">sendp(p1, iface="ens785f0")</span><br><span class="line">sendp(p2, iface="ens785f0")</span><br><span class="line">sendp(p3, iface="ens785f0")</span><br></pre></td></tr></table></figure></p>
+<p>可以在<code>testpmd</code>中看到三个报文均进入了Queue 1。</p>
+<h4 id="如果想mask掉-通配-全部的src-ip与scr-port"><a href="#如果想mask掉-通配-全部的src-ip与scr-port" class="headerlink" title="如果想mask掉(通配)全部的src ip与scr port"></a>如果想mask掉(通配)全部的<code>src ip</code>与<code>scr port</code></h4><p>与上一个类似，设置mask和fdir规则的命令分别为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flow_director_mask 0 mode IP vlan 0x0 src_mask 0.0.0.0 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 0x0 dst_mask 255.255.255.255 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 0xFFFF</span><br><span class="line"></span><br><span class="line">flow_director_filter 0 mode IP add flow ipv4-tcp src 0.0.0.0 0 dst 2.2.2.3 80 tos 0 ttl 0 vlan 0x0 flexbytes () fwd pf queue 1 fd_id 1</span><br></pre></td></tr></table></figure>
+<p>与之前一样，fdir规则中，<code>src</code>后面必须写<code>0.0.0.0 0</code>才能达到预期效果。</p>
+<p>此时仅由目的IP和目的端口号决定报文的去向。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p1=Ether(src=get_if_hwaddr("ens785f0"))/IP(src="172.16.182.82", dst="2.2.2.3")/TCP(sport=19, dport=80)</span><br><span class="line">p2=Ether(src=get_if_hwaddr("ens785f0"))/IP(src="172.16.182.8", dst="2.2.2.3")/TCP(sport=2, dport=80)</span><br><span class="line">p3=Ether(src=get_if_hwaddr("ens785f0"))/IP(src="172.16.18.82", dst="2.2.2.3")/TCP(sport=21, dport=80)</span><br><span class="line"></span><br><span class="line">sendp(p1, iface="ens785f0")</span><br><span class="line">sendp(p2, iface="ens785f0")</span><br><span class="line">sendp(p3, iface="ens785f0")</span><br></pre></td></tr></table></figure>
+<p>可以在<code>testpmd</code>中看到三个报文均进入了Queue 1。</p>
+<h4 id="IPv6的情况"><a href="#IPv6的情况" class="headerlink" title="IPv6的情况"></a>IPv6的情况</h4><p>如果想mask掉IPv6报文的<code>src ip</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">port stop 0</span><br><span class="line">flow_director_mask 0 mode IP vlan 0x0 src_mask 0.0.0.0 0:0:0:0:0:0:0:0 0x0 dst_mask 255.255.255.255 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 0xFFFF</span><br><span class="line">port start 0</span><br></pre></td></tr></table></figure>
+<p>同理，fdir规则中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flow_director_filter 0 mode IP add flow ipv6-tcp src 0:0:0:0:0:0:0:0 0 dst fcbd:dc01:1:222:0:0:0:12 1029 tos 0 ttl 0 vlan 0x0 flexbytes () fwd pf queue 1 fd_id 1</span><br></pre></td></tr></table></figure>
+<p><code>ipv6-tcp src</code>后必须写<code>0:0:0:0:0:0:0:0 0</code>以配合mask的设置。</p>
+<blockquote>
+<p>关键就是如果mask中某字段中某bit为0，那么fdir规则中该字段对应的bit位也必须为0，82599网卡才能按预期的方式工作。</p>
+</blockquote>
+<p>再举一个栗子，如果想将dst port的mask设置为0x00F0，对应的mask和fdir规则为：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flow_director_mask 0 mode IP vlan 0x0 src_mask 0.0.0.0 0:0:0:0:0:0:0:0 0x0 dst_mask 255.255.255.255 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 0x00F0</span><br><span class="line"></span><br><span class="line">flow_director_filter 0 mode IP add flow ipv6-tcp src 0:0:0:0:0:0:0:0 0 dst fcbd:dc01:1:222:0:0:0:12 240 tos 0 ttl 0 vlan 0x0 flexbytes () fwd pf queue 1 fd_id 2</span><br></pre></td></tr></table></figure></p>
+<p>此时再发送目的端口号为240或241…的IPv6报文都可以匹配该fdir规则。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/test/">test</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dpdk/">dpdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/31/thoughts2-weishi-c-pointer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">唯识与C语言指针</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档过期"><span class="nav-number">1.</span> <span class="nav-text">文档过期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-number">2.</span> <span class="nav-text">Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-Cases"><span class="nav-number">3.</span> <span class="nav-text">Test Cases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先测试对ipv4-tcp报文的支持"><span class="nav-number">3.1.</span> <span class="nav-text">首先测试对ipv4-tcp报文的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#perfect-mode"><span class="nav-number">3.1.1.</span> <span class="nav-text">perfect mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#signature-mode"><span class="nav-number">3.1.2.</span> <span class="nav-text">signature mode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试对ipv6-tcp报文的支持"><span class="nav-number">3.2.</span> <span class="nav-text">测试对ipv6-tcp报文的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Signature-mode"><span class="nav-number">3.2.1.</span> <span class="nav-text">Signature mode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加Mask"><span class="nav-number">3.3.</span> <span class="nav-text">添加Mask</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如果想mask掉-通配-全部的src-ip"><span class="nav-number">3.3.1.</span> <span class="nav-text">如果想mask掉(通配)全部的src ip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果想mask掉-通配-全部的src-ip与scr-port"><span class="nav-number">3.3.2.</span> <span class="nav-text">如果想mask掉(通配)全部的src ip与scr port</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv6的情况"><span class="nav-number">3.3.3.</span> <span class="nav-text">IPv6的情况</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

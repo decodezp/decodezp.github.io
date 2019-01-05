@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-04T05:12:04.380Z</updated>
+  <updated>2019-01-05T06:35:25.995Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>汉光文帝教你如何提出领导无法拒绝的方案</title>
+    <link href="https://decodezp.github.io/2019/01/05/history2-liuyuan/"/>
+    <id>https://decodezp.github.io/2019/01/05/history2-liuyuan/</id>
+    <published>2019-01-05T06:24:48.000Z</published>
+    <updated>2019-01-05T06:35:25.995Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;在成为领导之前&quot;&gt;&lt;a href=&quot;#在成为领导之前&quot; class=&quot;headerlink&quot; title=&quot;在成为领导之前&quot;&gt;&lt;/a&gt;在成为领导之前&lt;/h2&gt;&lt;p&gt;只有开国皇帝的孙子生下来就是皇帝，开国皇帝往往都给别人打过工。&lt;/p&gt;
+&lt;p&gt;别人给老板打工，不高兴了可以换个老板，而开国皇帝给老板打工，不想干了还必须得干掉老板。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="history" scheme="https://decodezp.github.io/categories/history/"/>
+    
+    
+      <category term="history" scheme="https://decodezp.github.io/tags/history/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去4：82599在DPDK下使用fdir</title>
@@ -63,9 +84,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   
@@ -135,9 +156,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
   </entry>
   
@@ -222,9 +243,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
   </entry>
   
@@ -502,33 +523,6 @@
       <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>云计算的发展需要向社区街道管理看齐</title>
-    <link href="https://decodezp.github.io/2018/11/28/thoughts1-cloud-community/"/>
-    <id>https://decodezp.github.io/2018/11/28/thoughts1-cloud-community/</id>
-    <published>2018-11-28T05:47:57.000Z</published>
-    <updated>2018-11-28T05:53:19.517Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;服务&quot;&gt;&lt;a href=&quot;#服务&quot; class=&quot;headerlink&quot; title=&quot;服务&quot;&gt;&lt;/a&gt;服务&lt;/h2&gt;&lt;p&gt;云计算本质上是一种服务。由各种不同的组件为租户提供计算、网络和存储服务。&lt;/p&gt;
-&lt;p&gt;用户对这些服务的要求除了功能之外，还有安全性、可用性、性能、成本、迁移难度、SLA等一系列要求。&lt;/p&gt;
-&lt;p&gt;与之类比，社区街道作为一个完整的功能单元，各个基层职能部门，也为社区内的居民提供各类生活服务。&lt;/p&gt;
-&lt;p&gt;如何做好基层工作，是需要费一番脑筋的。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-      <category term="cloud" scheme="https://decodezp.github.io/tags/cloud/"/>
     
   </entry>
   

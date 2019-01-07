@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-05T06:40:23.713Z</updated>
+  <updated>2019-01-07T15:55:42.417Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)</title>
+    <link href="https://decodezp.github.io/2019/01/07/quickwords9-skylake-pipeline-1/"/>
+    <id>https://decodezp.github.io/2019/01/07/quickwords9-skylake-pipeline-1/</id>
+    <published>2019-01-07T15:52:11.000Z</published>
+    <updated>2019-01-07T15:55:42.417Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;楔子&quot;&gt;&lt;a href=&quot;#楔子&quot; class=&quot;headerlink&quot; title=&quot;楔子&quot;&gt;&lt;/a&gt;楔子&lt;/h2&gt;&lt;p&gt;了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。&lt;/p&gt;
+&lt;p&gt;另外在介绍完微架构之后，会继续结合&lt;code&gt;Perf&lt;/code&gt;中的&lt;code&gt;Performance Event&lt;/code&gt;来对照说明互为印证。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>汉光文帝教你如何提出领导无法拒绝的方案</title>
@@ -498,31 +523,6 @@
       <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
     
       <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去1：DPDK no-huge模式性能对比测试</title>
-    <link href="https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/"/>
-    <id>https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/</id>
-    <published>2018-11-29T05:20:58.000Z</published>
-    <updated>2018-11-29T05:30:48.738Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;no-huge&quot;&gt;&lt;a href=&quot;#no-huge&quot; class=&quot;headerlink&quot; title=&quot;no-huge&quot;&gt;&lt;/a&gt;no-huge&lt;/h2&gt;&lt;p&gt;DPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。&lt;/p&gt;
-&lt;p&gt;那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   

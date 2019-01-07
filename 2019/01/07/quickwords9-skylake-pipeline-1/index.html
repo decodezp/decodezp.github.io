@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>刚日读经，柔日读史 | DecodeZ</title>
+  <title>几句话说清楚9：skylake微架构(microarchitecture)剖析(1) | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
-<meta name="keywords" content="thoughts">
+  <meta name="description" content="楔子了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。 另外在介绍完微架构之后，会继续结合Perf中的Performance Event来对照说明互为印证。">
+<meta name="keywords" content="tech,hardware,CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="刚日读经，柔日读史">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/18/gangrirouri/index.html">
+<meta property="og:title" content="几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)">
+<meta property="og:url" content="https://decodezp.github.io/2019/01/07/quickwords9-skylake-pipeline-1/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
+<meta property="og:description" content="楔子了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。 另外在介绍完微架构之后，会继续结合Perf中的Performance Event来对照说明互为印证。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg">
-<meta property="og:updated_time" content="2018-12-16T10:10:55.644Z">
+<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta property="og:updated_time" content="2019-01-07T15:55:42.417Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刚日读经，柔日读史">
-<meta name="twitter:description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
-<meta name="twitter:image" content="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg">
+<meta name="twitter:title" content="几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)">
+<meta name="twitter:description" content="楔子了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。 另外在介绍完微架构之后，会继续结合Perf中的Performance Event来对照说明互为印证。">
+<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-gangrirouri" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords9-skylake-pipeline-1" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" rel="gallery_cjqmiaxni000el5fydl1wa6hm">
-        <img src="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_cjqmiaxnv001nl5fydh3are2l">
+        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      刚日读经，柔日读史
+      几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/18/gangrirouri/" class="article-date">
-	  <time datetime="2018-11-18T11:27:23.000Z" itemprop="datePublished">November 18, 2018</time>
+	Posted on <a href="/2019/01/07/quickwords9-skylake-pipeline-1/" class="article-date">
+	  <time datetime="2019-01-07T15:52:11.000Z" itemprop="datePublished">January 7, 2019</time>
 	</a>
 
       
@@ -232,24 +232,49 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。<br>资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。</p>
+        <h2 id="楔子"><a href="#楔子" class="headerlink" title="楔子"></a>楔子</h2><p>了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。</p>
+<p>另外在介绍完微架构之后，会继续结合<code>Perf</code>中的<code>Performance Event</code>来对照说明互为印证。</p>
 <a id="more"></a>
-<p>刚日读经，柔日读史，“刚日”就是阳数的日子，“柔日”就是阴数的日子。因为阴阳要互补，所以刚日要读致虚守弱恒常静笃的经；柔日便要读变动不居周行不殆的史。<br>为此还有各位理论导师的笺注，比如南怀瑾：</p>
 <blockquote>
-<p>亢阳激扬，刚也；卑幽忧昧，柔也。经主常，史主变。故刚日读经，理气养生也；柔日读史，生情造意也。有生有息，合乎天理，何乐而不为哉！</p>
+<p>需要强调的是，本文的重点是Skylake的流水线(pipeline)架构，core间的连接和架构方式不作重点说明。</p>
 </blockquote>
-<p>感觉并不如我总结得那般言简意赅提要钩玄。<br>如果说这种“互补”确实在指导我们的行为，那也无可厚非。而实际上我们日常行事，却和这种思想观念有很大出入。<br>饮食上要以形补形，想要强要壮，自然是找来更强更壮的，绝对不会找短小“互补”的食材。<br>婚嫁上要强强联合，至少至少也要找个“门当户对”的。至于相互互补的情节，不是出现在少儿童话故事里，就是出现在成人童话故事里。<br>嘴里说的是阴阳互补，做的却是采阴补阳的勾当。<br>而最重要的是，没有人觉得有问题。我们妄自接受了这些观念，很少去问这些到底是什么。只是在需要的场合，程式化地提出这一观念。<br>什么是互补，什么是阴，什么是阳，什么是刚，什么是柔。如果我脑中只是一些不明来源，未经考究过的观念，那么什么是我自己。<br>更诡吊的是，人与人之间最大的仇恨与惨剧，都滥觞于这种我们根本自己也没搞清楚的观念。<br>不要说“互补”，即便是稍有不同，那便是异端邪说、是外族、是异教徒、是政治犯；那便会有党争、门户、正宗、政治清洗和宗教审判。<br>信不知凭何而信，恨不知因何而恨。被左右的观念所左右，被迷惑的语言所迷惑，操纵感官输出的表象又被表象所操纵。<br>无论刚日柔日，翻开经史，里面都是这样的故事。只要稍微读几页就会发现，与先前想的正好相反，教给你变化的其实是经，而教给你不变的是史。<br>所以这句话并不是要教给你刚柔相济之道，而是提醒你认清人心之妄作，行为之颠倒，以及，追求真实的难能可贵。<br>谨录于上，念念不忘。</p>
+<h2 id="Skylake简介"><a href="#Skylake简介" class="headerlink" title="Skylake简介"></a>Skylake简介</h2><p>Skylake是由Intel以色列研发中心于2015年发布的14nm CPU架构。作为Broadwell的继任者，Skylake在原有架构的基础上，对一些关键特性和组件做出了相当幅度的优化：</p>
+<p><img src="https://en.wikichip.org/w/images/thumb/0/0d/skylake_buff_window.png/350px-skylake_buff_window.png" alt=""></p>
+<p>上图简单列举了一些量化指标，现在不求甚解就好。</p>
+<p>在指令集方面，引入了<code>AVX-512</code>、<code>CLFLUSHOPT</code>、<code>CLWB</code>等新的指令集，不过本文不打算介绍这些东西，写到这里只是觉得如果只用上一段话结束这一小节有些太突兀了。</p>
+<h2 id="流水线总览"><a href="#流水线总览" class="headerlink" title="流水线总览"></a>流水线总览</h2><p><img src="https://en.wikichip.org/w/images/thumb/8/80/intel_common_arch_post_ucache.svg/428px-intel_common_arch_post_ucache.svg.png" alt=""></p>
+<p>引用上面这张图是为了举一个反例，说明一下本文要解决的问题。这张图可以被当做是一张流水线的架构抽象，我可以指着每一个组件讲讲它们都是干嘛的，但这里的问题就是某一个相同的组件在不同的文档、资料、甚至语境下可能有两个甚至更多个名字。</p>
+<p>比如蓝色方块最下面的<code>Allocation Queue</code>，它就还有一个名字叫做<code>Instruction Decode Queue</code>，同时它还有可能被叫做<code>IDQ</code>或<code>AQ</code>。而关于<code>Decoded Instruction Queue</code>、<code>Micro Instruction Sequencer</code>、<code>Re-order buffer</code>、<code>Scheduler</code>、<code>Reservation Station</code>等概念的辨析也是…需要下一番功夫。</p>
+<p>本文将以全网最清晰的方式讲清楚这些概念。</p>
+<p>从high-level的层面来讲，Skylake的流水线架构与Broadwell和Haswell没有太大出入。还是可以分为两个阶段：</p>
+<h3 id="前端-Front-End"><a href="#前端-Front-End" class="headerlink" title="前端(Front-End)"></a>前端(Front-End)</h3><p>上图中蓝色部分就代表流水线的前端。它的主要作用就是获取指令、解码(Decode)指令。</p>
+<p>为了最大限度的发挥CPU的能力，前端就需要尽可能高效率地把程序指令输送给后端。这里就面临两个挑战：</p>
+<ol>
+<li>如何更快更准确地取得要执行的指令</li>
+<li>如何将取得的指令更快地解码为微指令(micro-ops/uops)</li>
+</ol>
+<p>有了更多的微指令输送给后端（执行单元），后端的工作量才能饱和。而前端的所有组件和机制，都是围绕这两个挑战进行的。</p>
+<h3 id="后端-Back-End"><a href="#后端-Back-End" class="headerlink" title="后端(Back-End)"></a>后端(Back-End)</h3><p>上图中红色的部分就代表流水线的后端。一般来讲绿色的部分是存储子系统，虽然与后端交互，但严格讲不算在后端里面。</p>
+<p>后端的主要任务就是执行前端送过来的指令。和前端类似，后端除了“来料加工”之外，也有它自己需要面对的挑战：</p>
+<ol>
+<li>如何提高指令的并行程度</li>
+<li>如何充分利用已有的CPU能力</li>
+</ol>
+<p>如果将CPU比作一家餐厅，跑在上面的应用就是来餐厅就餐的食客。前端类似餐厅的服务生，需要接受客人的下单，同时将订单送到后厨。而后厨就类似后端，负责做出客人需要的菜品。</p>
+<p>但如何能让上菜速度更快？前端是否可以在客人排位时就让其提前下单？后厨是否能够提前准备好本店热门的特色菜，或者一并煮好一大锅面条，根据需要浇上不同的浇头？</p>
+<p>CPU说是高科技，其实干得也就是这些事情。</p>
+<p>在下一篇文章中将详细介绍一下前端。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -284,19 +309,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/19/topcmd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          top命令使用方法补遗
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/17/duckduckgo/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/05/history2-liuyuan/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">如何在偷偷搜索关键字后避免令人尴尬的广告</div>
+      <div class="article-nav-title">汉光文帝教你如何提出领导无法拒绝的方案</div>
     </a>
   
 </nav>
@@ -310,7 +326,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#楔子"><span class="nav-number">1.</span> <span class="nav-text">楔子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skylake简介"><span class="nav-number">2.</span> <span class="nav-text">Skylake简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流水线总览"><span class="nav-number">3.</span> <span class="nav-text">流水线总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前端-Front-End"><span class="nav-number">3.1.</span> <span class="nav-text">前端(Front-End)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后端-Back-End"><span class="nav-number">3.2.</span> <span class="nav-text">后端(Back-End)</span></a></li></ol></li></ol>
     
     </div>
   </aside>

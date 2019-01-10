@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚5：影响服务器内存性能的硬件知识 | DecodeZ</title>
+  <title>几句话说清楚10：skylake微架构(microarchitecture)剖析(2) | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
-<meta name="keywords" content="tech,hardware,performance,memory">
+  <meta name="description" content="前端处理器在前端这一部分的时候还是顺序(in-order)处理的，主要是也确实没什么乱序的空间。虽然说是顺序，但前端因为贴近业务，所以受人写的代码的影响也比较大。如果仅仅只是“取指令-&amp;gt;解码”，恐怕需要写程序的人是个非常聪明的程序员。前端很多组件的工作其实都是在填程序员的坑，这也是我比较心疼前端的地方。">
+<meta name="keywords" content="tech,hardware,CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚5：影响服务器内存性能的硬件知识">
-<meta property="og:url" content="https://decodezp.github.io/2018/12/13/quickwords5-server-memory/index.html">
+<meta property="og:title" content="几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)">
+<meta property="og:url" content="https://decodezp.github.io/2019/01/10/quickwords10-skylake-pipeline-2/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
+<meta property="og:description" content="前端处理器在前端这一部分的时候还是顺序(in-order)处理的，主要是也确实没什么乱序的空间。虽然说是顺序，但前端因为贴近业务，所以受人写的代码的影响也比较大。如果仅仅只是“取指令-&amp;gt;解码”，恐怕需要写程序的人是个非常聪明的程序员。前端很多组件的工作其实都是在填程序员的坑，这也是我比较心疼前端的地方。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png">
-<meta property="og:updated_time" content="2018-12-13T14:38:25.712Z">
+<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta property="og:updated_time" content="2019-01-10T09:44:43.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚5：影响服务器内存性能的硬件知识">
-<meta name="twitter:description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
-<meta name="twitter:image" content="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png">
+<meta name="twitter:title" content="几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)">
+<meta name="twitter:description" content="前端处理器在前端这一部分的时候还是顺序(in-order)处理的，主要是也确实没什么乱序的空间。虽然说是顺序，但前端因为贴近业务，所以受人写的代码的影响也比较大。如果仅仅只是“取指令-&amp;gt;解码”，恐怕需要写程序的人是个非常聪明的程序员。前端很多组件的工作其实都是在填程序员的坑，这也是我比较心疼前端的地方。">
+<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords5-server-memory" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords10-skylake-pipeline-2" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png" rel="gallery_cjqqfdrw00027jifyv2kj840m">
-        <img src="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_cjqqfdrvt001rjify87ykuffq">
+        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚5：影响服务器内存性能的硬件知识
+      几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/12/13/quickwords5-server-memory/" class="article-date">
-	  <time datetime="2018-12-13T14:20:51.000Z" itemprop="datePublished">December 13, 2018</time>
+	Posted on <a href="/2019/01/10/quickwords10-skylake-pipeline-2/" class="article-date">
+	  <time datetime="2019-01-10T09:42:40.000Z" itemprop="datePublished">January 10, 2019</time>
 	</a>
 
       
@@ -232,39 +232,36 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="发挥内存条理财的最大收益率"><a href="#发挥内存条理财的最大收益率" class="headerlink" title="发挥内存条理财的最大收益率"></a>发挥内存条理财的最大收益率</h2><p>内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。</p>
-<p>在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的<code>Memory Controller</code>就需要去内存中读取内容。<br><a id="more"></a></p>
-<p>而<code>Memory Controller</code>为了尽快完成CPU交代的任务，用了<code>多通道</code>的方式增大内存存取带宽。</p>
-<p><code>多通道</code>这个概念很好理解，和多条车道是一个意思。比如CPU需要1MB大小的数据，单通道的话数据就只能在一条通道上老老实实排队；双通道就可以并行两个512KB的读取；四通道就是并行四个256KB的读取。</p>
-<p>我知道你要问什么，这1MB大小的数据已经被<code>Memory Controller</code>通过一种叫做<code>Interleave(交织)</code>的技术“打散”在了两个通道或者四个通道对应的物理内存上。<code>Interleave</code>由硬件实现，细节不在这里深究，我们想说明的是发挥这些硬件组件的最大能力需要外界条件配合。</p>
-<p>内存在硬件方面的性能优化，就围绕这个主题。</p>
-<h2 id="内存相关概念"><a href="#内存相关概念" class="headerlink" title="内存相关概念"></a>内存相关概念</h2><p>现在主流Intel E5 CPU的配置是一颗CPU上两个<code>Memory Controller</code>，每个Controller有两个通道，每个通道对应主板上三个内存插槽(DIMM)。</p>
-<p><img src="http://1.bp.blogspot.com/-Iaf9qQgC-zM/VdDIBPzscoI/AAAAAAAAABs/AU-vcOrCSck/s1600/6101_48_supermicro_x9dr7_tf_intel_c602j_server_motherboard_review.jpg" alt="内存插槽"></p>
-<p><code>Interleave</code>首先发生在通道层面，进而发生在通道的DIMM层面（使用的DIMM越多，交织得越充分）</p>
-<p>同时每根内存条还有一个<code>Rank</code>的概念。这个概念可以理解为更进一步的<code>Interleave</code>，多<code>Rank</code>的内存条可以再进行一次<code>Interleave</code>。</p>
-<p><img src="https://cdn3.bigcommerce.com/s-3jjekk/product_images/uploaded_images/memory-rank.png?t=1518214379&amp;_ga=2.27767868.1254827790.1518192896-72491761.1493653618" alt="看序列号读取内存信息"></p>
-<h2 id="充分平衡"><a href="#充分平衡" class="headerlink" title="充分平衡"></a>充分平衡</h2><p>满足最优的内存配置就是四个字：充分平衡。</p>
-<p>-充分：并不是要你插满所有插槽，而是充分利用每个<code>Memory Controller</code>和每条通道<br>-平衡：每个<code>Memory Controller</code>和通道上的内存配置(Size, Rank和频率)都相同。</p>
-<p>在实际应用中，首先绘制一个内存拓扑，如下图：<br><img src="https://s1.ax1x.com/2018/12/13/FNdSBT.png" alt="充分平衡"></p>
+        <h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>处理器在前端这一部分的时候还是顺序(in-order)处理的，主要是也确实没什么乱序的空间。虽然说是顺序，但前端因为贴近业务，所以受人写的代码的影响也比较大。如果仅仅只是“取指令-&gt;解码”，恐怕需要写程序的人是个非常聪明的程序员。前端很多组件的工作其实都是在填程序员的坑，这也是我比较心疼前端的地方。</p>
+<a id="more"></a>
+<h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><p><img src="https://en.wikichip.org/w/images/thumb/7/79/skylake_fetch.svg/300px-skylake_fetch.svg.png" alt=""></p>
+<p>前端的任务，首先是从内存中取得指令。同读取数据类似，CPU通过查询页表获得指令所在的内存地址，同时把指令塞到CPU的L1指令缓存里。</p>
+<p>具体要把哪个地址上的指令数据送到L1I$里，这是分支预测器(Branch predictor)的工作。作为CPU的核心技术，Intel并没有透露太多信息，我们这里也只好一笔带过。不过它的细节也许很复杂，但它的脾气很好掌握：和我们很多人不喜欢自己的工作一样，它的工作就是处理分支，但它最不喜欢分支。</p>
+<p>在Skylake架构里，L1I$大小为32KB，组织形式为8-way set associative(关于CPU缓存组织形式的讲解可以参照<a href="https://decodezp.github.io/2018/11/25/quickwords2-cacheassociativity/">这篇</a>)，每个Cycle可以取16Byte长度(fetch window)的指令。如果你开了Hyper-thread，那么同一个物理核上的两个逻辑核均分这个fetch window，每个Cycle各占用一次。</p>
 <blockquote>
-<p>如何检查是否充分？看一下每个<code>Memory Controller</code>中的每个通道是否都有内存条<br>如何检查是否平衡？将拓扑图从中垂线对折一次，检查图像是否能重合；再从水平中位线对折一次，检查是否能重合。如果两次回答都是yes，就平衡了。</p>
+<p>所以没事别开Hyper-thread，不过我这么说没有任何技术依据，单纯是帮Intel多卖几个核。</p>
 </blockquote>
-<h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNwPqf.png" alt="平衡不充分"></p>
-<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNazuV.png" alt="充分不平衡"></p>
-<h3 id="实例3"><a href="#实例3" class="headerlink" title="实例3"></a>实例3</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNajcq.png" alt="不充分不平衡"></p>
-<h3 id="实例4"><a href="#实例4" class="headerlink" title="实例4"></a>实例4</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNavj0.png" alt="充分平衡"></p>
-<h2 id="软件检查工具"><a href="#软件检查工具" class="headerlink" title="软件检查工具"></a>软件检查工具</h2><p>为了不让每次内存检测都需要打开机箱…有一个开源工具可以通过读取<code>dmidecode</code>的信息自动化做检验：<a href="https://github.com/PanZhangg/DPDKick" target="_blank" rel="noopener">DPDKick</a></p>
+<p>在L1I$里的指令还都是变长的x86 <code>macro-ops</code>，也就是我们看到的那些编译之后的汇编指令。如果熟悉这些指令的话，就会知道这些指令的长度（就是那些二进制数字）都不一样，同时一条指令有时可以由好几个操作组成。</p>
+<p>这种指令对CPU的执行单元来说是很不友好的，同时如果想要通过乱序执行提高指令的并行度，减小指令的粒度也是必须的步骤。因此需要把这些<code>marco-ops</code>“解码”为“micro-ops”。</p>
+<p>当然具体的解码工作还在后面。从L1I$中取得指令数据后，首先要进入“预解码”阶段，在这里需要识别出在一个fetch window中取得的这16个Byte的数据里面有多少个指令。除此之外，还需要对一些特殊指令，比如分支转跳打上一些标记。</p>
+<p>但因为指令变长的原因，16个Byte往往并不对应固定的指令数，还有可能最后一个指令有一半在这16Byte里，另一边还在后面。另外就是pre-decode在一个Cycle最多识别出6个指令，或者这16Byte的数据都解析完。如果你这16个Byte里包含有7个指令，那么第一个Cycle识别出前6个之后，还需要第二个Cycle识别最后一个，然后才能再读取后面16Byte。</p>
+<p>那么pre-decode的效率就变成了3.5 instruction / cycle，比最理想的情况6 instruction / cycle降低了41%，现实就是这么残酷。</p>
+<p>经过pre-decode之后，才真正从16Byte的二进制数据中识别出了指令，这些指令下一步要被塞到一个队列里(Instruction Queue)看看有没有什么能被优化的地方。一个最常见的优化方式就是<code>macro-op fusion</code>，就是把两个相邻的，且能被一个指令表示的指令，用那一个指令替换掉。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmp eax, [mem]</span><br><span class="line">jne loop</span><br></pre></td></tr></table></figure>
+<p>直接换成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmpjne eax, [mem], loop</span><br></pre></td></tr></table></figure></p>
+<p>当然既然决定这么替换，新指令对流水线的开销肯定小于被替换的两个指令之和。如此可以减轻一部分后端执行单元的工作负荷和资源开销。</p>
+<p>OK, 在取得了指令数据，识别出了数据中的指令，并对指令做了一些优化合并之后，就该开始正儿八经地解码了，这部分在后面的文章中介绍。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/tech/">tech</a>, <a class="article-category-link" href="/categories/tech/quickwords/">quickwords</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory/">memory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -299,19 +296,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/16/cpulized-life/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          谁不是在像CPU一样活着
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/12/eng-talk1-fast-learn/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/07/quickwords9-skylake-pipeline-1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">5分钟经典英文技术演讲1：如何快速掌握新技术 - Kathy Sierra</div>
+      <div class="article-nav-title">几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)</div>
     </a>
   
 </nav>
@@ -325,7 +313,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发挥内存条理财的最大收益率"><span class="nav-number">1.</span> <span class="nav-text">发挥内存条理财的最大收益率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存相关概念"><span class="nav-number">2.</span> <span class="nav-text">内存相关概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#充分平衡"><span class="nav-number">3.</span> <span class="nav-text">充分平衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1"><span class="nav-number">3.1.</span> <span class="nav-text">实例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2"><span class="nav-number">3.2.</span> <span class="nav-text">实例2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例3"><span class="nav-number">3.3.</span> <span class="nav-text">实例3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例4"><span class="nav-number">3.4.</span> <span class="nav-text">实例4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件检查工具"><span class="nav-number">4.</span> <span class="nav-text">软件检查工具</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端"><span class="nav-number">1.</span> <span class="nav-text">前端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fetch"><span class="nav-number">2.</span> <span class="nav-text">Fetch</span></a></li></ol>
     
     </div>
   </aside>

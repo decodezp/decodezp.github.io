@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)</title>
+      <link href="/2019/01/10/quickwords10-skylake-pipeline-2/"/>
+      <url>/2019/01/10/quickwords10-skylake-pipeline-2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>处理器在前端这一部分的时候还是顺序(in-order)处理的，主要是也确实没什么乱序的空间。虽然说是顺序，但前端因为贴近业务，所以受人写的代码的影响也比较大。如果仅仅只是“取指令-&gt;解码”，恐怕需要写程序的人是个非常聪明的程序员。前端很多组件的工作其实都是在填程序员的坑，这也是我比较心疼前端的地方。</p><a id="more"></a><h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><p><img src="https://en.wikichip.org/w/images/thumb/7/79/skylake_fetch.svg/300px-skylake_fetch.svg.png" alt=""></p><p>前端的任务，首先是从内存中取得指令。同读取数据类似，CPU通过查询页表获得指令所在的内存地址，同时把指令塞到CPU的L1指令缓存里。</p><p>具体要把哪个地址上的指令数据送到L1I$里，这是分支预测器(Branch predictor)的工作。作为CPU的核心技术，Intel并没有透露太多信息，我们这里也只好一笔带过。不过它的细节也许很复杂，但它的脾气很好掌握：和我们很多人不喜欢自己的工作一样，它的工作就是处理分支，但它最不喜欢分支。</p><p>在Skylake架构里，L1I$大小为32KB，组织形式为8-way set associative(关于CPU缓存组织形式的讲解可以参照<a href="https://decodezp.github.io/2018/11/25/quickwords2-cacheassociativity/">这篇</a>)，每个Cycle可以取16Byte长度(fetch window)的指令。如果你开了Hyper-thread，那么同一个物理核上的两个逻辑核均分这个fetch window，每个Cycle各占用一次。</p><blockquote><p>所以没事别开Hyper-thread，不过我这么说没有任何技术依据，单纯是帮Intel多卖几个核。</p></blockquote><p>在L1I$里的指令还都是变长的x86 <code>macro-ops</code>，也就是我们看到的那些编译之后的汇编指令。如果熟悉这些指令的话，就会知道这些指令的长度（就是那些二进制数字）都不一样，同时一条指令有时可以由好几个操作组成。</p><p>这种指令对CPU的执行单元来说是很不友好的，同时如果想要通过乱序执行提高指令的并行度，减小指令的粒度也是必须的步骤。因此需要把这些<code>marco-ops</code>“解码”为“micro-ops”。</p><p>当然具体的解码工作还在后面。从L1I$中取得指令数据后，首先要进入“预解码”阶段，在这里需要识别出在一个fetch window中取得的这16个Byte的数据里面有多少个指令。除此之外，还需要对一些特殊指令，比如分支转跳打上一些标记。</p><p>但因为指令变长的原因，16个Byte往往并不对应固定的指令数，还有可能最后一个指令有一半在这16Byte里，另一边还在后面。另外就是pre-decode在一个Cycle最多识别出6个指令，或者这16Byte的数据都解析完。如果你这16个Byte里包含有7个指令，那么第一个Cycle识别出前6个之后，还需要第二个Cycle识别最后一个，然后才能再读取后面16Byte。</p><p>那么pre-decode的效率就变成了3.5 instruction / cycle，比最理想的情况6 instruction / cycle降低了41%，现实就是这么残酷。</p><p>经过pre-decode之后，才真正从16Byte的二进制数据中识别出了指令，这些指令下一步要被塞到一个队列里(Instruction Queue)看看有没有什么能被优化的地方。一个最常见的优化方式就是<code>macro-op fusion</code>，就是把两个相邻的，且能被一个指令表示的指令，用那一个指令替换掉。比如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmp eax, [mem]</span><br><span class="line">jne loop</span><br></pre></td></tr></table></figure><p>直接换成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmpjne eax, [mem], loop</span><br></pre></td></tr></table></figure></p><p>当然既然决定这么替换，新指令对流水线的开销肯定小于被替换的两个指令之和。如此可以减轻一部分后端执行单元的工作负荷和资源开销。</p><p>OK, 在取得了指令数据，识别出了数据中的指令，并对指令做了一些优化合并之后，就该开始正儿八经地解码了，这部分在后面的文章中介绍。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)</title>
       <link href="/2019/01/07/quickwords9-skylake-pipeline-1/"/>
       <url>/2019/01/07/quickwords9-skylake-pipeline-1/</url>
@@ -98,9 +125,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -520,9 +547,9 @@
             
             <tag> tech </tag>
             
-            <tag> ftrace </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ftrace </tag>
             
         </tags>
       
@@ -572,9 +599,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
             <tag> cloud </tag>
             

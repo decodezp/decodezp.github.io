@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚4：什么是pointer aliasing | DecodeZ</title>
+  <title>几句话说清楚11：skylake微架构(microarchitecture)剖析(3) | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="指向同一地址的两个相同类型的指针aliasing本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。 如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。">
-<meta name="keywords" content="tech,CPU,performance">
+  <meta name="description" content="解码 在拿到了经过“预解码”的macro-ops之后，开始正式进入解码过程。marco-ops进入Instruction Decode组件解码，最终的输出为定长的micro-ops。 Insturction Decode组件也有入口带宽限制，每个Cycle最多取3个unfused指令+2个fused指令，或者5个unfused指令（这里指macro ops）。所以说fused多了也不好，一个cyc">
+<meta name="keywords" content="tech,hardware,CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚4：什么是Pointer Aliasing">
-<meta property="og:url" content="https://decodezp.github.io/2018/12/11/quickwords4-pointer-aliasing/index.html">
+<meta property="og:title" content="几句话说清楚11：Skylake微架构(Microarchitecture)剖析(3)">
+<meta property="og:url" content="https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="指向同一地址的两个相同类型的指针aliasing本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。 如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。">
+<meta property="og:description" content="解码 在拿到了经过“预解码”的macro-ops之后，开始正式进入解码过程。marco-ops进入Instruction Decode组件解码，最终的输出为定长的micro-ops。 Insturction Decode组件也有入口带宽限制，每个Cycle最多取3个unfused指令+2个fused指令，或者5个unfused指令（这里指macro ops）。所以说fused多了也不好，一个cyc">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.stack.imgur.com/96hya.png">
-<meta property="og:updated_time" content="2018-12-11T11:45:43.584Z">
+<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta property="og:updated_time" content="2019-01-12T04:52:25.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚4：什么是Pointer Aliasing">
-<meta name="twitter:description" content="指向同一地址的两个相同类型的指针aliasing本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。 如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。">
-<meta name="twitter:image" content="https://i.stack.imgur.com/96hya.png">
+<meta name="twitter:title" content="几句话说清楚11：Skylake微架构(Microarchitecture)剖析(3)">
+<meta name="twitter:description" content="解码 在拿到了经过“预解码”的macro-ops之后，开始正式进入解码过程。marco-ops进入Instruction Decode组件解码，最终的输出为定长的micro-ops。 Insturction Decode组件也有入口带宽限制，每个Cycle最多取3个unfused指令+2个fused指令，或者5个unfused指令（这里指macro ops）。所以说fused多了也不好，一个cyc">
+<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords4-pointer-aliasing" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords11-skylake-pipeline-3" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i.stack.imgur.com/96hya.png" rel="gallery_cjqszvckt002k3bfya3bm9hn8">
-        <img src="https://i.stack.imgur.com/96hya.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_cjqszvckq002f3bfy9y7e0hb8">
+        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚4：什么是Pointer Aliasing
+      几句话说清楚11：Skylake微架构(Microarchitecture)剖析(3)
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/12/11/quickwords4-pointer-aliasing/" class="article-date">
-	  <time datetime="2018-12-11T11:33:46.000Z" itemprop="datePublished">December 11, 2018</time>
+	Posted on <a href="/2019/01/12/quickwords11-skylake-pipeline-3/" class="article-date">
+	  <time datetime="2019-01-12T04:50:46.000Z" itemprop="datePublished">January 12, 2019</time>
 	</a>
 
       
@@ -232,40 +232,38 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="指向同一地址的两个相同类型的指针"><a href="#指向同一地址的两个相同类型的指针" class="headerlink" title="指向同一地址的两个相同类型的指针"></a>指向同一地址的两个相同类型的指针</h2><p><code>aliasing</code>本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。</p>
-<p>如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。<br><img src="https://svi.nl/wikiimg/StFargeaux_kasteel_buiten1_aliased.jpg" alt=""></p>
+        <h2 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h2><p><img src="https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png" alt=""></p>
+<p>在拿到了经过“预解码”的<code>macro-ops</code>之后，开始正式进入解码过程。<code>marco-ops</code>进入Instruction Decode组件解码，最终的输出为定长的<code>micro-ops</code>。</p>
+<p>Insturction Decode组件也有入口带宽限制，每个Cycle最多取3个unfused指令+2个fused指令，或者5个unfused指令（这里指macro ops）。所以说fused多了也不好，一个cycle最多取两个。同时如果开了Hyper Thread，则两个Thread按Cycle交替使用Instruction Decode。</p>
 <a id="more"></a>
-<p>同样的现象也会出现在程序员穿着“高密度”的格子衬衫接受电视采访时。</p>
-<p>墙砖缝隙出现<code>aliasing</code>后无法再行区分，从字面意义来说，<code>Pointer Aliasing</code>就是不同的指针也无法区分。</p>
-<p>指针无法区分，只有一种情况，就是指针的类型和指向的地址都是相同的，这就是<code>Pointer Aliasing</code>。</p>
-<h2 id="为什么会有性能影响"><a href="#为什么会有性能影响" class="headerlink" title="为什么会有性能影响"></a>为什么会有性能影响</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> *<span class="built_in">array</span>, <span class="keyword">int</span> *size, <span class="keyword">int</span> *value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; *size; ++i) &#123;</span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="number">2</span> * *value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果让我们自己“优化”一下这段代码，我们可能会首先将<code>value</code>指向的值存入一个临时变量里，然后将临时变量在循环中直接赋值给<code>array</code>。</p>
-<p>我们假设个<code>array</code>的初始状态：<code>[0, 1, 2, 3, 4]</code></p>
-<p>如果<code>value</code>指向的值等于3，那么按我们优化的方式，<code>array</code>最终的状态是：<code>[6, 6, 6, 6, 6]</code></p>
-<p>但这里存在一个问题，如果<code>value</code>指向<code>array[3]</code>，那么<code>array</code>最终的状态就是：<code>[6, 6, 6, 12, 24]</code></p>
-<p><code>value</code>和<code>array[3]</code>就是指向相同地址类型相同的指针。</p>
-<p>编译器为了得到最终正确的结果，就不得不取消我们之前提到的”优化”方式。</p>
-<h2 id="预防方法"><a href="#预防方法" class="headerlink" title="预防方法"></a>预防方法</h2><p>使用<code>__restrict</code>关键字：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> * __restrict <span class="built_in">array</span>, <span class="keyword">int</span> *__restrict size, <span class="keyword">int</span> *__restrict value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; *size; ++i) &#123;</span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="number">2</span> * *value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当然，前提是自己可以确定代码逻辑中不会引入<code>aliasing</code>。</p>
-<h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>首先明确一点，不是加上了<code>__restrict</code>性能就会提升。</p>
+<p>在Instruction Decode组件里面的就是各个具体的Decoder。Decoder类型可以分类两类，一类是Simple Decoder，一类是Complex Decoder，感觉这句是在说废话。</p>
+<p>顾名思义，Simple Decoder处理的是解码之后的输出为1个<code>fused-uop</code>的指令；Complex Decoder处理的是解码之后的输出为1个至4个<code>fused-uop</code>的指令。</p>
+<h2 id="Fused-uop"><a href="#Fused-uop" class="headerlink" title="Fused-uop"></a>Fused-uop</h2><p>注意这里说的是fused-<code>uop</code>，不是fused-<code>marco</code>。在这里所有输出的<code>uop</code>都是做过<code>fused</code>处理的，目的是减少后续资源的占用。</p>
 <blockquote>
-<p><code>Pointer aliasing</code>对性能根本的伤害不是需要每次重新去某个地址取值，而是因为引入了潜在的数据依赖关系，从而关闭了很多编译器优化代码的能力。</p>
+<p>但这里有一个比较容易混淆的概念，就是<code>fused-uop</code>并非专指那些两个uop合并之后生成的“合并uop”，而是指所有经过了uop fusion处理的uop：有些指令可能两个uop变一个，但也有一些是一个还是一个，即便如此，输出的那一个也叫<code>fused-uop</code>。</p>
 </blockquote>
-<p>上面两段代码，在<code>-O0</code>优化时生成的汇编代码(<code>gcc 4.8.5</code>)完全相同。不同的地方在于，第一段代码在<code>-O2</code>和<code>-O3</code>时生成的汇编代码仍然相同；而第二段做了<code>__restrict</code>处理的代码则会在<code>-O3</code>时加入大量循环展开等优化方式。</p>
-<p>在线查看汇编代码：<a href="https://godbolt.org/z/2nXlNa" target="_blank" rel="noopener">链接</a></p>
-<p>所以<code>__restrict</code>需要在打开较高等级的编译器优化的情况下使用才会有效果。</p>
+<p>为了进一步澄清这个概念，我们稍微需要涉及一点后端的概念。在前端这里，生成<code>fused-uop</code>的部分还属于CPU流水线中的<code>uops fused domain</code>，而在后端需要将指令发射到执行单元去的时候，是不能执行<code>fused uop</code>的，所以<code>fused uop</code>还需要再分解为<code>unfused uop</code>才可以执行，这一部分就属于CPU流水线中的<code>uops unfused domain</code>。</p>
+<p>有了这些概念之后，我们可以看一下<a href="https://www.agner.org/optimize/instruction_tables.pdf" target="_blank" rel="noopener">Instruction Tables.pdf</a>这份文档。</p>
+<p>在P244中有对skylake指令的说明，上面有对一些概念的解释，下面是一张表格：<br><img src="https://s2.ax1x.com/2019/01/12/FjnbCV.png" alt=""></p>
+<p>在这张表格里是最常见的<code>mov</code>命令的说明。但因为操作<br>数(operands)的不同在真正执行的时候也会有细节上的差别。第一行中的<code>mov</code>的两个操作数一个是register，另外一个是一个立即数。在<code>uops fused domain</code>和<code>uops unfused domain</code>两栏中的计数都是1。</p>
+<p>这种指令也算在<code>uops fused domain</code>经过了fusion处理。只不过其实前后没什么区别。</p>
+<p>但如果我们看一下所有在<code>uops unfused domain</code>里计数为2的<code>mov</code>指令，它们在<code>uops fused domain</code>中的计数都是1。这种<code>mov</code>指令就是真正做过2条uop合并的<code>mov</code>指令。</p>
+<p>这份表格还有很多有趣的内容，推荐有时间的时候随手翻翻。</p>
+<p>Skylake有4个Simple Decoder和1个Complex Decoder。但从表里我们可以看到<code>uops fused domain</code>计数为1，也就是可以被Simple Decoder处理的指令在所有指令中所占的比例似乎并没有达到4/5那么高。</p>
+<p>这里需要说明的是，输出大于4个uop的指令，既不由Simple Decoder处理，也不由Complex Decoder处理，而是直接去查<code>Microcode Sequencer(MS)</code>，这是一块类似于缓存的ROM。</p>
+<p>Complex Decoder的数量始终为1的原因是Complex Decoder解码出来的uop都很难在执行时进行并行化处理，同时Complex Decoder每多解码一个uop，就要有一个Simple Decoder处于不能工作的状态。</p>
+<p>对CPU来说，它最希望的就是它要做的工作，它需要的数据，它要执行的指令，都已经在一块缓存里准备就绪了。这是CPU上班摸鱼的主要方法，但摸出了风格，摸出了水平。下一部分介绍一下在指令解码方面的缓存内容。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/tech/">tech</a>, <a class="article-category-link" href="/categories/tech/quickwords/">quickwords</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -300,19 +298,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/12/eng-talk1-fast-learn/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          5分钟经典英文技术演讲1：如何快速掌握新技术 - Kathy Sierra
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/08/product1-huawei-fabricinsight/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/10/quickwords10-skylake-pipeline-2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">产品观察1：华为FabricInsight产品简要分析</div>
+      <div class="article-nav-title">几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)</div>
     </a>
   
 </nav>
@@ -326,7 +315,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#指向同一地址的两个相同类型的指针"><span class="nav-number">1.</span> <span class="nav-text">指向同一地址的两个相同类型的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会有性能影响"><span class="nav-number">2.</span> <span class="nav-text">为什么会有性能影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预防方法"><span class="nav-number">3.</span> <span class="nav-text">预防方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么使用"><span class="nav-number">4.</span> <span class="nav-text">怎么使用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解码"><span class="nav-number">1.</span> <span class="nav-text">解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fused-uop"><span class="nav-number">2.</span> <span class="nav-text">Fused-uop</span></a></li></ol>
     
     </div>
   </aside>

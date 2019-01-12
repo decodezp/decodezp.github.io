@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚11：Skylake微架构(Microarchitecture)剖析(3)</title>
+      <link href="/2019/01/12/quickwords11-skylake-pipeline-3/"/>
+      <url>/2019/01/12/quickwords11-skylake-pipeline-3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h2><p><img src="https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png" alt=""></p><p>在拿到了经过“预解码”的<code>macro-ops</code>之后，开始正式进入解码过程。<code>marco-ops</code>进入Instruction Decode组件解码，最终的输出为定长的<code>micro-ops</code>。</p><p>Insturction Decode组件也有入口带宽限制，每个Cycle最多取3个unfused指令+2个fused指令，或者5个unfused指令（这里指macro ops）。所以说fused多了也不好，一个cycle最多取两个。同时如果开了Hyper Thread，则两个Thread按Cycle交替使用Instruction Decode。</p><a id="more"></a><p>在Instruction Decode组件里面的就是各个具体的Decoder。Decoder类型可以分类两类，一类是Simple Decoder，一类是Complex Decoder，感觉这句是在说废话。</p><p>顾名思义，Simple Decoder处理的是解码之后的输出为1个<code>fused-uop</code>的指令；Complex Decoder处理的是解码之后的输出为1个至4个<code>fused-uop</code>的指令。</p><h2 id="Fused-uop"><a href="#Fused-uop" class="headerlink" title="Fused-uop"></a>Fused-uop</h2><p>注意这里说的是fused-<code>uop</code>，不是fused-<code>marco</code>。在这里所有输出的<code>uop</code>都是做过<code>fused</code>处理的，目的是减少后续资源的占用。</p><blockquote><p>但这里有一个比较容易混淆的概念，就是<code>fused-uop</code>并非专指那些两个uop合并之后生成的“合并uop”，而是指所有经过了uop fusion处理的uop：有些指令可能两个uop变一个，但也有一些是一个还是一个，即便如此，输出的那一个也叫<code>fused-uop</code>。</p></blockquote><p>为了进一步澄清这个概念，我们稍微需要涉及一点后端的概念。在前端这里，生成<code>fused-uop</code>的部分还属于CPU流水线中的<code>uops fused domain</code>，而在后端需要将指令发射到执行单元去的时候，是不能执行<code>fused uop</code>的，所以<code>fused uop</code>还需要再分解为<code>unfused uop</code>才可以执行，这一部分就属于CPU流水线中的<code>uops unfused domain</code>。</p><p>有了这些概念之后，我们可以看一下<a href="https://www.agner.org/optimize/instruction_tables.pdf" target="_blank" rel="noopener">Instruction Tables.pdf</a>这份文档。</p><p>在P244中有对skylake指令的说明，上面有对一些概念的解释，下面是一张表格：<br><img src="https://s2.ax1x.com/2019/01/12/FjnbCV.png" alt=""></p><p>在这张表格里是最常见的<code>mov</code>命令的说明。但因为操作<br>数(operands)的不同在真正执行的时候也会有细节上的差别。第一行中的<code>mov</code>的两个操作数一个是register，另外一个是一个立即数。在<code>uops fused domain</code>和<code>uops unfused domain</code>两栏中的计数都是1。</p><p>这种指令也算在<code>uops fused domain</code>经过了fusion处理。只不过其实前后没什么区别。</p><p>但如果我们看一下所有在<code>uops unfused domain</code>里计数为2的<code>mov</code>指令，它们在<code>uops fused domain</code>中的计数都是1。这种<code>mov</code>指令就是真正做过2条uop合并的<code>mov</code>指令。</p><p>这份表格还有很多有趣的内容，推荐有时间的时候随手翻翻。</p><p>Skylake有4个Simple Decoder和1个Complex Decoder。但从表里我们可以看到<code>uops fused domain</code>计数为1，也就是可以被Simple Decoder处理的指令在所有指令中所占的比例似乎并没有达到4/5那么高。</p><p>这里需要说明的是，输出大于4个uop的指令，既不由Simple Decoder处理，也不由Complex Decoder处理，而是直接去查<code>Microcode Sequencer(MS)</code>，这是一块类似于缓存的ROM。</p><p>Complex Decoder的数量始终为1的原因是Complex Decoder解码出来的uop都很难在执行时进行并行化处理，同时Complex Decoder每多解码一个uop，就要有一个Simple Decoder处于不能工作的状态。</p><p>对CPU来说，它最希望的就是它要做的工作，它需要的数据，它要执行的指令，都已经在一块缓存里准备就绪了。这是CPU上班摸鱼的主要方法，但摸出了风格，摸出了水平。下一部分介绍一下在指令解码方面的缓存内容。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)</title>
       <link href="/2019/01/10/quickwords10-skylake-pipeline-2/"/>
       <url>/2019/01/10/quickwords10-skylake-pipeline-2/</url>
@@ -547,9 +574,9 @@
             
             <tag> tech </tag>
             
-            <tag> linux </tag>
-            
             <tag> ftrace </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       

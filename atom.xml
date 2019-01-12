@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-10T09:44:43.961Z</updated>
+  <updated>2019-01-12T04:52:25.295Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚11：Skylake微架构(Microarchitecture)剖析(3)</title>
+    <link href="https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/"/>
+    <id>https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/</id>
+    <published>2019-01-12T04:50:46.000Z</published>
+    <updated>2019-01-12T04:52:25.295Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;解码&quot;&gt;&lt;a href=&quot;#解码&quot; class=&quot;headerlink&quot; title=&quot;解码&quot;&gt;&lt;/a&gt;解码&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在拿到了经过“预解码”的&lt;code&gt;macro-ops&lt;/code&gt;之后，开始正式进入解码过程。&lt;code&gt;marco-ops&lt;/code&gt;进入Instruction Decode组件解码，最终的输出为定长的&lt;code&gt;micro-ops&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;Insturction Decode组件也有入口带宽限制，每个Cycle最多取3个unfused指令+2个fused指令，或者5个unfused指令（这里指macro ops）。所以说fused多了也不好，一个cycle最多取两个。同时如果开了Hyper Thread，则两个Thread按Cycle交替使用Instruction Decode。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)</title>
@@ -497,29 +523,6 @@
     
     
       <category term="history" scheme="https://decodezp.github.io/tags/history/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ftrace uprobe使用填坑历程</title>
-    <link href="https://decodezp.github.io/2018/12/04/ftrace-uprobe/"/>
-    <id>https://decodezp.github.io/2018/12/04/ftrace-uprobe/</id>
-    <published>2018-12-04T04:25:59.000Z</published>
-    <updated>2018-12-04T04:28:56.558Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;打算用一下&lt;code&gt;ftrace&lt;/code&gt;对用户态程序的trace支持。&lt;/p&gt;
-&lt;h3 id=&quot;测试用程序test-c：&quot;&gt;&lt;a href=&quot;#测试用程序test-c：&quot; class=&quot;headerlink&quot; title=&quot;测试用程序test.c：&quot;&gt;&lt;/a&gt;测试用程序&lt;code&gt;test.c&lt;/code&gt;：&lt;/h3&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="ftrace" scheme="https://decodezp.github.io/tags/ftrace/"/>
     
   </entry>
   

@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>可以预测交通路况的 app | DecodeZ</title>
+  <title>在openwrt中添加perf工具 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="能不能有这样一款应用">
-<meta name="keywords" content="life">
+  <meta name="description" content="OpenWRT性能调优的必要如果仅仅是家庭网关，确实没太大必要，毕竟网络的瓶颈主要在运营商的出口那。OpenWRT之所以开始关注极致的性能，是由于OpenWRT的应用场景出现了变化。从SD-WAN和边缘计算概念，到混合云与智能网关，都催生出了在边缘接入侧uCPE或其他类似的小盒子中部署基于OpenWRT系统的必要。不同于满足家庭接入的需求，这些小盒子往往对应一间Office或公司分支的网络需求。增">
+<meta name="keywords" content="tech,openwrt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="可以预测交通路况的 APP">
-<meta property="og:url" content="https://decodezp.github.io/2018/12/06/life-traffic-prediction/index.html">
+<meta property="og:title" content="在OpenWRT中添加perf工具">
+<meta property="og:url" content="https://decodezp.github.io/2019/01/15/openwrt-perf/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="能不能有这样一款应用">
+<meta property="og:description" content="OpenWRT性能调优的必要如果仅仅是家庭网关，确实没太大必要，毕竟网络的瓶颈主要在运营商的出口那。OpenWRT之所以开始关注极致的性能，是由于OpenWRT的应用场景出现了变化。从SD-WAN和边缘计算概念，到混合云与智能网关，都催生出了在边缘接入侧uCPE或其他类似的小盒子中部署基于OpenWRT系统的必要。不同于满足家庭接入的需求，这些小盒子往往对应一间Office或公司分支的网络需求。增">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://img1.xcar.com.cn/parts/10631/12269/608_456_20141102170835548052.jpg">
-<meta property="og:updated_time" content="2018-12-06T06:45:25.440Z">
+<meta property="og:image" content="https://www.maketecheasier.com/assets/uploads/2018/12/openwrt-logo.jpg">
+<meta property="og:updated_time" content="2019-01-15T14:16:05.292Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="可以预测交通路况的 APP">
-<meta name="twitter:description" content="能不能有这样一款应用">
-<meta name="twitter:image" content="http://img1.xcar.com.cn/parts/10631/12269/608_456_20141102170835548052.jpg">
+<meta name="twitter:title" content="在OpenWRT中添加perf工具">
+<meta name="twitter:description" content="OpenWRT性能调优的必要如果仅仅是家庭网关，确实没太大必要，毕竟网络的瓶颈主要在运营商的出口那。OpenWRT之所以开始关注极致的性能，是由于OpenWRT的应用场景出现了变化。从SD-WAN和边缘计算概念，到混合云与智能网关，都催生出了在边缘接入侧uCPE或其他类似的小盒子中部署基于OpenWRT系统的必要。不同于满足家庭接入的需求，这些小盒子往往对应一间Office或公司分支的网络需求。增">
+<meta name="twitter:image" content="https://www.maketecheasier.com/assets/uploads/2018/12/openwrt-logo.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-life-traffic-prediction" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-openwrt-perf" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://img1.xcar.com.cn/parts/10631/12269/608_456_20141102170835548052.jpg" rel="gallery_cjqxu56cx000icjfyznb7d9so">
-        <img src="http://img1.xcar.com.cn/parts/10631/12269/608_456_20141102170835548052.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.maketecheasier.com/assets/uploads/2018/12/openwrt-logo.jpg" rel="gallery_cjqxu56d0000ucjfydsgl8w3l">
+        <img src="https://www.maketecheasier.com/assets/uploads/2018/12/openwrt-logo.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      可以预测交通路况的 APP
+      在OpenWRT中添加perf工具
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/12/06/life-traffic-prediction/" class="article-date">
-	  <time datetime="2018-12-06T06:41:18.000Z" itemprop="datePublished">December 6, 2018</time>
+	Posted on <a href="/2019/01/15/openwrt-perf/" class="article-date">
+	  <time datetime="2019-01-15T14:08:39.000Z" itemprop="datePublished">January 15, 2019</time>
 	</a>
 
       
@@ -232,32 +232,30 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>能不能有这样一款应用<br><a id="more"></a></p>
-<p>或者地图 APP 实现这样一个功能</p>
-<p>能通过历史路况大数据分析</p>
-<p>告诉我今天晚上几点出发上路</p>
-<p>东北四环不堵</p>
-<p>把什么机器学习人工智能数字孪生</p>
-<p>能加的都给它加上</p>
-<p>感觉又是一个割 VC 韭菜的杀手应用</p>
-<p>只要有人搭出来这个框架</p>
-<p>我愿意帮忙实现所有的业务代码</p>
-<p>因为只需要一句</p>
-<p><code>return &quot;您期望的时间不存在&quot;</code></p>
-</blockquote>
-<p><em><em>2018.12.6</em></em></p>
+        <h2 id="OpenWRT性能调优的必要"><a href="#OpenWRT性能调优的必要" class="headerlink" title="OpenWRT性能调优的必要"></a>OpenWRT性能调优的必要</h2><p>如果仅仅是家庭网关，确实没太大必要，毕竟网络的瓶颈主要在运营商的出口那。OpenWRT之所以开始关注极致的性能，是由于OpenWRT的应用场景出现了变化。从SD-WAN和边缘计算概念，到混合云与智能网关，都催生出了在边缘接入侧uCPE或其他类似的小盒子中部署基于OpenWRT系统的必要。不同于满足家庭接入的需求，这些小盒子往往对应一间Office或公司分支的网络需求。增长的网络带宽和对安全性、QoS等能力的要求都对OpenWRT的性能提出了更高的要求。</p>
+<a id="more"></a>
+<h2 id="没有perf"><a href="#没有perf" class="headerlink" title="没有perf"></a>没有<code>perf</code></h2><p>按照官网的教程，在<code>make menuconfig</code>之后就可以选择要一起编译到系统里的工具了。首先查找一下perf在哪：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/perf</span><br></pre></td></tr></table></figure>
+<p>显示在Development这个分类下面：</p>
+<p><img src="https://s2.ax1x.com/2019/01/15/FzIp5V.png" alt=""></p>
+<p>OK，在Development这个分类下面自然是找不到的，不然也没必要写这篇博客了。</p>
+<h2 id="搞一搞"><a href="#搞一搞" class="headerlink" title="搞一搞"></a>搞一搞</h2><p>那么怎么把它搞出来呢？</p>
+<p>首先进入<code>Global build settings</code>选项卡，然后找到<code>Kernel build options</code>，然后选上<code>Compile the kernel with performance events and counters</code>和<code>Compile the kernel with profiling enabled</code>，如下图：</p>
+<p><img src="https://s2.ax1x.com/2019/01/15/FzIYVI.png" alt=""></p>
+<p>再回到Development这里就可以看到perf了：</p>
+<p><img src="https://s2.ax1x.com/2019/01/15/FzIP8U.png" alt=""></p>
+<p>天下的知识分两类，一类是从这里学会了，在别处也能用的；一类是在一个地方学会了就只能在一个地方用的。本文中介绍的内容其实属于后者。但诡吊的是，掌握第二类知识往往更加费时费力。所以记录这一类的内容，主要出于节省他人时间的目的。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/life/">life</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openwrt/">openwrt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -292,19 +290,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/08/product1-huawei-fabricinsight/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          产品观察1：华为FabricInsight产品简要分析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/06/test2-cache-line-alignment/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/13/thoughts3-zhouqilv/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">测来测去2：CPU缓存读入策略</div>
+      <div class="article-nav-title">王朝兴亡周期律的本因</div>
     </a>
   
 </nav>
@@ -318,7 +307,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenWRT性能调优的必要"><span class="nav-number">1.</span> <span class="nav-text">OpenWRT性能调优的必要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有perf"><span class="nav-number">2.</span> <span class="nav-text">没有perf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搞一搞"><span class="nav-number">3.</span> <span class="nav-text">搞一搞</span></a></li></ol>
     
     </div>
   </aside>

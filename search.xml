@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>在OpenWRT中添加perf工具</title>
+      <link href="/2019/01/15/openwrt-perf/"/>
+      <url>/2019/01/15/openwrt-perf/</url>
+      
+        <content type="html"><![CDATA[<h2 id="OpenWRT性能调优的必要"><a href="#OpenWRT性能调优的必要" class="headerlink" title="OpenWRT性能调优的必要"></a>OpenWRT性能调优的必要</h2><p>如果仅仅是家庭网关，确实没太大必要，毕竟网络的瓶颈主要在运营商的出口那。OpenWRT之所以开始关注极致的性能，是由于OpenWRT的应用场景出现了变化。从SD-WAN和边缘计算概念，到混合云与智能网关，都催生出了在边缘接入侧uCPE或其他类似的小盒子中部署基于OpenWRT系统的必要。不同于满足家庭接入的需求，这些小盒子往往对应一间Office或公司分支的网络需求。增长的网络带宽和对安全性、QoS等能力的要求都对OpenWRT的性能提出了更高的要求。</p><a id="more"></a><h2 id="没有perf"><a href="#没有perf" class="headerlink" title="没有perf"></a>没有<code>perf</code></h2><p>按照官网的教程，在<code>make menuconfig</code>之后就可以选择要一起编译到系统里的工具了。首先查找一下perf在哪：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/perf</span><br></pre></td></tr></table></figure><p>显示在Development这个分类下面：</p><p><img src="https://s2.ax1x.com/2019/01/15/FzIp5V.png" alt=""></p><p>OK，在Development这个分类下面自然是找不到的，不然也没必要写这篇博客了。</p><h2 id="搞一搞"><a href="#搞一搞" class="headerlink" title="搞一搞"></a>搞一搞</h2><p>那么怎么把它搞出来呢？</p><p>首先进入<code>Global build settings</code>选项卡，然后找到<code>Kernel build options</code>，然后选上<code>Compile the kernel with performance events and counters</code>和<code>Compile the kernel with profiling enabled</code>，如下图：</p><p><img src="https://s2.ax1x.com/2019/01/15/FzIYVI.png" alt=""></p><p>再回到Development这里就可以看到perf了：</p><p><img src="https://s2.ax1x.com/2019/01/15/FzIP8U.png" alt=""></p><p>天下的知识分两类，一类是从这里学会了，在别处也能用的；一类是在一个地方学会了就只能在一个地方用的。本文中介绍的内容其实属于后者。但诡吊的是，掌握第二类知识往往更加费时费力。所以记录这一类的内容，主要出于节省他人时间的目的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> openwrt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>王朝兴亡周期律的本因</title>
       <link href="/2019/01/13/thoughts3-zhouqilv/"/>
       <url>/2019/01/13/thoughts3-zhouqilv/</url>

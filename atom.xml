@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-13T15:59:19.841Z</updated>
+  <updated>2019-01-15T14:16:05.292Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在OpenWRT中添加perf工具</title>
+    <link href="https://decodezp.github.io/2019/01/15/openwrt-perf/"/>
+    <id>https://decodezp.github.io/2019/01/15/openwrt-perf/</id>
+    <published>2019-01-15T14:08:39.000Z</published>
+    <updated>2019-01-15T14:16:05.292Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;OpenWRT性能调优的必要&quot;&gt;&lt;a href=&quot;#OpenWRT性能调优的必要&quot; class=&quot;headerlink&quot; title=&quot;OpenWRT性能调优的必要&quot;&gt;&lt;/a&gt;OpenWRT性能调优的必要&lt;/h2&gt;&lt;p&gt;如果仅仅是家庭网关，确实没太大必要，毕竟网络的瓶颈主要在运营商的出口那。OpenWRT之所以开始关注极致的性能，是由于OpenWRT的应用场景出现了变化。从SD-WAN和边缘计算概念，到混合云与智能网关，都催生出了在边缘接入侧uCPE或其他类似的小盒子中部署基于OpenWRT系统的必要。不同于满足家庭接入的需求，这些小盒子往往对应一间Office或公司分支的网络需求。增长的网络带宽和对安全性、QoS等能力的要求都对OpenWRT的性能提出了更高的要求。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="openwrt" scheme="https://decodezp.github.io/tags/openwrt/"/>
+    
+  </entry>
   
   <entry>
     <title>王朝兴亡周期律的本因</title>
@@ -499,33 +521,6 @@
     
     
       <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去2：CPU缓存读入策略</title>
-    <link href="https://decodezp.github.io/2018/12/06/test2-cache-line-alignment/"/>
-    <id>https://decodezp.github.io/2018/12/06/test2-cache-line-alignment/</id>
-    <published>2018-12-06T06:18:31.000Z</published>
-    <updated>2018-12-06T06:29:21.926Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;到底哪些数据写入了CPU缓存&quot;&gt;&lt;a href=&quot;#到底哪些数据写入了CPU缓存&quot; class=&quot;headerlink&quot; title=&quot;到底哪些数据写入了CPU缓存&quot;&gt;&lt;/a&gt;到底哪些数据写入了CPU缓存&lt;/h2&gt;&lt;p&gt;我们知道CPU会在要读写某个数据时，先将数据写入缓存。&lt;/p&gt;
-&lt;p&gt;我们也知道这个操作一般以Cache Line为操作粒度，并且Cache Line的长度一般为64Byte。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-15T14:16:05.292Z</updated>
+  <updated>2019-01-19T06:34:17.465Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>有时做梦</title>
+    <link href="https://decodezp.github.io/2019/01/19/thoughts4-dream/"/>
+    <id>https://decodezp.github.io/2019/01/19/thoughts4-dream/</id>
+    <published>2019-01-19T06:08:32.000Z</published>
+    <updated>2019-01-19T06:34:17.465Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;活得年头多起来之后，很难再明确地忆起某件事发生在哪一年。时间变得不再激烈，但往事却在交织纠缠，许多不可能的事还以为理所当然，而那些早已发生的事实却总需要确认再三。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>在OpenWRT中添加perf工具</title>
@@ -500,27 +520,6 @@
       <category term="product" scheme="https://decodezp.github.io/tags/product/"/>
     
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>可以预测交通路况的 APP</title>
-    <link href="https://decodezp.github.io/2018/12/06/life-traffic-prediction/"/>
-    <id>https://decodezp.github.io/2018/12/06/life-traffic-prediction/</id>
-    <published>2018-12-06T06:41:18.000Z</published>
-    <updated>2018-12-06T06:45:25.440Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;能不能有这样一款应用&lt;br&gt;
-    
-    </summary>
-    
-      <category term="life" scheme="https://decodezp.github.io/categories/life/"/>
-    
-    
-      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
     
   </entry>
   

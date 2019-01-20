@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-19T06:34:17.465Z</updated>
+  <updated>2019-01-20T05:42:57.137Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚12：Skylake微架构(Microarchitecture)剖析(4)</title>
+    <link href="https://decodezp.github.io/2019/01/20/quickwords12-skylake-pipeline-4/"/>
+    <id>https://decodezp.github.io/2019/01/20/quickwords12-skylake-pipeline-4/</id>
+    <published>2019-01-20T05:37:25.000Z</published>
+    <updated>2019-01-20T05:42:57.137Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;MSROM&quot;&gt;&lt;a href=&quot;#MSROM&quot; class=&quot;headerlink&quot; title=&quot;MSROM&quot;&gt;&lt;/a&gt;MSROM&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;MSROM(Micro-code sequencer ROM)就是在&lt;a href=&quot;https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/&quot;&gt;上一篇连载&lt;/a&gt;中提到的专门处理输出大于4个uop的那块类似缓存的ROM。很多文档里面也直接将其称为&lt;code&gt;MS&lt;/code&gt;，具体叫什么多需要结合上下文语境，知道是一回事就好了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我个人其实推荐读者在编写自己的文档时能注意这些名称上的“一致性”，同编写程序时给变量或函数命名时的一致性一样，这些看似没什么“技术含量”的工作，却能够极大地提高信息传达的效率，也就是提高文档或代码的可读性和可维护性。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>有时做梦</title>
@@ -76,9 +104,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   
@@ -225,9 +253,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   
@@ -494,32 +522,6 @@
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
       <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>产品观察1：华为FabricInsight产品简要分析</title>
-    <link href="https://decodezp.github.io/2018/12/08/product1-huawei-fabricinsight/"/>
-    <id>https://decodezp.github.io/2018/12/08/product1-huawei-fabricinsight/</id>
-    <published>2018-12-07T22:26:24.000Z</published>
-    <updated>2018-12-07T22:38:54.500Z</updated>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;最近机缘巧合之下接触到了华为FabricInsight这款产品，简要谈谈看法。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;只针对2018年8月份左右发布的版本。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;另外注意，在Google搜索相关资料的时候，记得要把Fabric Insight这两个单词合并在一起搜索，中间不要加空格，别问我怎么知道的。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-      <category term="product" scheme="https://decodezp.github.io/categories/tech/product/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="product" scheme="https://decodezp.github.io/tags/product/"/>
-    
-      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
     
   </entry>
   

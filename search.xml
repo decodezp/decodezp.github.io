@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚12：Skylake微架构(Microarchitecture)剖析(4)</title>
+      <link href="/2019/01/20/quickwords12-skylake-pipeline-4/"/>
+      <url>/2019/01/20/quickwords12-skylake-pipeline-4/</url>
+      
+        <content type="html"><![CDATA[<h2 id="MSROM"><a href="#MSROM" class="headerlink" title="MSROM"></a>MSROM</h2><p><img src="https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png" alt=""></p><p>MSROM(Micro-code sequencer ROM)就是在<a href="https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/">上一篇连载</a>中提到的专门处理输出大于4个uop的那块类似缓存的ROM。很多文档里面也直接将其称为<code>MS</code>，具体叫什么多需要结合上下文语境，知道是一回事就好了。</p><blockquote><p>我个人其实推荐读者在编写自己的文档时能注意这些名称上的“一致性”，同编写程序时给变量或函数命名时的一致性一样，这些看似没什么“技术含量”的工作，却能够极大地提高信息传达的效率，也就是提高文档或代码的可读性和可维护性。</p></blockquote><a id="more"></a><p>在Instruction Decoder收到一个输出要大于4个uop的指令之后，它就会将请求转发给MSROM。MSROM虽然是专门解码/查询大于4个uop的指令的组件，但它最大的传输效率是4uop/cycle。同时在它工作的时候，所有的Instruction Decoder都要处于Disable的状态。因此虽然它的工作不太需要“动脑子”，但却仍要尽量避免。</p><h2 id="Stack-Engine"><a href="#Stack-Engine" class="headerlink" title="Stack Engine"></a>Stack Engine</h2><p>Stack Engine是专门处理栈操作指令的专用组件。类似<code>PUSH</code>、<code>POP</code>、<code>CALL</code>、<code>RET</code>这样的指令都算栈操作指令。Stack Engine不算什么新鲜的黑科技，自从Pentium M时代起就已经出现在Intel的CPU中。它的主要目的是避免栈操作指令对后端资源的占用，从而为其他计算任务提供出更多的资源。为此，Stack Engine提供栈操作指令专用的加法器和其他所需的逻辑完成这一任务。</p><p>Stack Engine在Instruction Decoder之后，监控所有流出的uop，并且从中提取出栈操作指令，进而直接执行，从而减轻栈操作指令对后端资源的占用。</p><p>这也可能是为什么有些时候<code>inline</code>的函数性能还不如不<code>inline</code>的原因吧:D（不负责任猜测）</p><h2 id="Decoded-Stream-Buffer-DSB"><a href="#Decoded-Stream-Buffer-DSB" class="headerlink" title="Decoded Stream Buffer(DSB)"></a>Decoded Stream Buffer(DSB)</h2><p><img src="https://en.wikichip.org/w/images/thumb/5/58/skylake_ucache.svg/400px-skylake_ucache.svg.png" alt=""></p><h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>像DSB这种组件，首先要说明的就是它也叫uop cache或decoded icache。</p><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>无论是用Instruction Decoder还是用MSROM，终究还是要做一次“解码”的操作。但同所有Cache加速的原理一样，如果能把解码之后的结果(uop)存下来，下次再出现的时候直接使用，那么就可以显著提高解码速度，DSB就是这个目的。</p><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>DSB的组织形式是32个set，每个set有8条cache line，每条cache line最多保存6个uop。</p><p>每次cache hit可以传输最大6个uop/cycle，这6个uop最大可以对应到64 byte的前端fetch window size，并且完全不需要任何Instruction decoder参与，也没有繁琐的解码过程。在实际应用中，DSB的cache hit rate在80%或以上。</p><h3 id="与icache的关系"><a href="#与icache的关系" class="headerlink" title="与icache的关系"></a>与icache的关系</h3><p>CPU的icache一般存储的是最原始的从内存里读进来的程序的汇编指令(marco instruction)。而DSB或者uop cache虽然也是存instruction的cache，但如前所述，它存的是已经解码好的uop，所以这玩意有时候又被称为“decoded icache”。当然了，这些uop都是CPU的icache中的指令解码之后得到的。</p><h3 id="与MSROM的关系"><a href="#与MSROM的关系" class="headerlink" title="与MSROM的关系"></a>与MSROM的关系</h3><p>输出大于4个uop的指令依然只能由MSROM解码。DSB保存的也是那些小于等于4个uop指令的uop。</p><h2 id="MITE-Path和DSB-Path"><a href="#MITE-Path和DSB-Path" class="headerlink" title="MITE Path和DSB Path"></a>MITE Path和DSB Path</h2><p>这两个概念主要用于区分最终需要执行的uop是通过什么方式来的。在上一节<code>Decoded Stream Buffer</code>之前的所有内容，都算是MITE Path。MITE是(Micro-instruction Translation Engine)的缩写，同时它在有些文档里也被称作legacy decode pipeline或legacy path。这条线路上过来的uop都是从marco instruction一步一步解码来的。</p><p>DSB path就是直接从DSB那条道上过来的uop。当CPU需要在MITE Path、DSB Path以及MSROM之间切换(switch)以便取得所需的uop时，需要花费一定的CPU cycle完成这一工作。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>有时做梦</title>
       <link href="/2019/01/19/thoughts4-dream/"/>
       <url>/2019/01/19/thoughts4-dream/</url>
@@ -67,9 +94,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -225,9 +252,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -699,9 +726,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
             <tag> cloud </tag>
             

@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>刚日读经，柔日读史 | DecodeZ</title>
+  <title>几句话说清楚12：skylake微架构(microarchitecture)剖析(4) | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
-<meta name="keywords" content="thoughts">
+  <meta name="description" content="MSROM MSROM(Micro-code sequencer ROM)就是在上一篇连载中提到的专门处理输出大于4个uop的那块类似缓存的ROM。很多文档里面也直接将其称为MS，具体叫什么多需要结合上下文语境，知道是一回事就好了。  我个人其实推荐读者在编写自己的文档时能注意这些名称上的“一致性”，同编写程序时给变量或函数命名时的一致性一样，这些看似没什么“技术含量”的工作，却能够极大地提高信息">
+<meta name="keywords" content="tech,hardware,CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="刚日读经，柔日读史">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/18/gangrirouri/index.html">
+<meta property="og:title" content="几句话说清楚12：Skylake微架构(Microarchitecture)剖析(4)">
+<meta property="og:url" content="https://decodezp.github.io/2019/01/20/quickwords12-skylake-pipeline-4/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
+<meta property="og:description" content="MSROM MSROM(Micro-code sequencer ROM)就是在上一篇连载中提到的专门处理输出大于4个uop的那块类似缓存的ROM。很多文档里面也直接将其称为MS，具体叫什么多需要结合上下文语境，知道是一回事就好了。  我个人其实推荐读者在编写自己的文档时能注意这些名称上的“一致性”，同编写程序时给变量或函数命名时的一致性一样，这些看似没什么“技术含量”的工作，却能够极大地提高信息">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg">
-<meta property="og:updated_time" content="2018-12-16T10:10:55.644Z">
+<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta property="og:updated_time" content="2019-01-20T05:42:57.137Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刚日读经，柔日读史">
-<meta name="twitter:description" content="在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。">
-<meta name="twitter:image" content="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg">
+<meta name="twitter:title" content="几句话说清楚12：Skylake微架构(Microarchitecture)剖析(4)">
+<meta name="twitter:description" content="MSROM MSROM(Micro-code sequencer ROM)就是在上一篇连载中提到的专门处理输出大于4个uop的那块类似缓存的ROM。很多文档里面也直接将其称为MS，具体叫什么多需要结合上下文语境，知道是一回事就好了。  我个人其实推荐读者在编写自己的文档时能注意这些名称上的“一致性”，同编写程序时给变量或函数命名时的一致性一样，这些看似没什么“技术含量”的工作，却能够极大地提高信息">
+<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-gangrirouri" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords12-skylake-pipeline-4" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" rel="gallery_cjr4h1nwx003b4qfyakcudxon">
-        <img src="https://i.loli.net/2018/11/18/5bf14c7be4877.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_cjr4h1nw700154qfy4kqgo5oz">
+        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      刚日读经，柔日读史
+      几句话说清楚12：Skylake微架构(Microarchitecture)剖析(4)
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/18/gangrirouri/" class="article-date">
-	  <time datetime="2018-11-18T11:27:23.000Z" itemprop="datePublished">November 18, 2018</time>
+	Posted on <a href="/2019/01/20/quickwords12-skylake-pipeline-4/" class="article-date">
+	  <time datetime="2019-01-20T05:37:25.000Z" itemprop="datePublished">January 20, 2019</time>
 	</a>
 
       
@@ -232,24 +232,36 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在不知道什么时候，我们似乎被灌输了一种互补好，什么都是互补好的认知。<br>资源要互补，团队要互补，思想要互补，连看个书也得掐着日子互补。</p>
-<a id="more"></a>
-<p>刚日读经，柔日读史，“刚日”就是阳数的日子，“柔日”就是阴数的日子。因为阴阳要互补，所以刚日要读致虚守弱恒常静笃的经；柔日便要读变动不居周行不殆的史。<br>为此还有各位理论导师的笺注，比如南怀瑾：</p>
+        <h2 id="MSROM"><a href="#MSROM" class="headerlink" title="MSROM"></a>MSROM</h2><p><img src="https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png" alt=""></p>
+<p>MSROM(Micro-code sequencer ROM)就是在<a href="https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/">上一篇连载</a>中提到的专门处理输出大于4个uop的那块类似缓存的ROM。很多文档里面也直接将其称为<code>MS</code>，具体叫什么多需要结合上下文语境，知道是一回事就好了。</p>
 <blockquote>
-<p>亢阳激扬，刚也；卑幽忧昧，柔也。经主常，史主变。故刚日读经，理气养生也；柔日读史，生情造意也。有生有息，合乎天理，何乐而不为哉！</p>
+<p>我个人其实推荐读者在编写自己的文档时能注意这些名称上的“一致性”，同编写程序时给变量或函数命名时的一致性一样，这些看似没什么“技术含量”的工作，却能够极大地提高信息传达的效率，也就是提高文档或代码的可读性和可维护性。</p>
 </blockquote>
-<p>感觉并不如我总结得那般言简意赅提要钩玄。<br>如果说这种“互补”确实在指导我们的行为，那也无可厚非。而实际上我们日常行事，却和这种思想观念有很大出入。<br>饮食上要以形补形，想要强要壮，自然是找来更强更壮的，绝对不会找短小“互补”的食材。<br>婚嫁上要强强联合，至少至少也要找个“门当户对”的。至于相互互补的情节，不是出现在少儿童话故事里，就是出现在成人童话故事里。<br>嘴里说的是阴阳互补，做的却是采阴补阳的勾当。<br>而最重要的是，没有人觉得有问题。我们妄自接受了这些观念，很少去问这些到底是什么。只是在需要的场合，程式化地提出这一观念。<br>什么是互补，什么是阴，什么是阳，什么是刚，什么是柔。如果我脑中只是一些不明来源，未经考究过的观念，那么什么是我自己。<br>更诡吊的是，人与人之间最大的仇恨与惨剧，都滥觞于这种我们根本自己也没搞清楚的观念。<br>不要说“互补”，即便是稍有不同，那便是异端邪说、是外族、是异教徒、是政治犯；那便会有党争、门户、正宗、政治清洗和宗教审判。<br>信不知凭何而信，恨不知因何而恨。被左右的观念所左右，被迷惑的语言所迷惑，操纵感官输出的表象又被表象所操纵。<br>无论刚日柔日，翻开经史，里面都是这样的故事。只要稍微读几页就会发现，与先前想的正好相反，教给你变化的其实是经，而教给你不变的是史。<br>所以这句话并不是要教给你刚柔相济之道，而是提醒你认清人心之妄作，行为之颠倒，以及，追求真实的难能可贵。<br>谨录于上，念念不忘。</p>
+<a id="more"></a>
+<p>在Instruction Decoder收到一个输出要大于4个uop的指令之后，它就会将请求转发给MSROM。MSROM虽然是专门解码/查询大于4个uop的指令的组件，但它最大的传输效率是4uop/cycle。同时在它工作的时候，所有的Instruction Decoder都要处于Disable的状态。因此虽然它的工作不太需要“动脑子”，但却仍要尽量避免。</p>
+<h2 id="Stack-Engine"><a href="#Stack-Engine" class="headerlink" title="Stack Engine"></a>Stack Engine</h2><p>Stack Engine是专门处理栈操作指令的专用组件。类似<code>PUSH</code>、<code>POP</code>、<code>CALL</code>、<code>RET</code>这样的指令都算栈操作指令。Stack Engine不算什么新鲜的黑科技，自从Pentium M时代起就已经出现在Intel的CPU中。它的主要目的是避免栈操作指令对后端资源的占用，从而为其他计算任务提供出更多的资源。为此，Stack Engine提供栈操作指令专用的加法器和其他所需的逻辑完成这一任务。</p>
+<p>Stack Engine在Instruction Decoder之后，监控所有流出的uop，并且从中提取出栈操作指令，进而直接执行，从而减轻栈操作指令对后端资源的占用。</p>
+<p>这也可能是为什么有些时候<code>inline</code>的函数性能还不如不<code>inline</code>的原因吧:D（不负责任猜测）</p>
+<h2 id="Decoded-Stream-Buffer-DSB"><a href="#Decoded-Stream-Buffer-DSB" class="headerlink" title="Decoded Stream Buffer(DSB)"></a>Decoded Stream Buffer(DSB)</h2><p><img src="https://en.wikichip.org/w/images/thumb/5/58/skylake_ucache.svg/400px-skylake_ucache.svg.png" alt=""></p>
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>像DSB这种组件，首先要说明的就是它也叫uop cache或decoded icache。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>无论是用Instruction Decoder还是用MSROM，终究还是要做一次“解码”的操作。但同所有Cache加速的原理一样，如果能把解码之后的结果(uop)存下来，下次再出现的时候直接使用，那么就可以显著提高解码速度，DSB就是这个目的。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>DSB的组织形式是32个set，每个set有8条cache line，每条cache line最多保存6个uop。</p>
+<p>每次cache hit可以传输最大6个uop/cycle，这6个uop最大可以对应到64 byte的前端fetch window size，并且完全不需要任何Instruction decoder参与，也没有繁琐的解码过程。在实际应用中，DSB的cache hit rate在80%或以上。</p>
+<h3 id="与icache的关系"><a href="#与icache的关系" class="headerlink" title="与icache的关系"></a>与icache的关系</h3><p>CPU的icache一般存储的是最原始的从内存里读进来的程序的汇编指令(marco instruction)。而DSB或者uop cache虽然也是存instruction的cache，但如前所述，它存的是已经解码好的uop，所以这玩意有时候又被称为“decoded icache”。当然了，这些uop都是CPU的icache中的指令解码之后得到的。</p>
+<h3 id="与MSROM的关系"><a href="#与MSROM的关系" class="headerlink" title="与MSROM的关系"></a>与MSROM的关系</h3><p>输出大于4个uop的指令依然只能由MSROM解码。DSB保存的也是那些小于等于4个uop指令的uop。</p>
+<h2 id="MITE-Path和DSB-Path"><a href="#MITE-Path和DSB-Path" class="headerlink" title="MITE Path和DSB Path"></a>MITE Path和DSB Path</h2><p>这两个概念主要用于区分最终需要执行的uop是通过什么方式来的。在上一节<code>Decoded Stream Buffer</code>之前的所有内容，都算是MITE Path。MITE是(Micro-instruction Translation Engine)的缩写，同时它在有些文档里也被称作legacy decode pipeline或legacy path。这条线路上过来的uop都是从marco instruction一步一步解码来的。</p>
+<p>DSB path就是直接从DSB那条道上过来的uop。当CPU需要在MITE Path、DSB Path以及MSROM之间切换(switch)以便取得所需的uop时，需要花费一定的CPU cycle完成这一工作。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -284,19 +296,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/19/topcmd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          top命令使用方法补遗
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/17/duckduckgo/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/19/thoughts4-dream/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">如何在偷偷搜索关键字后避免令人尴尬的广告</div>
+      <div class="article-nav-title">有时做梦</div>
     </a>
   
 </nav>
@@ -310,7 +313,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MSROM"><span class="nav-number">1.</span> <span class="nav-text">MSROM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack-Engine"><span class="nav-number">2.</span> <span class="nav-text">Stack Engine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decoded-Stream-Buffer-DSB"><span class="nav-number">3.</span> <span class="nav-text">Decoded Stream Buffer(DSB)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#别名"><span class="nav-number">3.1.</span> <span class="nav-text">别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">3.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">3.3.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与icache的关系"><span class="nav-number">3.4.</span> <span class="nav-text">与icache的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与MSROM的关系"><span class="nav-number">3.5.</span> <span class="nav-text">与MSROM的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MITE-Path和DSB-Path"><span class="nav-number">4.</span> <span class="nav-text">MITE Path和DSB Path</span></a></li></ol>
     
     </div>
   </aside>

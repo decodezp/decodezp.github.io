@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-20T05:42:57.137Z</updated>
+  <updated>2019-01-22T13:21:27.637Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去5：Linux网络性能调优方法</title>
+    <link href="https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/"/>
+    <id>https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/</id>
+    <published>2019-01-22T13:06:06.000Z</published>
+    <updated>2019-01-22T13:21:27.637Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;换换口味&quot;&gt;&lt;a href=&quot;#换换口味&quot; class=&quot;headerlink&quot; title=&quot;换换口味&quot;&gt;&lt;/a&gt;换换口味&lt;/h2&gt;&lt;p&gt;老搞DPDK的人有一个毛病就是怎么也看不上内核网络，又是中断又是拷贝的，实在没有一脚地板油CPU直接100%炸街来得爽快。另外作为一个软件性能优化的“硬核”玩家，是很看不上内核这种改改参数，调调设置的玩法的。不过…既然自己主动跳了个大坑，该调内核性能的时候还是要调的…所以今天就换换口味，看看在Linux下通过配置调优网络性能怎么搞。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚12：Skylake微架构(Microarchitecture)剖析(4)</title>
@@ -104,9 +130,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   
@@ -141,7 +167,7 @@
     <link href="https://decodezp.github.io/2019/01/10/quickwords10-skylake-pipeline-2/"/>
     <id>https://decodezp.github.io/2019/01/10/quickwords10-skylake-pipeline-2/</id>
     <published>2019-01-10T09:42:40.000Z</published>
-    <updated>2019-01-10T09:44:43.961Z</updated>
+    <updated>2019-01-20T05:42:58.966Z</updated>
     
     <summary type="html">
     
@@ -253,9 +279,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   
@@ -495,33 +521,6 @@
       <category term="English" scheme="https://decodezp.github.io/tags/English/"/>
     
       <category term="Presentation" scheme="https://decodezp.github.io/tags/Presentation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚4：什么是Pointer Aliasing</title>
-    <link href="https://decodezp.github.io/2018/12/11/quickwords4-pointer-aliasing/"/>
-    <id>https://decodezp.github.io/2018/12/11/quickwords4-pointer-aliasing/</id>
-    <published>2018-12-11T11:33:46.000Z</published>
-    <updated>2018-12-11T11:45:43.584Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;指向同一地址的两个相同类型的指针&quot;&gt;&lt;a href=&quot;#指向同一地址的两个相同类型的指针&quot; class=&quot;headerlink&quot; title=&quot;指向同一地址的两个相同类型的指针&quot;&gt;&lt;/a&gt;指向同一地址的两个相同类型的指针&lt;/h2&gt;&lt;p&gt;&lt;code&gt;aliasing&lt;/code&gt;本身是一个信号处理方面的概念。是指在信号采样过程中，不同的信号不再能相互区分的现象。&lt;/p&gt;
-&lt;p&gt;如下图所示的波纹现象，相对于拍摄的采样频率（横纵像素分辨率），墙砖缝隙变化的频率要大于采样频率。或者换句话说，多条墙砖缝隙需要挤在一个像素里面。&lt;br&gt;&lt;img src=&quot;https://svi.nl/wikiimg/StFargeaux_kasteel_buiten1_aliased.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
   </entry>
   

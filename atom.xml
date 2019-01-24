@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-22T13:21:27.637Z</updated>
+  <updated>2019-01-24T10:36:53.721Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去6：Linux网络性能调优方法（补遗）</title>
+    <link href="https://decodezp.github.io/2019/01/24/test6-linux-network-performance-optimization-2/"/>
+    <id>https://decodezp.github.io/2019/01/24/test6-linux-network-performance-optimization-2/</id>
+    <published>2019-01-24T10:35:31.000Z</published>
+    <updated>2019-01-24T10:36:53.721Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;没提到的&quot;&gt;&lt;a href=&quot;#没提到的&quot; class=&quot;headerlink&quot; title=&quot;没提到的&quot;&gt;&lt;/a&gt;没提到的&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/&quot;&gt;上一篇&lt;/a&gt;内容中介绍了一些Linux网络协议栈的调优方法，但遗漏了一些可以发挥重要作用的方法，在这一篇中补充一下。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去5：Linux网络性能调优方法</title>
@@ -491,36 +517,6 @@
       <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="memory" scheme="https://decodezp.github.io/tags/memory/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>5分钟经典英文技术演讲1：如何快速掌握新技术 - Kathy Sierra</title>
-    <link href="https://decodezp.github.io/2018/12/12/eng-talk1-fast-learn/"/>
-    <id>https://decodezp.github.io/2018/12/12/eng-talk1-fast-learn/</id>
-    <published>2018-12-12T14:51:14.000Z</published>
-    <updated>2018-12-12T15:09:49.362Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;一个人的能力上限很大程度上取决于他获取信息的能力。&lt;/p&gt;
-&lt;p&gt;而能力增长的速度与获取信息的质量正相关。&lt;/p&gt;
-&lt;p&gt;不可否认，大量优质的技术内容都基于英文。“5分钟经典英文技术演讲”专门撷取国外最有价值的纯英文技术演讲，以最精炼的形式将信息传达给国内的技术同侪，绕过网络政策和语言的障碍，实现中西方技术世界无壁垒的信息同步。&lt;/p&gt;
-&lt;p&gt;最新内容将发布于DecodeZ: decodezp.github.io&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Fluent-如何快速掌握新技术&quot;&gt;&lt;a href=&quot;#Fluent-如何快速掌握新技术&quot; class=&quot;headerlink&quot; title=&quot;Fluent: 如何快速掌握新技术&quot;&gt;&lt;/a&gt;Fluent: 如何快速掌握新技术&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=FKTxC9pl-WM&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原视频&lt;/a&gt;&lt;br&gt;演讲者: Kathy Sierra&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;摘要：无论是谁，以有限的精力来面对层出不穷的新技术挑战都是不够的。你需要学会一套方法论来帮助你快速习得新的技能。而快速学习的秘诀却还不止这些…&lt;br&gt;
-    
-    </summary>
-    
-      <category term="ENG_talk" scheme="https://decodezp.github.io/categories/ENG-talk/"/>
-    
-    
-      <category term="English" scheme="https://decodezp.github.io/tags/English/"/>
-    
-      <category term="Presentation" scheme="https://decodezp.github.io/tags/Presentation/"/>
     
   </entry>
   

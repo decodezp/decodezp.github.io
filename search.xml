@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>测来测去6：Linux网络性能调优方法（补遗）</title>
+      <link href="/2019/01/24/test6-linux-network-performance-optimization-2/"/>
+      <url>/2019/01/24/test6-linux-network-performance-optimization-2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="没提到的"><a href="#没提到的" class="headerlink" title="没提到的"></a>没提到的</h2><p><a href="https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/">上一篇</a>内容中介绍了一些Linux网络协议栈的调优方法，但遗漏了一些可以发挥重要作用的方法，在这一篇中补充一下。<br><a id="more"></a></p><h2 id="net-rx-action-budget"><a href="#net-rx-action-budget" class="headerlink" title="net_rx_action budget"></a><code>net_rx_action</code> budget</h2><p>这个参数可以决定NAPI可以占用多少CPU的处理能力，可以调到900</p><p><code>sysctl -w net.core.netdev_budget=900</code></p><h2 id="netdev-max-backlog"><a href="#netdev-max-backlog" class="headerlink" title="netdev_max_backlog"></a><code>netdev_max_backlog</code></h2><p><code>sysctl -w net.core.netdev_max_backlog=65535</code></p><h2 id="dev-weight"><a href="#dev-weight" class="headerlink" title="dev_weight"></a><code>dev_weight</code></h2><p><code>sysctl -w net.core.dev_weight=1024</code><br>这个参数在实际测试中影响也比较大</p><h2 id="ip-early-demux"><a href="#ip-early-demux" class="headerlink" title="ip_early_demux"></a><code>ip_early_demux</code></h2><p><code>sysctl -w net.ipv4.ip_early_demux=0</code><br>这个参数根据实际测试结果调整。改为0或1。</p><h2 id="关于RPS"><a href="#关于RPS" class="headerlink" title="关于RPS"></a>关于RPS</h2><p>在前面提到需要关闭RPS功能，但在实际测试中发现设定相应的CPU Mask还是能对性能有比较大的提升，具体原因在进一步挖掘的过程中，当前需要实际测试找出最适合的配置方法。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> network </tag>
+            
+            <tag> performance </tag>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去5：Linux网络性能调优方法</title>
       <link href="/2019/01/22/test5-linux-network-performance-optimization/"/>
       <url>/2019/01/22/test5-linux-network-performance-optimization/</url>

@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚13：什么是Top-Down性能分析方法</title>
+      <link href="/2019/01/27/quickwords13-tma/"/>
+      <url>/2019/01/27/quickwords13-tma/</url>
+      
+        <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>前几篇连续介绍了一些Skylake微架构的内容（还没有结束，还会继续填坑），主要目的并不是要对读者开启名词或者概念的Flood攻击，而是为了方便读者以后可以“有理有据”地进行软件的性能优化。<br><a id="more"></a></p><p>但不能否认的是，CPU微架构的学习还是有比较陡峭的曲线的。是不是一定要非常精通微架构之后，才能进行软件的性能优化呢？从我自己的经验来说，并非如此。</p><p>性能优化虽然是一门专业的技术，但它和其他所有技术一样，也有自己的整体思想和方法论。首先对其方法论有一个大概的认识之后，再去精研细节，在我看来是一个比较有效率的学习方法。</p><p>《三国志》诸葛亮传中曾载：</p><blockquote><p>亮在荆州，以建安初与颍川石广元、徐元直、汝南孟公威等俱游学。三人务于精熟，而亮独观其大略。</p></blockquote><p>先贤轨物范世在前，古今一辙，今日正当观其荦荦大端者。</p><h2 id="Top-down-Microarchitecture-Analysis-TMA"><a href="#Top-down-Microarchitecture-Analysis-TMA" class="headerlink" title="Top-down Microarchitecture Analysis(TMA)"></a>Top-down Microarchitecture Analysis(TMA)</h2><p>Top-down可以翻译成“自顶向下”，经常做一些有可有无的PPT架构设计的同学应该对这类词汇比较熟悉。当然也有一些“分析方法”喜欢用这个词。</p><p>TMA就是一套基于CPU微架构的“自顶向下”分析的方法。我对这个词的理解倒和具体的方位无关，而是紧紧抓住目标的一种思维方式。</p><p>这里就不得不提一下我的初中物理老师，她教给我们的一种解题方法似乎就可以概括为“自顶向下”，简单在这里介绍一下，希望这一类比能在后面叙述时帮助理解。</p><p>比如有一道很复杂的题目，题干很长，但最终的问题就是求密度。那么前面的东西可以先忽略，仅仅针对“密度”来说，那么就需要知道质量和体积。假设体积是已知的，那么问题“转化”为如何知道质量。质量等于匀速运动时的滑动摩擦力除以滑动摩擦系数。在题干中找出这些条件，或继续进行类似的推导。虽然最终在列公式时需要“反向”求得最终的密度，但思考方式是先从密度开始的。</p><p>基本上就是这个道理。同如何“求得密度”类似，TMA解决的问题就是如何“求得瓶颈”。</p><p>那么为了求得瓶颈，其实就是首先看CPU流水线总体上有多少时间没有真正在处理计算任务（aka流水线利用率）。继而，观察没有处理计算任务，是因为各方面没有协调好导致流水线空转(Stalled)还是虽然没有空转(Non-stalled)但却没有进行实际的计算（e.g.分支预测失败aka指令没有最终retired）。</p><p><img src="https://software.intel.com/sites/default/files/did_feeds_images/6E3B86B7-8072-4E6A-9E27-0CD21446ACB1/6E3B86B7-8072-4E6A-9E27-0CD21446ACB1-imageId=9681762B-D017-4429-B60E-E66D0E98B6AB.gif" alt=""></p><p>然后针对空转，看看是前端的原因还是后端的原因。然后再具体看是前/后端哪一个具体项目导致的空转，进而定位系统瓶颈。当然最终还是依赖PMU counter提供的基础数据。</p><h2 id="Pipeline-slots"><a href="#Pipeline-slots" class="headerlink" title="Pipeline slots"></a>Pipeline slots</h2><p>Pipeline slots是一个经常出现的概念。它是流水线利用率的一种抽象表达，并没有实际的硬件或软件对应于这一概念。这里尝试解释一下：想象一条组装汽车的流水线，一开始时，很多汽车外壳被“挂”在了一个钩子上面，这个钩子其实就可以类比为一个Pipeline slots，只不过这个slot里装的是一条指令，uop，确切地说。</p><p>这些汽车壳子在以一个均匀的速度往前走，进而在不同的流水线阶段完成不同的工作，最后组装成一台完整的汽车。向前走的速度可以类比为CPU的Clock cycle，最终下线出厂就是指令retired。只不过有可能这些slot有些挂上了汽车外壳，有些还是空的（指令没取到），有些挂的，是没有用的废品壳子（分支预测失败）。</p><p>在上图中，<code>Uop allocate</code>其实就是说Uop有没有挂到Pipeline slot中的意思。</p><h2 id="分析指标（Metric）"><a href="#分析指标（Metric）" class="headerlink" title="分析指标（Metric）"></a>分析指标（Metric）</h2><p>OK，有了总体的方法之后，下面的工作就是如何再量化一下了。比如如何确定流水线的利用率，如何确定是前端Stall还是后端Stall，判断的依据和计算方法，设定的阈值等等。这些不是本文的重点，但在后续介绍完Skylake微架构后详细介绍。心急的同学可以先下载Intel总结好的<a href="https://share.weiyun.com/5jNsb6o" target="_blank" rel="noopener">Excel表格</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去6：Linux网络性能调优方法（补遗）</title>
       <link href="/2019/01/24/test6-linux-network-performance-optimization-2/"/>
       <url>/2019/01/24/test6-linux-network-performance-optimization-2/</url>

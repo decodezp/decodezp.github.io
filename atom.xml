@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-24T10:36:53.721Z</updated>
+  <updated>2019-01-27T13:29:03.211Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚13：什么是Top-Down性能分析方法</title>
+    <link href="https://decodezp.github.io/2019/01/27/quickwords13-tma/"/>
+    <id>https://decodezp.github.io/2019/01/27/quickwords13-tma/</id>
+    <published>2019-01-27T13:17:45.000Z</published>
+    <updated>2019-01-27T13:29:03.211Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;前几篇连续介绍了一些Skylake微架构的内容（还没有结束，还会继续填坑），主要目的并不是要对读者开启名词或者概念的Flood攻击，而是为了方便读者以后可以“有理有据”地进行软件的性能优化。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去6：Linux网络性能调优方法（补遗）</title>
@@ -73,7 +97,7 @@
     <link href="https://decodezp.github.io/2019/01/20/quickwords12-skylake-pipeline-4/"/>
     <id>https://decodezp.github.io/2019/01/20/quickwords12-skylake-pipeline-4/</id>
     <published>2019-01-20T05:37:25.000Z</published>
-    <updated>2019-01-20T05:42:57.137Z</updated>
+    <updated>2019-01-27T13:29:05.176Z</updated>
     
     <summary type="html">
     
@@ -488,35 +512,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚5：影响服务器内存性能的硬件知识</title>
-    <link href="https://decodezp.github.io/2018/12/13/quickwords5-server-memory/"/>
-    <id>https://decodezp.github.io/2018/12/13/quickwords5-server-memory/</id>
-    <published>2018-12-13T14:20:51.000Z</published>
-    <updated>2018-12-13T14:38:25.712Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;发挥内存条理财的最大收益率&quot;&gt;&lt;a href=&quot;#发挥内存条理财的最大收益率&quot; class=&quot;headerlink&quot; title=&quot;发挥内存条理财的最大收益率&quot;&gt;&lt;/a&gt;发挥内存条理财的最大收益率&lt;/h2&gt;&lt;p&gt;内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。&lt;/p&gt;
-&lt;p&gt;在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的&lt;code&gt;Memory Controller&lt;/code&gt;就需要去内存中读取内容。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
-      <category term="memory" scheme="https://decodezp.github.io/tags/memory/"/>
     
   </entry>
   

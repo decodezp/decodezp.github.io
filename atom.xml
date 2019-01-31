@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-01-27T13:29:03.211Z</updated>
+  <updated>2019-01-31T12:49:20.096Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>程序员学英语的几点实用经验</title>
+    <link href="https://decodezp.github.io/2019/01/31/how-to-learn-english/"/>
+    <id>https://decodezp.github.io/2019/01/31/how-to-learn-english/</id>
+    <published>2019-01-31T12:47:03.000Z</published>
+    <updated>2019-01-31T12:49:20.096Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习英语当然要靠不断的练习，但同样的练习时间往往效果却大相径庭。以下是我结合自己的经历总结的一些经验和方法，希望能帮助大家提高学习英语的效率。&lt;/p&gt;
+&lt;h2 id=&quot;Rubbish-in-rubbish-out&quot;&gt;&lt;a href=&quot;#Rubbish-in-rubbish-out&quot; class=&quot;headerlink&quot; title=&quot;Rubbish in, rubbish out&quot;&gt;&lt;/a&gt;Rubbish in, rubbish out&lt;/h2&gt;&lt;p&gt;把自己想象成一个处理英文的黑盒，输入就是听读，输出就是说写。和人工智能训练模型需要优质的标签数据一样，学习英语也需要优质的输入才能达到良好的学习效果。&lt;/p&gt;
+&lt;p&gt;在程序员的领域，最直接的优质的英文材料就是经典的英文原版技术书籍。编写这些书籍的大师不但是技术领域的巨擘，同时也是操纵语言的大师，他们的书籍往往最是简洁明快，逻辑清晰。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚13：什么是Top-Down性能分析方法</title>
@@ -491,27 +509,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谁不是在像CPU一样活着</title>
-    <link href="https://decodezp.github.io/2018/12/16/cpulized-life/"/>
-    <id>https://decodezp.github.io/2018/12/16/cpulized-life/</id>
-    <published>2018-12-16T10:06:40.000Z</published>
-    <updated>2018-12-16T10:12:04.758Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;上一次兴奋到浑身发热，还是把赛扬300A超频到450兆赫的时候。身体如摩尔定律般长高，觉得距离1GHz只差一罐液氮，心里装着只有一心一意才能装下的事情。&lt;/p&gt;
-&lt;p&gt;记得那时看到一篇报道，英特尔说“到2011年的时候，我们都能用上10GHz的电脑”。十几岁的你笑这家美国公司野心不大，现在你说出这件事，只是想给大家讲个笑话。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

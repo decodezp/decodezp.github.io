@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>测来测去1：dpdk no-huge模式性能对比测试 | DecodeZ</title>
+  <title>程序员学英语的几点实用经验 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,19 @@
   
   
   
-  <meta name="description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
-<meta name="keywords" content="tech,dpdk,test">
+  <meta name="description" content="学习英语当然要靠不断的练习，但同样的练习时间往往效果却大相径庭。以下是我结合自己的经历总结的一些经验和方法，希望能帮助大家提高学习英语的效率。 Rubbish in, rubbish out把自己想象成一个处理英文的黑盒，输入就是听读，输出就是说写。和人工智能训练模型需要优质的标签数据一样，学习英语也需要优质的输入才能达到良好的学习效果。 在程序员的领域，最直接的优质的英文材料就是经典的英文原版技">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测来测去1：DPDK no-huge模式性能对比测试">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/29/test1-dpdk-no-huge/index.html">
+<meta property="og:title" content="程序员学英语的几点实用经验">
+<meta property="og:url" content="https://decodezp.github.io/2019/01/31/how-to-learn-english/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
+<meta property="og:description" content="学习英语当然要靠不断的练习，但同样的练习时间往往效果却大相径庭。以下是我结合自己的经历总结的一些经验和方法，希望能帮助大家提高学习英语的效率。 Rubbish in, rubbish out把自己想象成一个处理英文的黑盒，输入就是听读，输出就是说写。和人工智能训练模型需要优质的标签数据一样，学习英语也需要优质的输入才能达到良好的学习效果。 在程序员的领域，最直接的优质的英文材料就是经典的英文原版技">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg">
-<meta property="og:updated_time" content="2018-11-29T05:30:48.738Z">
+<meta property="og:image" content="http://i2.sinaimg.cn/edu/2012/0711/U3834P42DT20120711164348.jpg">
+<meta property="og:updated_time" content="2019-01-31T12:49:20.096Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测来测去1：DPDK no-huge模式性能对比测试">
-<meta name="twitter:description" content="no-hugeDPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。 那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。">
-<meta name="twitter:image" content="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg">
+<meta name="twitter:title" content="程序员学英语的几点实用经验">
+<meta name="twitter:description" content="学习英语当然要靠不断的练习，但同样的练习时间往往效果却大相径庭。以下是我结合自己的经历总结的一些经验和方法，希望能帮助大家提高学习英语的效率。 Rubbish in, rubbish out把自己想象成一个处理英文的黑盒，输入就是听读，输出就是说写。和人工智能训练模型需要优质的标签数据一样，学习英语也需要优质的输入才能达到良好的学习效果。 在程序员的领域，最直接的优质的英文材料就是经典的英文原版技">
+<meta name="twitter:image" content="http://i2.sinaimg.cn/edu/2012/0711/U3834P42DT20120711164348.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +193,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-test1-dpdk-no-huge" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-how-to-learn-english" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg" rel="gallery_cjrkm93gf002hhtfyal54gkez">
-        <img src="https://pbs.twimg.com/profile_images/847934144243945473/Hpd83-Cr_400x400.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://i2.sinaimg.cn/edu/2012/0711/U3834P42DT20120711164348.jpg" rel="gallery_cjrkm93fr000ohtfyufjnbloe">
+        <img src="http://i2.sinaimg.cn/edu/2012/0711/U3834P42DT20120711164348.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +211,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      测来测去1：DPDK no-huge模式性能对比测试
+      程序员学英语的几点实用经验
     </h1>
   
 
@@ -220,8 +219,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/29/test1-dpdk-no-huge/" class="article-date">
-	  <time datetime="2018-11-29T05:20:58.000Z" itemprop="datePublished">November 29, 2018</time>
+	Posted on <a href="/2019/01/31/how-to-learn-english/" class="article-date">
+	  <time datetime="2019-01-31T12:47:03.000Z" itemprop="datePublished">January 31, 2019</time>
 	</a>
 
       
@@ -232,25 +231,33 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="no-huge"><a href="#no-huge" class="headerlink" title="no-huge"></a>no-huge</h2><p>DPDK使用大页内存作为性能优化的一个手段。但大页内存在云计算等环境下可能会出现内存资源浪费的情况，作为售卖资源的云服务商，希望能找到更充分的内存资源利用的方法。在此背景下，DPDK引入了no-huge机制，即不使用hugepage，从而解放更多的系统资源。</p>
-<p>那么这种配置下DPDK性能会下降多少呢？还是需要实际定量测试一下。<br><a id="more"></a></p>
-<h2 id="测试平台"><a href="#测试平台" class="headerlink" title="测试平台"></a>测试平台</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">lscpu</span><br><span class="line">Architecture:          x86_64</span><br><span class="line">CPU op-mode(s):        32-bit, 64-bit</span><br><span class="line">Byte Order:            Little Endian</span><br><span class="line">CPU(s):                88</span><br><span class="line">On-line CPU(s) list:   0-87</span><br><span class="line">Thread(s) per core:    2</span><br><span class="line">Core(s) per socket:    22</span><br><span class="line">Socket(s):             2</span><br><span class="line">NUMA node(s):          2</span><br><span class="line">Vendor ID:             GenuineIntel</span><br><span class="line">CPU family:            6</span><br><span class="line">Model:                 85</span><br><span class="line">Model name:            Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz</span><br><span class="line">Stepping:              4</span><br><span class="line">CPU MHz:               2100.393</span><br><span class="line">BogoMIPS:              4201.72</span><br><span class="line">Virtualization:        VT-x</span><br><span class="line">L1d cache:             32K</span><br><span class="line">L1i cache:             32K</span><br><span class="line">L2 cache:              1024K</span><br><span class="line">L3 cache:              30976K</span><br><span class="line">NUMA node0 CPU(s):     0-21,44-65</span><br><span class="line">NUMA node1 CPU(s):     22-43,66-87</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep Ether</span><br><span class="line">86:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.2 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br><span class="line">86:00.3 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GbE SFP+ (rev 01)</span><br></pre></td></tr></table></figure>
-<p>DPDK Version: <code>18.05.1</code><br>Tester: IXIA<br>Test Plan: RFC2544<br>DPDK APP: <code>./l2fwd -l 22-24 --no-huge  -- -p 0x3 -T 5</code></p>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p><img src="https://s1.ax1x.com/2018/11/29/FZIYcT.png" alt=""></p>
-<p>在64Byte包长时丢包率达到了50%以上，而使用大页内存时丢包率可以控制在0.05%以内。<br>其他长度丢包和吞吐情况基本相同。<br>根据业务情况，平均包长如果在300Byte以上–no-huge模式不妨一试。<br>后续添加针对更大链路带宽(25Gbps/100Gbps)的网卡以及不同Xeon平台的测试结果。</p>
+        <p>学习英语当然要靠不断的练习，但同样的练习时间往往效果却大相径庭。以下是我结合自己的经历总结的一些经验和方法，希望能帮助大家提高学习英语的效率。</p>
+<h2 id="Rubbish-in-rubbish-out"><a href="#Rubbish-in-rubbish-out" class="headerlink" title="Rubbish in, rubbish out"></a>Rubbish in, rubbish out</h2><p>把自己想象成一个处理英文的黑盒，输入就是听读，输出就是说写。和人工智能训练模型需要优质的标签数据一样，学习英语也需要优质的输入才能达到良好的学习效果。</p>
+<p>在程序员的领域，最直接的优质的英文材料就是经典的英文原版技术书籍。编写这些书籍的大师不但是技术领域的巨擘，同时也是操纵语言的大师，他们的书籍往往最是简洁明快，逻辑清晰。<br><a id="more"></a></p>
+<h2 id="复写"><a href="#复写" class="headerlink" title="复写"></a>复写</h2><p>但如果你是刚开始决定提高自己的英文水平，看这些书籍其实很容易产生挫败感。我的建议是，找自己这个领域最著名的开源项目，一般这种项目都会有很好的文档(教程)支持。这个项目的教程就是你英文的入门材料。</p>
+<p>但不是说能看着教程，自己找了台电脑跟着操作了一遍就算学会了。在有了实际操作经验之后，你其实已经知道这一节教程内容是要告诉你什么了，这个时候把教程的窗口最小化，打开你最喜欢的文字编辑器，将刚刚教程的内容复写一遍。</p>
+<p>就是要有那种“明明知道要表达什么，但就是忘了刚才教程里是怎么写的了”的焦灼感。</p>
+<p>这种时候先用自己的“初中英语”硬把坑填上。等这一节都复写完成之后，把教程的窗口重新最大化，再看一遍，看看刚刚自己胡说八道的地方教程都是怎么写的，默默记下来，然后重新把窗口最小化，修改刚刚自己复写的内容。</p>
+<p>别指望看了第二遍就能全部记住，重复这个过程，直到完全一致。注意单复数，be动词时态，以及a/an/the定冠词的用法。</p>
+<p>慢慢你就会发现英语的表达，尤其是在技术领域，就那么几个套路。</p>
+<h2 id="利用Google"><a href="#利用Google" class="headerlink" title="利用Google"></a>利用Google</h2><p>在练习了一段时间的复写之后，在工作中遇到开发或技术上的问题，不要用百D或是中文搜索，而是在Google上用英文搜索(bing也不行，只建议用Google)。</p>
+<p>搜索栏里填什么关键词随便你，但最开始很可能找不到你要搜索的问题的答案。</p>
+<p>尝试不断更换关键词，多往后翻几页，直到找到那个你认为你最需要的页面。这个时候不要Ctrl+C/V把页面里的代码一复制再来个git commit就完了，重新回到Google，重新调整你的关键词，用最短，最少的关键字让这个页面出现在搜索结果的第一页第一行。</p>
+<p>能让自己的表达逐渐精确，就是语言能力的提升。</p>
+<h2 id="建立全面的信息关联"><a href="#建立全面的信息关联" class="headerlink" title="建立全面的信息关联"></a>建立全面的信息关联</h2><p>两个人面对面说话，所传达的全部信息，纯粹语言的内容只能占30%。剩下的信息是由肢体语言、表情、语调语速传递的。</p>
+<p>为什么很多人学了半天仍然觉得语言实际应用能力提高不大，就是因为只冲着那30%去的，实际能传达出要传达的20%就算不错了。</p>
+<p>关键就是在于，没有将一句话放到实际中去关联场景，而大脑关联学习或关联记忆的效率是最高的。</p>
+<p>在教程和搜索上小有成就了之后，你需要学习真正的语言。将语言划分为“听说读写”四项没有错，但如果你练习听力就只塞一个耳机那是效率很低的学习方法。</p>
+<p>打开一个经典的技术视频，或者你感兴趣的TED演讲，不要关注演讲者说的你是不是都能听懂，而是关注演讲本身，关注他的肢体语言、关注观众的反馈、关注他如何使用他的PPT，关注他是如何表达，语言本身只是这一切的副产品。你的大脑会自己将这些都分门别类罗缕纪存。</p>
+<p>之后自己尽最大的努力将要点复述(用嘴说)一遍，回想当时的场景，回想演讲者的动作和表情，回想他的语调和语速，回想当时的摄像机的角度和PPT的内容。然后把你能想到整场演讲的逻辑和每一环节的中心思想写下来。返回视频，和复写一样，对照修改，直到自己满意。</p>
+<h2 id="输出的时候放空大脑"><a href="#输出的时候放空大脑" class="headerlink" title="输出的时候放空大脑"></a>输出的时候放空大脑</h2><p>最后一点想说的是，无论是说还是写，很多人遇到的问题是，英文输出的过程多了”翻译”这个步骤。先想中文的意思，再将这个意思翻译成英文，再转换为文字或者口语。而对听和读，也是要翻译一遍，大脑再去处理中文的意思。</p>
+<p>这是很没效率的事情，就像Linux收发包要对数据报文做多次拷贝一样，很有可能成为你整个系统的瓶颈。这里放空大脑的意思和”零拷贝”技术十分类似，就是不要有任何翻译的过程。在练习的时候，不要用中文去想你要表达什么，不要让大脑中出现任何中文的”声音”，不要给你对面的哥们做同声传译。最开始可能不容易做到，但要不断强调这个意识。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/test/">test</a>
-
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dpdk/">dpdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
-
       
             
       
@@ -284,19 +291,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/30/ftrace/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ftrace trace-cmd kernelshark资料汇总
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/28/thoughts1-cloud-community/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/27/quickwords13-tma/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">云计算的发展需要向社区街道管理看齐</div>
+      <div class="article-nav-title">几句话说清楚13：什么是Top-Down性能分析方法</div>
     </a>
   
 </nav>
@@ -310,7 +308,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#no-huge"><span class="nav-number">1.</span> <span class="nav-text">no-huge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试平台"><span class="nav-number">2.</span> <span class="nav-text">测试平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试结果"><span class="nav-number">3.</span> <span class="nav-text">测试结果</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rubbish-in-rubbish-out"><span class="nav-number">1.</span> <span class="nav-text">Rubbish in, rubbish out</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复写"><span class="nav-number">2.</span> <span class="nav-text">复写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用Google"><span class="nav-number">3.</span> <span class="nav-text">利用Google</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立全面的信息关联"><span class="nav-number">4.</span> <span class="nav-text">建立全面的信息关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出的时候放空大脑"><span class="nav-number">5.</span> <span class="nav-text">输出的时候放空大脑</span></a></li></ol>
     
     </div>
   </aside>

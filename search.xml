@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚14：Skylake微架构(Microarchitecture)剖析(5)</title>
+      <link href="/2019/02/03/quickwords14-skylake-pipeline-5/"/>
+      <url>/2019/02/03/quickwords14-skylake-pipeline-5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Instruction-Decode-Queue-IDQ"><a href="#Instruction-Decode-Queue-IDQ" class="headerlink" title="Instruction Decode Queue(IDQ)"></a>Instruction Decode Queue(IDQ)</h2><p>IDQ也叫Allocation Queue(AQ)，也有时候会写成是Decode Queue。解码完成的uops在进入后端之前需要先在IDQ中做一下缓冲。作为一个”缓冲队列”，主要作用是将前端解码可能引入的流水线”气泡(bubbles)“消化掉，为后端提供稳定的uops供应(目标是6uop/cycle)。<br><a id="more"></a></p><p>Skylake的IDQ最大可以存放64个uops/thread，比Broadwell的28个多一倍还多。这些uop在IDQ中除了排一下队之外，还会被Loop Stream Detector(LSD)扫描一遍，用来发现这些uop是不是来自于一个循环。</p><h3 id="Loop-Stream-Detector-LSD"><a href="#Loop-Stream-Detector-LSD" class="headerlink" title="Loop Stream Detector(LSD)"></a>Loop Stream Detector(LSD)</h3><p>如果在IDQ中能被发现存在循环体uop，那么在下一次循环的时候，就不需要去重新解码这些循环体生成的uop，而是直接由LSD提供uops。这便可以省去指令fetch、解码、读uop cache、分支预测等所有之前的步骤，并且能进一步减少缓存占用。当然，当LSD起作用的时候，整个前端都是处于Disabled的状态。</p><p>Skylake的LSD需要在IDQ的长度（64uop）内发现循环，所以，循环体还是尽量紧凑一点吧:D</p><h2 id="后端（Backend）"><a href="#后端（Backend）" class="headerlink" title="后端（Backend）"></a>后端（Backend）</h2><p><img src="https://en.wikichip.org/w/images/thumb/6/64/skylake_rob.svg/450px-skylake_rob.svg.png" alt=""></p><p>还是首先介绍一下这个部分是否有别的名字。在有些文档里后端又直接被称为<code>Execution Engine</code>。后端的主要任务当然就是执行前端解码出来的这些uop。但后端和前端的设计都在围绕着“如何提高指令的并行性”来设计和优化。</p><p>在Skylake架构中，IDQ以最大6uop/cycle的速度将uop送入Re-order Buffer，后端的处理在Re-order Buffer中正式开始。</p><h2 id="Out-of-order-OOO-Execution-Engine"><a href="#Out-of-order-OOO-Execution-Engine" class="headerlink" title="Out-of-order(OOO)Execution/Engine"></a>Out-of-order(OOO)Execution/Engine</h2><p>先讲一下OOO（乱序）以便对后端的执行有一个整体的把握。</p><p>我们的程序虽然是按顺序编写的指令，但CPU并不（一定）会按相同的方式执行。为了提升整体效率，CPU采用的是乱序执行的方式。从一个“窗口”范围内选取可以执行的指令执行，并且这些操作对用户透明，在程序编写者的角度看来仍是在按他编写的指令顺序执行。</p><blockquote><p>从根本上来讲，OOO是用”数据流（Data flow）”的角度来看待程序，而非程序员的“指令流”视角。</p></blockquote><p>指令的目的就是以一种特定的方式操纵存在于内存/缓存中的数据，引起数据的变化，其实这就是我们通常所说的“写程序”。只不过这是人类习惯的逻辑方式，在机器看来并不一定高效。</p><p><img src="https://s2.ax1x.com/2019/02/03/kGeQiV.jpg" alt="截图出自Computer Architecture 2011 – out-of-order execution (lec 7) 1 Computer Architecture Out-of-order execution By Dan Tsafrir, 11/4/2011 Presentation"></p><p>在上图例子中，需要执行左上角的六个计算指令。<code>In-order execution</code>是假设完全按照程序顺序执行这六个指令的耗时。下面的`In-order(superscalar3)是合并了一些可以并行执行的指令的耗时。</p><p>因为指令(2)中的<code>r1</code>要依赖指令(1)的结果，所以指令(2)只能等(1)执行结束再执行。而本来可以并行执行的(3)(4)也因为要保证In-order顺序而只能一同放在(1)之后执行。</p><p>但从左下角的<code>Data flow</code>的角度来看，其实我们并不需要按照指令顺序运行程序：指令(2)完全可以放在后面执行，并重新安排并行计算顺序。这样就又节省了执行所需的时间。</p><p>OOO选择可执行指令的依据是：</p><ul><li>不依赖未执行指令操纵的数据</li><li>有可用的执行资源</li></ul><p>为了尽可能让进入后端的指令满足这两个条件，OOO采用了一系列的组件和技术。在后面的章节中将会进行介绍。</p><p><img src="http://hpca23.cse.tamu.edu/taco/utsa-www/cs5513-fall07/basic-concept.gif" alt=""></p><p>上图是一个OOO的概念示意图。前端输出给后端的都是顺序指令流，后端在一个窗口范围中选择可以执行的指令进行乱序执行。这里面没有强调的是，最终指令退出(retire)的顺序仍是按照程序的顺序。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>程序员学英语的几点实用经验</title>
       <link href="/2019/01/31/how-to-learn-english/"/>
       <url>/2019/01/31/how-to-learn-english/</url>

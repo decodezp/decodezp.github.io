@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚15：Top-Down性能分析方法资料及Toplev使用</title>
+      <link href="/2019/02/14/quickwords15-toplev/"/>
+      <url>/2019/02/14/quickwords15-toplev/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Top-down-Microarchitecture-Analysis-Method-TMAM-资料"><a href="#Top-down-Microarchitecture-Analysis-Method-TMAM-资料" class="headerlink" title="Top-down Microarchitecture Analysis Method(TMAM)资料"></a>Top-down Microarchitecture Analysis Method(TMAM)资料</h2><p>之前介绍过TMAM的具体内容，在这里对网络上相关的信息和资料做一个汇总：</p><p><a href="https://software.intel.com/en-us/vtune-amplifier-help-tuning-applications-using-a-top-down-microarchitecture-analysis-method" target="_blank" rel="noopener">Tuning Applications Using a Top-down Microarchitecture Analysis Method</a><br><a id="more"></a></p><p><a href="http://www.cs.technion.ac.il/~erangi/TMA_using_Linux_perf__Ahmad_Yasin.pdf" target="_blank" rel="noopener">Top-down Microarchitecture Analysis through Linux perf and toplev tools</a></p><p><a href="https://ieeexplore.ieee.org/document/6844459/metrics#metrics" target="_blank" rel="noopener">A Top-Down method for performance analysis and counters architecture</a></p><p><a href="https://doc.itc.rwth-aachen.de/download/attachments/28344675/08.Performance_Analysis_in_a_Nutshell.pdf?version=1&amp;modificationDate=1480665136000&amp;api=v2" target="_blank" rel="noopener">Performance_Analysis_in_a_Nutshell</a></p><p><a href="https://indico.cern.ch/event/280897/contributions/1628888/attachments/515367/711139/Top_Down_for_CERN_2nd_workshop_-_Ahmad_Yasin.pdf" target="_blank" rel="noopener">Top Down Analysis Never lost with Xeon® perf. counters</a></p><p><a href="https://dyninst.github.io/scalable_tools_workshop/petascale2018/assets/slides/TMA%20addressing%20challenges%20in%20Icelake%20-%20Ahmad%20Yasin.pdf" target="_blank" rel="noopener">How TMA* Addresses Challenges in Modern Servers and Enhancements Coming in IceLake</a></p><p>当然还有一些其他的相关信息，不过上面几个都可以覆盖（其实已经有点过量了）。</p><h2 id="Toplev使用"><a href="#Toplev使用" class="headerlink" title="Toplev使用"></a>Toplev使用</h2><p><code>toplev</code>是一个基于<code>perf</code>和TMAM方法的应用性能分析工具。从之前的<a href="https://decodezp.github.io/2019/01/27/quickwords13-tma/">介绍文章</a>中可以了解到TMAM本质上是对CPU Performance Counter的整理和加工。取得Performance Counter的读数需要<code>perf</code>来协助，对读数的计算进而明确是Frondend bound还是Backend bound等等。</p><p>在最终计算之前，你大概需要做三件事：</p><ul><li>明确CPU型号，因为不同的CPU，对应的PMU也不一样</li><li>读取TMAM需要的<code>perf event</code>读数</li><li>按TMAM规定的算法计算，具体算法在这个<a href="https://share.weiyun.com/5jNsb6o" target="_blank" rel="noopener">Excel表格</a>里</li></ul><p>这三步可以自动化地由程序来做。本质上<code>toplev</code>就是在做这件事。</p><p><code>toplev</code>的<a href="https://github.com/andikleen/pmu-tools" target="_blank" rel="noopener">Github地址</a>：<a href="https://github.com/andikleen/pmu-tools" target="_blank" rel="noopener">https://github.com/andikleen/pmu-tools</a></p><p>另外补充一下，TMAM作为一种<code>Top-down</code>方法，它一定是分级的。通过上一级的结果下钻，最终定位性能瓶颈。那么<code>toplev</code>在执行的时候，也一定是包含这个“等级”概念的。</p><p>下面是<code>toplev</code>使用方法的资料：</p><p><a href="https://github.com/andikleen/pmu-tools/wiki/toplev-manual" target="_blank" rel="noopener">toplev manual</a></p><p><a href="http://halobates.de/blog/p/262" target="_blank" rel="noopener">pmu-tools, part II: toplev</a></p><p>基本上都是由<code>toplev</code>的开发者自己写的，可以作为一个Quick Start Guide。</p><blockquote><p><code>toplev</code>仅针对系统瓶颈是CPU的场景，除此之外仍需要使用其他方法，如<code>pcm</code> tool。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚14：Skylake微架构(Microarchitecture)剖析(5)</title>
       <link href="/2019/02/03/quickwords14-skylake-pipeline-5/"/>
       <url>/2019/02/03/quickwords14-skylake-pipeline-5/</url>
@@ -86,9 +113,9 @@
             
             <tag> tech </tag>
             
-            <tag> performance </tag>
-            
             <tag> network </tag>
+            
+            <tag> performance </tag>
             
             <tag> test </tag>
             
@@ -115,9 +142,9 @@
             
             <tag> tech </tag>
             
-            <tag> performance </tag>
-            
             <tag> network </tag>
+            
+            <tag> performance </tag>
             
             <tag> test </tag>
             
@@ -668,9 +695,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> product </tag>
+            
+            <tag> network </tag>
             
         </tags>
       
@@ -797,9 +824,9 @@
             
             <tag> tech </tag>
             
-            <tag> ftrace </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ftrace </tag>
             
         </tags>
       

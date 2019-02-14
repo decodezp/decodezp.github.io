@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-02-03T07:44:13.811Z</updated>
+  <updated>2019-02-14T11:42:33.035Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚15：Top-Down性能分析方法资料及Toplev使用</title>
+    <link href="https://decodezp.github.io/2019/02/14/quickwords15-toplev/"/>
+    <id>https://decodezp.github.io/2019/02/14/quickwords15-toplev/</id>
+    <published>2019-02-14T11:40:58.000Z</published>
+    <updated>2019-02-14T11:42:33.035Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Top-down-Microarchitecture-Analysis-Method-TMAM-资料&quot;&gt;&lt;a href=&quot;#Top-down-Microarchitecture-Analysis-Method-TMAM-资料&quot; class=&quot;headerlink&quot; title=&quot;Top-down Microarchitecture Analysis Method(TMAM)资料&quot;&gt;&lt;/a&gt;Top-down Microarchitecture Analysis Method(TMAM)资料&lt;/h2&gt;&lt;p&gt;之前介绍过TMAM的具体内容，在这里对网络上相关的信息和资料做一个汇总：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://software.intel.com/en-us/vtune-amplifier-help-tuning-applications-using-a-top-down-microarchitecture-analysis-method&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tuning Applications Using a Top-down Microarchitecture Analysis Method&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚14：Skylake微架构(Microarchitecture)剖析(5)</title>
@@ -100,9 +125,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
@@ -126,9 +151,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
@@ -471,41 +496,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>5分钟经典英文技术演讲2：软件设计真正的精髓-Scott Meyer</title>
-    <link href="https://decodezp.github.io/2018/12/21/eng-talk2-things-matter/"/>
-    <id>https://decodezp.github.io/2018/12/21/eng-talk2-things-matter/</id>
-    <published>2018-12-21T13:07:58.000Z</published>
-    <updated>2018-12-21T13:20:43.840Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;一个人的能力上限很大程度上取决于他获取信息的能力。&lt;/p&gt;
-&lt;p&gt;而能力增长的速度与获取信息的_质量_正相关。&lt;/p&gt;
-&lt;p&gt;不可否认，大量优质的技术内容都基于英文。“5分钟经典英文技术演讲”专门撷取国外最有价值的纯英文技术演讲，以最精炼的形式将信息传达给国内的技术同侪，绕过网络政策和语言的障碍，实现中西方技术世界无壁垒的信息同步。&lt;/p&gt;
-&lt;p&gt;最新内容将发布于&lt;a href=&quot;https://decodezp.github.io&quot;&gt;DecodeZ&lt;/a&gt;: &lt;a href=&quot;https://decodezp.github.io&quot;&gt;https://decodezp.github.io&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://decodezp.github.io/2018/12/12/eng-talk1-fast-learn/&quot;&gt;往期回顾：如何快速掌握新技术&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;DConf2017：软件设计真正的精髓&quot;&gt;&lt;a href=&quot;#DConf2017：软件设计真正的精髓&quot; class=&quot;headerlink&quot; title=&quot;DConf2017：软件设计真正的精髓&quot;&gt;&lt;/a&gt;DConf2017：软件设计真正的精髓&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=RT46MpK39rQ&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原视频&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://dconf.org/2017/talks/meyers.pptx&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PPT/Slides下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;演讲者：Scott Meyer&lt;/p&gt;
-&lt;p&gt;上一张演讲者的照片，硬撸过C++的应该都很熟悉他:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/12/21/FsMA2R.jpg&quot; alt=&quot;Scott Meyer&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;摘要：成功的软件产品都有其共性。在Scott Meyer看来，这些共性由几个要素组成。在你的作品中考虑这些要素，将帮助你掌握软件设计真正的精髓。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="ENG_talk" scheme="https://decodezp.github.io/categories/ENG-talk/"/>
-    
-    
-      <category term="English" scheme="https://decodezp.github.io/tags/English/"/>
-    
-      <category term="Presentation" scheme="https://decodezp.github.io/tags/Presentation/"/>
     
   </entry>
   

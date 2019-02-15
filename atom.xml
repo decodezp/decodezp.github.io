@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-02-14T11:42:33.035Z</updated>
+  <updated>2019-02-15T11:04:56.836Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《居家男人》</title>
+    <link href="https://decodezp.github.io/2019/02/15/thoughts5-family-man/"/>
+    <id>https://decodezp.github.io/2019/02/15/thoughts5-family-man/</id>
+    <published>2019-02-15T11:02:39.000Z</published>
+    <updated>2019-02-15T11:04:56.836Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;大约在2010年左右的时候，我会经常在PPS这种视频流软件上面看尼古拉斯凯奇的电影。他早期的一些作品还是令人印象深刻。相较于那些有名的动作片，《居家男人》应该只是一部家庭剧小品，但却成了我这些年重复播放最多的他的片子。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚15：Top-Down性能分析方法资料及Toplev使用</title>
@@ -125,9 +145,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
       <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
@@ -151,9 +171,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
       <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
@@ -471,31 +491,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题</title>
-    <link href="https://decodezp.github.io/2018/12/24/quickwords7-dpdk-cross-compile/"/>
-    <id>https://decodezp.github.io/2018/12/24/quickwords7-dpdk-cross-compile/</id>
-    <published>2018-12-24T13:06:12.000Z</published>
-    <updated>2018-12-24T13:11:48.307Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;现象&quot;&gt;&lt;a href=&quot;#现象&quot; class=&quot;headerlink&quot; title=&quot;现象&quot;&gt;&lt;/a&gt;现象&lt;/h2&gt;&lt;p&gt;在比较高级的CPU平台(比如skylake)编译DPDK，会在编译的目标文件中加入一些高级指令集中的指令，比如AVX512。&lt;/p&gt;
-&lt;p&gt;如果运行最终可执行文件的机器的CPU架构(比如broadwell)不支持编译机器中的指令，则会在执行时报类似这种错误：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-      <category term="quickwords" scheme="https://decodezp.github.io/categories/tech/quickwords/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
     
   </entry>
   

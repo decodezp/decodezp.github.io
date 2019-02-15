@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-02-15T11:04:56.836Z</updated>
+  <updated>2019-02-15T11:24:35.920Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://decodezp.github.io/2019/02/15/thoughts5-family-man/"/>
     <id>https://decodezp.github.io/2019/02/15/thoughts5-family-man/</id>
     <published>2019-02-15T11:02:39.000Z</published>
-    <updated>2019-02-15T11:04:56.836Z</updated>
+    <updated>2019-02-15T11:24:35.920Z</updated>
     
     <summary type="html">
     
@@ -145,9 +145,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
@@ -171,9 +171,9 @@
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
@@ -267,9 +267,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   
@@ -416,9 +416,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>测来测去7：筛法求素数loop unrolling性能优化实例 | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="筛法求素数最近拿到一段筛法求素数的代码，希望能够在不改变原有算法的基础上提高性能。">
+<meta name="keywords" content="tech,CPU,performance,test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测来测去7：筛法求素数Loop Unrolling性能优化实例">
+<meta property="og:url" content="https://decodezp.github.io/2019/02/19/test7-prime-opt/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="筛法求素数最近拿到一段筛法求素数的代码，希望能够在不改变原有算法的基础上提高性能。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://atarimae.biz/wp-content/uploads/2017/04/sosu100.png">
+<meta property="og:updated_time" content="2019-02-19T11:58:59.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测来测去7：筛法求素数Loop Unrolling性能优化实例">
+<meta name="twitter:description" content="筛法求素数最近拿到一段筛法求素数的代码，希望能够在不改变原有算法的基础上提高性能。">
+<meta name="twitter:image" content="https://atarimae.biz/wp-content/uploads/2017/04/sosu100.png">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-test7-prime-opt" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://atarimae.biz/wp-content/uploads/2017/04/sosu100.png" rel="gallery_cjsbpu2e7003ct7fynkf72xx2">
+        <img src="https://atarimae.biz/wp-content/uploads/2017/04/sosu100.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      测来测去7：筛法求素数Loop Unrolling性能优化实例
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/02/19/test7-prime-opt/" class="article-date">
+	  <time datetime="2019-02-19T11:57:18.000Z" itemprop="datePublished">February 19, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="筛法求素数"><a href="#筛法求素数" class="headerlink" title="筛法求素数"></a>筛法求素数</h2><p>最近拿到一段筛法求素数的代码，希望能够在不改变原有算法的基础上提高性能。<br><a id="more"></a></p>
+<p>关于筛法求素数的算法，网络上有很多介绍。算法之间的效率存在差异，但我们的重点不在这里，而是如何在不改动现有算法的前提下提升性能。</p>
+<blockquote>
+<p>关于不同筛法算法可以参见<a href="https://www.cnblogs.com/grubbyskyer/p/3852421.html" target="_blank" rel="noopener">这里</a>，这段程序里使用的是埃拉托斯特尼筛法。</p>
+</blockquote>
+<p>核心代码段：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">count = <span class="number">0</span>; </span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">2</span>; i &lt;= <span class="number">8192</span>; i++) &#123;</span><br><span class="line">    flags[i] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">2</span>; i &lt;= <span class="number">8192</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (flags[i]) &#123;</span><br><span class="line">               <span class="comment">/* remove all multiples of prime: i */</span></span><br><span class="line">	<span class="keyword">for</span> (k=i+i; k &lt;= <span class="number">8192</span>; k+=i) &#123;</span><br><span class="line">	    flags[k] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	count++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完整代码在：</p>
+<p><code>wget https://raw.githubusercontent.com/llvm-mirror/test-suite/master/SingleSource/Benchmarks/Shootout/sieve.c</code></p>
+<p>其实是<code>LLVM</code>编译器的性能测试代码。</p>
+<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CPU: Intel(R) Xeon(R) CPU E5-2699 v3 @ 2.30GHz</span><br><span class="line">Hyper-thread:OFF</span><br><span class="line">Power-governor: Performance</span><br><span class="line">GCC: 4.8.5 20150623 (Red Hat 4.8.5-28) (GCC)</span><br><span class="line">GCC option: -O3</span><br></pre></td></tr></table></figure>
+<h2 id="诊断"><a href="#诊断" class="headerlink" title="诊断"></a>诊断</h2><p>先运行一下原有代码看看时间：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gcc sieve.c -O3 -o sieve</span><br><span class="line">time -p ./sieve</span><br><span class="line"></span><br><span class="line">Count: 1028</span><br><span class="line">real 3.34</span><br><span class="line">user 3.34</span><br><span class="line">sys 0.00</span><br></pre></td></tr></table></figure>
+<p>简单想象一下代码流程：</p>
+<ul>
+<li>处理的数据是8K Byte(char flags[])，相对于32K的L1缓存不算什么数据量，所以数据缓存似乎问题不大</li>
+<li>生成的二进制文件也不大，指令缓存也没太大压力</li>
+<li>前端这边处理的主要是带分支的循环，内层循环就算还好吧…但外层循环中有个if分支判断</li>
+<li>涉及到这个判断，因为素数的出现/分布没太大规律，所以对CPU来说，这个分支判断结果相当于是随机的，有可能会影响前端流水线的性能</li>
+</ul>
+<p>然后用我们之前介绍的<a href="https://decodezp.github.io/2019/02/14/quickwords15-toplev/">Top-down方法和toplev工具</a>看看实际测试的情况：</p>
+<p><code>./toplev.py -v --no-desc  -l1 /root/perfcontest/sieve</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Using level 1.</span><br><span class="line"><span class="meta">#</span> 3.4-full on Intel(R) Xeon(R) CPU E5-2699 v3 @ 2.30GHz</span><br><span class="line">perf stat -x\; --no-merge -e '&#123;cpu/event=0xc2,umask=0x2/,cpu/event=0xe,umask=0x1/,cpu/event=0xd,umask=0x3,cmask=1/,cpu/event=0x9c,umask=0x1/,cycles&#125;' /root/perfcontest/sieve</span><br><span class="line">Count: 1028</span><br><span class="line">FE             Frontend_Bound:          38.45 +-     0.00 % Slots       &lt;==</span><br><span class="line">BAD            Bad_Speculation:         16.45 +-     0.00 % Slots      </span><br><span class="line">BE             Backend_Bound:            8.92 +-     0.00 % Slots below</span><br><span class="line">RET            Retiring:                36.19 +-     0.00 % Slots below</span><br><span class="line">               MUX:                    100.00 +-     0.00 %</span><br></pre></td></tr></table></figure>
+<p>基本上可以看到是前端Bound了，同时分支预测里出现了比较多的<code>Bad_Speculation</code>。</p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>OK，先用个简单的方法处理一下分支：</p>
+<p>结合业务的话，素数越到后面分布是越稀松的，所以外层循环中的那个判断应该大部分时间是false。所以，先套个likely/unlikely。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> likely(x)       __builtin_expect((x),1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> unlikely(x)     __builtin_expect((x),0)</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">	    <span class="keyword">if</span> (unlikely(flags[i])) &#123;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>编译之后看一下时间：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">time -p ./sieve</span><br><span class="line">Count: 1028</span><br><span class="line">real 3.08</span><br><span class="line">user 3.08</span><br><span class="line">sys 0.00</span><br></pre></td></tr></table></figure>
+<p>有些许提升，不过不太明显。如果此时再用<code>toplev</code>测试一下，可以发现分支预测的改善并不可观。</p>
+<p>那么如何改善分支预测呢？最好的办法就是不要有分支；或者，如果完全没有不可能的话，就让分支出现规律性；如果这样也不行的话，就减少分支；如果减少也不可能的话，就搞大乱序并发。</p>
+<p>对于我们这个算法来说，判断每个数字的标志位并做后续的置位是算法的要求。提升规律性的话，也没有什么特别好的办法（至少我没想出来）， 那就只能用最后一种办法了…</p>
+<p>把循环展开，提升流水线并行性。</p>
+<p>展开16级还不算那么激进吧…同时内层循环也可以适当展开…</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i=<span class="number">2</span>; i &lt;= <span class="number">8191</span>; i = i + <span class="number">16</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i; k &lt;= <span class="number">4096</span>; k+=(<span class="number">7</span> * i)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	        flags[k + i] = <span class="number">0</span>;</span><br><span class="line">	        flags[k + (<span class="number">2</span> * i)] = <span class="number">0</span>;</span><br><span class="line">	        flags[k + (<span class="number">3</span> * i)] = <span class="number">0</span>;</span><br><span class="line">	        flags[k + (<span class="number">4</span> * i)] = <span class="number">0</span>;</span><br><span class="line">	        flags[k + (<span class="number">5</span> * i)] = <span class="number">0</span>;</span><br><span class="line">	        flags[k + (<span class="number">6</span> * i)] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count0++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">1</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">2</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">1</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count1++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">2</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">4</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">2</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count2++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">3</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">6</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">3</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count3++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">4</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i+<span class="number">8</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">4</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count4++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">5</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">10</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">5</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count5++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">6</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">12</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">6</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count6++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">7</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">14</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">7</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count7++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">8</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i+<span class="number">16</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">8</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count8++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">9</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">18</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">9</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count9++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">10</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">20</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">10</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count10++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">11</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">22</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">11</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count11++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">12</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i+<span class="number">24</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">12</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count12++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">13</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">26</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">13</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count13++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">14</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">28</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">14</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count14++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (unlikely(flags[i + <span class="number">15</span>])) &#123;</span><br><span class="line">	    <span class="keyword">for</span> (k=i+i + <span class="number">30</span>; k &lt;= <span class="number">8191</span>; k+=(i + <span class="number">15</span>)) &#123;</span><br><span class="line">	        flags[k] = <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	count15++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"Count: %d\n"</span>, count0 + count1 + count2 + \</span><br><span class="line">                         count3 + count4 + count5 + \</span><br><span class="line">                         count6 + count7 + count8 + \</span><br><span class="line">                         count9 + count10 + count11 + \</span><br><span class="line">                         count12 + count13 + count14 + \</span><br><span class="line">                         count15);</span><br></pre></td></tr></table></figure>
+<p>先直接刷一下时间：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">time -p ./sieve</span><br><span class="line">Count: 1028</span><br><span class="line">real 1.56</span><br><span class="line">user 1.56</span><br><span class="line">sys 0.00</span><br></pre></td></tr></table></figure>
+<p>提升了120%</p>
+<p>再用<code>toplev</code>看一下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">./toplev.py -v --no-desc  -l1 /root/perfcontest/sieve</span><br><span class="line">Using level 1.</span><br><span class="line"><span class="meta">#</span> 3.4-full on Intel(R) Xeon(R) CPU E5-2699 v3 @ 2.30GHz</span><br><span class="line">perf stat -x\; --no-merge -e '&#123;cpu/event=0xc2,umask=0x2/,cpu/event=0xe,umask=0x1/,cpu/event=0xd,umask=0x3,cmask=1/,cpu/event=0x9c,umask=0x1/,cycles&#125;' /root/perfcontest/opt1</span><br><span class="line">Count: 1028</span><br><span class="line">FE             Frontend_Bound:          11.60 +-     0.00 % Slots below</span><br><span class="line">BAD            Bad_Speculation:          3.30 +-     0.00 % Slots below</span><br><span class="line">BE             Backend_Bound:            8.43 +-     0.00 % Slots below</span><br><span class="line">RET            Retiring:                76.68 +-     0.00 % Slots       &lt;==</span><br><span class="line">               MUX:                    100.00 +-     0.00 %</span><br></pre></td></tr></table></figure>
+<p>瓶颈已经不在分支预测上了。</p>
+<p>用<code>perf stat</code>看一下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@server-P1 perfcontest]# perf stat ./sieve</span><br><span class="line">Count: 1028</span><br><span class="line"></span><br><span class="line"> Performance counter stats for './opt1':</span><br><span class="line"></span><br><span class="line">       2334.081187      task-clock (msec)         #    1.000 CPUs utilized          </span><br><span class="line">                 7      context-switches          #    0.003 K/sec                  </span><br><span class="line">                 0      cpu-migrations            #    0.000 K/sec                  </span><br><span class="line">               141      page-faults               #    0.060 K/sec                  </span><br><span class="line">     5,355,895,762      cycles                    #    2.295 GHz                    </span><br><span class="line">    19,038,809,322      instructions              #    3.55  insn per cycle         </span><br><span class="line">     4,209,500,410      branches                  # 1803.494 M/sec                  </span><br><span class="line">        10,114,763      branch-misses             #    0.24% of all branches        </span><br><span class="line"></span><br><span class="line">       2.334590616 seconds time elapsed</span><br></pre></td></tr></table></figure>
+<p>branch-misses占比很小，同时IPC也在3.55，已经接近理论最大值(4)。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>仅仅调了一个小时，应该还有继续优化的空间，比如利用PGO和SIMD指令。这个留在后续尝试。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/test/">test</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/15/thoughts5-family-man/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《居家男人》</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#筛法求素数"><span class="nav-number">1.</span> <span class="nav-text">筛法求素数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试环境"><span class="nav-number">2.</span> <span class="nav-text">测试环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#诊断"><span class="nav-number">3.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">4.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后续"><span class="nav-number">5.</span> <span class="nav-text">后续</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

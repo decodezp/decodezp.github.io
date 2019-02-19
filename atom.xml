@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-02-15T11:24:35.920Z</updated>
+  <updated>2019-02-19T11:58:59.312Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去7：筛法求素数Loop Unrolling性能优化实例</title>
+    <link href="https://decodezp.github.io/2019/02/19/test7-prime-opt/"/>
+    <id>https://decodezp.github.io/2019/02/19/test7-prime-opt/</id>
+    <published>2019-02-19T11:57:18.000Z</published>
+    <updated>2019-02-19T11:58:59.312Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;筛法求素数&quot;&gt;&lt;a href=&quot;#筛法求素数&quot; class=&quot;headerlink&quot; title=&quot;筛法求素数&quot;&gt;&lt;/a&gt;筛法求素数&lt;/h2&gt;&lt;p&gt;最近拿到一段筛法求素数的代码，希望能够在不改变原有算法的基础上提高性能。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>《居家男人》</title>
@@ -267,9 +293,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   
@@ -416,9 +442,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   
@@ -467,30 +493,6 @@
       <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚8：Intel 700系列网卡内部结构概览</title>
-    <link href="https://decodezp.github.io/2018/12/25/quickwords8-700-nic-arch/"/>
-    <id>https://decodezp.github.io/2018/12/25/quickwords8-700-nic-arch/</id>
-    <published>2018-12-25T09:17:39.000Z</published>
-    <updated>2018-12-27T12:39:54.302Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
     
   </entry>
   

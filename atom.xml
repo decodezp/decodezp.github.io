@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-02-19T11:58:59.312Z</updated>
+  <updated>2019-02-20T13:09:10.002Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚16：如何构建零干扰CPU Benchmark环境</title>
+    <link href="https://decodezp.github.io/2019/02/20/quickwords16-noisy-free-benchmark-env/"/>
+    <id>https://decodezp.github.io/2019/02/20/quickwords16-noisy-free-benchmark-env/</id>
+    <published>2019-02-20T13:07:28.000Z</published>
+    <updated>2019-02-20T13:09:10.002Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;CPU性能测试对环境的要求&quot;&gt;&lt;a href=&quot;#CPU性能测试对环境的要求&quot; class=&quot;headerlink&quot; title=&quot;CPU性能测试对环境的要求&quot;&gt;&lt;/a&gt;CPU性能测试对环境的要求&lt;/h2&gt;&lt;p&gt;即便是硬件配置完全一样，操作系统相同，工作负载也相同的硬件平台，性能测试的结果也可能会因为各项配置的不同出现较大出入。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去7：筛法求素数Loop Unrolling性能优化实例</title>
@@ -466,33 +488,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去3：抽象层直接调用实例方法性能提高百分之20</title>
-    <link href="https://decodezp.github.io/2018/12/27/test3-indirectcall/"/>
-    <id>https://decodezp.github.io/2018/12/27/test3-indirectcall/</id>
-    <published>2018-12-27T12:40:30.000Z</published>
-    <updated>2018-12-27T12:49:18.335Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;首先吐槽一下hexo标题不能以%结尾 -_-||&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;抽象层&quot;&gt;&lt;a href=&quot;#抽象层&quot; class=&quot;headerlink&quot; title=&quot;抽象层&quot;&gt;&lt;/a&gt;抽象层&lt;/h2&gt;&lt;p&gt;经常，我们会在相对比较成熟的软件中见到这样一类结构体：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   

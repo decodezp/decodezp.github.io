@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>测来测去6：linux网络性能调优方法（补遗） | DecodeZ</title>
+  <title>几句话说清楚16：如何构建零干扰cpu benchmark环境 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="没提到的上一篇内容中介绍了一些Linux网络协议栈的调优方法，但遗漏了一些可以发挥重要作用的方法，在这一篇中补充一下。">
-<meta name="keywords" content="tech,network,performance,test">
+  <meta name="description" content="CPU性能测试对环境的要求即便是硬件配置完全一样，操作系统相同，工作负载也相同的硬件平台，性能测试的结果也可能会因为各项配置的不同出现较大出入。">
+<meta name="keywords" content="tech,CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测来测去6：Linux网络性能调优方法（补遗）">
-<meta property="og:url" content="https://decodezp.github.io/2019/01/24/test6-linux-network-performance-optimization-2/index.html">
+<meta property="og:title" content="几句话说清楚16：如何构建零干扰CPU Benchmark环境">
+<meta property="og:url" content="https://decodezp.github.io/2019/02/20/quickwords16-noisy-free-benchmark-env/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="没提到的上一篇内容中介绍了一些Linux网络协议栈的调优方法，但遗漏了一些可以发挥重要作用的方法，在这一篇中补充一下。">
+<meta property="og:description" content="CPU性能测试对环境的要求即便是硬件配置完全一样，操作系统相同，工作负载也相同的硬件平台，性能测试的结果也可能会因为各项配置的不同出现较大出入。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://hlassets.paessler.com/common/files/preview/performance-monitoring.png">
-<meta property="og:updated_time" content="2019-01-24T10:36:53.721Z">
+<meta property="og:image" content="https://www.eurovps.com/blog/wp-content/uploads/2017/07/13-cpu-benchmark-tool-hero.jpg">
+<meta property="og:updated_time" content="2019-02-20T13:09:10.002Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测来测去6：Linux网络性能调优方法（补遗）">
-<meta name="twitter:description" content="没提到的上一篇内容中介绍了一些Linux网络协议栈的调优方法，但遗漏了一些可以发挥重要作用的方法，在这一篇中补充一下。">
-<meta name="twitter:image" content="https://hlassets.paessler.com/common/files/preview/performance-monitoring.png">
+<meta name="twitter:title" content="几句话说清楚16：如何构建零干扰CPU Benchmark环境">
+<meta name="twitter:description" content="CPU性能测试对环境的要求即便是硬件配置完全一样，操作系统相同，工作负载也相同的硬件平台，性能测试的结果也可能会因为各项配置的不同出现较大出入。">
+<meta name="twitter:image" content="https://www.eurovps.com/blog/wp-content/uploads/2017/07/13-cpu-benchmark-tool-hero.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-test6-linux-network-performance-optimization-2" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords16-noisy-free-benchmark-env" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://hlassets.paessler.com/common/files/preview/performance-monitoring.png" rel="gallery_cjsd7s5ue00340ifynisxeypy">
-        <img src="https://hlassets.paessler.com/common/files/preview/performance-monitoring.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.eurovps.com/blog/wp-content/uploads/2017/07/13-cpu-benchmark-tool-hero.jpg" rel="gallery_cjsd7s5tz001t0ifyld438yld">
+        <img src="https://www.eurovps.com/blog/wp-content/uploads/2017/07/13-cpu-benchmark-tool-hero.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      测来测去6：Linux网络性能调优方法（补遗）
+      几句话说清楚16：如何构建零干扰CPU Benchmark环境
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/01/24/test6-linux-network-performance-optimization-2/" class="article-date">
-	  <time datetime="2019-01-24T10:35:31.000Z" itemprop="datePublished">January 24, 2019</time>
+	Posted on <a href="/2019/02/20/quickwords16-noisy-free-benchmark-env/" class="article-date">
+	  <time datetime="2019-02-20T13:07:28.000Z" itemprop="datePublished">February 20, 2019</time>
 	</a>
 
       
@@ -232,24 +232,45 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="没提到的"><a href="#没提到的" class="headerlink" title="没提到的"></a>没提到的</h2><p><a href="https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/">上一篇</a>内容中介绍了一些Linux网络协议栈的调优方法，但遗漏了一些可以发挥重要作用的方法，在这一篇中补充一下。<br><a id="more"></a></p>
-<h2 id="net-rx-action-budget"><a href="#net-rx-action-budget" class="headerlink" title="net_rx_action budget"></a><code>net_rx_action</code> budget</h2><p>这个参数可以决定NAPI可以占用多少CPU的处理能力，可以调到900</p>
-<p><code>sysctl -w net.core.netdev_budget=900</code></p>
-<h2 id="netdev-max-backlog"><a href="#netdev-max-backlog" class="headerlink" title="netdev_max_backlog"></a><code>netdev_max_backlog</code></h2><p><code>sysctl -w net.core.netdev_max_backlog=65535</code></p>
-<h2 id="dev-weight"><a href="#dev-weight" class="headerlink" title="dev_weight"></a><code>dev_weight</code></h2><p><code>sysctl -w net.core.dev_weight=1024</code><br>这个参数在实际测试中影响也比较大</p>
-<h2 id="ip-early-demux"><a href="#ip-early-demux" class="headerlink" title="ip_early_demux"></a><code>ip_early_demux</code></h2><p><code>sysctl -w net.ipv4.ip_early_demux=0</code><br>这个参数根据实际测试结果调整。改为0或1。</p>
-<h2 id="关于RPS"><a href="#关于RPS" class="headerlink" title="关于RPS"></a>关于RPS</h2><p>在前面提到需要关闭RPS功能，但在实际测试中发现设定相应的CPU Mask还是能对性能有比较大的提升，具体原因在进一步挖掘的过程中，当前需要实际测试找出最适合的配置方法。</p>
+        <h2 id="CPU性能测试对环境的要求"><a href="#CPU性能测试对环境的要求" class="headerlink" title="CPU性能测试对环境的要求"></a>CPU性能测试对环境的要求</h2><p>即便是硬件配置完全一样，操作系统相同，工作负载也相同的硬件平台，性能测试的结果也可能会因为各项配置的不同出现较大出入。<br><a id="more"></a></p>
+<p>除了硬件的Hyper Thread/Turbo等特性之外，OS对进程的调度、中断等等也可能会产生影响。当然如果你要测试的工作负载还要和网络、存储交互的话，那么就还需要把他们放在一起综合考虑。</p>
+<p>这里的讨论只限于Linux系统。</p>
+<h2 id="几种手段"><a href="#几种手段" class="headerlink" title="几种手段"></a>几种手段</h2><h3 id="识别系统架构"><a href="#识别系统架构" class="headerlink" title="识别系统架构"></a>识别系统架构</h3><p>先看一下系统NUMA的情况，以及与要测试的工作负载相关的硬件资源分布情况。选用合理的测试配置（e.g. CPU核与网卡在同一个NUMA节点上）。</p>
+<h3 id="配置scaling-governor"><a href="#配置scaling-governor" class="headerlink" title="配置scaling_governor"></a>配置<code>scaling_governor</code></h3><p>将<code>scaling_governor</code>配成<code>performance</code>是一个比较常用的手段。</p>
+<p><code>echo performance &gt; /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor</code></p>
+<p>可以仅配置参与测试的CPU核(cpu*)，也可以全部配置。另有<code>cpupower</code>工具可以协助完成，相关资料可以自行<code>man cpupower</code>。</p>
+<h3 id="关闭Hyper-Thread"><a href="#关闭Hyper-Thread" class="headerlink" title="关闭Hyper Thread"></a>关闭Hyper Thread</h3><p>Intel的CPU如果打开Hyper Thread，同一个CPU核中有很多流水线资源是两个Thread共享的。详情可以参见<code>Skylake微架构剖析</code>系列文章。如果能操作BIOS，最好就是直接关闭Hyper Thread。如果不方便操作BIOS或者只想关闭与测试有关的CPU核的Hyper Thread也可以用：</p>
+<p>查看该CPU核的siblings列表：</p>
+<p><code>/sys/devices/system/cpu/cpuN/topology/thread_siblings_list</code></p>
+<p>看到另外那个CPU X之后：</p>
+<p><code>echo 0 &gt; /sys/devices/system/cpu/cpuX/online</code></p>
+<h3 id="关闭Turbo"><a href="#关闭Turbo" class="headerlink" title="关闭Turbo"></a>关闭Turbo</h3><p>并不是说Turbo不好，其实Trubo能比较显著地提高性能，但我们这里追求的是一个”纯净”的测试环境，需要尽量排除Trubo在频率升降过程中产生的误差干扰。</p>
+<p><code>echo 1 &gt; /sys/devices/system/cpu/intel_pstate/no_turbo</code></p>
+<h3 id="屏蔽内核干扰"><a href="#屏蔽内核干扰" class="headerlink" title="屏蔽内核干扰"></a>屏蔽内核干扰</h3><p>内核有些时候也会对测试结果产生干扰，比如用户/内核线程到参与测试的CPU核，或者给CPU分配网卡等设备的中断等等。这些都有相应的内核参数可以配置，在这里推荐一个简单点的工具：</p>
+<p><a href="https://github.com/lpechacek/cpuset" target="_blank" rel="noopener">cpuset</a>:<a href="https://github.com/lpechacek/cpuset" target="_blank" rel="noopener">https://github.com/lpechacek/cpuset</a> </p>
+<p>那么预留出参与测试的CPU核就比较简单了：</p>
+<p><code>cset shield -c N1,N2 -k on</code></p>
+<p>N1,N2就是CPU的编号。</p>
+<p>查看和分配中断的方法可以参考<a href="https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/">这篇</a></p>
+<p>执行要测试的负载可以用<code>taskset</code>也可以继续使用<code>cset</code> e.g.</p>
+<p><code>cset shield --exec -- perf stat -r 10 &lt;cmd&gt;</code></p>
+<h3 id="关闭ASLR"><a href="#关闭ASLR" class="headerlink" title="关闭ASLR"></a>关闭ASLR</h3><p>ASLR(Address Space Layout Randomization)是一种安全机制，但可能会引入性能下降。我本人没有太深入研究具体原因，但可以参考一些现有的资料e.g.<a href="https://benpfaff.org/papers/asrandom.pdf" target="_blank" rel="noopener">On the Effectiveness of Address-Space Randomization</a>。</p>
+<blockquote>
+<p>Implementations of WX on CPUs whose memory-management units lack a per-page execute bit, for example, current x86 chips, incur a significant performance penalty.</p>
+</blockquote>
+<p>关闭的方法：</p>
+<p><code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/test/">test</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -284,19 +305,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/01/27/quickwords13-tma/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          几句话说清楚13：什么是Top-Down性能分析方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/22/test5-linux-network-performance-optimization/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/02/19/test7-prime-opt/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">测来测去5：Linux网络性能调优方法</div>
+      <div class="article-nav-title">测来测去7：筛法求素数Loop Unrolling性能优化实例</div>
     </a>
   
 </nav>
@@ -310,7 +322,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#没提到的"><span class="nav-number">1.</span> <span class="nav-text">没提到的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-rx-action-budget"><span class="nav-number">2.</span> <span class="nav-text">net_rx_action budget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#netdev-max-backlog"><span class="nav-number">3.</span> <span class="nav-text">netdev_max_backlog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dev-weight"><span class="nav-number">4.</span> <span class="nav-text">dev_weight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ip-early-demux"><span class="nav-number">5.</span> <span class="nav-text">ip_early_demux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于RPS"><span class="nav-number">6.</span> <span class="nav-text">关于RPS</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU性能测试对环境的要求"><span class="nav-number">1.</span> <span class="nav-text">CPU性能测试对环境的要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种手段"><span class="nav-number">2.</span> <span class="nav-text">几种手段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#识别系统架构"><span class="nav-number">2.1.</span> <span class="nav-text">识别系统架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置scaling-governor"><span class="nav-number">2.2.</span> <span class="nav-text">配置scaling_governor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭Hyper-Thread"><span class="nav-number">2.3.</span> <span class="nav-text">关闭Hyper Thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭Turbo"><span class="nav-number">2.4.</span> <span class="nav-text">关闭Turbo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#屏蔽内核干扰"><span class="nav-number">2.5.</span> <span class="nav-text">屏蔽内核干扰</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭ASLR"><span class="nav-number">2.6.</span> <span class="nav-text">关闭ASLR</span></a></li></ol></li></ol>
     
     </div>
   </aside>

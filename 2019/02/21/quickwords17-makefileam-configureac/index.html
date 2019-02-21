@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>几句话说清楚17：用makefile.am和configure.ac构建一个专业的hello world | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="首先感谢GUN的良好教程，这里主要是做一点点加工。 GNU Autotool现在写开源项目，如果只提供一个Makefile可能会令别人怀疑你项目的专业程度:D虽然其实并没有什么关系，但看着别的项目目录下面的configure, configure.ac, Makefile.in, Makefile.am, aclocal.m4等文件还是会觉得有必要也用这些东西“装点”一下。">
+<meta name="keywords" content="tech,program">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几句话说清楚17：用Makefile.am和configure.ac构建一个专业的Hello World">
+<meta property="og:url" content="https://decodezp.github.io/2019/02/21/quickwords17-makefileam-configureac/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="首先感谢GUN的良好教程，这里主要是做一点点加工。 GNU Autotool现在写开源项目，如果只提供一个Makefile可能会令别人怀疑你项目的专业程度:D虽然其实并没有什么关系，但看着别的项目目录下面的configure, configure.ac, Makefile.in, Makefile.am, aclocal.m4等文件还是会觉得有必要也用这些东西“装点”一下。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://www.gnu.org/graphics/gerwinski-gnu-head.png">
+<meta property="og:updated_time" content="2019-02-21T12:47:52.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="几句话说清楚17：用Makefile.am和configure.ac构建一个专业的Hello World">
+<meta name="twitter:description" content="首先感谢GUN的良好教程，这里主要是做一点点加工。 GNU Autotool现在写开源项目，如果只提供一个Makefile可能会令别人怀疑你项目的专业程度:D虽然其实并没有什么关系，但看着别的项目目录下面的configure, configure.ac, Makefile.in, Makefile.am, aclocal.m4等文件还是会觉得有必要也用这些东西“装点”一下。">
+<meta name="twitter:image" content="https://www.gnu.org/graphics/gerwinski-gnu-head.png">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-quickwords17-makefileam-configureac" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://www.gnu.org/graphics/gerwinski-gnu-head.png" rel="gallery_cjsemgs7b001v1lfydo6qsjnz">
+        <img src="https://www.gnu.org/graphics/gerwinski-gnu-head.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      几句话说清楚17：用Makefile.am和configure.ac构建一个专业的Hello World
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/02/21/quickwords17-makefileam-configureac/" class="article-date">
+	  <time datetime="2019-02-21T12:46:35.000Z" itemprop="datePublished">February 21, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先感谢GUN的良好<a href="https://www.gnu.org/software/automake/manual/html_node/Creating-amhello.html" target="_blank" rel="noopener">教程</a>，这里主要是做一点点加工。</p>
+<h2 id="GNU-Autotool"><a href="#GNU-Autotool" class="headerlink" title="GNU Autotool"></a>GNU Autotool</h2><p>现在写开源项目，如果只提供一个Makefile可能会令别人怀疑你项目的专业程度:D虽然其实并没有什么关系，但看着别的项目目录下面的<code>configure</code>, <code>configure.ac</code>, <code>Makefile.in</code>, <code>Makefile.am</code>, <code>aclocal.m4</code>等文件还是会觉得有必要也用这些东西“装点”一下。<br><a id="more"></a></p>
+<p>这些文件其实都是由GNU Autotools生成的。Autotools的功能当然不止是装点一下，但我们不在这里深究这个问题，下面通过一个最简单的Hello World示例来解释一下Autotools的使用方法。</p>
+<h2 id="构建必要的文件"><a href="#构建必要的文件" class="headerlink" title="构建必要的文件"></a>构建必要的文件</h2><h3 id="src-main-c"><a href="#src-main-c" class="headerlink" title="src/main.c"></a>src/main.c</h3><p>在项目根目录下新建一个<code>src</code>文件夹，放Hello World的<code>main.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;config.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line">main (<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">puts</span> (<span class="string">"Hello World!"</span>);</span><br><span class="line">  <span class="built_in">puts</span> (<span class="string">"This is "</span> PACKAGE_STRING <span class="string">"."</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特别注意一下与”传统”Hello World不同的是include了一个<code>config.h</code>，所以才会有<code>PACKAGE_STRING</code>这一变量。</p>
+<p>不直接在根目录创建main.c是因为后续Autotools会自动创建一些额外的作为一个”专业”项目所需要的文件夹，例如<code>man/</code>和<code>data/</code>等等。</p>
+<h3 id="README"><a href="#README" class="headerlink" title="README"></a>README</h3><p>这个直接放根目录就行了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This is a demonstration package for GNU Automake.</span><br><span class="line">Type 'info Automake' to read the Automake manual.</span><br></pre></td></tr></table></figure>
+<h3 id="根目录下的Makefile-am"><a href="#根目录下的Makefile-am" class="headerlink" title="根目录下的Makefile.am"></a>根目录下的Makefile.am</h3><p>这个这么写：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SUBDIRS = src</span><br><span class="line">dist_doc_DATA = README</span><br></pre></td></tr></table></figure>
+<h3 id="src目录下的Makefile-am"><a href="#src目录下的Makefile-am" class="headerlink" title="src目录下的Makefile.am"></a>src目录下的Makefile.am</h3><p>是的，确实需要写两个Makefile.am：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin_PROGRAMS = hello</span><br><span class="line">hello_SOURCES = main.c</span><br></pre></td></tr></table></figure>
+<h3 id="configure-ac"><a href="#configure-ac" class="headerlink" title="configure.ac"></a>configure.ac</h3><p>下面就可以写最后的<code>configure.ac</code>文件了，这个放在根目录下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">AC_INIT([amhello], [1.0], [bug-automake@gnu.org])</span><br><span class="line">AM_INIT_AUTOMAKE([-Wall -Werror foreign])</span><br><span class="line">AC_PROG_CC</span><br><span class="line">AC_CONFIG_HEADERS([config.h])</span><br><span class="line">AC_CONFIG_FILES([</span><br><span class="line"> Makefile</span><br><span class="line"> src/Makefile</span><br><span class="line">])</span><br><span class="line">AC_OUTPUT</span><br></pre></td></tr></table></figure>
+<p>AC_INIT等等Autotools预定义的宏，看一下括号里的东西大概就能明白是什么意思了吧：D当然，除了这几个之外还有很多其他功能强大的操作，可以自行查找相关信息。</p>
+<h2 id="实例化构建系统"><a href="#实例化构建系统" class="headerlink" title="实例化构建系统"></a>实例化构建系统</h2><p>运行<code>autoreconf</code>命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">autoreconf --install</span><br><span class="line">configure.ac: installing './install-sh'</span><br><span class="line">configure.ac: installing './missing'</span><br><span class="line">configure.ac: installing './compile'</span><br><span class="line">src/Makefile.am: installing './depcomp'</span><br></pre></td></tr></table></figure>
+<p>这个时候你就可以看到你的目录下面多出了<code>configrure</code>, <code>config.h.in</code>, <code>Makefile.in</code>以及<code>src/Makefile.in</code>这几个文件。但<code>autoreconf</code>的目的不仅仅是创建这几个文件，而是为了在你的系统里创建GNU Build System。</p>
+<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><p>下面你就可以用平时你在开源项目里用到的操作手法编译生成安装了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">checking for a BSD-compatible install... /usr/bin/install -c</span><br><span class="line">checking whether build environment is sane... yes</span><br><span class="line">checking for gawk... no</span><br><span class="line">checking for mawk... mawk</span><br><span class="line">checking whether make sets $(MAKE)... yes</span><br><span class="line">checking for gcc... gcc</span><br><span class="line">checking for C compiler default output file name... a.out</span><br><span class="line">checking whether the C compiler works... yes</span><br><span class="line">checking whether we are cross compiling... no</span><br><span class="line">checking for suffix of executables...</span><br><span class="line">checking for suffix of object files... o</span><br><span class="line">checking whether we are using the GNU C compiler... yes</span><br><span class="line">checking whether gcc accepts -g... yes</span><br><span class="line">checking for gcc option to accept ISO C89... none needed</span><br><span class="line">checking for style of include used by make... GNU</span><br><span class="line">checking dependency style of gcc... gcc3</span><br><span class="line">configure: creating ./config.status</span><br><span class="line">config.status: creating Makefile</span><br><span class="line">config.status: creating src/Makefile</span><br><span class="line">config.status: creating config.h</span><br><span class="line">config.status: executing depfiles commands</span><br></pre></td></tr></table></figure>
+<p>用了<code>configure</code>之后就可以看到<code>Makefile</code>和<code>src/Makefile</code>以及<code>config.h</code>了。下面直接<code>make</code>就好。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">…</span><br><span class="line">src/hello</span><br><span class="line">Hello World!</span><br><span class="line">This is amhello 1.0.</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/program/">program</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/20/quickwords16-noisy-free-benchmark-env/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">几句话说清楚16：如何构建零干扰CPU Benchmark环境</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GNU-Autotool"><span class="nav-number">1.</span> <span class="nav-text">GNU Autotool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建必要的文件"><span class="nav-number">2.</span> <span class="nav-text">构建必要的文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#src-main-c"><span class="nav-number">2.1.</span> <span class="nav-text">src/main.c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#README"><span class="nav-number">2.2.</span> <span class="nav-text">README</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根目录下的Makefile-am"><span class="nav-number">2.3.</span> <span class="nav-text">根目录下的Makefile.am</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#src目录下的Makefile-am"><span class="nav-number">2.4.</span> <span class="nav-text">src目录下的Makefile.am</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#configure-ac"><span class="nav-number">2.5.</span> <span class="nav-text">configure.ac</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例化构建系统"><span class="nav-number">3.</span> <span class="nav-text">实例化构建系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译安装"><span class="nav-number">4.</span> <span class="nav-text">编译安装</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

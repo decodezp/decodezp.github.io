@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-02-20T13:09:10.002Z</updated>
+  <updated>2019-02-21T12:47:52.779Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚17：用Makefile.am和configure.ac构建一个专业的Hello World</title>
+    <link href="https://decodezp.github.io/2019/02/21/quickwords17-makefileam-configureac/"/>
+    <id>https://decodezp.github.io/2019/02/21/quickwords17-makefileam-configureac/</id>
+    <published>2019-02-21T12:46:35.000Z</published>
+    <updated>2019-02-21T12:47:52.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先感谢GUN的良好&lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Creating-amhello.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;教程&lt;/a&gt;，这里主要是做一点点加工。&lt;/p&gt;
+&lt;h2 id=&quot;GNU-Autotool&quot;&gt;&lt;a href=&quot;#GNU-Autotool&quot; class=&quot;headerlink&quot; title=&quot;GNU Autotool&quot;&gt;&lt;/a&gt;GNU Autotool&lt;/h2&gt;&lt;p&gt;现在写开源项目，如果只提供一个Makefile可能会令别人怀疑你项目的专业程度:D虽然其实并没有什么关系，但看着别的项目目录下面的&lt;code&gt;configure&lt;/code&gt;, &lt;code&gt;configure.ac&lt;/code&gt;, &lt;code&gt;Makefile.in&lt;/code&gt;, &lt;code&gt;Makefile.am&lt;/code&gt;, &lt;code&gt;aclocal.m4&lt;/code&gt;等文件还是会觉得有必要也用这些东西“装点”一下。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="program" scheme="https://decodezp.github.io/tags/program/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚16：如何构建零干扰CPU Benchmark环境</title>
@@ -465,27 +488,6 @@
     
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>吃牛排的技术</title>
-    <link href="https://decodezp.github.io/2018/12/28/steak/"/>
-    <id>https://decodezp.github.io/2018/12/28/steak/</id>
-    <published>2018-12-28T09:35:26.000Z</published>
-    <updated>2018-12-28T09:39:19.317Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;虽然不知道背后是什么原理，但烤出好吃的牛排一定是一门重要的技术。&lt;/p&gt;
-&lt;p&gt;因为重要的技术，门槛一般都很高。它的高不仅体现在如何掌握这门技术，还体现在如何使用这门技术。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     

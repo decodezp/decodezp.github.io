@@ -7,7 +7,7 @@
       <link href="/2019/02/22/quickwords18-pcie-gtps-gbps/"/>
       <url>/2019/02/22/quickwords18-pcie-gtps-gbps/</url>
       
-        <content type="html"><![CDATA[<h2 id="PCIE的表达方式"><a href="#PCIE的表达方式" class="headerlink" title="PCIE的表达方式"></a>PCIE的表达方式</h2><p>PCIE使用GT/s这个单位表达自己的带宽，这并不是为了标新立异，而是为了更好（直接）地表达PCIE的工作方式。<br><a id="more"></a></p><p>原始的数据在采用PCIE总线传输的时候，需要重新编码。因为PCIE是一种串行总线所以总线时钟要嵌入在串行的数据里。为了保证数据接收方能够正确地还原出时钟，需要提供足够多的信号电位变化（Level Transitions），电位的高低其实代表的就是传输的比特（0或者1）。所以对PCIE来说，它的传输效率并非在于传输了多少有效的数据，而是电位变化的频率。</p><p>GT/s其实就是GigaTransfers per second。而重新编码的电位变化频率也会高于原始数据的比特变化频率，从而导致PCIE传输对带宽有一些因为编码产生的Overhead。</p><p>一次电位变化从数据角度说就相当于传输了一个Bit。所以在下面的计算里GT/s可以等同于Gbps，不过这是编码后的数据。</p><h2 id="PCIE-Gen2-Gen3的区别"><a href="#PCIE-Gen2-Gen3的区别" class="headerlink" title="PCIE Gen2/Gen3的区别"></a>PCIE Gen2/Gen3的区别</h2><p>按上面介绍的原理，为了提高传输速率，一是提高最大可用电位变化频率，而是提高编码效率。</p><h3 id="变化频率"><a href="#变化频率" class="headerlink" title="变化频率"></a>变化频率</h3><ul><li>Gen2最大支持5GT/s</li><li>Gen3最大支持8GT/s</li></ul><h3 id="编码效率"><a href="#编码效率" class="headerlink" title="编码效率"></a>编码效率</h3><ul><li>Gen2编码8Bit原始数据需要10Bit的数据量</li><li>Gen3编码128B原始数据需要130Bit的数据量</li></ul><h2 id="GT-s到Gbps的转换"><a href="#GT-s到Gbps的转换" class="headerlink" title="GT/s到Gbps的转换"></a>GT/s到Gbps的转换</h2><ul><li>Gen2</li></ul><p>Gen2最大支持5GT/s/lane。相当于5Gbps的编码后的数据，乘以编码效率<br><code>5Gbps * (8/10) = 4Gbps = 500MBps</code>未编码的原始数据。</p><ul><li>Gen3</li></ul><p>Gen3最大支持8GT/s/lane。按上述算法：</p><p><code>8Gbps * (128/130) = 7876Gbps = 984.6MBps</code></p><p>如果是PCIE Gen3 x8那就是984.6MBps x 8</p><h2 id="速查表格"><a href="#速查表格" class="headerlink" title="速查表格"></a>速查表格</h2><p><img src="https://s2.ax1x.com/2019/02/22/kfycbq.png" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="PCIE的表达方式"><a href="#PCIE的表达方式" class="headerlink" title="PCIE的表达方式"></a>PCIE的表达方式</h2><p>PCIE使用GT/s这个单位表达自己的带宽，这并不是为了标新立异，而是为了更好（直接）地表达PCIE的工作方式。<br><a id="more"></a></p><p>原始的数据在采用PCIE总线传输的时候，需要重新编码。因为PCIE是一种串行总线所以总线时钟要嵌入在串行的数据里。为了保证数据接收方能够正确地还原出时钟，需要提供足够多的信号电位变化（Level Transitions），电位的高低其实代表的就是传输的比特（0或者1）。所以对PCIE来说，它的传输效率并非在于传输了多少有效的数据，而是电位变化的频率。</p><p>GT/s其实就是GigaTransfers per second。而重新编码的电位变化频率也会高于原始数据的比特变化频率，从而导致PCIE传输对带宽有一些因为编码产生的Overhead。</p><p>一次电位变化从数据角度说就相当于传输了一个Bit。所以在下面的计算里GT/s可以等同于Gbps，不过这是编码后的数据。</p><h2 id="PCIE-Gen2-Gen3的区别"><a href="#PCIE-Gen2-Gen3的区别" class="headerlink" title="PCIE Gen2/Gen3的区别"></a>PCIE Gen2/Gen3的区别</h2><p>按上面介绍的原理，为了提高传输速率，一是提高最大可用电位变化频率，而是提高编码效率。</p><h3 id="变化频率"><a href="#变化频率" class="headerlink" title="变化频率"></a>变化频率</h3><ul><li>Gen2最大支持5GT/s</li><li>Gen3最大支持8GT/s</li></ul><h3 id="编码效率"><a href="#编码效率" class="headerlink" title="编码效率"></a>编码效率</h3><ul><li>Gen2编码8Bit原始数据需要10Bit的数据量</li><li>Gen3编码128Bit原始数据需要130Bit的数据量</li></ul><h2 id="GT-s到Gbps的转换"><a href="#GT-s到Gbps的转换" class="headerlink" title="GT/s到Gbps的转换"></a>GT/s到Gbps的转换</h2><ul><li>Gen2</li></ul><p>Gen2最大支持5GT/s/lane。相当于5Gbps的编码后的数据，乘以编码效率<br><code>5Gbps * (8/10) = 4Gbps = 500MBps</code>未编码的原始数据。</p><ul><li>Gen3</li></ul><p>Gen3最大支持8GT/s/lane。按上述算法：</p><p><code>8Gbps * (128/130) = 7876Gbps = 984.6MBps</code></p><p>如果是PCIE Gen3 x8那就是984.6MBps x 8</p><h2 id="速查表格"><a href="#速查表格" class="headerlink" title="速查表格"></a>速查表格</h2><p><img src="https://s2.ax1x.com/2019/02/22/kfycbq.png" alt=""></p>]]></content>
       
       
       <categories>
@@ -606,9 +606,9 @@
             
             <tag> tech </tag>
             
-            <tag> hardware </tag>
-            
             <tag> network </tag>
+            
+            <tag> hardware </tag>
             
         </tags>
       
@@ -685,9 +685,9 @@
             
             <tag> tech </tag>
             
-            <tag> hardware </tag>
-            
             <tag> network </tag>
+            
+            <tag> hardware </tag>
             
         </tags>
       
@@ -1090,9 +1090,9 @@
             
             <tag> tech </tag>
             
-            <tag> hardware </tag>
-            
             <tag> network </tag>
+            
+            <tag> hardware </tag>
             
         </tags>
       

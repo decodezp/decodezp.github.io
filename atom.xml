@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-02-21T12:47:52.779Z</updated>
+  <updated>2019-02-22T13:46:19.781Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚18：PCIE带宽单位GT/s到Gbps转换方法</title>
+    <link href="https://decodezp.github.io/2019/02/22/quickwords18-pcie-gtps-gbps/"/>
+    <id>https://decodezp.github.io/2019/02/22/quickwords18-pcie-gtps-gbps/</id>
+    <published>2019-02-22T13:41:22.000Z</published>
+    <updated>2019-02-22T13:46:19.781Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;PCIE的表达方式&quot;&gt;&lt;a href=&quot;#PCIE的表达方式&quot; class=&quot;headerlink&quot; title=&quot;PCIE的表达方式&quot;&gt;&lt;/a&gt;PCIE的表达方式&lt;/h2&gt;&lt;p&gt;PCIE使用GT/s这个单位表达自己的带宽，这并不是为了标新立异，而是为了更好（直接）地表达PCIE的工作方式。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚17：用Makefile.am和configure.ac构建一个专业的Hello World</title>
@@ -338,9 +360,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   
@@ -463,33 +485,6 @@
       <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>唯识与C语言指针</title>
-    <link href="https://decodezp.github.io/2018/12/31/thoughts2-weishi-c-pointer/"/>
-    <id>https://decodezp.github.io/2018/12/31/thoughts2-weishi-c-pointer/</id>
-    <published>2018-12-30T17:06:05.000Z</published>
-    <updated>2018-12-30T17:26:02.327Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;旧文虽无殊胜处却最解少年意，重发于此，乃自喜其披坚执锐行而无返之气。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;作者按&quot;&gt;&lt;a href=&quot;#作者按&quot; class=&quot;headerlink&quot; title=&quot;作者按&quot;&gt;&lt;/a&gt;作者按&lt;/h1&gt;&lt;p&gt;丙申孟春，始得熊君十力之微言宏旨，于《新唯识论》中得窥心外无物，体用不二，翕辟成变之理。数年兵、道、史、释之学，终为一脉贯通，于世间纷杂，万相罗织，始有定见。乃身蹈统摄之道，心得自在清凉，不免情动于衷，喜不自胜。&lt;/p&gt;
-&lt;p&gt;熊君为阐唯识之旨，于书中多举譬喻。举“海水与众沤”喻，“绳索与大麻”喻种种；更尝作图形，以穷其本旨，表其胜义，苦口婆心，令人动容，非沐手开卷不能彰其功，焚香斋戒不能铭其德。吾观乎此学，虽能以物物强为譬喻，然万物浩汤，皆为大化，果有以大化喻大化之理乎？终须另觅一人造之物，探幽寻明，见微知著，庶几可得于大化矣。今请试以指针喻之。&lt;/p&gt;
-&lt;p&gt;下面开始正常说话。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

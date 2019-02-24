@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>几句话说清楚19：描述性能优化成果的正确姿势</title>
+      <link href="/2019/02/24/quickwords19-desc-perf-improvement/"/>
+      <url>/2019/02/24/quickwords19-desc-perf-improvement/</url>
+      
+        <content type="html"><![CDATA[<h2 id="从10秒到1秒"><a href="#从10秒到1秒" class="headerlink" title="从10秒到1秒"></a>从10秒到1秒</h2><p>周末了说点不硬的技术。<br><a id="more"></a></p><p>自从摩尔定律不那么好使了之后，人们才真正开始关注软件性能。各类开源或者商业产品也经常以性能提升XXX作为卖点宣传。如果在搜索引擎以“性能提升[9, 8, 7, 6]0%”为关键字搜索一下，能看到连篇累牍的精确匹配的信息。但这些信息本身却并不“精确”，甚至都不正确。</p><p>经常能看到的一个错误与下面这个简化的例子相似：</p><blockquote><p>一辆汽车以前行驶100米需要10秒钟，新型号推出后，仅需要1秒钟。</p></blockquote><p>你会看到很多产品信息将这种提升描述为“性能提升90%”。</p><p>我猜测90%的计算方式是：</p><p><code>(10 - 1) / 10 = 90%</code></p><p>但实际上这完全错误。</p><h2 id="性能的表达"><a href="#性能的表达" class="headerlink" title="性能的表达"></a>性能的表达</h2><p>所有的性能都可以表达为：</p><p><code>性能 = 工作量 / 单位时间</code></p><p>其实就是单位时间内能完成的工作量。</p><p>在上面的例子中，工作量是移动距离（m），单位时间（s），性能其实就是m/s，也就是“速度”。</p><p>我们有很多常用的指标已经直接是这种形式，例如QPS、PPS、BPS等。</p><h2 id="性能优化的表达方式"><a href="#性能优化的表达方式" class="headerlink" title="性能优化的表达方式"></a>性能优化的表达方式</h2><p>那前后两次的速度是多少呢？分别是<code>10m/s</code>和<code>100m/s</code>。那性能提升就是<code>100m/s / 10m/s = 10x</code>。</p><p>所以上面的例子中，你可以说：</p><ul><li>性能（速度）10倍提升</li><li>快了10倍/1000%</li></ul><p>但不能说：</p><ul><li>性能提升90%</li><li>快了90%</li></ul><p>一定要用到90%的话，那就是：</p><ul><li>移动耗时减少90%</li></ul><p>如果真正按性能提升90%来计算，那么速度之前是10m/s，之后是<code>10 * ( 1 + 90% ) = 19m/s</code>，也就是1.9倍。</p><p>这个问题在英语世界里也很常见。例如经常会看到一些<code>Get something done 90% faster</code>的宣传，其实都应该改成<code>Get something done 10 times faster</code>。当然也有故意利用这部分认知漏洞，让人误以为性能提升了10倍的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚18：PCIE带宽单位GT/s到Gbps转换方法</title>
       <link href="/2019/02/22/quickwords18-pcie-gtps-gbps/"/>
       <url>/2019/02/22/quickwords18-pcie-gtps-gbps/</url>
@@ -371,9 +394,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -529,9 +552,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -606,9 +629,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> hardware </tag>
+            
+            <tag> network </tag>
             
         </tags>
       
@@ -685,9 +708,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> hardware </tag>
+            
+            <tag> network </tag>
             
         </tags>
       
@@ -951,9 +974,9 @@
             
             <tag> tech </tag>
             
-            <tag> ftrace </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ftrace </tag>
             
         </tags>
       
@@ -1003,9 +1026,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
             <tag> cloud </tag>
             
@@ -1090,9 +1113,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> hardware </tag>
+            
+            <tag> network </tag>
             
         </tags>
       

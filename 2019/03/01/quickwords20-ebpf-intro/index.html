@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚5：影响服务器内存性能的硬件知识 | DecodeZ</title>
+  <title>几句话说清楚20：ebpf的机制 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
-<meta name="keywords" content="tech,hardware,performance,memory">
+  <meta name="description" content="怎么出来的eBPF用Linux Kernel Module来做一个类比说明eBPF诞生的目的。">
+<meta name="keywords" content="tech">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚5：影响服务器内存性能的硬件知识">
-<meta property="og:url" content="https://decodezp.github.io/2018/12/13/quickwords5-server-memory/index.html">
+<meta property="og:title" content="几句话说清楚20：eBPF的机制">
+<meta property="og:url" content="https://decodezp.github.io/2019/03/01/quickwords20-ebpf-intro/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
+<meta property="og:description" content="怎么出来的eBPF用Linux Kernel Module来做一个类比说明eBPF诞生的目的。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png">
-<meta property="og:updated_time" content="2018-12-13T14:38:25.712Z">
+<meta property="og:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/54dfc66b-0134-4fdc-842e-289f45eaf57a/d1ykevj-be4da28e-f584-4575-b713-13aa24255f62.jpg">
+<meta property="og:updated_time" content="2019-03-01T13:59:09.005Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚5：影响服务器内存性能的硬件知识">
-<meta name="twitter:description" content="发挥内存条理财的最大收益率内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。 在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的Memory Controller就需要去内存中读取内容。">
-<meta name="twitter:image" content="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png">
+<meta name="twitter:title" content="几句话说清楚20：eBPF的机制">
+<meta name="twitter:description" content="怎么出来的eBPF用Linux Kernel Module来做一个类比说明eBPF诞生的目的。">
+<meta name="twitter:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/54dfc66b-0134-4fdc-842e-289f45eaf57a/d1ykevj-be4da28e-f584-4575-b713-13aa24255f62.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords5-server-memory" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords20-ebpf-intro" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png" rel="gallery_cjsq4ii4s002b74fy5cnm9bac">
-        <img src="https://www.pbtech.co.nz/fileslib/_20180308142049_Server_Memory.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/54dfc66b-0134-4fdc-842e-289f45eaf57a/d1ykevj-be4da28e-f584-4575-b713-13aa24255f62.jpg" rel="gallery_cjsq4j7n100007ufyp3ojutkk">
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/54dfc66b-0134-4fdc-842e-289f45eaf57a/d1ykevj-be4da28e-f584-4575-b713-13aa24255f62.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚5：影响服务器内存性能的硬件知识
+      几句话说清楚20：eBPF的机制
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/12/13/quickwords5-server-memory/" class="article-date">
-	  <time datetime="2018-12-13T14:20:51.000Z" itemprop="datePublished">December 13, 2018</time>
+	Posted on <a href="/2019/03/01/quickwords20-ebpf-intro/" class="article-date">
+	  <time datetime="2019-03-01T13:56:23.000Z" itemprop="datePublished">March 1, 2019</time>
 	</a>
 
       
@@ -232,39 +232,42 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="发挥内存条理财的最大收益率"><a href="#发挥内存条理财的最大收益率" class="headerlink" title="发挥内存条理财的最大收益率"></a>发挥内存条理财的最大收益率</h2><p>内存条作为年度最佳理财产品除了能躺着赚钱之外，使用得好还可以一条当两条用。</p>
-<p>在计算机系统中，内存的价值就体现在快速提供数据给CPU处理。当CPU需要的数据没有在缓存里时，CPU内部的<code>Memory Controller</code>就需要去内存中读取内容。<br><a id="more"></a></p>
-<p>而<code>Memory Controller</code>为了尽快完成CPU交代的任务，用了<code>多通道</code>的方式增大内存存取带宽。</p>
-<p><code>多通道</code>这个概念很好理解，和多条车道是一个意思。比如CPU需要1MB大小的数据，单通道的话数据就只能在一条通道上老老实实排队；双通道就可以并行两个512KB的读取；四通道就是并行四个256KB的读取。</p>
-<p>我知道你要问什么，这1MB大小的数据已经被<code>Memory Controller</code>通过一种叫做<code>Interleave(交织)</code>的技术“打散”在了两个通道或者四个通道对应的物理内存上。<code>Interleave</code>由硬件实现，细节不在这里深究，我们想说明的是发挥这些硬件组件的最大能力需要外界条件配合。</p>
-<p>内存在硬件方面的性能优化，就围绕这个主题。</p>
-<h2 id="内存相关概念"><a href="#内存相关概念" class="headerlink" title="内存相关概念"></a>内存相关概念</h2><p>现在主流Intel E5 CPU的配置是一颗CPU上两个<code>Memory Controller</code>，每个Controller有两个通道，每个通道对应主板上三个内存插槽(DIMM)。</p>
-<p><img src="http://1.bp.blogspot.com/-Iaf9qQgC-zM/VdDIBPzscoI/AAAAAAAAABs/AU-vcOrCSck/s1600/6101_48_supermicro_x9dr7_tf_intel_c602j_server_motherboard_review.jpg" alt="内存插槽"></p>
-<p><code>Interleave</code>首先发生在通道层面，进而发生在通道的DIMM层面（使用的DIMM越多，交织得越充分）</p>
-<p>同时每根内存条还有一个<code>Rank</code>的概念。这个概念可以理解为更进一步的<code>Interleave</code>，多<code>Rank</code>的内存条可以再进行一次<code>Interleave</code>。</p>
-<p><img src="https://cdn3.bigcommerce.com/s-3jjekk/product_images/uploaded_images/memory-rank.png?t=1518214379&amp;_ga=2.27767868.1254827790.1518192896-72491761.1493653618" alt="看序列号读取内存信息"></p>
-<h2 id="充分平衡"><a href="#充分平衡" class="headerlink" title="充分平衡"></a>充分平衡</h2><p>满足最优的内存配置就是四个字：充分平衡。</p>
-<p>-充分：并不是要你插满所有插槽，而是充分利用每个<code>Memory Controller</code>和每条通道<br>-平衡：每个<code>Memory Controller</code>和通道上的内存配置(Size, Rank和频率)都相同。</p>
-<p>在实际应用中，首先绘制一个内存拓扑，如下图：<br><img src="https://s1.ax1x.com/2018/12/13/FNdSBT.png" alt="充分平衡"></p>
-<blockquote>
-<p>如何检查是否充分？看一下每个<code>Memory Controller</code>中的每个通道是否都有内存条<br>如何检查是否平衡？将拓扑图从中垂线对折一次，检查图像是否能重合；再从水平中位线对折一次，检查是否能重合。如果两次回答都是yes，就平衡了。</p>
-</blockquote>
-<h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNwPqf.png" alt="平衡不充分"></p>
-<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNazuV.png" alt="充分不平衡"></p>
-<h3 id="实例3"><a href="#实例3" class="headerlink" title="实例3"></a>实例3</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNajcq.png" alt="不充分不平衡"></p>
-<h3 id="实例4"><a href="#实例4" class="headerlink" title="实例4"></a>实例4</h3><p><img src="https://s1.ax1x.com/2018/12/13/FNavj0.png" alt="充分平衡"></p>
-<h2 id="软件检查工具"><a href="#软件检查工具" class="headerlink" title="软件检查工具"></a>软件检查工具</h2><p>为了不让每次内存检测都需要打开机箱…有一个开源工具可以通过读取<code>dmidecode</code>的信息自动化做检验：<a href="https://github.com/PanZhangg/DPDKick" target="_blank" rel="noopener">DPDKick</a></p>
+        <h2 id="怎么出来的eBPF"><a href="#怎么出来的eBPF" class="headerlink" title="怎么出来的eBPF"></a>怎么出来的eBPF</h2><p>用Linux Kernel Module来做一个类比说明eBPF诞生的目的。<br><a id="more"></a></p>
+<p>Kernel Module的主要目的就是让用户可以通过这种机制，实现对内核的“赋能”，动态添加一些内核本身不支持的功能，比如硬件的驱动能力，新的文件系统或是系统调用。当然也可以融合到现有的内核处理流程中，比如在netfilter的某个hook点中添加包处理方法等。</p>
+<p>Kernel Module的优点：</p>
+<ul>
+<li>动态添加/删除，无需重新编译内核</li>
+<li>减小内核体积</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>一旦出现BUG可能导致内核直接崩溃</li>
+<li>增加内核攻击面，影响内核安全</li>
+</ul>
+<p>eBPF要做的事情也非常类似，但它想要克服Kernel Module的缺点，即确保执行的代码绝对安全。</p>
+<h2 id="eBPF的使用方式"><a href="#eBPF的使用方式" class="headerlink" title="eBPF的使用方式"></a>eBPF的使用方式</h2><p>为了达到这一目的，eBPF在内核中实现了一个虚拟机执行用户的指令。与Kernel Module直接在真实的物理硬件上执行用户的指令不同，eBPF提供给用户一个虚拟的RISC处理器，以及一组相关的指令。用户可以直接用这组指令编写程序。同时，程序在下发到该虚拟机之前也会经过eBPF的检查，比如会不会进入无限循环，会不会访问不合法的内存地址等等。只有在通过检查之后才可以进入执行的环节。</p>
+<p>同时eBPF生态链中也有将高级语言转换成虚拟处理器指令的工具，这个主要靠LLVM提供。</p>
+<h1 id="eBPF的架构"><a href="#eBPF的架构" class="headerlink" title="eBPF的架构"></a>eBPF的架构</h1><p><img src="https://478h5m1yrfsa3bbe262u7muv-wpengine.netdna-ssl.com/wp-content/uploads/2019/02/ebpf-architecture-1.png" alt=""></p>
+<p>对eBPF来说，和Kernle Module一样，也是通过特定的Hook点监听内核中的特定事件，进而执行用户定义的处理。这些Hook点包括：</p>
+<ul>
+<li>静态tracepoint</li>
+<li>动态内核态探针(Dynamic Kernel probes)</li>
+<li>动态用户态探针(Dynamic User Probes)</li>
+<li><a href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#events--arguments" target="_blank" rel="noopener">其他hook点</a></li>
+</ul>
+<p>针对主要是监控、跟踪使用的eBPF应用来说，主要通过这种方式取得内核运行时的一些参数和统计信息。例如，系统调用的参数值、返回值，通过eBPF map将得到的信息送给用户态程序，进而在用户态完成后处理流程。</p>
+<p>另外一类应用则直接在一些内核处理流程中加入自己的处理逻辑，例如XDP[<a href="https://www.iovisor.org/technology/xdp]，就是在网卡驱动和内核协议栈之间插入了eBPF扩展的网包过滤、转发功能。" target="_blank" rel="noopener">https://www.iovisor.org/technology/xdp]，就是在网卡驱动和内核协议栈之间插入了eBPF扩展的网包过滤、转发功能。</a></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/tech/">tech</a>, <a class="article-category-link" href="/categories/tech/quickwords/">quickwords</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory/">memory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -299,19 +302,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/16/cpulized-life/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          谁不是在像CPU一样活着
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/12/eng-talk1-fast-learn/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/02/24/quickwords19-desc-perf-improvement/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">5分钟经典英文技术演讲1：如何快速掌握新技术 - Kathy Sierra</div>
+      <div class="article-nav-title">几句话说清楚19：描述性能优化成果的正确姿势</div>
     </a>
   
 </nav>
@@ -325,9 +319,9 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发挥内存条理财的最大收益率"><span class="nav-number">1.</span> <span class="nav-text">发挥内存条理财的最大收益率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存相关概念"><span class="nav-number">2.</span> <span class="nav-text">内存相关概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#充分平衡"><span class="nav-number">3.</span> <span class="nav-text">充分平衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1"><span class="nav-number">3.1.</span> <span class="nav-text">实例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2"><span class="nav-number">3.2.</span> <span class="nav-text">实例2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例3"><span class="nav-number">3.3.</span> <span class="nav-text">实例3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例4"><span class="nav-number">3.4.</span> <span class="nav-text">实例4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件检查工具"><span class="nav-number">4.</span> <span class="nav-text">软件检查工具</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么出来的eBPF"><span class="nav-number">1.</span> <span class="nav-text">怎么出来的eBPF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eBPF的使用方式"><span class="nav-number">2.</span> <span class="nav-text">eBPF的使用方式</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#eBPF的架构"><span class="nav-number"></span> <span class="nav-text">eBPF的架构</span></a>
     
-    </div>
+    </li></div>
   </aside>
 </section>
         

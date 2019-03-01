@@ -54,7 +54,7 @@
 <meta property="og:description" content="怎么出来的eBPF用Linux Kernel Module来做一个类比说明eBPF诞生的目的。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/54dfc66b-0134-4fdc-842e-289f45eaf57a/d1ykevj-be4da28e-f584-4575-b713-13aa24255f62.jpg">
-<meta property="og:updated_time" content="2019-03-01T13:59:09.005Z">
+<meta property="og:updated_time" content="2019-03-01T14:08:41.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几句话说清楚20：eBPF的机制">
 <meta name="twitter:description" content="怎么出来的eBPF用Linux Kernel Module来做一个类比说明eBPF诞生的目的。">
@@ -200,7 +200,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/54dfc66b-0134-4fdc-842e-289f45eaf57a/d1ykevj-be4da28e-f584-4575-b713-13aa24255f62.jpg" rel="gallery_cjsq4j7n100007ufyp3ojutkk">
+      <a class="article-gallery-img fancybox" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/54dfc66b-0134-4fdc-842e-289f45eaf57a/d1ykevj-be4da28e-f584-4575-b713-13aa24255f62.jpg" rel="gallery_cjsq4vea00026ekfyakf2vk7d">
         <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/54dfc66b-0134-4fdc-842e-289f45eaf57a/d1ykevj-be4da28e-f584-4575-b713-13aa24255f62.jpg" itemprop="image">
       </a>
     
@@ -256,7 +256,7 @@ var themeMenus = {};
 <li><a href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#events--arguments" target="_blank" rel="noopener">其他hook点</a></li>
 </ul>
 <p>针对主要是监控、跟踪使用的eBPF应用来说，主要通过这种方式取得内核运行时的一些参数和统计信息。例如，系统调用的参数值、返回值，通过eBPF map将得到的信息送给用户态程序，进而在用户态完成后处理流程。</p>
-<p>另外一类应用则直接在一些内核处理流程中加入自己的处理逻辑，例如XDP[<a href="https://www.iovisor.org/technology/xdp]，就是在网卡驱动和内核协议栈之间插入了eBPF扩展的网包过滤、转发功能。" target="_blank" rel="noopener">https://www.iovisor.org/technology/xdp]，就是在网卡驱动和内核协议栈之间插入了eBPF扩展的网包过滤、转发功能。</a></p>
+<p>另外一类应用则直接在一些内核处理流程中加入自己的处理逻辑，例如<a href="https://www.iovisor.org/technology/xdp" target="_blank" rel="noopener">XDP</a>，就是在网卡驱动和内核协议栈之间插入了eBPF扩展的网包过滤、转发功能。</p>
 
       
     </div>

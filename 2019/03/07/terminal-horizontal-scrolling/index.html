@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>ftrace trace-cmd kernelshark资料汇总 | DecodeZ</title>
+  <title>在控制台水平滚动 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="一些关于这一类技术的资料和文档汇总。文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读linux/Documentation/trace下的文档以及源码。 以及git log ./kernel/trace :)">
-<meta name="keywords" content="tech,linux,ftrace">
+  <meta name="description" content="在CLI下操作，很多时候会因为屏幕尺寸的原因导致格式化输出的字符变成一副惨不忍睹的样子。比如你在有很多CPU核的环境下打印cat /proc/interrupts的时候。 当然你可能有很多方式能够处理这种情形，比如使用awk或者重定向到某个文件再打开。">
+<meta name="keywords" content="tech,linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ftrace trace-cmd kernelshark资料汇总">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/30/ftrace/index.html">
+<meta property="og:title" content="在控制台水平滚动">
+<meta property="og:url" content="https://decodezp.github.io/2019/03/07/terminal-horizontal-scrolling/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="一些关于这一类技术的资料和文档汇总。文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读linux/Documentation/trace下的文档以及源码。 以及git log ./kernel/trace :)">
+<meta property="og:description" content="在CLI下操作，很多时候会因为屏幕尺寸的原因导致格式化输出的字符变成一副惨不忍睹的样子。比如你在有很多CPU核的环境下打印cat /proc/interrupts的时候。 当然你可能有很多方式能够处理这种情形，比如使用awk或者重定向到某个文件再打开。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i1.wp.com/www.opensourceforu.com/wp-content/uploads/2010/12/ftrace7.png">
-<meta property="og:updated_time" content="2018-11-30T06:39:04.849Z">
+<meta property="og:image" content="http://blog.arturofm.com/content/images/2018/07/install-terminator-on-linux.png">
+<meta property="og:updated_time" content="2019-03-07T13:06:42.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ftrace trace-cmd kernelshark资料汇总">
-<meta name="twitter:description" content="一些关于这一类技术的资料和文档汇总。文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读linux/Documentation/trace下的文档以及源码。 以及git log ./kernel/trace :)">
-<meta name="twitter:image" content="https://i1.wp.com/www.opensourceforu.com/wp-content/uploads/2010/12/ftrace7.png">
+<meta name="twitter:title" content="在控制台水平滚动">
+<meta name="twitter:description" content="在CLI下操作，很多时候会因为屏幕尺寸的原因导致格式化输出的字符变成一副惨不忍睹的样子。比如你在有很多CPU核的环境下打印cat /proc/interrupts的时候。 当然你可能有很多方式能够处理这种情形，比如使用awk或者重定向到某个文件再打开。">
+<meta name="twitter:image" content="http://blog.arturofm.com/content/images/2018/07/install-terminator-on-linux.png">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-ftrace" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-terminal-horizontal-scrolling" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://i1.wp.com/www.opensourceforu.com/wp-content/uploads/2010/12/ftrace7.png" rel="gallery_cjsynb0r0000enpfyxgf0y956">
-        <img src="https://i1.wp.com/www.opensourceforu.com/wp-content/uploads/2010/12/ftrace7.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.arturofm.com/content/images/2018/07/install-terminator-on-linux.png" rel="gallery_cjsynb0rw0038npfyzeb4pacj">
+        <img src="http://blog.arturofm.com/content/images/2018/07/install-terminator-on-linux.png" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      ftrace trace-cmd kernelshark资料汇总
+      在控制台水平滚动
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/30/ftrace/" class="article-date">
-	  <time datetime="2018-11-30T06:22:55.000Z" itemprop="datePublished">November 30, 2018</time>
+	Posted on <a href="/2019/03/07/terminal-horizontal-scrolling/" class="article-date">
+	  <time datetime="2019-03-07T13:05:17.000Z" itemprop="datePublished">March 7, 2019</time>
 	</a>
 
       
@@ -232,41 +232,24 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一些关于这一类技术的资料和文档汇总。<br>文章中可以找到比较详细的工具使用方法。如果想了解更多内容可以阅读<code>linux/Documentation/trace</code>下的文档以及源码。</p>
-<p>以及<code>git log ./kernel/trace</code> :)<br><a id="more"></a></p>
-<h2 id="ftrace"><a href="#ftrace" class="headerlink" title="ftrace"></a>ftrace</h2><ul>
-<li><a href="https://lwn.net/Articles/365835/" target="_blank" rel="noopener">Debugging the kernel using Ftrace - part 1</a></li>
-<li><a href="https://lwn.net/Articles/366796/" target="_blank" rel="noopener">Debugging the kernel using ftrace - part 2</a></li>
-<li><a href="https://www.kernel.org/doc/Documentation/trace/ftrace.txt" target="_blank" rel="noopener">Kernel Documents: ftrace</a></li>
-<li><a href="https://lwn.net/Articles/370423/" target="_blank" rel="noopener">Secrets of the Ftrace function tracer</a></li>
-<li><a href="https://people.canonical.com/~acelan/coscup-2010/Debugging%20Linux%20Kernel%20by%20Ftrace.pdf" target="_blank" rel="noopener">PDF:Debugging Linux Kernel by ftrace</a></li>
-<li><a href="https://opensourceforu.com/2010/11/kernel-tracing-with-ftrace-part-1/" target="_blank" rel="noopener">Kernel Tracing with ftrace, Part 1</a></li>
-<li><a href="http://opensourceforu.com/2010/12/kernel-tracing-with-ftrace-part-2/" target="_blank" rel="noopener">Kernel Tracing with ftrace, Part 2</a></li>
-<li><a href="https://jvns.ca/blog/2017/03/19/getting-started-with-ftrace/" target="_blank" rel="noopener">ftrace: trace your kernel functions!</a></li>
-<li><a href="https://movaxbx.ru/2018/10/12/hooking-linux-kernel-functions-how-to-hook-functions-with-ftrace/" target="_blank" rel="noopener">Hooking Linux Kernel Functions, how to Hook Functions with Ftrace</a></li>
-<li><a href="https://www.slideshare.net/ennael/kernel-recipes-2017-understanding-the-linux-kernel-via-ftrace-steven-rostedt" target="_blank" rel="noopener">Understanding the Linux kernel via ftrace</a></li>
-</ul>
-<h2 id="trace-cmd"><a href="#trace-cmd" class="headerlink" title="trace-cmd"></a>trace-cmd</h2><ul>
-<li><a href="https://lwn.net/Articles/410200/" target="_blank" rel="noopener">trace-cmd: A front-end for Ftrace</a></li>
-<li><a href="https://github.com/rostedt/trace-cmd" target="_blank" rel="noopener">Code:trace-cmd</a></li>
-</ul>
-<h2 id="kernelshark"><a href="#kernelshark" class="headerlink" title="kernelshark"></a>kernelshark</h2><ul>
-<li><a href="https://lwn.net/Articles/425583/" target="_blank" rel="noopener">Using KernelShark to analyze the real-time scheduler</a></li>
-<li><a href="https://kernel-recipes.org/en/2018/talks/kernelshark-1-0-whats-new-and-whats-coming/" target="_blank" rel="noopener">Video:KERNELSHARK 1.0; WHAT’S NEW AND WHAT’S COMING</a></li>
-<li><a href="https://www.youtube.com/watch?v=RwVnnuGrb_c" target="_blank" rel="noopener">Video:Yordan Karadzhov - What’s Coming in Kernel Shark</a></li>
-<li><a href="https://events.linuxfoundation.org/wp-content/uploads/2017/12/Swimming-with-the-New-KernelShark-Yordan-Karadzhov-VMware.pdf" target="_blank" rel="noopener">PDF:Swimming with the New KernelShark</a></li>
-</ul>
+        <p>在CLI下操作，很多时候会因为屏幕尺寸的原因导致格式化输出的字符变成一副惨不忍睹的样子。比如你在有很多CPU核的环境下打印<code>cat /proc/interrupts</code>的时候。</p>
+<p>当然你可能有很多方式能够处理这种情形，比如使用<code>awk</code>或者重定向到某个文件再打开。<br><a id="more"></a></p>
+<p>但要始终相信Linux总有更好的办法，不可能在如此常见的场景中留下没有人看管的尾巴。</p>
+<p>经过一番尝试和搜索，终于发现一个最简单的方法：</p>
+<p><code>cat /proc/interrupts | less -S</code></p>
+<p>使用<code>Arrow</code>键水平移动就可以了。</p>
+<p>信念帮助了我们！</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/tech/">tech</a>, <a class="article-category-link" href="/categories/tech/linux/">linux</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ftrace/">ftrace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -301,19 +284,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/04/ftrace-uprobe/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ftrace uprobe使用填坑历程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/29/test1-dpdk-no-huge/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/03/05/commerical1-eliminate-vnet-blind-spot/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">测来测去1：DPDK no-huge模式性能对比测试</div>
+      <div class="article-nav-title">商业供稿1：消除虚拟化环境网络盲点</div>
     </a>
   
 </nav>
@@ -327,7 +301,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ftrace"><span class="nav-number">1.</span> <span class="nav-text">ftrace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trace-cmd"><span class="nav-number">2.</span> <span class="nav-text">trace-cmd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kernelshark"><span class="nav-number">3.</span> <span class="nav-text">kernelshark</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-03-05T13:31:32.496Z</updated>
+  <updated>2019-03-07T13:06:42.596Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在控制台水平滚动</title>
+    <link href="https://decodezp.github.io/2019/03/07/terminal-horizontal-scrolling/"/>
+    <id>https://decodezp.github.io/2019/03/07/terminal-horizontal-scrolling/</id>
+    <published>2019-03-07T13:05:17.000Z</published>
+    <updated>2019-03-07T13:06:42.596Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在CLI下操作，很多时候会因为屏幕尺寸的原因导致格式化输出的字符变成一副惨不忍睹的样子。比如你在有很多CPU核的环境下打印&lt;code&gt;cat /proc/interrupts&lt;/code&gt;的时候。&lt;/p&gt;
+&lt;p&gt;当然你可能有很多方式能够处理这种情形，比如使用&lt;code&gt;awk&lt;/code&gt;或者重定向到某个文件再打开。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>商业供稿1：消除虚拟化环境网络盲点</title>
@@ -422,9 +445,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   
@@ -440,30 +463,6 @@
       &lt;h2 id=&quot;解码&quot;&gt;&lt;a href=&quot;#解码&quot; class=&quot;headerlink&quot; title=&quot;解码&quot;&gt;&lt;/a&gt;解码&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在拿到了经过“预解码”的&lt;code&gt;macro-ops&lt;/code&gt;之后，开始正式进入解码过程。&lt;code&gt;marco-ops&lt;/code&gt;进入Instruction Decode组件解码，最终的输出为定长的&lt;code&gt;micro-ops&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;Insturction Decode组件也有入口带宽限制，每个Cycle最多取3个unfused指令+2个fused指令，或者5个unfused指令（这里指macro ops）。所以说fused多了也不好，一个cycle最多取两个。同时如果开了Hyper Thread，则两个Thread按Cycle交替使用Instruction Decode。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)</title>
-    <link href="https://decodezp.github.io/2019/01/10/quickwords10-skylake-pipeline-2/"/>
-    <id>https://decodezp.github.io/2019/01/10/quickwords10-skylake-pipeline-2/</id>
-    <published>2019-01-10T09:42:40.000Z</published>
-    <updated>2019-03-05T13:29:31.982Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前端&quot;&gt;&lt;a href=&quot;#前端&quot; class=&quot;headerlink&quot; title=&quot;前端&quot;&gt;&lt;/a&gt;前端&lt;/h2&gt;&lt;p&gt;处理器在前端这一部分的时候还是顺序(in-order)处理的，主要是也确实没什么乱序的空间。虽然说是顺序，但前端因为贴近业务，所以受人写的代码的影响也比较大。如果仅仅只是“取指令-&amp;gt;解码”，恐怕需要写程序的人是个非常聪明的程序员。前端很多组件的工作其实都是在填程序员的坑，这也是我比较心疼前端的地方。&lt;/p&gt;
     
     </summary>
     

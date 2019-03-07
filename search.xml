@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>在控制台水平滚动</title>
+      <link href="/2019/03/07/terminal-horizontal-scrolling/"/>
+      <url>/2019/03/07/terminal-horizontal-scrolling/</url>
+      
+        <content type="html"><![CDATA[<p>在CLI下操作，很多时候会因为屏幕尺寸的原因导致格式化输出的字符变成一副惨不忍睹的样子。比如你在有很多CPU核的环境下打印<code>cat /proc/interrupts</code>的时候。</p><p>当然你可能有很多方式能够处理这种情形，比如使用<code>awk</code>或者重定向到某个文件再打开。<br><a id="more"></a></p><p>但要始终相信Linux总有更好的办法，不可能在如此常见的场景中留下没有人看管的尾巴。</p><p>经过一番尝试和搜索，终于发现一个最简单的方法：</p><p><code>cat /proc/interrupts | less -S</code></p><p>使用<code>Arrow</code>键水平移动就可以了。</p><p>信念帮助了我们！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>商业供稿1：消除虚拟化环境网络盲点</title>
       <link href="/2019/03/05/commerical1-eliminate-vnet-blind-spot/"/>
       <url>/2019/03/05/commerical1-eliminate-vnet-blind-spot/</url>
@@ -440,9 +465,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -598,9 +623,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -1020,9 +1045,9 @@
             
             <tag> tech </tag>
             
-            <tag> ftrace </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ftrace </tag>
             
         </tags>
       
@@ -1072,9 +1097,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
             <tag> cloud </tag>
             

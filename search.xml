@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚21：Skylake微架构(Microarchitecture)剖析(6)</title>
+      <link href="/2019/03/10/quickwords21-skylake-pipeline-6/"/>
+      <url>/2019/03/10/quickwords21-skylake-pipeline-6/</url>
+      
+        <content type="html"><![CDATA[<h2 id="OOO-Once-More"><a href="#OOO-Once-More" class="headerlink" title="OOO Once More"></a>OOO Once More</h2><p>这里对OOO(Out-Of-Order)乱序执行再简单讲两句。深入乱序执行的难点不在于“不按指令顺序执行”，而是如何做到“按指令顺序退出”。</p><p>这里面的关键是，所有执行过的指令都先被“缓存”起来，并不把执行之后的结果真正写到寄存器或者内存里。从用户角度看，这个指令其实并没有被“执行”，因为它没有引起任何数据方面的变化。等到它可以确定是需要被执行的指令，并且它前面的指令都已经把结果写入(commit)之后，它再去Commit。这样从用户角度看来，程序就是按照指令顺序执行了。<br><a id="more"></a></p><blockquote><p>在很多文档里，Commit和Retire是两个可以互换(interchangable)的词。</p></blockquote><p>说实话，研究这块东西，最烦的就是同一个概念有N个名字。</p><p><img src="https://s2.ax1x.com/2019/03/10/ApUYNT.png" alt=""></p><p>再来总结一下OOO的Big Picture:</p><ul><li>左边<code>Fetch&amp;Decode</code>是之前讲的前端（Front-End）相关的内容。此时指令还是有序的。</li><li>Decode成微指令（uop）之后，这些微指令进入一个指令池（Instruction Pool），这里面能够被执行的指令，就直接被执行。“能够被执行”是指满足以下两个条件：<ul><li>已有指令需要的数据</li><li>执行单元有空闲</li></ul></li><li>当指令被执行之后<ul><li>通知所有对该指令有依赖的指令（们），它们所需要的数据已经准备好。</li><li>注意这里说的是“执行”，不是上面说的“Retire”或“Commit”</li><li>为实现这一功能，CPU中还必须要对微指令的操作数（数据）有Bookkeeping的能力</li></ul></li><li>Commit指令<ul><li>只有当前指令的前序（指令顺序）指令都Commit之后，才能Commit当前指令</li><li>Commit也可以并行进行，前提是满足上面一条的条件，同时并行Commit的指令间没有依赖</li></ul></li></ul><h2 id="False-Dependency"><a href="#False-Dependency" class="headerlink" title="False Dependency"></a>False Dependency</h2><p>乱序执行的一大前置条件就是指令数据间没有相互依赖。下面就着重分析一下依赖。</p><p>用下面的指令过程作一个示例：</p><p><img src="https://s2.ax1x.com/2019/03/10/Apw3DA.png" alt=""></p><p>简单分析一下：</p><ul><li>Read After Write(RAW)型依赖<br>(2)指令需要读取r1的值，而r1的值需要(1)指令执行之后给出。所以(2)指令对(1)指令有RAW依赖。RAW依赖也被称作<code>true dependency</code>或者<code>flow dependency</code>。</li><li>Write After Read(WAR)型依赖<br>(3)指令需要更新r8的值，但在此之前(2)指令需要读取r8的值参与计算。所以(3)指令对(2)指令有WAR依赖。WAR依赖也被称作<code>anti-dependencies</code>。</li><li>Write After Write(WAW)型依赖<br>(4)指令需要在(2)指令写入r3之后再写入r3。所以(4)指令对(2)指令有WAW依赖。WAW依赖也可以被叫做<code>output dependencies</code></li></ul><p>按照以上的分析，这几条指令几乎没有可以并行执行的余地。不过，我想你也已经看出了一些“转机”：针对WAR和WAW，是可以被Register Rename这种方法破解的。这两种依赖都被称为<code>false dependency</code>。</p><h2 id="Register-Rename"><a href="#Register-Rename" class="headerlink" title="Register Rename"></a>Register Rename</h2><p>当需要写入r1的指令在读取r1的指令之后，写入的r1的新值可以首先保存在另外一个寄存器r1’里。读取r1的指令仍然读取原r1寄存器中的值，这样WAR指令就可以并行执行。当所有需要读取r1原值的指令都执行完毕，r1就可以用新值代替。</p><blockquote><p>Register Rename其实就是利用CPU提供的大量的物理寄存器，为寄存器制作“分身”或者，Alias，提供能够增加程序并行性的便利。</p></blockquote><p>上面的例子里，r1是<code>architectural register</code>，r1’是内部的<code>physical register</code>。Rigster Rename就是在制作这两种寄存器间的映射关系。当然，这一切对用户来说都是透明的。</p><p>其他内容留待后面介绍。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>在控制台水平滚动</title>
       <link href="/2019/03/07/terminal-horizontal-scrolling/"/>
       <url>/2019/03/07/terminal-horizontal-scrolling/</url>
@@ -465,9 +492,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -623,9 +650,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -1045,9 +1072,9 @@
             
             <tag> tech </tag>
             
-            <tag> linux </tag>
-            
             <tag> ftrace </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -1097,9 +1124,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
             <tag> cloud </tag>
             

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-03-07T13:06:42.596Z</updated>
+  <updated>2019-03-10T03:48:45.973Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚21：Skylake微架构(Microarchitecture)剖析(6)</title>
+    <link href="https://decodezp.github.io/2019/03/10/quickwords21-skylake-pipeline-6/"/>
+    <id>https://decodezp.github.io/2019/03/10/quickwords21-skylake-pipeline-6/</id>
+    <published>2019-03-10T03:44:34.000Z</published>
+    <updated>2019-03-10T03:48:45.973Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;OOO-Once-More&quot;&gt;&lt;a href=&quot;#OOO-Once-More&quot; class=&quot;headerlink&quot; title=&quot;OOO Once More&quot;&gt;&lt;/a&gt;OOO Once More&lt;/h2&gt;&lt;p&gt;这里对OOO(Out-Of-Order)乱序执行再简单讲两句。深入乱序执行的难点不在于“不按指令顺序执行”，而是如何做到“按指令顺序退出”。&lt;/p&gt;
+&lt;p&gt;这里面的关键是，所有执行过的指令都先被“缓存”起来，并不把执行之后的结果真正写到寄存器或者内存里。从用户角度看，这个指令其实并没有被“执行”，因为它没有引起任何数据方面的变化。等到它可以确定是需要被执行的指令，并且它前面的指令都已经把结果写入(commit)之后，它再去Commit。这样从用户角度看来，程序就是按照指令顺序执行了。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>在控制台水平滚动</title>
@@ -445,35 +470,9 @@
       <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
     
     
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚11：Skylake微架构(Microarchitecture)剖析(3)</title>
-    <link href="https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/"/>
-    <id>https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/</id>
-    <published>2019-01-12T04:50:46.000Z</published>
-    <updated>2019-01-12T04:52:25.295Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;解码&quot;&gt;&lt;a href=&quot;#解码&quot; class=&quot;headerlink&quot; title=&quot;解码&quot;&gt;&lt;/a&gt;解码&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在拿到了经过“预解码”的&lt;code&gt;macro-ops&lt;/code&gt;之后，开始正式进入解码过程。&lt;code&gt;marco-ops&lt;/code&gt;进入Instruction Decode组件解码，最终的输出为定长的&lt;code&gt;micro-ops&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;Insturction Decode组件也有入口带宽限制，每个Cycle最多取3个unfused指令+2个fused指令，或者5个unfused指令（这里指macro ops）。所以说fused多了也不好，一个cycle最多取两个。同时如果开了Hyper Thread，则两个Thread按Cycle交替使用Instruction Decode。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

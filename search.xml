@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>OVS-DPDK 82599 VF初始化失败诊断方法一例</title>
+      <link href="/2019/03/19/82599-vf-err-debug/"/>
+      <url>/2019/03/19/82599-vf-err-debug/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在82599上创建了两个VF之后，各自绑定到vfio，启动DPDK时出现错误：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PMD: eth_ixgbevf_dev_init(): VF Initialization Failure: -15</span><br><span class="line">EAL: Error - exiting with code: 1</span><br><span class="line">    Cause: Requested device 0000:01:10.0 cannot be used</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="诊断"><a href="#诊断" class="headerlink" title="诊断"></a>诊断</h2><p>其实第一眼也看不出个什么来，但报错信息提供了两个线索：</p><ul><li>错误是<code>eth_ixgbevf_dev_init</code>报的</li><li>错误代码是<code>-15</code></li></ul><p>剩下后面的看起来也直接提供了error code和错误的root cause，其实什么也没说。</p><p>所以从<code>eth_ixgbevf_dev_init</code>入手吧。</p><p>先找到这个方法在哪：</p><p><code>grep -r “eth_ixgbevf_dev_init” ./</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./ixgbe_ethdev.c:static int eth_ixgbevf_dev_init(struct rte_eth_dev *eth_dev);</span><br><span class="line">./ixgbe_ethdev.c:eth_ixgbevf_dev_init(struct rte_eth_dev *eth_dev)</span><br><span class="line">./ixgbe_ethdev.c:sizeof(struct ixgbe_adapter), eth_ixgbevf_dev_init);</span><br><span class="line">./ixgbe_ethdev.c: * is mapped to VFIO vector 0 in eth_ixgbevf_dev_init( ).</span><br><span class="line">./ixgbe_ethdev.c: * If previous VFIO interrupt mapping setting in eth_ixgbevf_dev_init( )</span><br><span class="line">./ixgbe_ethdev.c:ret = eth_ixgbevf_dev_init(dev);</span><br></pre></td></tr></table></figure><p>是在<code>ixgbe_ethdev.c</code>这个文件里没跑了。</p><p>打开看一下，是在：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if ((diag != IXGBE_SUCCESS) &amp;&amp; (diag != IXGBE_ERR_INVALID_MAC_ADDR)) &#123;</span><br><span class="line">              PMD_INIT_LOG(ERR, "VF Initialization Failure: %d", diag);</span><br><span class="line">              /*</span><br><span class="line">               * This error code will be propagated to the app by</span><br><span class="line">               * rte_eth_dev_reset, so use a public error code rather than</span><br><span class="line">               * the internal-only IXGBE_ERR_RESET_FAILED</span><br><span class="line">               */</span><br><span class="line">              return -EAGAIN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个位置，但实际上打印的是一个变量<code>diag</code>的值。在上面<code>diag</code>的赋值方法是：</p><p><code>diag = hw-&gt;mac.ops.reset_hw(hw)</code></p><p>这个看起来就是个抽象层封装了一堆ops函数指针的形式。要马上找到具体调用的是哪个实现还不是太容易的事情。但看到上面定义的<code>IXGBE_ERR_INVALID_MAC_ADDR</code>的宏就应该能猜到相关的error信息应该都在一起。</p><p>通过<code>Ctags</code>转跳<code>IXGBE_ERR_INVALID_MAC_ADDR</code>的定义，果然找到了我们要找的<code>-15</code>是什么错误：</p><p><code>#define IXGBE_ERR_RESET_FAILED                                    -15</code></p><p>OK，下面只要看一下这个错误在什么地方返回：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@Server-N3 ixgbe]# grep -r "IXGBE_ERR_RESET_FAILED" ./</span><br><span class="line">./base/ixgbe_82598.c:status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_vf.c:return IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_x540.c:status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_82599.c:status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_82599.c:ret_val = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_phy.c:status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_type.h:#define IXGBE_ERR_RESET_FAILED-15</span><br><span class="line">./base/ixgbe_x550.c:status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./ixgbe_ethdev.c: * the internal-only IXGBE_ERR_RESET_FAILED</span><br></pre></td></tr></table></figure><p>对我们的VF初始化场景来说，肯定就是在<code>./base/ixgbe_vf.c</code>这个文件里返回的前述的错误。打开看一下返回这个错误的逻辑是什么：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/* we cannot reset while the RSTI / RSTD bits are asserted */</span><br><span class="line">      while (!mbx-&gt;ops.check_for_rst(hw, 0) &amp;&amp; timeout) &#123;</span><br><span class="line">              timeout--;</span><br><span class="line">              usec_delay(5);</span><br><span class="line">      &#125;</span><br><span class="line">  </span><br><span class="line">      if (!timeout)</span><br><span class="line">              return IXGBE_ERR_RESET_FAILED;</span><br></pre></td></tr></table></figure><p>基本就是在一定时间段内检测一个寄存器有没有被设置正确，如果没有就返回这个错误。</p><p>好在代码注释中提到了检测的是RSTI/RSTD这两个标志位。</p><p>那就查查这两个标志位是什么意思呗，打开82599祖传的datasheet：</p><p><img src="https://s2.ax1x.com/2019/03/19/AupJN4.jpg" alt=""></p><p>在PDF里搜索一下就能看到，这个标志位其实就是表示PF的reset过程有没有完成。</p><p>那么reset如果完成了..应该PF至少会UP起来吧…检查了一下果然PF没有UP，UP之后问题解决。</p><h2 id="主要是"><a href="#主要是" class="headerlink" title="主要是"></a>主要是</h2><p>主要并不是想说这个具体的问题应该怎么解决，而是如何在不死扣细节的情况下快速找到线索，快速解决问题。从最直接的表象入手，熟稔一套猜测的直觉，保持对复杂问题的简单看法。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> dpdk </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚21：Skylake微架构(Microarchitecture)剖析(6)</title>
       <link href="/2019/03/10/quickwords21-skylake-pipeline-6/"/>
       <url>/2019/03/10/quickwords21-skylake-pipeline-6/</url>
@@ -623,9 +648,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> dpdk </tag>
+            
+            <tag> network </tag>
             
             <tag> test </tag>
             

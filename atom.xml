@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-03-10T03:48:45.973Z</updated>
+  <updated>2019-03-19T12:57:16.523Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OVS-DPDK 82599 VF初始化失败诊断方法一例</title>
+    <link href="https://decodezp.github.io/2019/03/19/82599-vf-err-debug/"/>
+    <id>https://decodezp.github.io/2019/03/19/82599-vf-err-debug/</id>
+    <published>2019-03-19T12:55:24.000Z</published>
+    <updated>2019-03-19T12:57:16.523Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;在82599上创建了两个VF之后，各自绑定到vfio，启动DPDK时出现错误：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;PMD: eth_ixgbevf_dev_init(): VF Initialization Failure: -15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;EAL: Error - exiting with code: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Cause: Requested device 0000:01:10.0 cannot be used&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚21：Skylake微架构(Microarchitecture)剖析(6)</title>
@@ -449,30 +472,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="openwrt" scheme="https://decodezp.github.io/tags/openwrt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>王朝兴亡周期律的本因</title>
-    <link href="https://decodezp.github.io/2019/01/13/thoughts3-zhouqilv/"/>
-    <id>https://decodezp.github.io/2019/01/13/thoughts3-zhouqilv/</id>
-    <published>2019-01-13T15:50:04.000Z</published>
-    <updated>2019-01-13T15:59:19.841Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;王朝兴亡周期律&quot;&gt;&lt;a href=&quot;#王朝兴亡周期律&quot; class=&quot;headerlink&quot; title=&quot;王朝兴亡周期律&quot;&gt;&lt;/a&gt;王朝兴亡周期律&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;六位参政员将要回重庆时，毛泽东问黄炎培有什么感想，黄炎培坦率地说：“我生六十多年，耳闻的不说，所亲眼看到的，真所谓‘其兴也勃焉’，‘其亡也忽焉’，一人，一家，一团体，一地方，乃至一国，不少单位都没有跳出这周期率的支配力。大凡初时聚精会神，没有一事不用心，没有一人不卖力，也许那时艰难困苦，只有从万死中觅取一生。既而环境渐渐好转了，精神也就渐渐放下了。有的因为历史长久，自然地惰性发作，由少数演变为多数，到风气养成，虽有大力，无法扭转，并且无法补救。也有为了区域一步步扩大，它的扩大，有的出于自然发展，有的为功业欲所驱使，强求发展，到干部人才渐见竭蹶、艰于应付的时候，环境倒越加复杂起来了，控制力不免趋于薄弱了。一部历史‘政怠宦成’的也有，‘人亡政息’的也有，‘求荣取辱’的也有。总之没有能跳出这周期率。中共诸君从过去到现在，我略略了解的了。就是希望找出一条新路，来跳出这周期率的支配。”&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

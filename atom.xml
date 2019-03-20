@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-03-19T12:57:16.523Z</updated>
+  <updated>2019-03-20T12:35:07.521Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>生小猫啦</title>
+    <link href="https://decodezp.github.io/2019/03/20/hello-kitty/"/>
+    <id>https://decodezp.github.io/2019/03/20/hello-kitty/</id>
+    <published>2019-03-20T12:33:55.000Z</published>
+    <updated>2019-03-20T12:35:07.521Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;去年夏天的时候家里从地铁站门口迎来了两位新成员，蓝猫derder和他的媳妇葡萄。&lt;/p&gt;
+&lt;p&gt;我其实本意并不想养宠物的，毕竟从小到大除了养过两只乌龟之外，从来也没和动物有过什么亲密接触。养猫基本上都是张老师的主意，她从小就是养鸡小能手，还养过狗啊鱼啊刺猬啊这些，所以一直想在家里恢复一下她的童年记忆。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OVS-DPDK 82599 VF初始化失败诊断方法一例</title>
     <link href="https://decodezp.github.io/2019/03/19/82599-vf-err-debug/"/>
     <id>https://decodezp.github.io/2019/03/19/82599-vf-err-debug/</id>
     <published>2019-03-19T12:55:24.000Z</published>
-    <updated>2019-03-19T12:57:16.523Z</updated>
+    <updated>2019-03-19T15:51:46.783Z</updated>
     
     <summary type="html">
     
@@ -450,28 +471,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在OpenWRT中添加perf工具</title>
-    <link href="https://decodezp.github.io/2019/01/15/openwrt-perf/"/>
-    <id>https://decodezp.github.io/2019/01/15/openwrt-perf/</id>
-    <published>2019-01-15T14:08:39.000Z</published>
-    <updated>2019-01-15T14:16:05.292Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;OpenWRT性能调优的必要&quot;&gt;&lt;a href=&quot;#OpenWRT性能调优的必要&quot; class=&quot;headerlink&quot; title=&quot;OpenWRT性能调优的必要&quot;&gt;&lt;/a&gt;OpenWRT性能调优的必要&lt;/h2&gt;&lt;p&gt;如果仅仅是家庭网关，确实没太大必要，毕竟网络的瓶颈主要在运营商的出口那。OpenWRT之所以开始关注极致的性能，是由于OpenWRT的应用场景出现了变化。从SD-WAN和边缘计算概念，到混合云与智能网关，都催生出了在边缘接入侧uCPE或其他类似的小盒子中部署基于OpenWRT系统的必要。不同于满足家庭接入的需求，这些小盒子往往对应一间Office或公司分支的网络需求。增长的网络带宽和对安全性、QoS等能力的要求都对OpenWRT的性能提出了更高的要求。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="openwrt" scheme="https://decodezp.github.io/tags/openwrt/"/>
     
   </entry>
   

@@ -694,9 +694,9 @@
             
             <tag> tech </tag>
             
-            <tag> dpdk </tag>
-            
             <tag> network </tag>
+            
+            <tag> dpdk </tag>
             
             <tag> test </tag>
             
@@ -1143,9 +1143,9 @@
             
             <tag> tech </tag>
             
-            <tag> ftrace </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ftrace </tag>
             
         </tags>
       

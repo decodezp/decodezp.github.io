@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-03-20T12:35:07.521Z</updated>
+  <updated>2019-03-23T00:46:23.346Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>商业供稿2：网络可视化如何抵御数字化转型风险</title>
+    <link href="https://decodezp.github.io/2019/03/23/commerical2-visibility-digital-transform/"/>
+    <id>https://decodezp.github.io/2019/03/23/commerical2-visibility-digital-transform/</id>
+    <published>2019-03-23T00:41:19.000Z</published>
+    <updated>2019-03-23T00:46:23.346Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;原载于云杉网络 &lt;a href=&quot;http://www.yunshan.net&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;www.yunshan.net&lt;/a&gt; 微信公众号&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;当前，“数字化转型”已成为企业或组织绕不过去的一个话题。诚然，并非所有(云杉网络的)客户都会直接声称“我们正在数字化转型”或者“我们正在做一个数字化转型的项目”，但对IT基础设施进行敏捷性改造，提升业务灵活性和效率，已是各行各业的一致追求。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="commerical" scheme="https://decodezp.github.io/categories/commerical/"/>
+    
+    
+      <category term="commerical" scheme="https://decodezp.github.io/tags/commerical/"/>
+    
+  </entry>
   
   <entry>
     <title>生小猫啦</title>
@@ -113,7 +134,7 @@
     <link href="https://decodezp.github.io/2019/03/05/commerical1-eliminate-vnet-blind-spot/"/>
     <id>https://decodezp.github.io/2019/03/05/commerical1-eliminate-vnet-blind-spot/</id>
     <published>2019-03-05T13:23:21.000Z</published>
-    <updated>2019-03-05T13:31:32.496Z</updated>
+    <updated>2019-03-23T00:45:36.061Z</updated>
     
     <summary type="html">
     
@@ -451,26 +472,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>有时做梦</title>
-    <link href="https://decodezp.github.io/2019/01/19/thoughts4-dream/"/>
-    <id>https://decodezp.github.io/2019/01/19/thoughts4-dream/</id>
-    <published>2019-01-19T06:08:32.000Z</published>
-    <updated>2019-01-19T06:34:17.465Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;活得年头多起来之后，很难再明确地忆起某件事发生在哪一年。时间变得不再激烈，但往事却在交织纠缠，许多不可能的事还以为理所当然，而那些早已发生的事实却总需要确认再三。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

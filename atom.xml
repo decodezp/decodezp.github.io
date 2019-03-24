@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-03-23T00:46:23.346Z</updated>
+  <updated>2019-03-24T13:32:11.161Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>后凉龙骧将军吕邈教你如何一本正经胡说八道</title>
+    <link href="https://decodezp.github.io/2019/03/24/history3-lvmiao/"/>
+    <id>https://decodezp.github.io/2019/03/24/history3-lvmiao/</id>
+    <published>2019-03-24T13:26:32.000Z</published>
+    <updated>2019-03-24T13:32:11.161Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;胡说八道容易，看起来一本正经也不难，但那都是875/4从你自己的眼光出发。&lt;/p&gt;
+&lt;p&gt;让别人看起来同样一本正经就非常有挑战了，即便你真的是在一本正经。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="history" scheme="https://decodezp.github.io/categories/history/"/>
+    
+    
+      <category term="history" scheme="https://decodezp.github.io/tags/history/"/>
+    
+  </entry>
   
   <entry>
     <title>商业供稿2：网络可视化如何抵御数字化转型风险</title>
@@ -444,34 +465,6 @@
       <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚12：Skylake微架构(Microarchitecture)剖析(4)</title>
-    <link href="https://decodezp.github.io/2019/01/20/quickwords12-skylake-pipeline-4/"/>
-    <id>https://decodezp.github.io/2019/01/20/quickwords12-skylake-pipeline-4/</id>
-    <published>2019-01-20T05:37:25.000Z</published>
-    <updated>2019-01-27T13:29:05.176Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;MSROM&quot;&gt;&lt;a href=&quot;#MSROM&quot; class=&quot;headerlink&quot; title=&quot;MSROM&quot;&gt;&lt;/a&gt;MSROM&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://en.wikichip.org/w/images/thumb/5/5e/skylake_decode.svg/425px-skylake_decode.svg.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;MSROM(Micro-code sequencer ROM)就是在&lt;a href=&quot;https://decodezp.github.io/2019/01/12/quickwords11-skylake-pipeline-3/&quot;&gt;上一篇连载&lt;/a&gt;中提到的专门处理输出大于4个uop的那块类似缓存的ROM。很多文档里面也直接将其称为&lt;code&gt;MS&lt;/code&gt;，具体叫什么多需要结合上下文语境，知道是一回事就好了。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;我个人其实推荐读者在编写自己的文档时能注意这些名称上的“一致性”，同编写程序时给变量或函数命名时的一致性一样，这些看似没什么“技术含量”的工作，却能够极大地提高信息传达的效率，也就是提高文档或代码的可读性和可维护性。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>几句话说清楚22：什么是AF_XDP Socket</title>
+      <link href="/2019/03/26/quickwords22-af-xdp/"/>
+      <url>/2019/03/26/quickwords22-af-xdp/</url>
+      
+        <content type="html"><![CDATA[<h2 id="AF-XDP"><a href="#AF-XDP" class="headerlink" title="AF_XDP"></a>AF_XDP</h2><p>默认读者已经了解XDP(eXpress Data Path)的概念。<br><a id="more"></a></p><p>基于Kernel提供的BPF能力，XDP可以提供高性能的数据面处理能力。</p><p>所谓<code>AF_XDP</code>，和<code>AF_INET</code>一样，也是<code>address family</code>的一种，用于规定socket通讯的类型。相当于socket底层通讯方式的不同实现（多态）。一般的，<code>AF_INET</code>可以用于IPv4类型地址的通讯，在实际通讯中应用自己的那套具体实现（TCP/IP协议栈等），<code>AF_XDP</code>就是一套基于XDP的通讯的实现。</p><p>还有支持IPX的<code>AF_IPX</code>，支持蓝牙的<code>AF_BLUETOOTH</code>等等Address Family。</p><h2 id="Main-Idea"><a href="#Main-Idea" class="headerlink" title="Main Idea"></a>Main Idea</h2><p><img src="https://s2.ax1x.com/2019/03/26/ANONQS.jpg" alt=""></p><p>XDP程序在Kernel提供的网卡驱动中直接取得网卡收到的数据帧，然后直接送到用户态应用程序。应用程序利用<code>AF_XDP</code>类型的socket接收数据。</p><p>用虚拟化领域的完全虚拟化和半虚拟化概念类比，如果DPDK是”完全Kernel bypass”，那么AF_XDP就是“半Kernel bypass”。</p><p>XDP程序会把数据帧送到一个在用户态可以读写的队列Memory Buffer中，叫做<code>UMEM</code>。用户态应用在<code>UMEM</code>中完成数据帧的读取和写入。当然了，整个过程都是零拷贝（Zero Copy）的。</p><h2 id="AF-XDP-Socket和它的小伙伴们"><a href="#AF-XDP-Socket和它的小伙伴们" class="headerlink" title="AF_XDP Socket和它的小伙伴们"></a>AF_XDP Socket和它的小伙伴们</h2><p><img src="https://s2.ax1x.com/2019/03/26/AUoFzQ.png" alt=""></p><p><code>AF_XDP</code>Socket的创建过程可以使用在网络编程中常见的<code>socket()</code>系统调用，就是参数需要特别配置一下。在创建之后，每个socket都各自分配了一个RX ring和TX ring。这两个ring保存的都是descriptor，里面有指向<code>UMEM</code>中真正保存帧的地址。</p><p><code>UMEM</code>也有两个队列，一个叫<code>FILL ring</code>，一个叫<code>COMPLETION ring</code>。其实就和传统网络IO过程中给DMA填写的接收和发送环形队列很类似。在RX过程中，用户应用程序在<code>FILL ring</code>中填入接收数据包的地址，XDP程序会将接收到的数据包放入该地址中，并在socket的RX ring中填入对应的descriptor。</p><p>但<code>COMPLETION ring</code>中保存的并非用户应用程序“将要”发送的帧的地址，而是已经完成发送的帧的地址。这些帧可以用来被再次发送或者接收。“将要”发送的帧的地址是在socket的TX ring中，同样由用户应用填入。</p><p>RX/TX ring和FILL/COMPLETION ring之间是多对一（n:1）的关系。也就是说可以有多个socket和它们的RX/TX ring共享一个<code>UMEN</code>和它的FILL/COMPLETION ring。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>后凉龙骧将军吕邈教你如何一本正经胡说八道</title>
       <link href="/2019/03/24/history3-lvmiao/"/>
       <url>/2019/03/24/history3-lvmiao/</url>

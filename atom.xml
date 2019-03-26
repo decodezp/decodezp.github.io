@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-03-24T13:49:11.502Z</updated>
+  <updated>2019-03-26T14:36:30.222Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚22：什么是AF_XDP Socket</title>
+    <link href="https://decodezp.github.io/2019/03/26/quickwords22-af-xdp/"/>
+    <id>https://decodezp.github.io/2019/03/26/quickwords22-af-xdp/</id>
+    <published>2019-03-26T14:24:25.000Z</published>
+    <updated>2019-03-26T14:36:30.222Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;AF-XDP&quot;&gt;&lt;a href=&quot;#AF-XDP&quot; class=&quot;headerlink&quot; title=&quot;AF_XDP&quot;&gt;&lt;/a&gt;AF_XDP&lt;/h2&gt;&lt;p&gt;默认读者已经了解XDP(eXpress Data Path)的概念。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>后凉龙骧将军吕邈教你如何一本正经胡说八道</title>
@@ -426,32 +446,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;没提到的&quot;&gt;&lt;a href=&quot;#没提到的&quot; class=&quot;headerlink&quot; title=&quot;没提到的&quot;&gt;&lt;/a&gt;没提到的&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/&quot;&gt;上一篇&lt;/a&gt;内容中介绍了一些Linux网络协议栈的调优方法，但遗漏了一些可以发挥重要作用的方法，在这一篇中补充一下。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去5：Linux网络性能调优方法</title>
-    <link href="https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/"/>
-    <id>https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/</id>
-    <published>2019-01-22T13:06:06.000Z</published>
-    <updated>2019-01-22T13:21:27.637Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;换换口味&quot;&gt;&lt;a href=&quot;#换换口味&quot; class=&quot;headerlink&quot; title=&quot;换换口味&quot;&gt;&lt;/a&gt;换换口味&lt;/h2&gt;&lt;p&gt;老搞DPDK的人有一个毛病就是怎么也看不上内核网络，又是中断又是拷贝的，实在没有一脚地板油CPU直接100%炸街来得爽快。另外作为一个软件性能优化的“硬核”玩家，是很看不上内核这种改改参数，调调设置的玩法的。不过…既然自己主动跳了个大坑，该调内核性能的时候还是要调的…所以今天就换换口味，看看在Linux下通过配置调优网络性能怎么搞。&lt;/p&gt;
     
     </summary>
     

@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>ovs-dpdk 82599 vf初始化失败诊断方法一例 | DecodeZ</title>
+  <title>几句话说清楚23：skylake微架构(microarchitecture)剖析(7) | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="问题在82599上创建了两个VF之后，各自绑定到vfio，启动DPDK时出现错误： 123PMD: eth_ixgbevf_dev_init(): VF Initialization Failure: -15EAL: Error - exiting with code: 1    Cause: Requested device 0000:01:10.0 cannot be used">
-<meta name="keywords" content="tech,dpdk">
+  <meta name="description" content="接前Register Rename这次得用Markdown画表格了，想来想去用markdown这么久还是第一次。">
+<meta name="keywords" content="tech,hardware,CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OVS-DPDK 82599 VF初始化失败诊断方法一例">
-<meta property="og:url" content="https://decodezp.github.io/2019/03/19/82599-vf-err-debug/index.html">
+<meta property="og:title" content="几句话说清楚23：Skylake微架构(Microarchitecture)剖析(7)">
+<meta property="og:url" content="https://decodezp.github.io/2019/04/03/quickwords23-skylake-pipeline-7/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="问题在82599上创建了两个VF之后，各自绑定到vfio，启动DPDK时出现错误： 123PMD: eth_ixgbevf_dev_init(): VF Initialization Failure: -15EAL: Error - exiting with code: 1    Cause: Requested device 0000:01:10.0 cannot be used">
+<meta property="og:description" content="接前Register Rename这次得用Markdown画表格了，想来想去用markdown这么久还是第一次。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://dpdk.readthedocs.io/en/v17.11/_images/flow_bifurcation_overview.svg">
-<meta property="og:updated_time" content="2019-03-19T15:51:46.783Z">
+<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta property="og:updated_time" content="2019-04-03T14:10:27.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OVS-DPDK 82599 VF初始化失败诊断方法一例">
-<meta name="twitter:description" content="问题在82599上创建了两个VF之后，各自绑定到vfio，启动DPDK时出现错误： 123PMD: eth_ixgbevf_dev_init(): VF Initialization Failure: -15EAL: Error - exiting with code: 1    Cause: Requested device 0000:01:10.0 cannot be used">
-<meta name="twitter:image" content="https://dpdk.readthedocs.io/en/v17.11/_images/flow_bifurcation_overview.svg">
+<meta name="twitter:title" content="几句话说清楚23：Skylake微架构(Microarchitecture)剖析(7)">
+<meta name="twitter:description" content="接前Register Rename这次得用Markdown画表格了，想来想去用markdown这么久还是第一次。">
+<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-82599-vf-err-debug" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords23-skylake-pipeline-7" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://dpdk.readthedocs.io/en/v17.11/_images/flow_bifurcation_overview.svg" rel="gallery_cju1a719200009mfyw3x7joad">
-        <img src="https://dpdk.readthedocs.io/en/v17.11/_images/flow_bifurcation_overview.svg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_cju1a71b5005i9mfy0qypa0u3">
+        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      OVS-DPDK 82599 VF初始化失败诊断方法一例
+      几句话说清楚23：Skylake微架构(Microarchitecture)剖析(7)
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/03/19/82599-vf-err-debug/" class="article-date">
-	  <time datetime="2019-03-19T12:55:24.000Z" itemprop="datePublished">March 19, 2019</time>
+	Posted on <a href="/2019/04/03/quickwords23-skylake-pipeline-7/" class="article-date">
+	  <time datetime="2019-04-03T14:01:30.000Z" itemprop="datePublished">April 3, 2019</time>
 	</a>
 
       
@@ -232,38 +232,161 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在82599上创建了两个VF之后，各自绑定到vfio，启动DPDK时出现错误：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PMD: eth_ixgbevf_dev_init(): VF Initialization Failure: -15</span><br><span class="line">EAL: Error - exiting with code: 1</span><br><span class="line">    Cause: Requested device 0000:01:10.0 cannot be used</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="诊断"><a href="#诊断" class="headerlink" title="诊断"></a>诊断</h2><p>其实第一眼也看不出个什么来，但报错信息提供了两个线索：</p>
-<ul>
-<li>错误是<code>eth_ixgbevf_dev_init</code>报的</li>
-<li>错误代码是<code>-15</code></li>
-</ul>
-<p>剩下后面的看起来也直接提供了error code和错误的root cause，其实什么也没说。</p>
-<p>所以从<code>eth_ixgbevf_dev_init</code>入手吧。</p>
-<p>先找到这个方法在哪：</p>
-<p><code>grep -r “eth_ixgbevf_dev_init” ./</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./ixgbe_ethdev.c:static int eth_ixgbevf_dev_init(struct rte_eth_dev *eth_dev);</span><br><span class="line">./ixgbe_ethdev.c:eth_ixgbevf_dev_init(struct rte_eth_dev *eth_dev)</span><br><span class="line">./ixgbe_ethdev.c:		sizeof(struct ixgbe_adapter), eth_ixgbevf_dev_init);</span><br><span class="line">./ixgbe_ethdev.c:	 * is mapped to VFIO vector 0 in eth_ixgbevf_dev_init( ).</span><br><span class="line">./ixgbe_ethdev.c:	 * If previous VFIO interrupt mapping setting in eth_ixgbevf_dev_init( )</span><br><span class="line">./ixgbe_ethdev.c:	ret = eth_ixgbevf_dev_init(dev);</span><br></pre></td></tr></table></figure>
-<p>是在<code>ixgbe_ethdev.c</code>这个文件里没跑了。</p>
-<p>打开看一下，是在：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if ((diag != IXGBE_SUCCESS) &amp;&amp; (diag != IXGBE_ERR_INVALID_MAC_ADDR)) &#123;</span><br><span class="line">              PMD_INIT_LOG(ERR, "VF Initialization Failure: %d", diag);</span><br><span class="line">              /*</span><br><span class="line">               * This error code will be propagated to the app by</span><br><span class="line">               * rte_eth_dev_reset, so use a public error code rather than</span><br><span class="line">               * the internal-only IXGBE_ERR_RESET_FAILED</span><br><span class="line">               */</span><br><span class="line">              return -EAGAIN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个位置，但实际上打印的是一个变量<code>diag</code>的值。在上面<code>diag</code>的赋值方法是：</p>
-<p><code>diag = hw-&gt;mac.ops.reset_hw(hw)</code></p>
-<p>这个看起来就是个抽象层封装了一堆ops函数指针的形式。要马上找到具体调用的是哪个实现还不是太容易的事情。但看到上面定义的<code>IXGBE_ERR_INVALID_MAC_ADDR</code>的宏就应该能猜到相关的error信息应该都在一起。</p>
-<p>通过<code>Ctags</code>转跳<code>IXGBE_ERR_INVALID_MAC_ADDR</code>的定义，果然找到了我们要找的<code>-15</code>是什么错误：</p>
-<p><code>#define IXGBE_ERR_RESET_FAILED                                    -15</code></p>
-<p>OK，下面只要看一下这个错误在什么地方返回：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@Server-N3 ixgbe]# grep -r "IXGBE_ERR_RESET_FAILED" ./</span><br><span class="line">./base/ixgbe_82598.c:		status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_vf.c:		return IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_x540.c:		status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_82599.c:		status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_82599.c:		ret_val = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_phy.c:		status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./base/ixgbe_type.h:#define IXGBE_ERR_RESET_FAILED			-15</span><br><span class="line">./base/ixgbe_x550.c:		status = IXGBE_ERR_RESET_FAILED;</span><br><span class="line">./ixgbe_ethdev.c:		 * the internal-only IXGBE_ERR_RESET_FAILED</span><br></pre></td></tr></table></figure>
-<p>对我们的VF初始化场景来说，肯定就是在<code>./base/ixgbe_vf.c</code>这个文件里返回的前述的错误。打开看一下返回这个错误的逻辑是什么：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/* we cannot reset while the RSTI / RSTD bits are asserted */</span><br><span class="line">      while (!mbx-&gt;ops.check_for_rst(hw, 0) &amp;&amp; timeout) &#123;</span><br><span class="line">              timeout--;</span><br><span class="line">              usec_delay(5);</span><br><span class="line">      &#125;</span><br><span class="line">  </span><br><span class="line">      if (!timeout)</span><br><span class="line">              return IXGBE_ERR_RESET_FAILED;</span><br></pre></td></tr></table></figure>
-<p>基本就是在一定时间段内检测一个寄存器有没有被设置正确，如果没有就返回这个错误。</p>
-<p>好在代码注释中提到了检测的是RSTI/RSTD这两个标志位。</p>
-<p>那就查查这两个标志位是什么意思呗，打开82599祖传的datasheet：</p>
-<p><img src="https://s2.ax1x.com/2019/03/19/AupJN4.jpg" alt=""></p>
-<p>在PDF里搜索一下就能看到，这个标志位其实就是表示PF的reset过程有没有完成。</p>
-<p>那么reset如果完成了..应该PF至少会UP起来吧…检查了一下果然PF没有UP，UP之后问题解决。</p>
-<h2 id="主要是"><a href="#主要是" class="headerlink" title="主要是"></a>主要是</h2><p>主要并不是想说这个具体的问题应该怎么解决，而是如何在不死扣细节的情况下快速找到线索，快速解决问题。从最直接的表象入手，熟稔一套猜测的直觉，保持对复杂问题的简单看法。</p>
+        <h2 id="接前Register-Rename"><a href="#接前Register-Rename" class="headerlink" title="接前Register Rename"></a>接前Register Rename</h2><p>这次得用Markdown画表格了，想来想去用<code>markdown</code>这么久还是第一次。<br><a id="more"></a></p>
+<p>如前所述，<code>physical register</code>的数量远多于<code>architectural register</code>的数量。其实<code>architectural register</code>仅仅是一个“代号”，并不是真正存放数据的位置。用这种方式，可以消除<code>WAW</code>和<code>WAR</code>这两种数据依赖进而增加程序整体的并行性。</p>
+<p>那么到底怎么操作呢？其实本质上也就是建立一个“映射表”，一个从“代号”到存储位置的映射表。</p>
+<p>E.g.</p>
+<p>现有5个<code>architectural register</code>寄存器：r1, r2, r3, r4, r5；9个<code>physical register</code>寄存器：p1, p2, …, p9。</p>
+<p>指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Add r1, r2, r3 ;r1 = r2 + r3</span><br><span class="line">Sub r2, r1, r2 ;r2 = r1 - r2</span><br><span class="line">Add  r1, r4, r5 ;r1 = r4 + r5</span><br></pre></td></tr></table></figure>
+<p>最开始是一个简单的映射关系：</p>
+<table>
+<thead>
+<tr>
+<th>r1</th>
+<th>r2</th>
+<th>r3</th>
+<th>r4</th>
+<th>r5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p1</td>
+<td>p2</td>
+<td>p3</td>
+<td>p4</td>
+<td>p5</td>
+</tr>
+</tbody>
+</table>
+<p>在这张表里面还有一个<code>FreeList</code>，用来保存还没有被占用的<code>physical register</code>。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p6</td>
+<td>p7</td>
+<td>p8</td>
+<td>p9</td>
+</tr>
+</tbody>
+</table>
+<p>OK，首先考虑不使用<code>Register Rename</code>的情景。第二条指令是必须等待第一条指令执行完成之后才能执行，因为<code>r1</code>有<code>RAW</code>型依赖。这个其实<code>Register Rename</code>也没有办法。但是第三条指令也不能在第二条指令之前执行，因为写入<code>r1</code>可能会影响第二条指令的结果（r2）。</p>
+<p>为了增加指令的并行性，让第三条指令能与第一条指令并行，同时消除<code>WAW</code>和<code>WAR</code>型依赖，看一下<code>Register Rename</code>是怎么做的。</p>
+<p>第一条指令就用原始对应的寄存器，此时还没有Register Rename。对应的“映射表”<code>Rename Table</code>如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r1</td>
+<td>p1</td>
+</tr>
+<tr>
+<td>r2</td>
+<td>p2</td>
+</tr>
+<tr>
+<td>r3</td>
+<td>p3</td>
+</tr>
+<tr>
+<td>r4</td>
+<td>p4</td>
+</tr>
+<tr>
+<td>r5</td>
+<td>p5</td>
+</tr>
+</tbody>
+</table>
+<p>第二条指令中，<code>r2</code>针对第一条指令有<code>WAR</code>型依赖，可以将写入<code>r2</code>的结果放在另外一个寄存器里。从<code>FreeList</code>中选取下一个空闲的<code>physical register</code>，即<code>p6</code>。</p>
+<p>所以这条指令实际上就变成了<code>Sub r6, r1, r2; r6 = r1 - r2</code>。</p>
+<p><code>Rename Table</code>如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r1</td>
+<td>p1</td>
+</tr>
+<tr>
+<td>r2</td>
+<td><strong>p6</strong></td>
+</tr>
+<tr>
+<td>r3</td>
+<td>p3</td>
+</tr>
+<tr>
+<td>r4</td>
+<td>p4</td>
+</tr>
+<tr>
+<td>r5</td>
+<td>p5</td>
+</tr>
+</tbody>
+</table>
+<p>即告之后续指令<code>r2</code>最终的结果保存在<code>p6</code>里面。</p>
+<p>第三条指令，<code>r1</code>针对第一条指令有<code>WAW</code>型依赖，可以将写入<code>r1</code>的结果放到另外一个寄存器里。从<code>FreeList</code>中选取下一个空闲的<code>physical register</code>，即<code>p7</code>。</p>
+<p>所以这条指令实际上就变成了<code>Add p7, p4, p5 ; p7 = p4 + p5</code></p>
+<p><code>Rename Table</code>如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r1</td>
+<td><strong>p7</strong></td>
+</tr>
+<tr>
+<td>r2</td>
+<td>p6</td>
+</tr>
+<tr>
+<td>r3</td>
+<td>p3</td>
+</tr>
+<tr>
+<td>r4</td>
+<td>p4</td>
+</tr>
+<tr>
+<td>r5</td>
+<td>p5</td>
+</tr>
+</tbody>
+</table>
+<p>即告之<code>r1</code>最终的结果保存在<code>p7</code>里面。</p>
+<blockquote>
+<p>所有指令对<code>architectural register</code>的读取都先通过<code>Rename Table</code>获得确切地址。</p>
+</blockquote>
+<p>回到最初提到的问题，因为第一条指令和第三条指令实际写入的寄存器（分别是p1和p7）并不冲突，且第二条指令仅在<code>p1</code>中读取数据，因此这两条指令可以并行执行。</p>
+<p>现代CPU的<code>Rename Table</code>一般是在<code>ROB</code>里的<code>RAT(Rename Alias Table)</code>。同时<code>physical register</code>也会被<code>ROB entry</code>取代。</p>
+<p>其实现在对<code>Register Rename</code>的理解更多的是建立一个概念，在整个微架构中，这一步不是一个孤立的组件，所有组件之间都需要紧密配合。</p>
+<p>后续会对后端的执行进行示例介绍。</p>
 
       
     </div>
@@ -274,7 +397,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dpdk/">dpdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -309,19 +432,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/03/20/hello-kitty/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          生小猫啦
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/10/quickwords21-skylake-pipeline-6/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/03/games-risk-of-rain-2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">几句话说清楚21：Skylake微架构(Microarchitecture)剖析(6)</div>
+      <div class="article-nav-title">雨中冒险2</div>
     </a>
   
 </nav>
@@ -335,7 +449,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#诊断"><span class="nav-number">2.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要是"><span class="nav-number">3.</span> <span class="nav-text">主要是</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#接前Register-Rename"><span class="nav-number">1.</span> <span class="nav-text">接前Register Rename</span></a></li></ol>
     
     </div>
   </aside>

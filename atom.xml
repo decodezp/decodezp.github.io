@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-04-03T13:41:44.382Z</updated>
+  <updated>2019-04-03T14:10:27.629Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚23：Skylake微架构(Microarchitecture)剖析(7)</title>
+    <link href="https://decodezp.github.io/2019/04/03/quickwords23-skylake-pipeline-7/"/>
+    <id>https://decodezp.github.io/2019/04/03/quickwords23-skylake-pipeline-7/</id>
+    <published>2019-04-03T14:01:30.000Z</published>
+    <updated>2019-04-03T14:10:27.629Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;接前Register-Rename&quot;&gt;&lt;a href=&quot;#接前Register-Rename&quot; class=&quot;headerlink&quot; title=&quot;接前Register Rename&quot;&gt;&lt;/a&gt;接前Register Rename&lt;/h2&gt;&lt;p&gt;这次得用Markdown画表格了，想来想去用&lt;code&gt;markdown&lt;/code&gt;这么久还是第一次。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>雨中冒险2</title>
@@ -432,30 +456,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚13：什么是Top-Down性能分析方法</title>
-    <link href="https://decodezp.github.io/2019/01/27/quickwords13-tma/"/>
-    <id>https://decodezp.github.io/2019/01/27/quickwords13-tma/</id>
-    <published>2019-01-27T13:17:45.000Z</published>
-    <updated>2019-01-27T13:29:03.211Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;前几篇连续介绍了一些Skylake微架构的内容（还没有结束，还会继续填坑），主要目的并不是要对读者开启名词或者概念的Flood攻击，而是为了方便读者以后可以“有理有据”地进行软件的性能优化。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

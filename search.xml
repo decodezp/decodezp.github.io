@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚23：Skylake微架构(Microarchitecture)剖析(7)</title>
+      <link href="/2019/04/03/quickwords23-skylake-pipeline-7/"/>
+      <url>/2019/04/03/quickwords23-skylake-pipeline-7/</url>
+      
+        <content type="html"><![CDATA[<h2 id="接前Register-Rename"><a href="#接前Register-Rename" class="headerlink" title="接前Register Rename"></a>接前Register Rename</h2><p>这次得用Markdown画表格了，想来想去用<code>markdown</code>这么久还是第一次。<br><a id="more"></a></p><p>如前所述，<code>physical register</code>的数量远多于<code>architectural register</code>的数量。其实<code>architectural register</code>仅仅是一个“代号”，并不是真正存放数据的位置。用这种方式，可以消除<code>WAW</code>和<code>WAR</code>这两种数据依赖进而增加程序整体的并行性。</p><p>那么到底怎么操作呢？其实本质上也就是建立一个“映射表”，一个从“代号”到存储位置的映射表。</p><p>E.g.</p><p>现有5个<code>architectural register</code>寄存器：r1, r2, r3, r4, r5；9个<code>physical register</code>寄存器：p1, p2, …, p9。</p><p>指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Add r1, r2, r3 ;r1 = r2 + r3</span><br><span class="line">Sub r2, r1, r2 ;r2 = r1 - r2</span><br><span class="line">Add  r1, r4, r5 ;r1 = r4 + r5</span><br></pre></td></tr></table></figure><p>最开始是一个简单的映射关系：</p><table><thead><tr><th>r1</th><th>r2</th><th>r3</th><th>r4</th><th>r5</th></tr></thead><tbody><tr><td>p1</td><td>p2</td><td>p3</td><td>p4</td><td>p5</td></tr></tbody></table><p>在这张表里面还有一个<code>FreeList</code>，用来保存还没有被占用的<code>physical register</code>。</p><table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td>p6</td><td>p7</td><td>p8</td><td>p9</td></tr></tbody></table><p>OK，首先考虑不使用<code>Register Rename</code>的情景。第二条指令是必须等待第一条指令执行完成之后才能执行，因为<code>r1</code>有<code>RAW</code>型依赖。这个其实<code>Register Rename</code>也没有办法。但是第三条指令也不能在第二条指令之前执行，因为写入<code>r1</code>可能会影响第二条指令的结果（r2）。</p><p>为了增加指令的并行性，让第三条指令能与第一条指令并行，同时消除<code>WAW</code>和<code>WAR</code>型依赖，看一下<code>Register Rename</code>是怎么做的。</p><p>第一条指令就用原始对应的寄存器，此时还没有Register Rename。对应的“映射表”<code>Rename Table</code>如下：</p><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>r1</td><td>p1</td></tr><tr><td>r2</td><td>p2</td></tr><tr><td>r3</td><td>p3</td></tr><tr><td>r4</td><td>p4</td></tr><tr><td>r5</td><td>p5</td></tr></tbody></table><p>第二条指令中，<code>r2</code>针对第一条指令有<code>WAR</code>型依赖，可以将写入<code>r2</code>的结果放在另外一个寄存器里。从<code>FreeList</code>中选取下一个空闲的<code>physical register</code>，即<code>p6</code>。</p><p>所以这条指令实际上就变成了<code>Sub r6, r1, r2; r6 = r1 - r2</code>。</p><p><code>Rename Table</code>如下：</p><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>r1</td><td>p1</td></tr><tr><td>r2</td><td><strong>p6</strong></td></tr><tr><td>r3</td><td>p3</td></tr><tr><td>r4</td><td>p4</td></tr><tr><td>r5</td><td>p5</td></tr></tbody></table><p>即告之后续指令<code>r2</code>最终的结果保存在<code>p6</code>里面。</p><p>第三条指令，<code>r1</code>针对第一条指令有<code>WAW</code>型依赖，可以将写入<code>r1</code>的结果放到另外一个寄存器里。从<code>FreeList</code>中选取下一个空闲的<code>physical register</code>，即<code>p7</code>。</p><p>所以这条指令实际上就变成了<code>Add p7, p4, p5 ; p7 = p4 + p5</code></p><p><code>Rename Table</code>如下：</p><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>r1</td><td><strong>p7</strong></td></tr><tr><td>r2</td><td>p6</td></tr><tr><td>r3</td><td>p3</td></tr><tr><td>r4</td><td>p4</td></tr><tr><td>r5</td><td>p5</td></tr></tbody></table><p>即告之<code>r1</code>最终的结果保存在<code>p7</code>里面。</p><blockquote><p>所有指令对<code>architectural register</code>的读取都先通过<code>Rename Table</code>获得确切地址。</p></blockquote><p>回到最初提到的问题，因为第一条指令和第三条指令实际写入的寄存器（分别是p1和p7）并不冲突，且第二条指令仅在<code>p1</code>中读取数据，因此这两条指令可以并行执行。</p><p>现代CPU的<code>Rename Table</code>一般是在<code>ROB</code>里的<code>RAT(Rename Alias Table)</code>。同时<code>physical register</code>也会被<code>ROB entry</code>取代。</p><p>其实现在对<code>Register Rename</code>的理解更多的是建立一个概念，在整个微架构中，这一步不是一个孤立的组件，所有组件之间都需要紧密配合。</p><p>后续会对后端的执行进行示例介绍。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>雨中冒险2</title>
       <link href="/2019/04/03/games-risk-of-rain-2/"/>
       <url>/2019/04/03/games-risk-of-rain-2/</url>
@@ -765,9 +792,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> dpdk </tag>
+            
+            <tag> network </tag>
             
             <tag> test </tag>
             

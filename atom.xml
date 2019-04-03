@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-03-26T14:36:30.222Z</updated>
+  <updated>2019-04-03T13:41:44.382Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>雨中冒险2</title>
+    <link href="https://decodezp.github.io/2019/04/03/games-risk-of-rain-2/"/>
+    <id>https://decodezp.github.io/2019/04/03/games-risk-of-rain-2/</id>
+    <published>2019-04-03T13:38:40.000Z</published>
+    <updated>2019-04-03T13:41:44.382Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《雨中冒险》是我买的第一款Steam游戏。&lt;/p&gt;
+&lt;p&gt;6年前，刚刚毕业，手边只有一台上学时陪伴着我的笔记本电脑，我知道它只能带得动这种简陋的像素风游戏。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="game" scheme="https://decodezp.github.io/categories/game/"/>
+    
+    
+      <category term="game" scheme="https://decodezp.github.io/tags/game/"/>
+    
+      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚22：什么是AF_XDP Socket</title>
@@ -433,32 +456,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去6：Linux网络性能调优方法（补遗）</title>
-    <link href="https://decodezp.github.io/2019/01/24/test6-linux-network-performance-optimization-2/"/>
-    <id>https://decodezp.github.io/2019/01/24/test6-linux-network-performance-optimization-2/</id>
-    <published>2019-01-24T10:35:31.000Z</published>
-    <updated>2019-01-24T10:36:53.721Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;没提到的&quot;&gt;&lt;a href=&quot;#没提到的&quot; class=&quot;headerlink&quot; title=&quot;没提到的&quot;&gt;&lt;/a&gt;没提到的&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://decodezp.github.io/2019/01/22/test5-linux-network-performance-optimization/&quot;&gt;上一篇&lt;/a&gt;内容中介绍了一些Linux网络协议栈的调优方法，但遗漏了一些可以发挥重要作用的方法，在这一篇中补充一下。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   

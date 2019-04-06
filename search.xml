@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚24：Skylake微架构(Microarchitecture)剖析(8)</title>
+      <link href="/2019/04/06/quickwords24-skylake-pipeline-8/"/>
+      <url>/2019/04/06/quickwords24-skylake-pipeline-8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一个示例介绍Reorder-Buffer-ROB-和Register-Alias-Table-RAT-和Reservation-Station-RS"><a href="#一个示例介绍Reorder-Buffer-ROB-和Register-Alias-Table-RAT-和Reservation-Station-RS" class="headerlink" title="一个示例介绍Reorder Buffer(ROB)和Register Alias Table(RAT)和Reservation Station(RS)"></a>一个示例介绍Reorder Buffer(ROB)和Register Alias Table(RAT)和Reservation Station(RS)</h2><p>理解乱序执行（Out-of-Order）的核心其实就是把ROB，RAT和RS这三个组件搞透。<br><a id="more"></a></p><p>如果要单独讲，很容易成为一大锅概念和专有名词的杂烩。所以这次把这几个紧密相关的组件放到一起，先用例子说明，仅描述自然行为，同时也避免出现太多概念。</p><p><img src="https://s2.ax1x.com/2019/04/06/AW0jkn.png" alt=""></p><p>上图是在一个起始时刻<code>CYCLE 0</code>时CPU后端各组件的状态。它即将执行<code>Instructions</code>表格里的6条指令。不同种类指令所需要消耗的执行时间如<code>Cycle Consumption</code>所示。</p><p><code>ARF</code>是<code>Architectural Register File</code>，里面保存有当前时刻<code>architectural register</code>中的值；<code>RAT</code>就是<a href="https://decodezp.github.io/2019/04/03/quickwords23-skylake-pipeline-7/">前面</a>介绍过的<code>Register Alias Table</code>，主要用作对<code>architectural register</code>的Rename。</p><p><code>Reservation Station(RS)</code>根据所连接的执行不同类型指令的Port而分成两类，一类保存<code>ADD/SUB</code>相关的指令，一类保存<code>MUL/DIV</code>相关的指令。里面的指令在两个Value都<code>Ready</code>的时候将发送到执行单元执行。</p><p> <code>Re Order Buffer</code>旁边的表格是这6条指令从<code>Issue</code>到<code>Execute</code>, <code>Write</code>最后再到<code>Commit</code>这几个状态的cycle时刻表。</p><p>OK，那么下面进入第一个cycle。</p><p><img src="https://s2.ax1x.com/2019/04/06/AW0HOg.png" alt=""></p><p>第一条指令<code>DIV R2, R3, R4</code>按照先进先出的原则首先进入<code>ROB1</code>。</p><p>在ROB中，<code>Dst</code>填该指令的目的<code>architectural register</code>，也就是R2；<code>Value</code>是该指令执行完计算出来的结果，显然现在还不得而知，表示是否执行完的<code>Done</code>标志位也是N的状态。</p><p>同时针对<code>DIV</code>指令的RS中也有空闲资源，因此该指令也会在同一cycle进入RS。目的tag<code>D-tag</code>填写指令对应的<code>ROB</code>条目(ROB1)；<code>Tag1</code>和<code>Tag2</code>通过查阅<code>RAT</code>中<code>R3</code>和<code>R4</code>的状态，如果有Rename的情况，则填写对应的ROB条目，如果没有，则直接读取<code>ARF</code>中的值，作为<code>Value</code>填入。</p><p>因此，<code>D-tag</code>是<code>ROB1</code>，<code>Tag1</code>和<code>Tag2</code>因为<code>R3</code>和<code>R4</code>没有Rename所以不填，直接读取<code>ARF</code>中的值，20和5，放入<code>Value1</code>和<code>Value2</code>中。</p><p>之后，在<code>RAT</code>中，R2被Rename成了<code>ROB1</code>，即表示后续指令欲读取R2的值的话，都应该去读取<code>ROB1</code>中<code>value</code>的值。</p><p>此时该<code>DIV</code>指令所需要的操作数都已经<code>Ready</code>，那么就可以在下一个cycle时从RS中<code>发射</code>到执行单元去执行。</p><p>下面进入第二个cycle。</p><p><img src="https://s2.ax1x.com/2019/04/06/AW0qmQ.png" alt=""></p><p>在第二个cycle中，第一条<code>DIV</code>指令开始执行，根据<code>DIV</code>的执行周期，那么我们知道它将在第<code>2 + 10 = 12</code>个cycle中执行完成。同时ROB中还有空闲，我们可以<code>issue</code>第二条<code>MUL</code>指令。</p><p>在RS中，上一条<code>DIV</code>指令已经清出，也有空闲资源，所以<code>MUL</code>指令也可以进入到RS中。另外几个选项也如<code>DIV</code>指令的判断方式，因此<code>D-tag</code>为<code>ROB2</code>，两个<code>value</code>为4和2。此时<code>MUL</code>指令也已经<code>Ready</code>，可以在下一个cycle开始执行。</p><p>同时<code>RAT</code>中将<code>R1</code>rename到<code>ROB2</code>。因为后续最新的<code>R1</code>的值将等于<code>ROB2</code>中的<code>value</code>。</p><p><img src="https://s2.ax1x.com/2019/04/06/AW0Lwj.png" alt=""></p><p>在第三个cycle中，<code>MUL</code>指令开始执行，根据<code>MUL</code>的执行周期，它将在第<code>3 + 3 = 6</code>个cycle中执行完成。因ROB中 还有空闲，此时可以<code>issue</code>第三条<code>ADD</code>指令。</p><p>RS里面，<code>ADD</code>指令需要放到存放<code>ADD/SUB</code>指令的RS中，除此之外，各字段的填写方式与之前的指令没有区别。<code>R7</code>和<code>R8</code>也可以直接从<code>ARF</code>中获取数值，因此该<code>ADD</code>指令也已经<code>Ready</code>，可以在下一个cycle开始执行。</p><p>之后，<code>RAT</code>中将<code>R3</code>rename到<code>ROB3</code>。</p><p><img src="https://s2.ax1x.com/2019/04/06/AW076S.png" alt=""></p><p>那么在第四个cycle中，第四条<code>MUL</code>指令可以进入<code>ROB</code>和<code>RS</code>之中。在RS中，<code>D-tag</code>填入该指令对应的<code>ROB</code>条目，即<code>ROB4</code>。而它的第一个操作数<code>R1</code>通过<code>RAT</code>读取（参见cycle 3中的<code>RAT</code>情况。），rename到了<code>ROB2</code>，因此<code>tag1</code>需要填<code>ROB2</code>。<code>Tag2</code>同理，填<code>ROB1</code>。</p><p>之后，<code>RAT</code>中的<code>R1</code>需要rename到<code>ROB4</code>，以保持最新的状态。</p><p>RS中，因为该条指令两个操作数的<code>value</code>还没有Ready，不能在下一个cycle开始执行，因此还暂存在RS之中。</p><p><img src="https://s2.ax1x.com/2019/04/06/AW0OTs.png" alt=""></p><p>在第五个cycle中，拆成两个阶段来看。第一个阶段，也即<code>cycle 5`</code>，第五条<code>SUB</code>指令进入<code>ROB</code>和<code>RS</code>，各字段的填写方式与之前相同。</p><p><img src="https://s2.ax1x.com/2019/04/06/AW0vYq.png" alt=""></p><p>在cycle 5的第二个阶段中，注意到指令时刻表中，第三条在指令将在cycle 5完成执行，并进入<code>Write</code>阶段。</p><p>于是此时第三条指令在<code>ROB</code>中对应的<code>ROB3</code>的<code>Value</code>中将填入该指令执行的结果，也就是3，同时设置标志位<code>DONE</code>为Y。</p><p>在执行完成之后，在同一个cycle中，CPU还将进行一个操作，就是将该结果广播给RS中现存的指令，如果有等待<code>ROB3</code>执行结果的指令，将接收该结果并更新状态。</p><p>在当前<code>RS(Adder)</code>中，<code>SUB</code>指令正在等待<code>ROB3</code>的结果（参见<code>cycle5`</code>），于是其不再等待<code>Tag1</code>，并在<code>Value1</code>中填入结果3。此时该<code>SUB</code>指令也已经Ready，并将在下一个cycle中执行，根据其执行开销，将在第<code>6 + 1 = 7</code>cycle时执行完成。</p><p>后面的下期再继续。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚23：Skylake微架构(Microarchitecture)剖析(7)</title>
       <link href="/2019/04/03/quickwords23-skylake-pipeline-7/"/>
       <url>/2019/04/03/quickwords23-skylake-pipeline-7/</url>

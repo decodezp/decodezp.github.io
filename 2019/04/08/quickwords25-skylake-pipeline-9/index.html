@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚8：intel 700系列网卡内部结构概览 | DecodeZ</title>
+  <title>几句话说清楚25：skylake微架构(microarchitecture)剖析(9) | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。">
-<meta name="keywords" content="tech,hardware,network">
+  <meta name="description" content="接上期。 第六个cycle之后看一下第六个cycle时会发生什么。">
+<meta name="keywords" content="tech,hardware,CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚8：Intel 700系列网卡内部结构概览">
-<meta property="og:url" content="https://decodezp.github.io/2018/12/25/quickwords8-700-nic-arch/index.html">
+<meta property="og:title" content="几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)">
+<meta property="og:url" content="https://decodezp.github.io/2019/04/08/quickwords25-skylake-pipeline-9/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。">
+<meta property="og:description" content="接上期。 第六个cycle之后看一下第六个cycle时会发生什么。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg">
-<meta property="og:updated_time" content="2018-12-27T12:39:54.302Z">
+<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta property="og:updated_time" content="2019-04-07T17:25:47.250Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚8：Intel 700系列网卡内部结构概览">
-<meta name="twitter:description" content="一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。">
-<meta name="twitter:image" content="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg">
+<meta name="twitter:title" content="几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)">
+<meta name="twitter:description" content="接上期。 第六个cycle之后看一下第六个cycle时会发生什么。">
+<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords8-700-nic-arch" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords25-skylake-pipeline-9" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg" rel="gallery_cju7743o10058skpv8zga4qh8">
-        <img src="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_cju7743ns004gskpvc7366684">
+        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚8：Intel 700系列网卡内部结构概览
+      几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/12/25/quickwords8-700-nic-arch/" class="article-date">
-	  <time datetime="2018-12-25T09:17:39.000Z" itemprop="datePublished">December 25, 2018</time>
+	Posted on <a href="/2019/04/08/quickwords25-skylake-pipeline-9/" class="article-date">
+	  <time datetime="2019-04-07T17:20:24.000Z" itemprop="datePublished">April 8, 2019</time>
 	</a>
 
       
@@ -232,25 +232,41 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。<br><a id="more"></a></p>
-<h2 id="Intel-700系列网卡的内部架构"><a href="#Intel-700系列网卡的内部架构" class="headerlink" title="Intel 700系列网卡的内部架构"></a>Intel 700系列网卡的内部架构</h2><p>在处理完物理层的事情之后，数据包会进入网卡内部的处理流水线。</p>
-<p>对于网络中的事情，所有参与者基本上就在做一个事情：分类-&gt;转发。大到核心路由器，小到iptables都是一样。只不过有些按IP地址的前缀分类，有些按报文的协议类型分类，有些按某些header字段分类罢了。</p>
-<p>所以对Intel 700系列网卡来说，在物理层接收到帧之后，首先要做的就是”解析“一下，这个帧到底属于哪一类。</p>
-<p><img src="https://software.intel.com/sites/default/files/managed/f3/d2/Intel-Ethernet-Controller-700-series-Hash-and-Flow-Filters-fig01.png" alt="700系列网卡简易架构图"></p>
-<p>因此Parser解析器就是流水线的第一环。它会根据帧本身的特点，以及自己的识别解析能力，给每个包都打上一个标签(PTYPE和PCTYPE)。</p>
-<p>而根据这些标签，会抽取帧中相应的字段(一般是标签所代表的协议中比较关键的字段)存入<code>Field Vector</code>，以备后用。</p>
-<p>后面的<code>Switch</code>主要就是用<code>Field Vector</code>中的数据，包括<code>DMAC</code> <code>VLAN ID</code>等等，来决定该帧是应该进入PF还是VF。</p>
-<h2 id="流分类-RSS和fdir"><a href="#流分类-RSS和fdir" class="headerlink" title="流分类(RSS和fdir)"></a>流分类(RSS和fdir)</h2><p>在确定了进入哪一个PF或VF之后，就可以对帧进行RSS或者fdir的操作，来决定根据预设的配置，这个帧最终进入哪个队列，进而被哪些上层进程所消费。</p>
-<p><code>Field Vector</code>中的数据在这个时候就会被拿过来做Hash或者过滤，来计算出最终的结果。</p>
-<p>而上面提到的<code>PCTYPE</code>，其为”Packet Classifier Type”的缩写。其实是每一种<code>PCTYPE</code>对应后面一套预设的处理过滤规则(Classifier)。比如<code>IPV4 TCP</code>和<code>IPV6 TPC</code>就分别是两种<code>PCTYPE</code>，那么对于这两种报文的处理就可以分别设定规则。e.g. <code>IPV4 TCP</code>的报文进入Queue2, <code>IPV6 TCP</code>的报文进入Queue3。</p>
-<p>700系列网卡所谓的“灵活性”和“可编程性”也主要基于此。</p>
-<p>最大支持64种<code>PCTYPE</code>，但网卡默认支持的只有…呃..几种。但可以通过DDP动态添加。可以参考前一篇关于DDP的说明<a href="https://decodezp.github.io/2018/12/18/quickwords6-ddp/">文章</a>。</p>
-<h2 id="收包流程"><a href="#收包流程" class="headerlink" title="收包流程"></a>收包流程</h2><p>再简单总结一下700系列网卡的收包流程。</p>
-<p>二层帧到达之后，首先进入<code>Parser</code>解析器。解析器根据协议类型，给二层帧打上<code>PTYPE</code>和<code>PCTYPE</code>的“标签”。</p>
-<p>同时，根据这些标签，提取标签规定的字段，存入到<code>Field Vector</code>中。<code>Field Vector</code>相当于该二层帧的一个meta data，一直跟随到从某一端口或队列发送出去。</p>
-<p>然后在<code>Switch</code>阶段，网卡会根据该二层帧<code>Field Vector</code>中的某些字段判断该帧进入哪个PF或VF。</p>
-<p>在进入PF和VF之后，会根据帧各自的<code>PCTYPE</code>，从<code>Field Vector</code>取数据(其实也就是各协议的关键字段e.g. 目的IP地址，VNI等等)参与计算或过滤规则匹配。最后按照规则转发或丢弃。</p>
-<p>严格来说，是先经过fdir，再去RSS。</p>
+        <p>接<a href="https://decodezp.github.io/2019/04/06/quickwords24-skylake-pipeline-8/">上期</a>。</p>
+<h2 id="第六个cycle之后"><a href="#第六个cycle之后" class="headerlink" title="第六个cycle之后"></a>第六个cycle之后</h2><p>看一下第六个cycle时会发生什么。<br><a id="more"></a></p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AW0xf0.png" alt=""></p>
+<p>仍然分为两个阶段。第一个阶段<code>cycle 6’</code>里，第六条<code>ADD</code>指令指令可以进入ROB以及RS。</p>
+<p>在RS中，<code>D-tag</code>填写该指令所在的ROB条目<code>ROB6</code>，两个操作数通过读取<code>RAT</code>获得，<code>R4</code>和<code>R2</code>对应的分别是<code>ROB5</code>和<code>ROB1</code>。</p>
+<p><code>RAT</code>中<code>R1</code>所对应的最新值修改为<code>ROB6</code>。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBCXF.png" alt=""></p>
+<p>在第二个阶段，注意到此时第二条指令也在<code>cycle 6</code>执行完毕，因此它将执行的结果(8)写入到其所在的ROB条目<code>ROB2</code>，并在同时将执行的结果广播给RS中的指令。</p>
+<p>此时RS中的<code>MUL</code>指令正在等待<code>ROB2</code>的值，此时将其对应的<code>Value1</code>中写入计算的结果(8)。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBplT.png" alt=""></p>
+<p>在第七个周期，注意到第五条指令也该执行完成，其所执行所得到的结果(-1)，也需要写回到<code>ROB5</code>并广播给RS中的指令。但此时没有等待该值的指令。所以对其他状态暂时没有影响。</p>
+<p>但如果此时有新的指令需要<code>R4</code>，<code>ROB5</code>此时的值可以直接传递给该指令。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBSpV.png" alt=""></p>
+<p>在第7个指令之后，CPU进入一个尴尬的时期。没有新的指令执行完毕，RS中的指令也没有<code>Ready</code>的，观察一下时刻表，下一个时刻有新的指令执行完毕是<code>cycle 12</code>的事。</p>
+<p>在<code>cycle 12</code>中第一条<code>DIV</code>指令执行完毕，结果写入<code>ROB1</code>，广播结果给RS中的指令，正好两个都需要<code>ROB1</code>，并且拿到这个结果之后都进入<code>Ready</code>状态，可以在下一个cycle执行。</p>
+<p>更新一下第四条和第六条指令的时刻表，执行都是在第13个cycle，完成将分别在第16和14个cycle。</p>
+<p>此时还发生了一件事，就是ROB中的第一条指令的<code>DONE</code>标志位标成了<code>Y</code>。ROB之前我们介绍是一个先入先出的FIFO结构，只有第一条指令完成之后，才能按顺序开始commit。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWB96U.png" alt=""></p>
+<p>所以在<code>cycle 13</code>，第一条指令历史性的commit了。Commit的意思就是把结果写入到<code>ARF</code>，因此<code>R2</code>在ARF中改为了4。同时删除该ROB条目，为后续的指令腾出资源。当然<code>RAT</code>中也不再需要rename到<code>ROB1</code>，最新的值已经在<code>ARF</code>中。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBim4.png" alt=""></p>
+<p>在<code>cycle 14</code>中，ROB中的当前在队列头部的指令，也就是第二条指令也可以commit了，按之前的操作，<code>R1</code>的值也改成了最新的值(8)。</p>
+<p>同时，第六条指令也执行完毕，计算的结果写入<code>ROB6</code>。当然这条指令还不能commit，因为commit需要按指令顺序。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBF0J.png" alt=""></p>
+<p>第15个cycle，除了commit第三条指令之外没什么好做的。和以前的操作类似。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBVt1.png" alt=""></p>
+<p>第16个指令，第4条指令执行完毕，结果写入<code>ROB4</code>，同时它也是当前ROB中在队列头部的指令，可以在下一个cycle commit。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBEkR.png" alt=""></p>
+<p>那就commit呗。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBk79.png" alt=""></p>
+<p>剩下的第18,19 cycle想必你也知道该干什么了：把最后的两条指令commit掉。</p>
+<p><img src="https://s2.ax1x.com/2019/04/06/AWBZfx.png" alt=""></p>
+<p>OK，当指令时刻表都完成之后，这6条指令正式执行完毕。</p>
+<h2 id="关于这几个组件"><a href="#关于这几个组件" class="headerlink" title="关于这几个组件"></a>关于这几个组件</h2><p>全部目的都在于通过一个示例解释<code>RAT</code>, <code>ROB</code>和<code>RS</code>这三个组件的组成、特性和功能。在熟悉了这个例子的基础上可以再去寻找那些传统的“教科书”去印证理解那些大段大段的文字描述。</p>
+<p>这个例子其实还缺少一些类似分支转跳，尤其是分支预测失败之后如何操作的说明。但足矣描述清楚CPU的乱序执行和顺序commit到底是怎么回事。</p>
+<p>关于CPU微架构，前端和后端的内容基本上介绍的差不多了，后面会开始最后一个部分，也就是内存操作相关的组件的介绍。兴许会再添加一个后端执行的示例也说不定，看心情。</p>
 
       
     </div>
@@ -261,7 +277,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -296,19 +312,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/12/27/test3-indirectcall/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          测来测去3：抽象层直接调用实例方法性能提高百分之20
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/24/quickwords7-dpdk-cross-compile/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/06/quickwords24-skylake-pipeline-8/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">几句话说清楚7：DPDK不同CPU平台交叉编译指令不支持的问题</div>
+      <div class="article-nav-title">几句话说清楚24：Skylake微架构(Microarchitecture)剖析(8)</div>
     </a>
   
 </nav>
@@ -322,7 +329,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intel-700系列网卡的内部架构"><span class="nav-number">1.</span> <span class="nav-text">Intel 700系列网卡的内部架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流分类-RSS和fdir"><span class="nav-number">2.</span> <span class="nav-text">流分类(RSS和fdir)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收包流程"><span class="nav-number">3.</span> <span class="nav-text">收包流程</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第六个cycle之后"><span class="nav-number">1.</span> <span class="nav-text">第六个cycle之后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于这几个组件"><span class="nav-number">2.</span> <span class="nav-text">关于这几个组件</span></a></li></ol>
     
     </div>
   </aside>

@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>Quickwords 26 Linux Perf Under The Hood</title>
+      <link href="/2019/04/13/quickwords26-linux-perf-under-the-hood/"/>
+      <url>/2019/04/13/quickwords26-linux-perf-under-the-hood/</url>
+      
+        <content type="html"><![CDATA[<p>Too many <code>perf</code> usage articles exist on the Internet yet few talks about its source code, mechanism and architecture under the hood. For anyone who’s not satisfied with a black box, this article tries to address this.</p><h2 id="Hardware-Background-Knowledge"><a href="#Hardware-Background-Knowledge" class="headerlink" title="Hardware Background Knowledge"></a>Hardware Background Knowledge</h2><p>You probably know that <code>perf</code> retrieves CPU hardware PMU counter value at some regular sampling frequency to make everything happen. The path through the hardware value is called <code>MSR(Model-Specific Register)</code> operations. Note that <code>MSR</code> is a general designation for various kinds of registers and PMU is just a small portion of it. To be more specific, we are mainly talking about the Performance Event Select Registers and the Performance Monitoring Counters(PMC) which make up the PMU together. By interacting with the Performance Event Select Register at the software side, value of performance events is streaming out via PMC.<br><a id="more"></a></p><p>The Performance Event Select Register has quite a lot of control flags to let you specify which and how a performance event you’d like to monitor. This article does not try to cover this topic, one can refer to the Intel Software Developer Manual for detail.</p><p>The PMC value can be proactively counted as well as reactively sampled. In this article we narrow our scope to the proactive manner only as we would like to concentrate more on the “big picture”.</p><h2 id="How-perf-Works"><a href="#How-perf-Works" class="headerlink" title="How perf Works"></a>How <code>perf</code> Works</h2><p>In order to understand how <code>perf</code> works we need to answer the following questions:</p><ul><li>How to read PMC</li><li>How does <code>perf</code> obtain PMC value via file operation</li></ul><p>These are basically the core functionalities of <code>perf</code> and every its fancy feature is based on this. </p><h3 id="How-To-Read-PMU"><a href="#How-To-Read-PMU" class="headerlink" title="How To Read PMU"></a>How To Read PMU</h3><p><code>MSR</code> is relatively difficult to interact when compare to stuffs like <code>rdtsc</code>. You need a whole software schema to build up the APIs even though they share similar names(<code>rdpmc</code>).</p><p>Regarding the underlying implementation, one can find in the <code>struct pmu</code> data struct(<code>/include/linux/perf_event.h</code>) which consists of a branch of operation function pointers. Implementations pointed by these pointers are the real workers for PMU tasks.</p><p>In case of x86, the implementations are located in file <code>/arch/x86/events/intel/core.c</code>. Address of worker functions are assigned to corresponding function pointers in <code>struct x86_pmu</code>(/anch/x86/events/core.c).</p><p>Set <code>x86_pmu_read</code> which reads the <code>PMU</code> of a particular kind of event as an example, this function finally invokes <code>x86_perf_event_update()</code>(/arch/x86/events/core.c) to obtain PMC value via <code>rdpmcl</code> which involves with the ultimate assembly instruction, in a compare and swap manner.</p><h3 id="How-Does-perf-Obtain-PMC-Value-via-File-Operation"><a href="#How-Does-perf-Obtain-PMC-Value-via-File-Operation" class="headerlink" title="How Does perf Obtain PMC Value via File Operation"></a>How Does <code>perf</code> Obtain PMC Value via File Operation</h3><p>A complete <code>perf_event</code> consists of the value of PMC, the critical part, and a handful of linked list, status and statistics elements. The definition is <code>struct perf_event</code> in /include/linux/perf_event.h.</p><p><code>perf_event</code> exposes as a file descriptor to the user space applications(<code>stat</code>, <code>top</code>, ‘record’ etc). These applications interact with <code>perf_event</code>, as well as PMU, by invoking normal file operations on corresponding file descriptors.</p><p>It appears that application just calls <code>read</code> on a file operations, actually, the <code>read</code> action has already been replaced by actions of <code>static const struct file_operations perf_fops</code>  in /kernel/events/core.c. The real <code>read</code> function invoked is <code>perf_read</code>. This function will finally call <code>pmu-&gt;read</code> is stream out the PMC value.</p><p>The initialization process of <code>perf_event</code> and file descriptor is <code>sys_perf_event_open</code> in /kernel/events/core.c. The new file descriptor will be returned when success.</p><p>In real application, <code>buildtin-stat.c</code> for instance, <code>__run_perf_stat</code> consequently calls <code>process_interval()</code>, <code>read_counters()</code>, <code>read_counter()</code>, <code>perf_evsel__read_counter()</code>, <code>perf_evsel__read_one()</code>, <code>perf_evsel__read()</code>, and <code>readn()</code>.</p><p>Multiple file descriptors/counters can be polled as same as the normal <code>poll()</code> operation from application’s perspective. The only difference is invoking fd’s customized poll() function.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> perf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)</title>
       <link href="/2019/04/08/quickwords25-skylake-pipeline-9/"/>
       <url>/2019/04/08/quickwords25-skylake-pipeline-9/</url>
@@ -846,9 +871,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> dpdk </tag>
+            
+            <tag> network </tag>
             
             <tag> test </tag>
             

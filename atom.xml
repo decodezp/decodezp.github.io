@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-04-07T17:25:47.250Z</updated>
+  <updated>2019-04-12T16:31:15.719Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quickwords 26 Linux Perf Under The Hood</title>
+    <link href="https://decodezp.github.io/2019/04/13/quickwords26-linux-perf-under-the-hood/"/>
+    <id>https://decodezp.github.io/2019/04/13/quickwords26-linux-perf-under-the-hood/</id>
+    <published>2019-04-12T16:22:44.000Z</published>
+    <updated>2019-04-12T16:31:15.719Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Too many &lt;code&gt;perf&lt;/code&gt; usage articles exist on the Internet yet few talks about its source code, mechanism and architecture under the hood. For anyone who’s not satisfied with a black box, this article tries to address this.&lt;/p&gt;
+&lt;h2 id=&quot;Hardware-Background-Knowledge&quot;&gt;&lt;a href=&quot;#Hardware-Background-Knowledge&quot; class=&quot;headerlink&quot; title=&quot;Hardware Background Knowledge&quot;&gt;&lt;/a&gt;Hardware Background Knowledge&lt;/h2&gt;&lt;p&gt;You probably know that &lt;code&gt;perf&lt;/code&gt; retrieves CPU hardware PMU counter value at some regular sampling frequency to make everything happen. The path through the hardware value is called &lt;code&gt;MSR(Model-Specific Register)&lt;/code&gt; operations. Note that &lt;code&gt;MSR&lt;/code&gt; is a general designation for various kinds of registers and PMU is just a small portion of it. To be more specific, we are mainly talking about the Performance Event Select Registers and the Performance Monitoring Counters(PMC) which make up the PMU together. By interacting with the Performance Event Select Register at the software side, value of performance events is streaming out via PMC.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="perf" scheme="https://decodezp.github.io/tags/perf/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)</title>
@@ -438,31 +461,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚15：Top-Down性能分析方法资料及Toplev使用</title>
-    <link href="https://decodezp.github.io/2019/02/14/quickwords15-toplev/"/>
-    <id>https://decodezp.github.io/2019/02/14/quickwords15-toplev/</id>
-    <published>2019-02-14T11:40:58.000Z</published>
-    <updated>2019-02-14T11:42:33.035Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Top-down-Microarchitecture-Analysis-Method-TMAM-资料&quot;&gt;&lt;a href=&quot;#Top-down-Microarchitecture-Analysis-Method-TMAM-资料&quot; class=&quot;headerlink&quot; title=&quot;Top-down Microarchitecture Analysis Method(TMAM)资料&quot;&gt;&lt;/a&gt;Top-down Microarchitecture Analysis Method(TMAM)资料&lt;/h2&gt;&lt;p&gt;之前介绍过TMAM的具体内容，在这里对网络上相关的信息和资料做一个汇总：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://software.intel.com/en-us/vtune-amplifier-help-tuning-applications-using-a-top-down-microarchitecture-analysis-method&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tuning Applications Using a Top-down Microarchitecture Analysis Method&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

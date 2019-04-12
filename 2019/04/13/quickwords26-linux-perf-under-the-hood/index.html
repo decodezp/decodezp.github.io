@@ -54,7 +54,7 @@
 <meta property="og:description" content="Too many perf usage articles exist on the Internet yet few talks about its source code, mechanism and architecture under the hood. For anyone who’s not satisfied with a black box, this article tries t">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://discourse-cdn-sjc1.com/business5/uploads/rust_lang/original/2X/c/c1de6d49a49ae3780a6622eb40491812237237b6.png">
-<meta property="og:updated_time" content="2019-04-12T16:31:15.719Z">
+<meta property="og:updated_time" content="2019-04-12T16:39:32.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Quickwords 26 Linux Perf Under The Hood">
 <meta name="twitter:description" content="Too many perf usage articles exist on the Internet yet few talks about its source code, mechanism and architecture under the hood. For anyone who’s not satisfied with a black box, this article tries t">
@@ -200,7 +200,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://discourse-cdn-sjc1.com/business5/uploads/rust_lang/original/2X/c/c1de6d49a49ae3780a6622eb40491812237237b6.png" rel="gallery_cjueael980000u1fyl4jt42dc">
+      <a class="article-gallery-img fancybox" href="https://discourse-cdn-sjc1.com/business5/uploads/rust_lang/original/2X/c/c1de6d49a49ae3780a6622eb40491812237237b6.png" rel="gallery_cjuear4rn003m1xfyy5l5dve8">
         <img src="https://discourse-cdn-sjc1.com/business5/uploads/rust_lang/original/2X/c/c1de6d49a49ae3780a6622eb40491812237237b6.png" itemprop="image">
       </a>
     
@@ -248,7 +248,7 @@ var themeMenus = {};
 <p>Set <code>x86_pmu_read</code> which reads the <code>PMU</code> of a particular kind of event as an example, this function finally invokes <code>x86_perf_event_update()</code>(/arch/x86/events/core.c) to obtain PMC value via <code>rdpmcl</code> which involves with the ultimate assembly instruction, in a compare and swap manner.</p>
 <h3 id="How-Does-perf-Obtain-PMC-Value-via-File-Operation"><a href="#How-Does-perf-Obtain-PMC-Value-via-File-Operation" class="headerlink" title="How Does perf Obtain PMC Value via File Operation"></a>How Does <code>perf</code> Obtain PMC Value via File Operation</h3><p>A complete <code>perf_event</code> consists of the value of PMC, the critical part, and a handful of linked list, status and statistics elements. The definition is <code>struct perf_event</code> in /include/linux/perf_event.h.</p>
 <p><code>perf_event</code> exposes as a file descriptor to the user space applications(<code>stat</code>, <code>top</code>, ‘record’ etc). These applications interact with <code>perf_event</code>, as well as PMU, by invoking normal file operations on corresponding file descriptors.</p>
-<p>It appears that application just calls <code>read</code> on a file operations, actually, the <code>read</code> action has already been replaced by actions of <code>static const struct file_operations perf_fops</code>  in /kernel/events/core.c. The real <code>read</code> function invoked is <code>perf_read</code>. This function will finally call <code>pmu-&gt;read</code> is stream out the PMC value.</p>
+<p>It appears that application just calls <code>read</code> on a file operations, actually, the <code>read</code> action has already been replaced by actions of <code>static const struct file_operations perf_fops</code>  in /kernel/events/core.c. The real <code>read</code> function invoked is <code>perf_read</code>. This function will finally call <code>pmu-&gt;read</code> to stream out the PMC value.</p>
 <p>The initialization process of <code>perf_event</code> and file descriptor is <code>sys_perf_event_open</code> in /kernel/events/core.c. The new file descriptor will be returned when success.</p>
 <p>In real application, <code>buildtin-stat.c</code> for instance, <code>__run_perf_stat</code> consequently calls <code>process_interval()</code>, <code>read_counters()</code>, <code>read_counter()</code>, <code>perf_evsel__read_counter()</code>, <code>perf_evsel__read_one()</code>, <code>perf_evsel__read()</code>, and <code>readn()</code>.</p>
 <p>Multiple file descriptors/counters can be polled as same as the normal <code>poll()</code> operation from application’s perspective. The only difference is invoking fd’s customized poll() function.</p>

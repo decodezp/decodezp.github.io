@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-04-12T16:40:57.653Z</updated>
+  <updated>2019-04-15T12:21:43.188Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>商业供稿3：2019云计算安全5大趋势</title>
+    <link href="https://decodezp.github.io/2019/04/15/commerical3-2019-cloud-security-trends/"/>
+    <id>https://decodezp.github.io/2019/04/15/commerical3-2019-cloud-security-trends/</id>
+    <published>2019-04-15T12:18:29.000Z</published>
+    <updated>2019-04-15T12:21:43.188Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;原载于云杉网络 &lt;a href=&quot;http://www.yunshan.net&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;www.yunshan.net&lt;/a&gt; 微信公众号&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;#. 安全将成为云计算最大的挑战&lt;br&gt;
+    
+    </summary>
+    
+      <category term="commerical" scheme="https://decodezp.github.io/categories/commerical/"/>
+    
+    
+      <category term="commerical" scheme="https://decodezp.github.io/tags/commerical/"/>
+    
+  </entry>
   
   <entry>
     <title>Quickwords 26 Linux Perf Under The Hood</title>
@@ -441,26 +462,6 @@
       <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《居家男人》</title>
-    <link href="https://decodezp.github.io/2019/02/15/thoughts5-family-man/"/>
-    <id>https://decodezp.github.io/2019/02/15/thoughts5-family-man/</id>
-    <published>2019-02-15T11:02:39.000Z</published>
-    <updated>2019-02-15T11:24:35.920Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;大约在2010年左右的时候，我会经常在PPS这种视频流软件上面看尼古拉斯凯奇的电影。他早期的一些作品还是令人印象深刻。相较于那些有名的动作片，《居家男人》应该只是一部家庭剧小品，但却成了我这些年重复播放最多的他的片子。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

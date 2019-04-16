@@ -37,20 +37,6 @@
   </entry>
   
   <entry>
-    <title>tender-is-the-night</title>
-    <link href="https://decodezp.github.io/2019/04/17/tender-is-the-night/"/>
-    <id>https://decodezp.github.io/2019/04/17/tender-is-the-night/</id>
-    <published>2019-04-16T16:04:58.000Z</published>
-    <updated>2019-04-16T16:05:40.601Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>商业供稿3：2019云计算安全5大趋势</title>
     <link href="https://decodezp.github.io/2019/04/15/commerical3-2019-cloud-security-trends/"/>
     <id>https://decodezp.github.io/2019/04/15/commerical3-2019-cloud-security-trends/</id>
@@ -448,6 +434,28 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="program" scheme="https://decodezp.github.io/tags/program/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>几句话说清楚16：如何构建零干扰CPU Benchmark环境</title>
+    <link href="https://decodezp.github.io/2019/02/20/quickwords16-noisy-free-benchmark-env/"/>
+    <id>https://decodezp.github.io/2019/02/20/quickwords16-noisy-free-benchmark-env/</id>
+    <published>2019-02-20T13:07:28.000Z</published>
+    <updated>2019-02-20T13:09:10.002Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;CPU性能测试对环境的要求&quot;&gt;&lt;a href=&quot;#CPU性能测试对环境的要求&quot; class=&quot;headerlink&quot; title=&quot;CPU性能测试对环境的要求&quot;&gt;&lt;/a&gt;CPU性能测试对环境的要求&lt;/h2&gt;&lt;p&gt;即便是硬件配置完全一样，操作系统相同，工作负载也相同的硬件平台，性能测试的结果也可能会因为各项配置的不同出现较大出入。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

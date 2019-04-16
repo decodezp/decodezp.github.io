@@ -26,17 +26,6 @@
     </entry>
     
     <entry>
-      <title>tender-is-the-night</title>
-      <link href="/2019/04/17/tender-is-the-night/"/>
-      <url>/2019/04/17/tender-is-the-night/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    <entry>
       <title>商业供稿3：2019云计算安全5大趋势</title>
       <link href="/2019/04/15/commerical3-2019-cloud-security-trends/"/>
       <url>/2019/04/15/commerical3-2019-cloud-security-trends/</url>
@@ -928,9 +917,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> dpdk </tag>
+            
+            <tag> network </tag>
             
             <tag> test </tag>
             

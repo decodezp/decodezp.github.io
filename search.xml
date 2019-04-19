@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>tar命令速查手册</title>
+      <link href="/2019/04/20/tar-cheat-sheet/"/>
+      <url>/2019/04/20/tar-cheat-sheet/</url>
+      
+        <content type="html"><![CDATA[<p>总是会忘记这个命令后面的各种参数对应的压缩格式，每次都要上网重新搜索。可能也是对这种“查一查就能知道”的信息天生缺乏敏感性，但每次都搜索显得实在不太professional，所以…那就在一个地方查吧 ^^<br><a id="more"></a></p><h2 id="tar"><a href="#tar" class="headerlink" title=".tar"></a>.tar</h2><ul><li>解压缩： tar zxvf FileName.tar</li><li>压缩： tar czvf FileName.tar path/to/file</li></ul><h2 id="tar-bz2"><a href="#tar-bz2" class="headerlink" title=".tar.bz2"></a>.tar.bz2</h2><ul><li>解压缩： tar jxvf FileName.tar.bz2</li><li>压缩： tar jcvf FileName.tar.bz2 path/to/file</li></ul><h2 id="tar-bz"><a href="#tar-bz" class="headerlink" title=".tar.bz"></a>.tar.bz</h2><ul><li>解压缩： tar jxvf FileName.tar.bz</li></ul><h2 id="tar-gz-amp-tgz"><a href="#tar-gz-amp-tgz" class="headerlink" title=".tar.gz &amp; .tgz"></a>.tar.gz &amp; .tgz</h2><ul><li>解压缩： tar zxvf FileName.tar.gz</li><li>压缩： tar zcvf FileName.tar.gz path/to/file</li></ul><h2 id="tar-Z"><a href="#tar-Z" class="headerlink" title=".tar.Z"></a>.tar.Z</h2><ul><li>解压缩： tar Zxvf FileName.tar.Z</li><li>压缩： tar Zcvf FileName.tar.Z path/to/file</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>如果你到鲁汶来，一定要喝Stella</title>
       <link href="/2019/04/19/thoughts7-leuven-stella/"/>
       <url>/2019/04/19/thoughts7-leuven-stella/</url>

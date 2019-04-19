@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-04-19T07:00:47.533Z</updated>
+  <updated>2019-04-19T19:17:32.280Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>tar命令速查手册</title>
+    <link href="https://decodezp.github.io/2019/04/20/tar-cheat-sheet/"/>
+    <id>https://decodezp.github.io/2019/04/20/tar-cheat-sheet/</id>
+    <published>2019-04-19T19:15:05.000Z</published>
+    <updated>2019-04-19T19:17:32.280Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总是会忘记这个命令后面的各种参数对应的压缩格式，每次都要上网重新搜索。可能也是对这种“查一查就能知道”的信息天生缺乏敏感性，但每次都搜索显得实在不太professional，所以…那就在一个地方查吧 ^^&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如果你到鲁汶来，一定要喝Stella</title>
     <link href="https://decodezp.github.io/2019/04/19/thoughts7-leuven-stella/"/>
     <id>https://decodezp.github.io/2019/04/19/thoughts7-leuven-stella/</id>
     <published>2019-04-19T06:56:20.000Z</published>
-    <updated>2019-04-19T07:00:47.533Z</updated>
+    <updated>2019-04-19T07:02:21.962Z</updated>
     
     <summary type="html">
     
@@ -432,29 +452,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚17：用Makefile.am和configure.ac构建一个专业的Hello World</title>
-    <link href="https://decodezp.github.io/2019/02/21/quickwords17-makefileam-configureac/"/>
-    <id>https://decodezp.github.io/2019/02/21/quickwords17-makefileam-configureac/</id>
-    <published>2019-02-21T12:46:35.000Z</published>
-    <updated>2019-02-22T13:48:55.394Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先感谢GUN的良好&lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Creating-amhello.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;教程&lt;/a&gt;，这里主要是做一点点加工。&lt;/p&gt;
-&lt;h2 id=&quot;GNU-Autotool&quot;&gt;&lt;a href=&quot;#GNU-Autotool&quot; class=&quot;headerlink&quot; title=&quot;GNU Autotool&quot;&gt;&lt;/a&gt;GNU Autotool&lt;/h2&gt;&lt;p&gt;现在写开源项目，如果只提供一个Makefile可能会令别人怀疑你项目的专业程度:D虽然其实并没有什么关系，但看着别的项目目录下面的&lt;code&gt;configure&lt;/code&gt;, &lt;code&gt;configure.ac&lt;/code&gt;, &lt;code&gt;Makefile.in&lt;/code&gt;, &lt;code&gt;Makefile.am&lt;/code&gt;, &lt;code&gt;aclocal.m4&lt;/code&gt;等文件还是会觉得有必要也用这些东西“装点”一下。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="program" scheme="https://decodezp.github.io/tags/program/"/>
     
   </entry>
   

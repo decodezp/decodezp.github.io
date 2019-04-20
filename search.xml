@@ -244,9 +244,9 @@
       
         <tags>
             
-            <tag> game </tag>
-            
             <tag> life </tag>
+            
+            <tag> game </tag>
             
         </tags>
       
@@ -1439,9 +1439,9 @@
             
             <tag> tech </tag>
             
-            <tag> linux </tag>
-            
             <tag> ftrace </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       

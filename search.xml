@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>Quickwords27 Skylake Microarchitecture(10)</title>
+      <link href="/2019/04/20/quickwords27-skylake-pipeline-10/"/>
+      <url>/2019/04/20/quickwords27-skylake-pipeline-10/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Load-and-Store-instructions"><a href="#Load-and-Store-instructions" class="headerlink" title="Load and Store instructions"></a>Load and Store instructions</h2><p>In previous chapters we discussed how does ROB and RS as well as RAT work. You may notice that we did not include <code>load</code> and <code>store</code> instruction in the demonstrated examples. This is partly due to simplification reason and partly because of the specialized mechanisms we will introduce in this article.<br><a id="more"></a></p><p>Although we categorize <code>load</code> and <code>store</code> instructions as special from other classes of instructions, all instructions and the design of the pipeline share unified purpose: increase the instruction level parellarmise by eliminating dependencies. By what I am saying:</p><ul><li>Eliminate control dependencies by leveraging branch prediction</li><li>Eliminate false dependencies by leveraging register renaming</li></ul><blockquote><p>Note that register renaming is primarily aimed for registers, not memory.</p></blockquote><p>Is there also dependency existing for memory operations? If yes, what can we do about it? These are the questions we are trying to address.</p><h2 id="Load-and-Store-Are-Different-From-Read-And-Write"><a href="#Load-and-Store-Are-Different-From-Read-And-Write" class="headerlink" title="Load and Store Are Different From Read And Write"></a>Load and Store Are Different From Read And Write</h2><p>Load and store are terms used for memory <em>instructions</em> whereas read and write are used for <em>actions</em> directly operated on memory. Most of the time, these terms are interchangeable. However, in our scope, we must differentiate those in order to avoid misunderstanding in following discussion:</p><p>Stores are instructions and they follow the same procedure described before. Only after the <code>store</code> instruction is committed, memory written happens.</p><p>Loads are also instructions, but memory read action may happen before or after load instruction is committed. That’s mainly because <code>load</code> is able to leverage results of previous stores which store to the same address of the <code>load</code> instruction. Therefore, loads perform in execute stage.</p><h2 id="Registers-and-Memory"><a href="#Registers-and-Memory" class="headerlink" title="Registers and Memory"></a>Registers and Memory</h2><p>Registers and memory share same type of dependences. False dependencies can be eliminated during Out-of-order execution.</p><p>However, there’s one important difference, the address of memory operation known only at runtime, makes memory operation much more difficult to tell if there’s a dependency. For example:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Load r3 = 0[R6]</span><br><span class="line">Add r7 = r3 + r9</span><br><span class="line">Store r4-&gt;0[r7]</span><br><span class="line">Sub r1 = r1 - r2</span><br><span class="line">Load r8 = 0[r1]</span><br></pre></td></tr></table></figure><p>Here, in the third instruction you store value in <code>r4</code> to memory location represented by <code>r7</code>, and then you load value in memory location [r1] to <code>r8</code>. We assume there is a cache hit. If <code>r7</code> is not equals to <code>r1</code>, there’s no problem. Problem arises if <code>r7</code> equals <code>r1</code>, as the store/third instruction has not been committed, the value in cache/read by the last instruction is not the latest/correct. In other word, this is a RAW true dependency. Our trusted friend, compiler, can not help under this circumstance neither.</p><p>This is the root cause of <code>memory aliasing</code>, when two pointers refer to the same memory location, true dependency happens. Although you can give compiler hint to omit memory aliasing, it is up to the unreliable programmer to take care of their spaghetti logic.</p><p>As before, we set an example to make the explanation easier to understand…in next chapter.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>tar命令速查手册</title>
       <link href="/2019/04/20/tar-cheat-sheet/"/>
       <url>/2019/04/20/tar-cheat-sheet/</url>
@@ -1412,9 +1439,9 @@
             
             <tag> tech </tag>
             
-            <tag> ftrace </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ftrace </tag>
             
         </tags>
       

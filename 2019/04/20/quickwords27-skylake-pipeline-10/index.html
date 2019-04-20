@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>程序员和工厂劳工有何不同 | DecodeZ</title>
+  <title>quickwords27 skylake microarchitecture(10) | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="如今流行的一个说法是，现在的程序员与工业时期的工厂工人并无二致。均是富集于人口密集的城市、均是超时劳动、均是遭受资本家的盘剥、均是一架大机器上的螺丝钉，在超过“劳动年龄”之后被弃如敝屣。基于这些相似点，有些人得出结论，程序员不过是这个时代的“无产阶级”，和以前的流水线工人，纺织厂女工属于同一社会分工和定位。是否当真如此，这个问题值得仔细推敲一下。">
-<meta name="keywords" content="thoughts">
+  <meta name="description" content="Load and Store instructionsIn previous chapters we discussed how does ROB and RS as well as RAT work. You may notice that we did not include load and store instruction in the demonstrated examples. Th">
+<meta name="keywords" content="tech,hardware,CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序员和工厂劳工有何不同">
-<meta property="og:url" content="https://decodezp.github.io/2018/11/22/programmer-worker/index.html">
+<meta property="og:title" content="Quickwords27 Skylake Microarchitecture(10)">
+<meta property="og:url" content="https://decodezp.github.io/2019/04/20/quickwords27-skylake-pipeline-10/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="如今流行的一个说法是，现在的程序员与工业时期的工厂工人并无二致。均是富集于人口密集的城市、均是超时劳动、均是遭受资本家的盘剥、均是一架大机器上的螺丝钉，在超过“劳动年龄”之后被弃如敝屣。基于这些相似点，有些人得出结论，程序员不过是这个时代的“无产阶级”，和以前的流水线工人，纺织厂女工属于同一社会分工和定位。是否当真如此，这个问题值得仔细推敲一下。">
+<meta property="og:description" content="Load and Store instructionsIn previous chapters we discussed how does ROB and RS as well as RAT work. You may notice that we did not include load and store instruction in the demonstrated examples. Th">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://p2.qhimg.com/t01625ef6ec8664e51a.jpg?size=640x346">
-<meta property="og:updated_time" content="2018-11-22T13:23:21.430Z">
+<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta property="og:updated_time" content="2019-04-20T05:39:11.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序员和工厂劳工有何不同">
-<meta name="twitter:description" content="如今流行的一个说法是，现在的程序员与工业时期的工厂工人并无二致。均是富集于人口密集的城市、均是超时劳动、均是遭受资本家的盘剥、均是一架大机器上的螺丝钉，在超过“劳动年龄”之后被弃如敝屣。基于这些相似点，有些人得出结论，程序员不过是这个时代的“无产阶级”，和以前的流水线工人，纺织厂女工属于同一社会分工和定位。是否当真如此，这个问题值得仔细推敲一下。">
-<meta name="twitter:image" content="http://p2.qhimg.com/t01625ef6ec8664e51a.jpg?size=640x346">
+<meta name="twitter:title" content="Quickwords27 Skylake Microarchitecture(10)">
+<meta name="twitter:description" content="Load and Store instructionsIn previous chapters we discussed how does ROB and RS as well as RAT work. You may notice that we did not include load and store instruction in the demonstrated examples. Th">
+<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-programmer-worker" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords27-skylake-pipeline-10" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://p2.qhimg.com/t01625ef6ec8664e51a.jpg?size=640x346" rel="gallery_cjup2mmd6001g6zfygbahd1e4">
-        <img src="http://p2.qhimg.com/t01625ef6ec8664e51a.jpg?size=640x346" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_cjup2mmdu003k6zfyhb1olu67">
+        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      程序员和工厂劳工有何不同
+      Quickwords27 Skylake Microarchitecture(10)
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/11/22/programmer-worker/" class="article-date">
-	  <time datetime="2018-11-22T12:54:07.000Z" itemprop="datePublished">November 22, 2018</time>
+	Posted on <a href="/2019/04/20/quickwords27-skylake-pipeline-10/" class="article-date">
+	  <time datetime="2019-04-20T05:36:19.000Z" itemprop="datePublished">April 20, 2019</time>
 	</a>
 
       
@@ -232,35 +232,36 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>如今流行的一个说法是，现在的程序员与工业时期的工厂工人并无二致。<br>均是富集于人口密集的城市、均是超时劳动、均是遭受资本家的盘剥、均是一架大机器上的螺丝钉，在超过“劳动年龄”之后被弃如敝屣。<br>基于这些相似点，有些人得出结论，程序员不过是这个时代的“无产阶级”，和以前的流水线工人，纺织厂女工属于同一社会分工和定位。<br>是否当真如此，这个问题值得仔细推敲一下。<br><a id="more"></a></p>
-<h2 id="生产资料"><a href="#生产资料" class="headerlink" title="生产资料"></a>生产资料</h2><p>个人所处的社会阶层，取决于他能让属于他的生产资料产生的价值。传统的生产资料包括实体的机器、厂房、地皮、原材料、资本和人等等。<br>而作为信息时代的标志，人人都可以通过网络获取一项虚拟的生产资料——信息。诚然，信息壁垒依然存在，但普通人能接触到的信息总量和质量与信息革命之前的时代相比已不可同日而语。<br>程序员是与电子计算设备打交道的人，此类设备本质上是信息的产生、加工和分发工具。一台电脑加一条网线，程序员就可以以极其低廉的方式获得他所需要的生产资料。而拥有生产资料的人，就不能再称之为“无产阶级”。<br>我们已经听过了太多程序员在车库创业的故事，也许这些故事仍然可以称之为“个例”，毕竟，哪个时代没有一些白手起家的人。<br>但如果某个行业能在全社会掀起创业的热潮，那么就不能再以孤例的眼光看待。只有在该行业的生产资料极大丰富，且对再加工之后的产品有持续需求的情况下才有可能出现这类情况。<br>是否能以足够廉价的方式获取生产资料，是程序员与工厂工人的第一个区别。<br><img src="http://www.xinhuanet.com/politics/2015-05/05/127763760_14307851178281n.jpg" alt=""></p>
-<h2 id="对生产资料的再分工"><a href="#对生产资料的再分工" class="headerlink" title="对生产资料的再分工"></a>对生产资料的再分工</h2><p>注意这里强调的是再“分”工，而不是再加工。<br>程序员能够开发出各种程序满足人们的需求，工人也能生产出各种生活必需品，所以在生产资料再加工这一点上，两者没有本质区别。<br>专业细分是社会生产率提高的根本因素。每个人只负责整条产业链中的一环，愈发细致的分工与合作是现代生产活动的组织方式。<br>程序员和工人均为某一细分领域的专家，但二者所处的分工链条深度不同。<br>工人是分工链条的末端，他所能做的就是尽自己所能做好手头的事情。<br>而程序员虽然仍然要听老板的，但他手下仍有电子设备作为分工的最后一环。<br>程序员可以通过编码为这些电子设备“分工”，从而令其为程序员服务。<br>从某种意义上说，程序员就是这些电子设备的“老板”。同时随着设备的计算能力越来越强，这些设备就能逐渐胜任更加精细的分工任务。<br>随着分工的深入，一方面带动社会整体劳动生产率的提升，一方面更加高效地产生价值。<br>一个大型工厂的老板最多能令数万工人为其服务，而所有能跑代码的设备都可能为程序员服务。<br>在分工链所处的位置和对生产资料的再分工能力，是程序员与工厂工人的第二个区别。<br><img src="http://s2.51cto.com/oss/201811/05/d0c5758831b1df8bcac6728d848e014a.jpg-wh_651x-s_1764483471.jpg" alt=""></p>
-<h2 id="程序员如何度过”中年危机”"><a href="#程序员如何度过”中年危机”" class="headerlink" title="程序员如何度过”中年危机”"></a>程序员如何度过”中年危机”</h2><p>其实程序员是新时代的工厂工人这种论调，只不过是之前“青春饭”、“过了30岁不能再编程“等论调的新瓶装旧酒而已。<br>但程序员面对的现实压力确实是不容忽视的问题。很多人学了很多技术，掉了很多头发，但最后仍被公司扫地出门，问题就在于做了无用的努力。<br>解决之道其实就蕴含在前文论述的两点之内：</p>
+        <h2 id="Load-and-Store-instructions"><a href="#Load-and-Store-instructions" class="headerlink" title="Load and Store instructions"></a>Load and Store instructions</h2><p>In previous chapters we discussed how does ROB and RS as well as RAT work. You may notice that we did not include <code>load</code> and <code>store</code> instruction in the demonstrated examples. This is partly due to simplification reason and partly because of the specialized mechanisms we will introduce in this article.<br><a id="more"></a></p>
+<p>Although we categorize <code>load</code> and <code>store</code> instructions as special from other classes of instructions, all instructions and the design of the pipeline share unified purpose: increase the instruction level parellarmise by eliminating dependencies. By what I am saying:</p>
 <ul>
-<li>尽可能占有(处理)更多的生产资料——信息</li>
-<li>为尽可能多的电子设备”分工”</li>
+<li>Eliminate control dependencies by leveraging branch prediction</li>
+<li>Eliminate false dependencies by leveraging register renaming</li>
 </ul>
-<p>实际执行的术便是一定要有自己的“产品”。<br>这当然是一个程序，可以是公司的产品，也可以是个人作品。但需要关注两个关键点：</p>
-<ul>
-<li>我的程序是否位于信息交叉的节点或能协助信息的获取、处理及分发</li>
-<li>运行我的程序的设备是否在增长</li>
-</ul>
-<p>可以看看这些久盛不衰的“产品”：操作系统、数据库、浏览器、服务器软件、办公处理、图像应用处理等等甚或编程语言本身，都是这两个关键点的很好的体现。<br>当你拥有这样的产品时，操心的就不是公司会不会要你了，而是如何高效地指挥你自己这支被你分工的生产队，实践一些大胆的想法。<br>最后附上我最喜欢的历史名人名言作为结尾：</p>
 <blockquote>
-<p>臣但恐富贵来逼臣，臣无心图富贵。</p>
+<p>Note that register renaming is primarily aimed for registers, not memory.</p>
 </blockquote>
-<p>——杨素</p>
+<p>Is there also dependency existing for memory operations? If yes, what can we do about it? These are the questions we are trying to address.</p>
+<h2 id="Load-and-Store-Are-Different-From-Read-And-Write"><a href="#Load-and-Store-Are-Different-From-Read-And-Write" class="headerlink" title="Load and Store Are Different From Read And Write"></a>Load and Store Are Different From Read And Write</h2><p>Load and store are terms used for memory <em>instructions</em> whereas read and write are used for <em>actions</em> directly operated on memory. Most of the time, these terms are interchangeable. However, in our scope, we must differentiate those in order to avoid misunderstanding in following discussion:</p>
+<p>Stores are instructions and they follow the same procedure described before. Only after the <code>store</code> instruction is committed, memory written happens.</p>
+<p>Loads are also instructions, but memory read action may happen before or after load instruction is committed. That’s mainly because <code>load</code> is able to leverage results of previous stores which store to the same address of the <code>load</code> instruction. Therefore, loads perform in execute stage.</p>
+<h2 id="Registers-and-Memory"><a href="#Registers-and-Memory" class="headerlink" title="Registers and Memory"></a>Registers and Memory</h2><p>Registers and memory share same type of dependences. False dependencies can be eliminated during Out-of-order execution.</p>
+<p>However, there’s one important difference, the address of memory operation known only at runtime, makes memory operation much more difficult to tell if there’s a dependency. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Load r3 = 0[R6]</span><br><span class="line">Add r7 = r3 + r9</span><br><span class="line">Store r4-&gt;0[r7]</span><br><span class="line">Sub r1 = r1 - r2</span><br><span class="line">Load r8 = 0[r1]</span><br></pre></td></tr></table></figure>
+<p>Here, in the third instruction you store value in <code>r4</code> to memory location represented by <code>r7</code>, and then you load value in memory location [r1] to <code>r8</code>. We assume there is a cache hit. If <code>r7</code> is not equals to <code>r1</code>, there’s no problem. Problem arises if <code>r7</code> equals <code>r1</code>, as the store/third instruction has not been committed, the value in cache/read by the last instruction is not the latest/correct. In other word, this is a RAW true dependency. Our trusted friend, compiler, can not help under this circumstance neither.</p>
+<p>This is the root cause of <code>memory aliasing</code>, when two pointers refer to the same memory location, true dependency happens. Although you can give compiler hint to omit memory aliasing, it is up to the unreliable programmer to take care of their spaghetti logic.</p>
+<p>As before, we set an example to make the explanation easier to understand…in next chapter.</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -295,19 +296,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/11/23/x710-target-link-speed/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          XXV710网卡Target Link Speed探秘
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/20/cachesize/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/20/tar-cheat-sheet/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">几句话说清楚1:为什么CPU L1缓存容量始终很小</div>
+      <div class="article-nav-title">tar命令速查手册</div>
     </a>
   
 </nav>
@@ -321,7 +313,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#生产资料"><span class="nav-number">1.</span> <span class="nav-text">生产资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对生产资料的再分工"><span class="nav-number">2.</span> <span class="nav-text">对生产资料的再分工</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序员如何度过”中年危机”"><span class="nav-number">3.</span> <span class="nav-text">程序员如何度过”中年危机”</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Load-and-Store-instructions"><span class="nav-number">1.</span> <span class="nav-text">Load and Store instructions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Load-and-Store-Are-Different-From-Read-And-Write"><span class="nav-number">2.</span> <span class="nav-text">Load and Store Are Different From Read And Write</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Registers-and-Memory"><span class="nav-number">3.</span> <span class="nav-text">Registers and Memory</span></a></li></ol>
     
     </div>
   </aside>

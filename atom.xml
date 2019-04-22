@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-04-20T05:39:11.955Z</updated>
+  <updated>2019-04-22T04:52:22.963Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去8：公有云实例性能实际波动情况</title>
+    <link href="https://decodezp.github.io/2019/04/22/test8-cloud-vm-performance/"/>
+    <id>https://decodezp.github.io/2019/04/22/test8-cloud-vm-performance/</id>
+    <published>2019-04-22T04:49:27.000Z</published>
+    <updated>2019-04-22T04:52:22.963Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;公有云作为一种资源打包整合再售卖的商业模式，不可避免地存在多租户共享资源的情况。除了安全问题之外，更多的是需要辨别这种共享对用户各自的性能存在多大的影响。这种影响不仅仅表现在性能的下降，而更多的是表现为性能的不一致：在高峰时段和空闲时段，性能出现较大的波动。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>Quickwords27 Skylake Microarchitecture(10)</title>
@@ -235,9 +259,9 @@
       <category term="game" scheme="https://decodezp.github.io/categories/game/"/>
     
     
-      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
-    
       <category term="game" scheme="https://decodezp.github.io/tags/game/"/>
+    
+      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
     
   </entry>
   
@@ -427,26 +451,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;怎么出来的eBPF&quot;&gt;&lt;a href=&quot;#怎么出来的eBPF&quot; class=&quot;headerlink&quot; title=&quot;怎么出来的eBPF&quot;&gt;&lt;/a&gt;怎么出来的eBPF&lt;/h2&gt;&lt;p&gt;用Linux Kernel Module来做一个类比说明eBPF诞生的目的。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚19：描述性能优化成果的正确姿势</title>
-    <link href="https://decodezp.github.io/2019/02/24/quickwords19-desc-perf-improvement/"/>
-    <id>https://decodezp.github.io/2019/02/24/quickwords19-desc-perf-improvement/</id>
-    <published>2019-02-24T07:06:30.000Z</published>
-    <updated>2019-02-24T07:09:28.413Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;从10秒到1秒&quot;&gt;&lt;a href=&quot;#从10秒到1秒&quot; class=&quot;headerlink&quot; title=&quot;从10秒到1秒&quot;&gt;&lt;/a&gt;从10秒到1秒&lt;/h2&gt;&lt;p&gt;周末了说点不硬的技术。&lt;br&gt;
     
     </summary>
     

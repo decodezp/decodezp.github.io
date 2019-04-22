@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>测来测去8：公有云实例性能实际波动情况</title>
+      <link href="/2019/04/22/test8-cloud-vm-performance/"/>
+      <url>/2019/04/22/test8-cloud-vm-performance/</url>
+      
+        <content type="html"><![CDATA[<p>公有云作为一种资源打包整合再售卖的商业模式，不可避免地存在多租户共享资源的情况。除了安全问题之外，更多的是需要辨别这种共享对用户各自的性能存在多大的影响。这种影响不仅仅表现在性能的下降，而更多的是表现为性能的不一致：在高峰时段和空闲时段，性能出现较大的波动。<br><a id="more"></a></p><p>这里在某公有云平台购买一台4vCPU/8GB的实例作为DUT，在不同时间执行：</p><p><code>phoronix-test-suite benchmark xsbench</code></p><p>进行CPU处理的性能测试，除此之外该虚拟机上没有任何其他workload，也没有任何其他配置更改，全部采用默认配置。</p><p>以下是不同时段的一组测试数据(lookup/s)：</p><table><thead><tr><th>time</th><th>result</th></tr></thead><tbody><tr><td>11:00</td><td>923024</td></tr><tr><td>14:00</td><td>783030</td></tr><tr><td>16:00</td><td>841485</td></tr><tr><td>17:00</td><td>840289</td></tr><tr><td>18:00</td><td>838885</td></tr></tbody></table><p>可以看出，11：00性能最高，14：00性能最低，16：00-18：00性能稍有波动，最好与最低性能相差15%+。</p><p>针对以上情况的几种可能解释：</p><ul><li><p>虚拟机新创建时(14:00)根据公有云后台调度算法创建到了一台空闲的“物理机”上，以提高物理资源的整体利用率。后续随着新虚拟机的加入导致性能下降。</p></li><li><p>虚拟机新创建时没有特别选择“空闲”物理机，此时物理机中已存在其他虚拟机。但受其他虚拟机各时段业务压力不同影响（14:00为业务压力较大的时间段，16:00-18:00业务压力相对平稳），表现出性能的波动。</p></li><li><p>其他虚拟机压力没有较大波动，但受账号等级、任务优先级等商务或其他因素影响，导致在hypervisor层中为各虚拟机进程分配不同的优先级以及CPU硬件绑定策略，进而影响虚拟机的性能表现。</p></li><li><p>以上原因综合影响。</p></li></ul><p>总之，在公有云上部署应用，如果并没有选购那些资源独占型的产品，就需要充分评估性能波动带来的业务影响。同时，在此一方面做好与云供应商的SLA的制订工作。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> performance </tag>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Quickwords27 Skylake Microarchitecture(10)</title>
       <link href="/2019/04/20/quickwords27-skylake-pipeline-10/"/>
       <url>/2019/04/20/quickwords27-skylake-pipeline-10/</url>
@@ -244,9 +271,9 @@
       
         <tags>
             
-            <tag> life </tag>
-            
             <tag> game </tag>
+            
+            <tag> life </tag>
             
         </tags>
       

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-04-22T04:52:22.963Z</updated>
+  <updated>2019-04-27T03:38:47.925Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>终端断开任务不中断</title>
+    <link href="https://decodezp.github.io/2019/04/27/terminal-nohup-screen/"/>
+    <id>https://decodezp.github.io/2019/04/27/terminal-nohup-screen/</id>
+    <published>2019-04-27T03:37:12.000Z</published>
+    <updated>2019-04-27T03:38:47.925Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;其实是很常见的需求，但之前一直用&lt;code&gt;nohup command &amp;amp;&lt;/code&gt;这种方式。不过有些时候没有充分估计到某些工作的不靠谱性，以为很快能搞定的事，就没用&lt;code&gt;nohup&lt;/code&gt;直接执行，当你快要下班了它还遥遥无期。这个时候也可以先&lt;code&gt;ctrl + z&lt;/code&gt;从前台挂起，然后&lt;code&gt;bg&lt;/code&gt;让它跑到后台去执行，最后再来一个&lt;code&gt;disown -a&lt;/code&gt;，这样就可以放心关了终端早点回家了。下次再用其他终端连接上来之后你的工作仍会在持续执行，但是这时候是不能用&lt;code&gt;fg&lt;/code&gt;这样的命令让它再回到前台执行的，&lt;code&gt;jobs&lt;/code&gt;也不会显示它。&lt;/p&gt;
+&lt;p&gt;如果你想持续看到后台进程的输出，以前的办法就是在运行之前就将它重定向到一个文件，后续回来查看文件即可。但如果进程已经开始执行了，再去重定向就稍微费点劲。网上有些用&lt;code&gt;gdb&lt;/code&gt;调的方法，我试了试不是太成功，本来打算继续看看，结果发现还是老老实实用&lt;code&gt;screen&lt;/code&gt;靠谱一点…&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去8：公有云实例性能实际波动情况</title>
@@ -438,26 +459,6 @@
     
     
       <category term="commerical" scheme="https://decodezp.github.io/tags/commerical/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚20：eBPF的机制</title>
-    <link href="https://decodezp.github.io/2019/03/01/quickwords20-ebpf-intro/"/>
-    <id>https://decodezp.github.io/2019/03/01/quickwords20-ebpf-intro/</id>
-    <published>2019-03-01T13:56:23.000Z</published>
-    <updated>2019-03-01T14:10:14.433Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;怎么出来的eBPF&quot;&gt;&lt;a href=&quot;#怎么出来的eBPF&quot; class=&quot;headerlink&quot; title=&quot;怎么出来的eBPF&quot;&gt;&lt;/a&gt;怎么出来的eBPF&lt;/h2&gt;&lt;p&gt;用Linux Kernel Module来做一个类比说明eBPF诞生的目的。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

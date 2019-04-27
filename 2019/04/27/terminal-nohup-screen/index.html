@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>夜色温柔 | DecodeZ</title>
+  <title>终端断开任务不中断 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="好像总是不能沉浸在当下。看着书想着邮件，吃着饭想着项目，看着电影想着停车费，在外面喝酒想着一会回家撸猫。">
-<meta name="keywords" content="thoughts">
+  <meta name="description" content="其实是很常见的需求，但之前一直用nohup command &amp;amp;这种方式。不过有些时候没有充分估计到某些工作的不靠谱性，以为很快能搞定的事，就没用nohup直接执行，当你快要下班了它还遥遥无期。这个时候也可以先ctrl + z从前台挂起，然后bg让它跑到后台去执行，最后再来一个disown -a，这样就可以放心关了终端早点回家了。下次再用其他终端连接上来之后你的工作仍会在持续执行，但是这时候">
+<meta name="keywords" content="tech">
 <meta property="og:type" content="article">
-<meta property="og:title" content="夜色温柔">
-<meta property="og:url" content="https://decodezp.github.io/2019/04/17/thoughts6-tender-is-the-night/index.html">
+<meta property="og:title" content="终端断开任务不中断">
+<meta property="og:url" content="https://decodezp.github.io/2019/04/27/terminal-nohup-screen/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="好像总是不能沉浸在当下。看着书想着邮件，吃着饭想着项目，看着电影想着停车费，在外面喝酒想着一会回家撸猫。">
+<meta property="og:description" content="其实是很常见的需求，但之前一直用nohup command &amp;amp;这种方式。不过有些时候没有充分估计到某些工作的不靠谱性，以为很快能搞定的事，就没用nohup直接执行，当你快要下班了它还遥遥无期。这个时候也可以先ctrl + z从前台挂起，然后bg让它跑到后台去执行，最后再来一个disown -a，这样就可以放心关了终端早点回家了。下次再用其他终端连接上来之后你的工作仍会在持续执行，但是这时候">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/04/17/Ax60W4.jpg">
-<meta property="og:updated_time" content="2019-04-19T07:00:49.522Z">
+<meta property="og:image" content="https://help.apple.com/assets/5B9190B30946221279C5A608/5B9190B30946221279C5A60F/en_US/dfa4eabaceda47fa30991ecfd2c28d7c.png">
+<meta property="og:updated_time" content="2019-04-27T03:38:47.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="夜色温柔">
-<meta name="twitter:description" content="好像总是不能沉浸在当下。看着书想着邮件，吃着饭想着项目，看着电影想着停车费，在外面喝酒想着一会回家撸猫。">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/17/Ax60W4.jpg">
+<meta name="twitter:title" content="终端断开任务不中断">
+<meta name="twitter:description" content="其实是很常见的需求，但之前一直用nohup command &amp;amp;这种方式。不过有些时候没有充分估计到某些工作的不靠谱性，以为很快能搞定的事，就没用nohup直接执行，当你快要下班了它还遥遥无期。这个时候也可以先ctrl + z从前台挂起，然后bg让它跑到后台去执行，最后再来一个disown -a，这样就可以放心关了终端早点回家了。下次再用其他终端连接上来之后你的工作仍会在持续执行，但是这时候">
+<meta name="twitter:image" content="https://help.apple.com/assets/5B9190B30946221279C5A608/5B9190B30946221279C5A60F/en_US/dfa4eabaceda47fa30991ecfd2c28d7c.png">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-thoughts6-tender-is-the-night" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-terminal-nohup-screen" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://s2.ax1x.com/2019/04/17/Ax60W4.jpg" rel="gallery_cjuyyh4uh0060hgfyaiesp3x3">
-        <img src="https://s2.ax1x.com/2019/04/17/Ax60W4.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://help.apple.com/assets/5B9190B30946221279C5A608/5B9190B30946221279C5A60F/en_US/dfa4eabaceda47fa30991ecfd2c28d7c.png" rel="gallery_cjuyyh4u1004ohgfyd4k7ydnl">
+        <img src="https://help.apple.com/assets/5B9190B30946221279C5A608/5B9190B30946221279C5A60F/en_US/dfa4eabaceda47fa30991ecfd2c28d7c.png" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      夜色温柔
+      终端断开任务不中断
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/04/17/thoughts6-tender-is-the-night/" class="article-date">
-	  <time datetime="2019-04-16T16:06:41.000Z" itemprop="datePublished">April 17, 2019</time>
+	Posted on <a href="/2019/04/27/terminal-nohup-screen/" class="article-date">
+	  <time datetime="2019-04-27T03:37:12.000Z" itemprop="datePublished">April 27, 2019</time>
 	</a>
 
       
@@ -232,23 +232,42 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>好像总是不能沉浸在当下。看着书想着邮件，吃着饭想着项目，看着电影想着停车费，在外面喝酒想着一会回家撸猫。<br><a id="more"></a></p>
-<p>也不是没有专注的时候，但这些时候总像一个美梦，做不多时就会下意识地提醒自己，我是不是在做梦？方醉复醒，梦了无痕。</p>
-<p>今天也是如此。春意浓浓，月色溶溶，酒吧里光影横斜。我端详着酒杯里的泡沫，心思却又不知神游何处。辜负的不止是此时此刻，还有未来那个，终会后悔现在没有更投入一些的自己。</p>
-<p>玩不是玩，工作不是工作，被背景噪音消音，让零碎片段化整为零。不去接收那些廉价的信息，仿佛就是现代最大的罪愆。第一次，我决定好好坐下来，用舌头去听清泡沫在破裂时的轻响；用鼻尖去看清夜风里繁衍的生机；用无缘无故接了一单大活的膀胱，说出心口直通的快乐。</p>
-<p>不愿从众，不想被操控，不接受罗织的罪名。人皆被洪流裹挟，减熵需要额外的输入。而这些输入并不需要你下决心与这个时代分道扬镳，感受被自己遗忘的感官，就是今夜教给我的温柔。</p>
-<p><img src="https://s2.ax1x.com/2019/04/17/Ax6dFU.jpg" alt=""></p>
+        <p>其实是很常见的需求，但之前一直用<code>nohup command &amp;</code>这种方式。不过有些时候没有充分估计到某些工作的不靠谱性，以为很快能搞定的事，就没用<code>nohup</code>直接执行，当你快要下班了它还遥遥无期。这个时候也可以先<code>ctrl + z</code>从前台挂起，然后<code>bg</code>让它跑到后台去执行，最后再来一个<code>disown -a</code>，这样就可以放心关了终端早点回家了。下次再用其他终端连接上来之后你的工作仍会在持续执行，但是这时候是不能用<code>fg</code>这样的命令让它再回到前台执行的，<code>jobs</code>也不会显示它。</p>
+<p>如果你想持续看到后台进程的输出，以前的办法就是在运行之前就将它重定向到一个文件，后续回来查看文件即可。但如果进程已经开始执行了，再去重定向就稍微费点劲。网上有些用<code>gdb</code>调的方法，我试了试不是太成功，本来打算继续看看，结果发现还是老老实实用<code>screen</code>靠谱一点…<br><a id="more"></a></p>
+<p>其实<code>screen</code>这个命令应该不是什么新鲜玩意了，也有很多人在使用。不过对我来说还是一个挺有新意的发现。我的一般套路：</p>
+<ul>
+<li>新建一个<code>screen</code>并命名为<code>ftp</code>：</li>
+</ul>
+<p><code>screen -S ftp</code></p>
+<ul>
+<li><p>此时会直接进入新的<code>bash</code>，这里搞一些耗时的操作，例如<code>scp</code>等等。</p>
+</li>
+<li><p>从<code>ftp</code>退回：</p>
+</li>
+</ul>
+<p>用快捷键<code>ctrl+a d</code></p>
+<p>这个时候其实就可以关闭当前终端了。</p>
+<p>新打开一个终端</p>
+<ul>
+<li>查看现有<code>screen</code>列表：</li>
+</ul>
+<p><code>screen -ls</code></p>
+<ul>
+<li>看看上传得怎么样了：</li>
+</ul>
+<p><code>screen -r ftp</code></p>
+<p>不但<code>scp</code>的工作没有中断，还可以看到<code>scp</code>当前所有输出，和之前的终端没有关闭一样。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -283,19 +302,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/04/19/thoughts7-leuven-stella/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          如果你到鲁汶来，一定要喝Stella
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/15/commerical3-2019-cloud-security-trends/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/22/test8-cloud-vm-performance/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">商业供稿3：2019云计算安全5大趋势</div>
+      <div class="article-nav-title">测来测去8：公有云实例性能实际波动情况</div>
     </a>
   
 </nav>

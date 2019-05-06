@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-04-27T03:38:47.925Z</updated>
+  <updated>2019-05-06T12:15:36.067Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去9：DPDK i40e XXV710 Flow Director Mask Configuration</title>
+    <link href="https://decodezp.github.io/2019/05/06/test9-x710-fdir-mask/"/>
+    <id>https://decodezp.github.io/2019/05/06/test9-x710-fdir-mask/</id>
+    <published>2019-05-06T11:59:29.000Z</published>
+    <updated>2019-05-06T12:15:36.067Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Flow-Director&quot;&gt;&lt;a href=&quot;#Flow-Director&quot; class=&quot;headerlink&quot; title=&quot;Flow Director&quot;&gt;&lt;/a&gt;Flow Director&lt;/h2&gt;&lt;p&gt;最常见的Flow Director使用方式就是将匹配某个五元组的报文送到一个特定的队列里去。但精确匹配有时候并不能满足全部需求，需要给一些特定的字段加Mask。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
+    
+  </entry>
   
   <entry>
     <title>终端断开任务不中断</title>
@@ -437,28 +461,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>商业供稿1：消除虚拟化环境网络盲点</title>
-    <link href="https://decodezp.github.io/2019/03/05/commerical1-eliminate-vnet-blind-spot/"/>
-    <id>https://decodezp.github.io/2019/03/05/commerical1-eliminate-vnet-blind-spot/</id>
-    <published>2019-03-05T13:23:21.000Z</published>
-    <updated>2019-03-23T00:45:36.061Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;em&gt;原载于云杉网络 &lt;a href=&quot;http://www.yunshan.net&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;www.yunshan.net&lt;/a&gt; 微信公众号&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;网络盲点是引起虚拟化环境中业务中断、服务质量下降以及遭受安全威胁的最主要原因。当公司或组织缺乏网络可见性，无法完全掌握其虚拟化环境中业务的网络运行情况时，将必然面临频繁的业务中断、客户投诉以及恶意攻击带来的损失。据Gartner预测，到2019年，实现适当的网络可见性和控制工具的60%的企业将减少三分之一的安全故障。&lt;/p&gt;
-&lt;p&gt;随着业务规模的扩大，公司和组织对网络可见性的投入亦将会持续增加。但除了购买增强网络可见性的产品和服务之外，还应针对虚拟化环境中的业务特点，从以下几个导致网络盲点的原因出发，构建完善的网络监控和安全体系。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="commerical" scheme="https://decodezp.github.io/categories/commerical/"/>
-    
-    
-      <category term="commerical" scheme="https://decodezp.github.io/tags/commerical/"/>
     
   </entry>
   

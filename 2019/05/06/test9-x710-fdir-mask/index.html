@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>测来测去9：dpdk i40e xxv710 flow director mask configuration | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="Flow Director最常见的Flow Director使用方式就是将匹配某个五元组的报文送到一个特定的队列里去。但精确匹配有时候并不能满足全部需求，需要给一些特定的字段加Mask。">
+<meta name="keywords" content="tech,test,NIC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测来测去9：DPDK i40e XXV710 Flow Director Mask Configuration">
+<meta property="og:url" content="https://decodezp.github.io/2019/05/06/test9-x710-fdir-mask/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="Flow Director最常见的Flow Director使用方式就是将匹配某个五元组的报文送到一个特定的队列里去。但精确匹配有时候并不能满足全部需求，需要给一些特定的字段加Mask。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://target.scene7.com/is/image/Target/GUEST_9997ca76-c6fd-43c2-9fb2-ae4863565f2f?wid=488&hei=488&fmt=pjpeg">
+<meta property="og:updated_time" content="2019-05-06T12:15:36.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测来测去9：DPDK i40e XXV710 Flow Director Mask Configuration">
+<meta name="twitter:description" content="Flow Director最常见的Flow Director使用方式就是将匹配某个五元组的报文送到一个特定的队列里去。但精确匹配有时候并不能满足全部需求，需要给一些特定的字段加Mask。">
+<meta name="twitter:image" content="https://target.scene7.com/is/image/Target/GUEST_9997ca76-c6fd-43c2-9fb2-ae4863565f2f?wid=488&hei=488&fmt=pjpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-test9-x710-fdir-mask" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://target.scene7.com/is/image/Target/GUEST_9997ca76-c6fd-43c2-9fb2-ae4863565f2f?wid=488&hei=488&fmt=pjpeg" rel="gallery_cjvcbugr8005itsfytpngo6ju">
+        <img src="https://target.scene7.com/is/image/Target/GUEST_9997ca76-c6fd-43c2-9fb2-ae4863565f2f?wid=488&hei=488&fmt=pjpeg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      测来测去9：DPDK i40e XXV710 Flow Director Mask Configuration
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/05/06/test9-x710-fdir-mask/" class="article-date">
+	  <time datetime="2019-05-06T11:59:29.000Z" itemprop="datePublished">May 6, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Flow-Director"><a href="#Flow-Director" class="headerlink" title="Flow Director"></a>Flow Director</h2><p>最常见的Flow Director使用方式就是将匹配某个五元组的报文送到一个特定的队列里去。但精确匹配有时候并不能满足全部需求，需要给一些特定的字段加Mask。<br><a id="more"></a></p>
+<h2 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h2><blockquote>
+<p>修改dpdk-18.05.1/example/l3fwd/main.c</p>
+</blockquote>
+<blockquote>
+<p>目的是给UDP的DST Port添加一个0XF000的掩码。</p>
+</blockquote>
+<p>首先用i40e提供的私有接口加持一下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;rte_pmd_i40e.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>这里面都是偷偷夹带的私货，可以关注一下。</p>
+<p>然后加一个”中规中矩“的FDIR规则：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">rte_eth_conf</span> <span class="title">port_conf</span> = &#123;</span></span><br><span class="line">    .rxmode = &#123;</span><br><span class="line">        .mq_mode = ETH_MQ_RX_RSS,</span><br><span class="line">        .max_rx_pkt_len = ETHER_MAX_LEN,</span><br><span class="line">        .split_hdr_size = <span class="number">0</span>,</span><br><span class="line">        .ignore_offload_bitfield = <span class="number">1</span>,</span><br><span class="line">        .offloads = (DEV_RX_OFFLOAD_CRC_STRIP |</span><br><span class="line">                 DEV_RX_OFFLOAD_CHECKSUM),</span><br><span class="line">    &#125;,</span><br><span class="line">    .rx_adv_conf = &#123;</span><br><span class="line">        .rss_conf = &#123;</span><br><span class="line">            .rss_key = <span class="literal">NULL</span>,</span><br><span class="line">            .rss_hf = ETH_RSS_IP,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    .txmode = &#123;</span><br><span class="line">        .mq_mode = ETH_MQ_TX_NONE,</span><br><span class="line">    &#125;,</span><br><span class="line">    .fdir_conf = &#123;   <span class="comment">//jma fdir</span></span><br><span class="line">        .mode = RTE_FDIR_MODE_PERFECT,</span><br><span class="line">        .pballoc = RTE_FDIR_PBALLOC_64K,</span><br><span class="line">        .status = RTE_FDIR_REPORT_STATUS,</span><br><span class="line">        .drop_queue = <span class="number">127</span>,</span><br><span class="line">        .mask = &#123;</span><br><span class="line">            .vlan_tci_mask = <span class="number">0</span>,</span><br><span class="line">            .ipv4_mask = &#123;</span><br><span class="line">                .src_ip = <span class="number">0xffffffff</span>,</span><br><span class="line">                .dst_ip = <span class="number">0xffffffff</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            .src_port_mask = <span class="number">0xffff</span>,</span><br><span class="line">            <span class="comment">//ori .dst_port_mask = 0xffff,</span></span><br><span class="line">            .dst_port_mask = <span class="number">0xff00</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>不过其实mask不起作用，这里主要做一下错误示范。然后在<code>main</code>函数里加一下配置代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rte_eth_fdir_filter_info</span> <span class="title">info</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rte_pmd_i40e_inset</span> <span class="title">inset</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(&amp;info, <span class="number">0</span>, <span class="keyword">sizeof</span>(info));</span><br><span class="line">info.info_type = RTE_ETH_FDIR_FILTER_INPUT_SET_SELECT;</span><br><span class="line">info.info.input_set_conf.flow_type = RTE_ETH_FLOW_NONFRAG_IPV4_UDP;</span><br><span class="line">info.info.input_set_conf.field[<span class="number">0</span>] = RTE_ETH_INPUT_SET_L4_UDP_DST_PORT;</span><br><span class="line">info.info.input_set_conf.inset_size = <span class="number">1</span>;</span><br><span class="line">info.info.input_set_conf.op = RTE_ETH_INPUT_SET_SELECT;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rte_eth_fdir_filter</span> <span class="title">arg_udpport</span> = &#123;</span></span><br><span class="line">    .soft_id = <span class="number">1</span>,</span><br><span class="line">    .input   = &#123;</span><br><span class="line">        .flow_type = RTE_ETH_FLOW_NONFRAG_IPV4_UDP,</span><br><span class="line">        .flow = &#123;</span><br><span class="line">           .udp4_flow = &#123;</span><br><span class="line">               .dst_port = <span class="number">0x2e06</span>, <span class="comment">//5678=&gt;0x162e</span></span><br><span class="line">           &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    .action  = &#123;</span><br><span class="line">        .rx_queue  =  <span class="number">2</span>,</span><br><span class="line">        .behavior  = RTE_ETH_FDIR_ACCEPT,</span><br><span class="line">        .report_status = RTE_ETH_FDIR_REPORT_ID,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里定义了一个Flow Director规则：”目的端口为5678的UDP报文进入队列2”。</p>
+<p>那么如何加掩码呢？</p>
+<p>在启动转发程序(<code>rte_eal_mp_remote_launch()</code>)之前加上：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ret = rte_eth_dev_filter_ctrl(<span class="number">0</span>,</span><br><span class="line">            RTE_ETH_FILTER_FDIR,RTE_ETH_FILTER_SET,&amp;info);</span><br><span class="line">ret = rte_eth_dev_filter_ctrl(<span class="number">0</span>,</span><br><span class="line">             RTE_ETH_FILTER_FDIR,RTE_ETH_FILTER_ADD, &amp;arg_udpport);</span><br><span class="line">rte_pmd_i40e_inset_get(<span class="number">0</span>, <span class="number">31</span>,&amp;inset, INSET_FDIR); <span class="comment">//udp</span></span><br><span class="line">inset.mask[<span class="number">0</span>].field_idx = <span class="number">30</span>;</span><br><span class="line">inset.mask[<span class="number">0</span>].mask = <span class="number">0xf000</span>;</span><br><span class="line">ret = rte_pmd_i40e_inset_set(<span class="number">0</span>, <span class="number">31</span>,&amp;inset, INSET_FDIR);</span><br></pre></td></tr></table></figure>
+<p>这里面需要关注几个数值，一个是<code>rte_pmd_i40e_inset_get/set</code>参数里的31。这个是<code>pctype</code>的编号。可以查看x710 datasheet的<code>Table 7-5</code>。31号对应的是NonF IPv4, UDP，正好是我们需要的。</p>
+<p>另外一个是<code>inset.mask[0].field_idx</code>给出的30。这个30出自datasheet中的<code>Table 7-12</code>。其中提到<code>29:32</code>这两个word在UDP协议下代表的是<code>First 8 bytes of the UDP header</code>。在UDP header中，前两个Byte是SRC port，对应29；第三第四个Byte是DST port，对应30。这就是30的来历。</p>
+<p>至此就完成了最初的目的。</p>
+<h2 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h2><p>X710在这方面的配置方法总体来说还是非常隐晦的。在未来还有很多可以验证的工作，比如是否可以针对不同的<code>pctype</code>设置不同的mask，比如mask是否仅限于两个字段等等。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/test/">test</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NIC/">NIC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/27/terminal-nohup-screen/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">终端断开任务不中断</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flow-Director"><span class="nav-number">1.</span> <span class="nav-text">Flow Director</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置方式"><span class="nav-number">2.</span> <span class="nav-text">配置方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future-Work"><span class="nav-number">3.</span> <span class="nav-text">Future Work</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

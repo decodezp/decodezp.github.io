@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-05-06T12:15:36.067Z</updated>
+  <updated>2019-05-08T14:39:42.169Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>命名的力量</title>
+    <link href="https://decodezp.github.io/2019/05/08/thoughts8-master-of-naming/"/>
+    <id>https://decodezp.github.io/2019/05/08/thoughts8-master-of-naming/</id>
+    <published>2019-05-08T14:38:30.000Z</published>
+    <updated>2019-05-08T14:39:42.169Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一&quot;&gt;&lt;a href=&quot;#一&quot; class=&quot;headerlink&quot; title=&quot;一&quot;&gt;&lt;/a&gt;一&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;To Know the Name of a Thing is to Have Power Over It&lt;br&gt;如果我们知道了一件事物的名字，就有了操控它的力量。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;常言道，人类最深的恐惧都来自于“未知”。那么，什么是“未知”？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去9：DPDK i40e XXV710 Flow Director Mask Configuration</title>
@@ -438,29 +461,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在控制台水平滚动</title>
-    <link href="https://decodezp.github.io/2019/03/07/terminal-horizontal-scrolling/"/>
-    <id>https://decodezp.github.io/2019/03/07/terminal-horizontal-scrolling/</id>
-    <published>2019-03-07T13:05:17.000Z</published>
-    <updated>2019-03-07T13:06:42.596Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在CLI下操作，很多时候会因为屏幕尺寸的原因导致格式化输出的字符变成一副惨不忍睹的样子。比如你在有很多CPU核的环境下打印&lt;code&gt;cat /proc/interrupts&lt;/code&gt;的时候。&lt;/p&gt;
-&lt;p&gt;当然你可能有很多方式能够处理这种情形，比如使用&lt;code&gt;awk&lt;/code&gt;或者重定向到某个文件再打开。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="linux" scheme="https://decodezp.github.io/tags/linux/"/>
     
   </entry>
   

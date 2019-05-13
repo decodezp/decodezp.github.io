@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-05-11T06:14:18.543Z</updated>
+  <updated>2019-05-13T10:51:29.452Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去11：DPDK i40e X710 Flow Director Deep Dive(2)</title>
+    <link href="https://decodezp.github.io/2019/05/13/test11-dpdk-x710-fdir-mask-2/"/>
+    <id>https://decodezp.github.io/2019/05/13/test11-dpdk-x710-fdir-mask-2/</id>
+    <published>2019-05-13T10:46:49.000Z</published>
+    <updated>2019-05-13T10:51:29.452Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;同时添加一个TCP-Flow-Director规则&quot;&gt;&lt;a href=&quot;#同时添加一个TCP-Flow-Director规则&quot; class=&quot;headerlink&quot; title=&quot;同时添加一个TCP Flow Director规则&quot;&gt;&lt;/a&gt;同时添加一个TCP Flow Director规则&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/&quot;&gt;上一篇文章&lt;/a&gt;的基础上，添加一个TCP相关的Fdir操作：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去10：DPDK i40e X710 Flow Director Deep Dive(1)</title>
@@ -437,29 +461,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OVS-DPDK 82599 VF初始化失败诊断方法一例</title>
-    <link href="https://decodezp.github.io/2019/03/19/82599-vf-err-debug/"/>
-    <id>https://decodezp.github.io/2019/03/19/82599-vf-err-debug/</id>
-    <published>2019-03-19T12:55:24.000Z</published>
-    <updated>2019-03-19T15:51:46.783Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;在82599上创建了两个VF之后，各自绑定到vfio，启动DPDK时出现错误：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;PMD: eth_ixgbevf_dev_init(): VF Initialization Failure: -15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;EAL: Error - exiting with code: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Cause: Requested device 0000:01:10.0 cannot be used&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
     
   </entry>
   

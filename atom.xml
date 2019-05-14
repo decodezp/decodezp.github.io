@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-05-13T10:51:29.452Z</updated>
+  <updated>2019-05-14T11:05:20.204Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去12：DPDK i40e X710 Flow Director Deep Dive(3)</title>
+    <link href="https://decodezp.github.io/2019/05/14/test12-dpdk-x710-fdir-mask-3/"/>
+    <id>https://decodezp.github.io/2019/05/14/test12-dpdk-x710-fdir-mask-3/</id>
+    <published>2019-05-14T11:02:43.000Z</published>
+    <updated>2019-05-14T11:05:20.204Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;多于两个input-set的mask&quot;&gt;&lt;a href=&quot;#多于两个input-set的mask&quot; class=&quot;headerlink&quot; title=&quot;多于两个input_set的mask&quot;&gt;&lt;/a&gt;多于两个&lt;code&gt;input_set&lt;/code&gt;的mask&lt;/h2&gt;&lt;p&gt;先说结论，一个&lt;code&gt;pctype&lt;/code&gt;可以设置多个&lt;code&gt;input_set&lt;/code&gt;，但是最多仅能给两个&lt;code&gt;input_set&lt;/code&gt;设置mask。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去11：DPDK i40e X710 Flow Director Deep Dive(2)</title>
@@ -45,7 +69,7 @@
     <link href="https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/"/>
     <id>https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/</id>
     <published>2019-05-11T06:10:03.000Z</published>
-    <updated>2019-05-11T06:14:18.543Z</updated>
+    <updated>2019-05-13T10:50:42.253Z</updated>
     
     <summary type="html">
     
@@ -440,27 +464,6 @@
     
     
       <category term="commerical" scheme="https://decodezp.github.io/tags/commerical/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>生小猫啦</title>
-    <link href="https://decodezp.github.io/2019/03/20/hello-kitty/"/>
-    <id>https://decodezp.github.io/2019/03/20/hello-kitty/</id>
-    <published>2019-03-20T12:33:55.000Z</published>
-    <updated>2019-03-20T12:35:07.521Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;去年夏天的时候家里从地铁站门口迎来了两位新成员，蓝猫derder和他的媳妇葡萄。&lt;/p&gt;
-&lt;p&gt;我其实本意并不想养宠物的，毕竟从小到大除了养过两只乌龟之外，从来也没和动物有过什么亲密接触。养猫基本上都是张老师的主意，她从小就是养鸡小能手，还养过狗啊鱼啊刺猬啊这些，所以一直想在家里恢复一下她的童年记忆。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

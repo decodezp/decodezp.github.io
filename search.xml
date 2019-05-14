@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>测来测去12：DPDK i40e X710 Flow Director Deep Dive(3)</title>
+      <link href="/2019/05/14/test12-dpdk-x710-fdir-mask-3/"/>
+      <url>/2019/05/14/test12-dpdk-x710-fdir-mask-3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="多于两个input-set的mask"><a href="#多于两个input-set的mask" class="headerlink" title="多于两个input_set的mask"></a>多于两个<code>input_set</code>的mask</h2><p>先说结论，一个<code>pctype</code>可以设置多个<code>input_set</code>，但是最多仅能给两个<code>input_set</code>设置mask。<br><a id="more"></a></p><p>可以修改代码给三个或多个<code>input_set</code>设置mask，但仅仅前两个mask能生效。同时这应该是比较危险的行为，<em>不要随意尝试</em>。</p><p>提供一下代码的修改方法…..算了….验证了不能用心里也就无憾了….就不再发出来了。</p><p>这里针对710系列的fdir特性总结一下：</p><ul><li>可以针对不同的<code>pctype</code>配置<code>input_set</code></li><li>可以针对不同的<code>pctype</code>配置<code>input_set</code>的mask</li><li>属于针对同一种<code>pctype</code>的fdir规则，共享<code>input_set</code>和mask的配置</li><li>同一个<code>pctype</code>最多给两个<code>input_set</code>配置mask</li></ul><p>可用的配置方式请参见前三节：</p><p><a href="https://decodezp.github.io/2019/05/06/test9-x710-fdir-mask/">测来测去9：DPDK i40e XXV710 Flow Director Mask Configuration</a></p><p><a href="https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/">测来测去10：DPDK i40e X710 Flow Director Deep Dive(1)</a></p><p><a href="https://decodezp.github.io/2019/05/13/test11-dpdk-x710-fdir-mask-2/">测来测去11：DPDK i40e X710 Flow Director Deep Dive(2)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> test </tag>
+            
+            <tag> NIC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去11：DPDK i40e X710 Flow Director Deep Dive(2)</title>
       <link href="/2019/05/13/test11-dpdk-x710-fdir-mask-2/"/>
       <url>/2019/05/13/test11-dpdk-x710-fdir-mask-2/</url>

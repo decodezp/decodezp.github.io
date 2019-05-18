@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>Quickwords28：Skylake Microarchitecture(11)</title>
+      <link href="/2019/05/18/quickwords28-skylake-pipeline-11/"/>
+      <url>/2019/05/18/quickwords28-skylake-pipeline-11/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Store-and-Load-Example"><a href="#Store-and-Load-Example" class="headerlink" title="Store and Load Example"></a>Store and Load Example</h2><p>Given the initialized situation like this:</p><a id="more"></a><p><img src="https://s2.ax1x.com/2019/05/17/ELdlTO.png" alt=""></p><p>At  the start time, several store and load instructions are streamed to <code>Load-Store Queue(LSQ)</code>. And four <code>address-value</code> pairs are stored in the cache.</p><p><img src="https://s2.ax1x.com/2019/05/17/ELdQ0K.png" alt=""></p><p>We start with the first instruction from the <code>LSQ</code>: <code>load from addr 0x3290</code>.</p><p>It will firstly check if there are previous <code>store</code> instruction which stores value at the identical address. As it is the first instruction, there won’t be any <code>store</code> instruction satisfies this requirement.</p><p>Then it looks up to the cache for a hit. In our situation, indeed there is a cache-hit and value <code>42</code> is found and streamed to the corresponding location in the <code>Value</code> Column of the LSQ.</p><p><img src="https://s2.ax1x.com/2019/05/17/ELdMm6.png" alt=""></p><p>Go on with the next <code>store</code> instruction. Assume that the value, 25, of the <code>store</code> instruction has been calculated and it is stored directly into the <code>Value</code> Column of the LSQ. </p><blockquote><p>Note: value will be updated into cache only after the commit phase of <code>store</code> instruction.</p></blockquote><p><img src="https://s2.ax1x.com/2019/05/17/ELduOx.png" alt=""></p><p>Next <code>store</code> instruction shares similar story. Assume the calculated value of the <code>store</code> instruction is -17.</p><p><img src="https://s2.ax1x.com/2019/05/17/ELdn61.png" alt=""></p><p>Next <code>load</code> instruction will, no exception, check if there are previous <code>store</code> instruction stores value at the identical memory address. No <code>store</code> instructions associated with address<code>0x3418</code> so it then come to cache for a hint. Therefore, 1234 stores to the <code>Value</code> Column.</p><p><img src="https://s2.ax1x.com/2019/05/17/ELd8te.png" alt=""></p><p>Next <code>load</code> instruction. And it can find a previous <code>store</code> instruction stores to the identical address, <code>0x3290</code>. It will read the value of the <code>store</code> instruction directly to its <code>Value</code> Column.</p><p>This is a <code>store-forward</code> operation. </p><p><img src="https://s2.ax1x.com/2019/05/17/ELdYpd.png" alt=""></p><p>Next <code>load</code> instruction will also firstly do a search on previous <code>store</code> instructions and obviously, it fails. Then cache will provide with the value <code>1</code> to this <code>load</code>.</p><p><img src="https://s2.ax1x.com/2019/05/17/ELd3kD.png" alt=""></p><p>Next <code>store</code>, 0 is calculated and puts into the <code>Value</code> Column.</p><p><img src="https://s2.ax1x.com/2019/05/17/ELdGfH.png" alt=""></p><p>Next <code>load</code>, a <code>store-forward</code> occurs again. 25 is read out and put into the <code>Value</code> Column.</p><p><img src="https://s2.ax1x.com/2019/05/18/EOa09H.png" alt=""></p><p>For the next <code>load</code> instruction, there will be multiple results return from the search. But it only accept the value returns from the nearest <code>store</code> instruction. Therefore, 0 is put into the <code>Value</code> Column.</p><p><img src="https://s2.ax1x.com/2019/05/18/EOaB3d.png" alt=""></p><p>The last <code>load</code> instruction will read value from cache.</p><p>Then, instruction will be committed.</p><p><img src="https://s2.ax1x.com/2019/05/18/EOdEPe.png" alt=""></p><p>For <code>load</code> instruction, it is just simply dequeue from the LSQ as the value is loaded to the register already at the execution phase.</p><p><img src="https://s2.ax1x.com/2019/05/18/EOdurt.png" alt=""></p><p>For <code>store</code> instruction, the value is updated to cache and then dequeue.</p><p><img src="https://s2.ax1x.com/2019/05/18/EOdexA.png" alt=""></p><p>Next <code>store</code> instruction, similar instruction, value is stored to cache and dequeue.</p><p><img src="https://s2.ax1x.com/2019/05/18/EOdZ2d.png" alt=""></p><p>Next three <code>load</code> instructions, dequeue.</p><p><img src="https://s2.ax1x.com/2019/05/18/EOdV8H.png" alt=""></p><p><code>store</code>, updates cache.</p><p><img src="https://s2.ax1x.com/2019/05/18/EOdnKI.png" alt=""></p><p>Last three <code>load</code> instructions, dequeue.</p><p>The reason why <code>store</code> only updates cache at the commit phase is that if the processor detects a prediction failure in the pipeline and the instructions after the last <code>store</code> instruction need to be flushed, the status of cache is not impacted and instructions at the correct branch can pretend to start with the untouched status.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去12：DPDK i40e X710 Flow Director Deep Dive(3)</title>
       <link href="/2019/05/14/test12-dpdk-x710-fdir-mask-3/"/>
       <url>/2019/05/14/test12-dpdk-x710-fdir-mask-3/</url>

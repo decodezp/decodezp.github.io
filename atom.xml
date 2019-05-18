@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-05-14T11:05:20.204Z</updated>
+  <updated>2019-05-18T07:49:50.035Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quickwords28：Skylake Microarchitecture(11)</title>
+    <link href="https://decodezp.github.io/2019/05/18/quickwords28-skylake-pipeline-11/"/>
+    <id>https://decodezp.github.io/2019/05/18/quickwords28-skylake-pipeline-11/</id>
+    <published>2019-05-18T07:48:31.000Z</published>
+    <updated>2019-05-18T07:49:50.035Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Store-and-Load-Example&quot;&gt;&lt;a href=&quot;#Store-and-Load-Example&quot; class=&quot;headerlink&quot; title=&quot;Store and Load Example&quot;&gt;&lt;/a&gt;Store and Load Example&lt;/h2&gt;&lt;p&gt;Given the initialized situation like this:&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去12：DPDK i40e X710 Flow Director Deep Dive(3)</title>
@@ -443,27 +467,6 @@
     
     
       <category term="history" scheme="https://decodezp.github.io/tags/history/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>商业供稿2：网络可视化如何抵御数字化转型风险</title>
-    <link href="https://decodezp.github.io/2019/03/23/commerical2-visibility-digital-transform/"/>
-    <id>https://decodezp.github.io/2019/03/23/commerical2-visibility-digital-transform/</id>
-    <published>2019-03-23T00:41:19.000Z</published>
-    <updated>2019-03-23T00:46:23.346Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;em&gt;原载于云杉网络 &lt;a href=&quot;http://www.yunshan.net&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;www.yunshan.net&lt;/a&gt; 微信公众号&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;当前，“数字化转型”已成为企业或组织绕不过去的一个话题。诚然，并非所有(云杉网络的)客户都会直接声称“我们正在数字化转型”或者“我们正在做一个数字化转型的项目”，但对IT基础设施进行敏捷性改造，提升业务灵活性和效率，已是各行各业的一致追求。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="commerical" scheme="https://decodezp.github.io/categories/commerical/"/>
-    
-    
-      <category term="commerical" scheme="https://decodezp.github.io/tags/commerical/"/>
     
   </entry>
   

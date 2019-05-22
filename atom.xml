@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-05-18T07:49:50.035Z</updated>
+  <updated>2019-05-22T12:23:35.058Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>统治者为什么会重复犯同样的错误</title>
+    <link href="https://decodezp.github.io/2019/05/22/thoughts9-identical-behavior/"/>
+    <id>https://decodezp.github.io/2019/05/22/thoughts9-identical-behavior/</id>
+    <published>2019-05-22T12:22:22.000Z</published>
+    <updated>2019-05-22T12:23:35.058Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;史书上对自己作死的亡国之君的描述基本上都是类似的。用查找替换把两个名字换一下，基本不影响阅读体验。&lt;/p&gt;
+&lt;p&gt;奇怪的点就在于，从第二个亡国之君开始，为什么明明知道已有“亡国之兆”，却仍然不加收敛？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>Quickwords28：Skylake Microarchitecture(11)</title>
@@ -446,27 +467,6 @@
     
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>后凉龙骧将军吕邈教你如何一本正经胡说八道</title>
-    <link href="https://decodezp.github.io/2019/03/24/history3-lvmiao/"/>
-    <id>https://decodezp.github.io/2019/03/24/history3-lvmiao/</id>
-    <published>2019-03-24T13:26:32.000Z</published>
-    <updated>2019-03-24T13:49:11.502Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;胡说八道容易，看起来一本正经也不难，但那都是从你自己的眼光出发。&lt;/p&gt;
-&lt;p&gt;让别人看起来同样一本正经就非常有挑战了，即便你真的是在一本正经。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="history" scheme="https://decodezp.github.io/categories/history/"/>
-    
-    
-      <category term="history" scheme="https://decodezp.github.io/tags/history/"/>
     
   </entry>
   

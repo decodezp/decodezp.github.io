@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-05-22T12:23:35.058Z</updated>
+  <updated>2019-05-23T12:48:33.838Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去13：DPDK i40e X710 FDIR Flexbytes</title>
+    <link href="https://decodezp.github.io/2019/05/23/test13-dpdk-x710-flexload/"/>
+    <id>https://decodezp.github.io/2019/05/23/test13-dpdk-x710-flexload/</id>
+    <published>2019-05-23T12:42:12.000Z</published>
+    <updated>2019-05-23T12:48:33.838Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Flex-Bytes&quot;&gt;&lt;a href=&quot;#Flex-Bytes&quot; class=&quot;headerlink&quot; title=&quot;Flex Bytes&quot;&gt;&lt;/a&gt;Flex Bytes&lt;/h2&gt;&lt;p&gt;700系列网卡除了提取包头的字段作为散列的依据之外，还可以截取Payload的特定片段作为散列的依据。&lt;/p&gt;
+&lt;p&gt;Flexible payload是可以识别出的L2/L3/L4 Header之后的字节，最多可以截取来自于3个不同偏移（OFFSET）的16字节内容。所有的内容需要来自该报文前480字节内。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
+    
+  </entry>
   
   <entry>
     <title>统治者为什么会重复犯同样的错误</title>
@@ -447,26 +472,6 @@
       <category term="game" scheme="https://decodezp.github.io/tags/game/"/>
     
       <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚22：什么是AF_XDP Socket</title>
-    <link href="https://decodezp.github.io/2019/03/26/quickwords22-af-xdp/"/>
-    <id>https://decodezp.github.io/2019/03/26/quickwords22-af-xdp/</id>
-    <published>2019-03-26T14:24:25.000Z</published>
-    <updated>2019-03-26T14:36:30.222Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;AF-XDP&quot;&gt;&lt;a href=&quot;#AF-XDP&quot; class=&quot;headerlink&quot; title=&quot;AF_XDP&quot;&gt;&lt;/a&gt;AF_XDP&lt;/h2&gt;&lt;p&gt;默认读者已经了解XDP(eXpress Data Path)的概念。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

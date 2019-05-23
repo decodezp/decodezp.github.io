@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>测来测去13：DPDK i40e X710 FDIR Flexbytes</title>
+      <link href="/2019/05/23/test13-dpdk-x710-flexload/"/>
+      <url>/2019/05/23/test13-dpdk-x710-flexload/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Flex-Bytes"><a href="#Flex-Bytes" class="headerlink" title="Flex Bytes"></a>Flex Bytes</h2><p>700系列网卡除了提取包头的字段作为散列的依据之外，还可以截取Payload的特定片段作为散列的依据。</p><p>Flexible payload是可以识别出的L2/L3/L4 Header之后的字节，最多可以截取来自于3个不同偏移（OFFSET）的16字节内容。所有的内容需要来自该报文前480字节内。<br><a id="more"></a></p><blockquote><p>如果是TCP的报文，因为网卡可以识别出L4 Header，则只能针对TCP的Payload进行匹配处理，而不能将TCP Header当作L3或L2的Payload处理。</p></blockquote><h2 id="Testpmd-CMD"><a href="#Testpmd-CMD" class="headerlink" title="Testpmd CMD"></a>Testpmd CMD</h2><p>测试方法可以参考DPDK的官方文档：</p><p><a href="https://doc.dpdk.org/dts/test_plans/generic_flow_api_test_plan.html#test-case-fortville-fdir-for-flexbytes" target="_blank" rel="noopener">https://doc.dpdk.org/dts/test_plans/generic_flow_api_test_plan.html#test-case-fortville-fdir-for-flexbytes</a></p><p>提示一下需要注意的点：</p><ul><li><p>每次设定偏移时，是从前一个偏移结束之后开始计算<code>relative</code>的值，如果前面没有偏移，则从Payload的第一个字节开始计算。</p></li><li><p><code>relative</code>的位置加偏移的长度，是需要匹配的模式（pattern）的具体内容的起始位置</p></li><li><p>在此节最后：</p></li></ul><blockquote><p>check pkt1 to pkt5 are received by queue 1 to queue 5, pkt6 to queue 0, pkt7 to queue6. pkt8 to queue7, pkt8 and pkt9 to queue 0.</p></blockquote><p>这里面似乎最后应该改为<code>pkt9 and pkt10 to queue0</code>。</p><h2 id="Mask"><a href="#Mask" class="headerlink" title="Mask"></a>Mask</h2><p>还有一个问题没有解决，就是Flexbytes如何加Mask。实际上在i40e驱动的<code>i40e_flow.c</code>中提供了设定Mask的接口<code>i40e_flow_store_flex_mask</code>。但直接用该命令会导致报错。具体原因还需要后续挖掘。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> test </tag>
+            
+            <tag> NIC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>统治者为什么会重复犯同样的错误</title>
       <link href="/2019/05/22/thoughts9-identical-behavior/"/>
       <url>/2019/05/22/thoughts9-identical-behavior/</url>
@@ -1221,9 +1248,9 @@
             
             <tag> tech </tag>
             
-            <tag> dpdk </tag>
-            
             <tag> network </tag>
+            
+            <tag> dpdk </tag>
             
             <tag> test </tag>
             

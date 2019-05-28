@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-05-23T12:48:33.838Z</updated>
+  <updated>2019-05-28T12:46:16.404Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>测来测去14：Phoronix tinymembench结果不理想的可能原因</title>
+    <link href="https://decodezp.github.io/2019/05/28/test14-phoronix-tinymembench/"/>
+    <id>https://decodezp.github.io/2019/05/28/test14-phoronix-tinymembench/</id>
+    <published>2019-05-28T12:44:02.000Z</published>
+    <updated>2019-05-28T12:46:16.404Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Phoronix-tinymembench&quot;&gt;&lt;a href=&quot;#Phoronix-tinymembench&quot; class=&quot;headerlink&quot; title=&quot;Phoronix tinymembench&quot;&gt;&lt;/a&gt;Phoronix tinymembench&lt;/h2&gt;&lt;p&gt;这个测试经常用来衡量CPU&lt;code&gt;memcpy&lt;/code&gt;和&lt;code&gt;memset&lt;/code&gt;这两个基本操作的性能。最近在执行针对两款CPU的性能测试中，发现某款相对”高端“的CPU在这两个测试中表现与相对“低端”的CPU相比，存在较大差距。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
     <title>测来测去13：DPDK i40e X710 FDIR Flexbytes</title>
     <link href="https://decodezp.github.io/2019/05/23/test13-dpdk-x710-flexload/"/>
     <id>https://decodezp.github.io/2019/05/23/test13-dpdk-x710-flexload/</id>
     <published>2019-05-23T12:42:12.000Z</published>
-    <updated>2019-05-23T12:48:33.838Z</updated>
+    <updated>2019-05-28T12:46:18.398Z</updated>
     
     <summary type="html">
     
@@ -139,7 +161,7 @@
     <link href="https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/"/>
     <id>https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/</id>
     <published>2019-05-11T06:10:03.000Z</published>
-    <updated>2019-05-13T10:50:42.253Z</updated>
+    <updated>2019-05-23T12:48:35.840Z</updated>
     
     <summary type="html">
     
@@ -449,29 +471,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>雨中冒险2 Risk Of Rain 2</title>
-    <link href="https://decodezp.github.io/2019/04/03/games-risk-of-rain-2/"/>
-    <id>https://decodezp.github.io/2019/04/03/games-risk-of-rain-2/</id>
-    <published>2019-04-03T13:38:40.000Z</published>
-    <updated>2019-04-06T05:09:38.542Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;《雨中冒险》是我买的第一款Steam游戏。&lt;/p&gt;
-&lt;p&gt;6年前，刚刚毕业，手边只有一台上学时陪伴着我的笔记本电脑，我知道它只能带得动这种简陋的像素风游戏。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="game" scheme="https://decodezp.github.io/categories/game/"/>
-    
-    
-      <category term="game" scheme="https://decodezp.github.io/tags/game/"/>
-    
-      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
     
   </entry>
   

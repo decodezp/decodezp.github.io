@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>测来测去14：Phoronix tinymembench结果不理想的可能原因</title>
+      <link href="/2019/05/28/test14-phoronix-tinymembench/"/>
+      <url>/2019/05/28/test14-phoronix-tinymembench/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Phoronix-tinymembench"><a href="#Phoronix-tinymembench" class="headerlink" title="Phoronix tinymembench"></a>Phoronix tinymembench</h2><p>这个测试经常用来衡量CPU<code>memcpy</code>和<code>memset</code>这两个基本操作的性能。最近在执行针对两款CPU的性能测试中，发现某款相对”高端“的CPU在这两个测试中表现与相对“低端”的CPU相比，存在较大差距。<br><a id="more"></a></p><blockquote><p>当然，高端和低端只是一般印象，具体各个细节参数也需要具体衡量</p></blockquote><p>并且差距不是一般的明显，所以需要调查一下<code>Phoronix tinymembench</code>具体是如何执行测试的。</p><h2 id="Source-code"><a href="#Source-code" class="headerlink" title="Source code"></a>Source code</h2><p>在这里找到了<code>tinymembench</code>的源码：</p><p><a href="https://github.com/ssvb/tinymembench/blob/master/main.c" target="_blank" rel="noopener">https://github.com/ssvb/tinymembench/blob/master/main.c</a></p><p>按照小学语文的一般叙述顺序，我们介绍一下“首先映入眼帘”的：</p><p><code>#define SIZE             (32 * 1024 * 1024)</code></p><p>后面的源码先不用看了，这个是定义了一个32MB的长度，基本上可以认为是执行<code>memcpy</code>和<code>memset</code>的内存大小。</p><p>再看一下执行测试的两块CPU的L3 Cache大小，结果好的那个有64MB，结果不好的那个只有30MB。</p><p>为了验证猜测，把这个指改为<code>16 * 1024 * 1024</code>，原本结果不好的CPU的测试成绩就取得了反超。</p><h2 id="不要灰心"><a href="#不要灰心" class="headerlink" title="不要灰心"></a>不要灰心</h2><p>像这种CPU测试工具，如果测试成绩不好，真的需要深入挖掘一下，也许是这个测试不适用于你CPU的体质。不过如果测试成绩好，那说明确实挺好的 :)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去13：DPDK i40e X710 FDIR Flexbytes</title>
       <link href="/2019/05/23/test13-dpdk-x710-flexload/"/>
       <url>/2019/05/23/test13-dpdk-x710-flexload/</url>
@@ -1248,9 +1273,9 @@
             
             <tag> tech </tag>
             
-            <tag> network </tag>
-            
             <tag> dpdk </tag>
+            
+            <tag> network </tag>
             
             <tag> test </tag>
             

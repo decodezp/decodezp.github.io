@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-05-28T12:46:16.404Z</updated>
+  <updated>2019-06-03T12:32:30.085Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gartner预测误差统计</title>
+    <link href="https://decodezp.github.io/2019/06/03/gartner-prediction/"/>
+    <id>https://decodezp.github.io/2019/06/03/gartner-prediction/</id>
+    <published>2019-06-03T12:30:27.000Z</published>
+    <updated>2019-06-03T12:32:30.085Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Gartner的预测&quot;&gt;&lt;a href=&quot;#Gartner的预测&quot; class=&quot;headerlink&quot; title=&quot;Gartner的预测&quot;&gt;&lt;/a&gt;Gartner的预测&lt;/h2&gt;&lt;p&gt;Gartner表面上是一家咨询公司，实际上是一家市场公关公司。不仅通过一些市场工具给厂商打广告，还直接给某样技术打广告，当然也兼做一些资源对接的中介服务。至于Gartner的分析报告，即便每年需要几十万的“咨询费”才能阅读，但我是从来没有完整看完过其中任何一篇，因为他们报告的题目都拟得非常好——非常精炼，也非常准确——所以有时候看完题目就好了。&lt;/p&gt;
+&lt;p&gt;每当Gartner新公布了一项市场数字和指标之后，都会被各家媒体和相关厂商疯狂引用，作为论证市场繁荣和增长预期的最有力论据。但年复一年，我们永远盯住的是“下一个丰收的年景”，却不怎么关心当下的市场是否曾被准确勾画。以往知来，我们就以年年火热的云计算市场为例，统计一下Gartner的历史预测准确率。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去14：Phoronix tinymembench结果不理想的可能原因</title>
@@ -436,30 +457,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;一个示例介绍Reorder-Buffer-ROB-和Register-Alias-Table-RAT-和Reservation-Station-RS&quot;&gt;&lt;a href=&quot;#一个示例介绍Reorder-Buffer-ROB-和Register-Alias-Table-RAT-和Reservation-Station-RS&quot; class=&quot;headerlink&quot; title=&quot;一个示例介绍Reorder Buffer(ROB)和Register Alias Table(RAT)和Reservation Station(RS)&quot;&gt;&lt;/a&gt;一个示例介绍Reorder Buffer(ROB)和Register Alias Table(RAT)和Reservation Station(RS)&lt;/h2&gt;&lt;p&gt;理解乱序执行（Out-of-Order）的核心其实就是把ROB，RAT和RS这三个组件搞透。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚23：Skylake微架构(Microarchitecture)剖析(7)</title>
-    <link href="https://decodezp.github.io/2019/04/03/quickwords23-skylake-pipeline-7/"/>
-    <id>https://decodezp.github.io/2019/04/03/quickwords23-skylake-pipeline-7/</id>
-    <published>2019-04-03T14:01:30.000Z</published>
-    <updated>2019-04-06T05:08:20.991Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;接前Register-Rename&quot;&gt;&lt;a href=&quot;#接前Register-Rename&quot; class=&quot;headerlink&quot; title=&quot;接前Register Rename&quot;&gt;&lt;/a&gt;接前Register Rename&lt;/h2&gt;&lt;p&gt;这次得用Markdown画表格了，想来想去用&lt;code&gt;markdown&lt;/code&gt;这么久还是第一次。&lt;br&gt;
     
     </summary>
     

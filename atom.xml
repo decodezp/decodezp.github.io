@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-06-03T12:45:59.771Z</updated>
+  <updated>2019-06-05T12:03:37.723Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拔智齿</title>
+    <link href="https://decodezp.github.io/2019/06/05/tooth-extraction/"/>
+    <id>https://decodezp.github.io/2019/06/05/tooth-extraction/</id>
+    <published>2019-06-05T12:02:29.000Z</published>
+    <updated>2019-06-05T12:03:37.723Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;拔智齿是一个磨人的过程。真正拔的时候其实还好，但决定去拔之前，要做很多心理建设工作。尤其是对牙一直很好的人来说，去拔牙就仿佛承认了之前对牙齿的乐观和与之俱来的优越感都只是一场幻觉。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="life" scheme="https://decodezp.github.io/categories/life/"/>
+    
+    
+      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>Gartner预测误差统计</title>
@@ -433,30 +453,6 @@
     
       &lt;p&gt;接&lt;a href=&quot;https://decodezp.github.io/2019/04/06/quickwords24-skylake-pipeline-8/&quot;&gt;上期&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&quot;第六个cycle之后&quot;&gt;&lt;a href=&quot;#第六个cycle之后&quot; class=&quot;headerlink&quot; title=&quot;第六个cycle之后&quot;&gt;&lt;/a&gt;第六个cycle之后&lt;/h2&gt;&lt;p&gt;看一下第六个cycle时会发生什么。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚24：Skylake微架构(Microarchitecture)剖析(8)</title>
-    <link href="https://decodezp.github.io/2019/04/06/quickwords24-skylake-pipeline-8/"/>
-    <id>https://decodezp.github.io/2019/04/06/quickwords24-skylake-pipeline-8/</id>
-    <published>2019-04-06T04:58:15.000Z</published>
-    <updated>2019-04-06T04:59:55.285Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;一个示例介绍Reorder-Buffer-ROB-和Register-Alias-Table-RAT-和Reservation-Station-RS&quot;&gt;&lt;a href=&quot;#一个示例介绍Reorder-Buffer-ROB-和Register-Alias-Table-RAT-和Reservation-Station-RS&quot; class=&quot;headerlink&quot; title=&quot;一个示例介绍Reorder Buffer(ROB)和Register Alias Table(RAT)和Reservation Station(RS)&quot;&gt;&lt;/a&gt;一个示例介绍Reorder Buffer(ROB)和Register Alias Table(RAT)和Reservation Station(RS)&lt;/h2&gt;&lt;p&gt;理解乱序执行（Out-of-Order）的核心其实就是把ROB，RAT和RS这三个组件搞透。&lt;br&gt;
     
     </summary>
     

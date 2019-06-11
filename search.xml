@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>Quickwords29：AMD ZEN 2 Microarchitecture Overview</title>
+      <link href="/2019/06/12/quickwords29-amd-zen2-microarch/"/>
+      <url>/2019/06/12/quickwords29-amd-zen2-microarch/</url>
+      
+        <content type="html"><![CDATA[<h2 id="AMD-ZEN-2"><a href="#AMD-ZEN-2" class="headerlink" title="AMD ZEN 2"></a>AMD ZEN 2</h2><p>在消费者和服务器市场AMD推出了全新的基于ZEN 2微架构的处理器，包括Ryzen 3000系列和EPYC系列。在市场宣传方面均给出了高于Intel竞品处理器的性能。我这里还没有拿到实际的产品进行性能测试，但可以先从公开的微架构设计的角度看一看AMD这款新产品的大体思路。</p><h2 id="Microarchitecture-Overview"><a href="#Microarchitecture-Overview" class="headerlink" title="Microarchitecture Overview"></a>Microarchitecture Overview</h2><p><img src="https://images.anandtech.com/doci/14525/Mike_Clark-Next_Horizon_Gaming-CPU_Architecture_06092019-page-003.jpg" alt=""></p><p>上图是ZEN 2产品的微架构示意图。从微架构的“架构”设计上，感觉业界基本上遵从了同一套模式，很难有创新和突破。均是基于以下三个部分：<br><a id="more"></a></p><ul><li>前端，用于取指令和解码</li><li>后端，用于执行</li><li>存储，用于读取缓存和主存中的数据</li></ul><p>和我们之前分析过的Intel Skylake的微架构，或者所有近期以及可预见的未来的CPU的微架构都相类似。</p><p>对微架构的改进基本上只存在于对各类buffer或cache的容量扩充方面。例如图中提到的：</p><ul><li>Micro-Op Cache扩容至4K条，加快解码速度</li><li>更大的L3 Cache</li><li>180个Rename Register，消除False dependency，提高指令并行度</li><li>更多的AGU和指令执行单元</li></ul><p>其他的包括前端4 instructions/cycle的Dercode效率，以及6 ops/cycle的微指令发射效率，和之前介绍的Skylake类似。但也肯定存在指令长度等方面的限制。</p><p>另外在Reservation Station和Re-order buffer方面图中并未给出详细说明，统一合并在了Scheduler中。在Integer部分貌似是多Scheduler的设计，应该是这种设计能够进一步提升指令并行程度，需要进一步资料说明。</p><p>而对AVX指令集的支持当前是有了<code>single-op AVX256</code>的支撑，之前AMD上的AVX指令<strong>据说</strong>是多条指令“模拟”出来的。</p><p><img src="https://images.anandtech.com/doci/14525/Mike_Clark-Next_Horizon_Gaming-CPU_Architecture_06092019-page-004.jpg" alt=""></p><p>这一页仍是对另外一些特性的说明，除了对Cache系统的常规介绍之外，特意提到了处理器安全方面的特性，估计是体现出与最近饱受安全漏洞困扰的Intel产品的“差异性”  笑）。</p><h2 id="处理器的未来发展"><a href="#处理器的未来发展" class="headerlink" title="处理器的未来发展"></a>处理器的未来发展</h2><p>至于AMD的ZEN 2新架构是否真的在一些通用的业务场景中有良好的性能表现，还需要实际业务的检验。但当前处理器的设计真的进入了一个明显的瓶颈期，主要包括以下几点体现：</p><ul><li>主频上不去</li><li>制程挤牙膏</li><li>性能靠猜测</li><li>猜测带来安全漏洞</li><li>缓存相干性(Cache coherence )和内存一致性(Memory consistency)必须遵循</li><li>核间通讯速率仍是瓶颈</li></ul><p>当前的一些应对方法：</p><ul><li>更大的各种缓存</li><li>更多的核</li><li>针对专门业务的指令集</li><li>针对专门业务的专门处理模块</li><li>铲除网络上的负面新闻 笑）</li></ul><p>总之在软件性能上，CPU也就只能帮你到这了，但软件本身其实锁死了很多硬件的性能无法得到释放，后面的优化必须靠精细的软件性能调优。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>拔智齿</title>
       <link href="/2019/06/05/tooth-extraction/"/>
       <url>/2019/06/05/tooth-extraction/</url>
@@ -1768,9 +1795,9 @@
             
             <tag> tech </tag>
             
-            <tag> linux </tag>
-            
             <tag> ftrace </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       

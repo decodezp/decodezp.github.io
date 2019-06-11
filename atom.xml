@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-06-05T12:09:14.412Z</updated>
+  <updated>2019-06-11T22:00:23.427Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quickwords29：AMD ZEN 2 Microarchitecture Overview</title>
+    <link href="https://decodezp.github.io/2019/06/12/quickwords29-amd-zen2-microarch/"/>
+    <id>https://decodezp.github.io/2019/06/12/quickwords29-amd-zen2-microarch/</id>
+    <published>2019-06-11T21:59:06.000Z</published>
+    <updated>2019-06-11T22:00:23.427Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;AMD-ZEN-2&quot;&gt;&lt;a href=&quot;#AMD-ZEN-2&quot; class=&quot;headerlink&quot; title=&quot;AMD ZEN 2&quot;&gt;&lt;/a&gt;AMD ZEN 2&lt;/h2&gt;&lt;p&gt;在消费者和服务器市场AMD推出了全新的基于ZEN 2微架构的处理器，包括Ryzen 3000系列和EPYC系列。在市场宣传方面均给出了高于Intel竞品处理器的性能。我这里还没有拿到实际的产品进行性能测试，但可以先从公开的微架构设计的角度看一看AMD这款新产品的大体思路。&lt;/p&gt;
+&lt;h2 id=&quot;Microarchitecture-Overview&quot;&gt;&lt;a href=&quot;#Microarchitecture-Overview&quot; class=&quot;headerlink&quot; title=&quot;Microarchitecture Overview&quot;&gt;&lt;/a&gt;Microarchitecture Overview&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://images.anandtech.com/doci/14525/Mike_Clark-Next_Horizon_Gaming-CPU_Architecture_06092019-page-003.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上图是ZEN 2产品的微架构示意图。从微架构的“架构”设计上，感觉业界基本上遵从了同一套模式，很难有创新和突破。均是基于以下三个部分：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>拔智齿</title>
@@ -439,31 +465,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="perf" scheme="https://decodezp.github.io/tags/perf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)</title>
-    <link href="https://decodezp.github.io/2019/04/08/quickwords25-skylake-pipeline-9/"/>
-    <id>https://decodezp.github.io/2019/04/08/quickwords25-skylake-pipeline-9/</id>
-    <published>2019-04-07T17:20:24.000Z</published>
-    <updated>2019-04-07T17:25:47.250Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;接&lt;a href=&quot;https://decodezp.github.io/2019/04/06/quickwords24-skylake-pipeline-8/&quot;&gt;上期&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;第六个cycle之后&quot;&gt;&lt;a href=&quot;#第六个cycle之后&quot; class=&quot;headerlink&quot; title=&quot;第六个cycle之后&quot;&gt;&lt;/a&gt;第六个cycle之后&lt;/h2&gt;&lt;p&gt;看一下第六个cycle时会发生什么。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

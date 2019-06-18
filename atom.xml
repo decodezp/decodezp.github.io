@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-06-11T22:00:23.427Z</updated>
+  <updated>2019-06-18T13:40:34.912Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quickwords30：Use Both kprobe and uprobe At The Same Time</title>
+    <link href="https://decodezp.github.io/2019/06/18/quickwords30-kprobe-uprobe-both/"/>
+    <id>https://decodezp.github.io/2019/06/18/quickwords30-kprobe-uprobe-both/</id>
+    <published>2019-06-18T13:37:51.000Z</published>
+    <updated>2019-06-18T13:40:34.912Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用&lt;code&gt;ftrace&lt;/code&gt;可以观察内核方法的调用信息。用&lt;code&gt;uprobe&lt;/code&gt;可以观察用户空间二进制可执行文件中方法的调用信息。奇怪的是当你想把两个合在一起用的时候，比如你想看到内核调度器调度到了你关心的用户进程，同时也想知道调度之后，该进程会执行哪个方法的时候，网络上我没有找到任何资料教你如何去做。按说这应该是一个对各类系统问题诊断很有用的能力。&lt;/p&gt;
+&lt;p&gt;也许是太简单了？下面用一个示例说明。&lt;/p&gt;
+&lt;h2 id=&quot;内核版本&quot;&gt;&lt;a href=&quot;#内核版本&quot; class=&quot;headerlink&quot; title=&quot;内核版本&quot;&gt;&lt;/a&gt;内核版本&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;uname -r&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4.19.6-1.el7.elrepo.x86_64&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;有点新，不过不害事。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>Quickwords29：AMD ZEN 2 Microarchitecture Overview</title>
@@ -442,29 +465,6 @@
     
     
       <category term="commerical" scheme="https://decodezp.github.io/tags/commerical/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quickwords 26 Linux Perf Under The Hood</title>
-    <link href="https://decodezp.github.io/2019/04/13/quickwords26-linux-perf-under-the-hood/"/>
-    <id>https://decodezp.github.io/2019/04/13/quickwords26-linux-perf-under-the-hood/</id>
-    <published>2019-04-12T16:22:44.000Z</published>
-    <updated>2019-04-12T16:40:57.653Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Too many &lt;code&gt;perf&lt;/code&gt; usage articles exist on the Internet yet few talks about its source code, mechanism and architecture under the hood. For anyone who’s not satisfied with a black box, this article tries to address this.&lt;/p&gt;
-&lt;h2 id=&quot;Hardware-Background-Knowledge&quot;&gt;&lt;a href=&quot;#Hardware-Background-Knowledge&quot; class=&quot;headerlink&quot; title=&quot;Hardware Background Knowledge&quot;&gt;&lt;/a&gt;Hardware Background Knowledge&lt;/h2&gt;&lt;p&gt;You probably know that &lt;code&gt;perf&lt;/code&gt; retrieves CPU hardware PMU counter value at some regular sampling frequency to make everything happen. The path through the hardware value is called &lt;code&gt;MSR(Model-Specific Register)&lt;/code&gt; operations. Note that &lt;code&gt;MSR&lt;/code&gt; is a general designation for various kinds of registers and PMU is just a small portion of it. To be more specific, we are mainly talking about the Performance Event Select Registers and the Performance Monitoring Counters(PMC) which make up the PMU together. By interacting with the Performance Event Select Register at the software side, value of performance events is streaming out via PMC.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="perf" scheme="https://decodezp.github.io/tags/perf/"/>
     
   </entry>
   

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>quickwords30：use both kprobe and uprobe at the same time | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="用ftrace可以观察内核方法的调用信息。用uprobe可以观察用户空间二进制可执行文件中方法的调用信息。奇怪的是当你想把两个合在一起用的时候，比如你想看到内核调度器调度到了你关心的用户进程，同时也想知道调度之后，该进程会执行哪个方法的时候，网络上我没有找到任何资料教你如何去做。按说这应该是一个对各类系统问题诊断很有用的能力。 也许是太简单了？下面用一个示例说明。 内核版本12uname -r4.">
+<meta name="keywords" content="tech">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quickwords30：Use Both kprobe and uprobe At The Same Time">
+<meta property="og:url" content="https://decodezp.github.io/2019/06/18/quickwords30-kprobe-uprobe-both/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="用ftrace可以观察内核方法的调用信息。用uprobe可以观察用户空间二进制可执行文件中方法的调用信息。奇怪的是当你想把两个合在一起用的时候，比如你想看到内核调度器调度到了你关心的用户进程，同时也想知道调度之后，该进程会执行哪个方法的时候，网络上我没有找到任何资料教你如何去做。按说这应该是一个对各类系统问题诊断很有用的能力。 也许是太简单了？下面用一个示例说明。 内核版本12uname -r4.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://betanews.com/wp-content/uploads/2018/09/linux-pengiun.jpg">
+<meta property="og:updated_time" content="2019-06-18T13:40:34.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Quickwords30：Use Both kprobe and uprobe At The Same Time">
+<meta name="twitter:description" content="用ftrace可以观察内核方法的调用信息。用uprobe可以观察用户空间二进制可执行文件中方法的调用信息。奇怪的是当你想把两个合在一起用的时候，比如你想看到内核调度器调度到了你关心的用户进程，同时也想知道调度之后，该进程会执行哪个方法的时候，网络上我没有找到任何资料教你如何去做。按说这应该是一个对各类系统问题诊断很有用的能力。 也许是太简单了？下面用一个示例说明。 内核版本12uname -r4.">
+<meta name="twitter:image" content="https://betanews.com/wp-content/uploads/2018/09/linux-pengiun.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-quickwords30-kprobe-uprobe-both" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://betanews.com/wp-content/uploads/2018/09/linux-pengiun.jpg" rel="gallery_cjx1usvo8004dukfy36siazv2">
+        <img src="https://betanews.com/wp-content/uploads/2018/09/linux-pengiun.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Quickwords30：Use Both kprobe and uprobe At The Same Time
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/06/18/quickwords30-kprobe-uprobe-both/" class="article-date">
+	  <time datetime="2019-06-18T13:37:51.000Z" itemprop="datePublished">June 18, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用<code>ftrace</code>可以观察内核方法的调用信息。用<code>uprobe</code>可以观察用户空间二进制可执行文件中方法的调用信息。奇怪的是当你想把两个合在一起用的时候，比如你想看到内核调度器调度到了你关心的用户进程，同时也想知道调度之后，该进程会执行哪个方法的时候，网络上我没有找到任何资料教你如何去做。按说这应该是一个对各类系统问题诊断很有用的能力。</p>
+<p>也许是太简单了？下面用一个示例说明。</p>
+<h2 id="内核版本"><a href="#内核版本" class="headerlink" title="内核版本"></a>内核版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br><span class="line">4.19.6-1.el7.elrepo.x86_64</span><br></pre></td></tr></table></figure>
+<p>有点新，不过不害事。<br><a id="more"></a></p>
+<h2 id="设置uprobe"><a href="#设置uprobe" class="headerlink" title="设置uprobe"></a>设置<code>uprobe</code></h2><p>设置<code>uprobe</code>的方法还是挺多的，我个人建议用<code>perf</code>设置算比较方便。硬核爱好者可以参考这篇：<a href="https://decodezp.github.io/2018/12/04/ftrace-uprobe/">https://decodezp.github.io/2018/12/04/ftrace-uprobe/</a></p>
+<h3 id="看看有哪些能设置的点"><a href="#看看有哪些能设置的点" class="headerlink" title="看看有哪些能设置的点"></a>看看有哪些能设置的点</h3><p><code>perf probe -x /bin/bash -F</code><br>打印出来的是<code>/bin/bash</code>这个二进制文件中可以设置的trace point。</p>
+<h3 id="添加uprobe跟踪点"><a href="#添加uprobe跟踪点" class="headerlink" title="添加uprobe跟踪点"></a>添加<code>uprobe</code>跟踪点</h3><p><code>perf probe -x /bin/bash &#39;readline%return +0($retval):string&#39;</code></p>
+<p><code>readline</code>是上面打印出来的trace point之一，后面的参数是打印该方法的返回值。在这里就是我们在bash中敲入的命令。</p>
+<p>加入之后在<code>cat /sys/kernel/debug/tracing/uprobe_events</code>就能看到这个信息。</p>
+<p>但这里能看到并不说明什么问题。此时会看到在</p>
+<p><code>/sys/kernel/debug/tracing/events/probe_bash</code>会多出一个事件。将这里面的<code>enable</code> echo成1。</p>
+<p>其实这个时候就已经可以从trace中看到用户程序的追踪信息了。（前提是在bash中敲入了一些代码）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon tracing]# cat trace | tail</span><br><span class="line">  kworker/u256:2-3393  [000] d...  4537.944067: sched_stat_runtime: comm=kworker/u256:2 pid=3393 runtime=1557 [ns] vruntime=11510909796 [ns]</span><br><span class="line">  kworker/u256:2-3393  [000] d...  4537.944067: sched_switch: prev_comm=kworker/u256:2 prev_pid=3393 prev_prio=120 prev_state=R+ ==&gt; next_comm=sshd next_pid=1645 next_prio=120</span><br><span class="line">            sshd-1645  [000] d...  4537.944188: sched_stat_runtime: comm=sshd pid=1645 runtime=121420 [ns] vruntime=1187191909 [ns]</span><br><span class="line">            sshd-1645  [000] d...  4537.944191: sched_switch: prev_comm=sshd prev_pid=1645 prev_prio=120 prev_state=D ==&gt; next_comm=swapper/0 next_pid=0 next_prio=120</span><br><span class="line">            bash-1649  [003] d.h.  4537.944987: sched_stat_runtime: comm=bash pid=1649 runtime=991600 [ns] vruntime=9501612170 [ns]</span><br><span class="line">            bash-4920  [001] d...  9557.263762: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="cd .."</span><br><span class="line">            bash-4920  [001] d...  9557.806689: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="ls"</span><br><span class="line">            bash-4920  [001] d...  9558.865593: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="cd .."</span><br><span class="line">            bash-4920  [001] d...  9559.230347: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="ls"</span><br><span class="line">            bash-4920  [001] d...  9562.364085: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="cat trace | tail"</span><br></pre></td></tr></table></figure>
+<h2 id="设置kprobe"><a href="#设置kprobe" class="headerlink" title="设置kprobe"></a>设置<code>kprobe</code></h2><p>这个比较简单，设置一下<code>enable</code>就行。我们这里只打开<code>sched</code>相关的事件。</p>
+<p><code>echo 1 &gt; /sys/kernel/debug/tracing/events/sched/enable</code></p>
+<h2 id="观察trace结果"><a href="#观察trace结果" class="headerlink" title="观察trace结果"></a>观察<code>trace</code>结果</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">cat trace | grep -C 2 readline</span><br><span class="line">kworker/u256:2-3393  [002] d...  4510.436525: sched_switch: prev_comm=kworker/u256:2 prev_pid=3393 prev_prio=120 prev_state=R+ ==&gt; next_comm=swapper/2 next_pid=0 next_prio=120</span><br><span class="line">            bash-1649  [000] d.h.  4510.436528: sched_wakeup: comm=sshd pid=1645 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [000] d...  4510.436601: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="cat enable "</span><br><span class="line">            bash-1649  [000] d...  4510.436661: sched_stat_runtime: comm=bash pid=1649 runtime=220718 [ns] vruntime=8123222027 [ns]</span><br><span class="line">            bash-1649  [000] ....  4510.436738: sched_process_fork: comm=bash pid=1649 child_comm=bash child_pid=4348</span><br><span class="line">--</span><br><span class="line">            bash-1649  [000] d...  4510.844339: sched_waking: comm=kworker/u256:2 pid=3393 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [000] d...  4510.844340: sched_wakeup: comm=kworker/u256:2 pid=3393 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [000] d...  4510.844421: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="ls"</span><br><span class="line">            bash-1649  [000] d...  4510.844476: sched_stat_runtime: comm=bash pid=1649 runtime=148935 [ns] vruntime=8124989109 [ns]</span><br><span class="line">            bash-1649  [000] ....  4510.844549: sched_process_fork: comm=bash pid=1649 child_comm=bash child_pid=4354</span><br><span class="line">--</span><br><span class="line">            bash-1649  [000] d...  4515.309199: sched_waking: comm=kworker/u256:2 pid=3393 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [000] d...  4515.309200: sched_wakeup: comm=kworker/u256:2 pid=3393 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [000] d...  4515.309271: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="cd probe_bash/"</span><br><span class="line">            bash-1649  [000] d...  4515.309421: sched_stat_runtime: comm=bash pid=1649 runtime=243557 [ns] vruntime=8128041748 [ns]</span><br><span class="line">            bash-1649  [000] ....  4515.309492: sched_process_fork: comm=bash pid=1649 child_comm=bash child_pid=4361</span><br><span class="line">--</span><br><span class="line">            bash-1649  [000] d...  4515.795429: sched_waking: comm=kworker/u256:2 pid=3393 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [000] d...  4515.795430: sched_wakeup: comm=kworker/u256:2 pid=3393 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [000] d...  4515.795500: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="ls"</span><br><span class="line">            bash-1649  [000] d...  4515.795555: sched_stat_runtime: comm=bash pid=1649 runtime=138497 [ns] vruntime=8128576492 [ns]</span><br><span class="line">            bash-1649  [000] ....  4515.795628: sched_process_fork: comm=bash pid=1649 child_comm=bash child_pid=4366</span><br><span class="line">--</span><br><span class="line">  kworker/u256:2-3393  [000] d...  4517.849441: sched_stat_runtime: comm=kworker/u256:2 pid=3393 runtime=1579 [ns] vruntime=11405903803 [ns]</span><br><span class="line">  kworker/u256:2-3393  [000] d...  4517.849441: sched_switch: prev_comm=kworker/u256:2 prev_pid=3393 prev_prio=120 prev_state=R+ ==&gt; next_comm=sshd next_pid=1645 next_prio=120</span><br><span class="line">            bash-1649  [001] d...  4517.849473: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="cat enable "</span><br><span class="line">            bash-1649  [001] d...  4517.849531: sched_stat_runtime: comm=bash pid=1649 runtime=160328 [ns] vruntime=10110004768 [ns]</span><br><span class="line">            sshd-1645  [000] d...  4517.849543: sched_stat_runtime: comm=sshd pid=1645 runtime=101818 [ns] vruntime=1177932308 [ns]</span><br><span class="line">--</span><br><span class="line">  kworker/u256:2-3393  [000] d...  4518.326292: sched_stat_runtime: comm=kworker/u256:2 pid=3393 runtime=1559 [ns] vruntime=11405998988 [ns]</span><br><span class="line">  kworker/u256:2-3393  [000] d...  4518.326293: sched_switch: prev_comm=kworker/u256:2 prev_pid=3393 prev_prio=120 prev_state=R+ ==&gt; next_comm=sshd next_pid=1645 next_prio=120</span><br><span class="line">            bash-1649  [001] d...  4518.326323: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="ls"</span><br><span class="line">            bash-1649  [001] d...  4518.326377: sched_stat_runtime: comm=bash pid=1649 runtime=155566 [ns] vruntime=10126596805 [ns]</span><br><span class="line">            sshd-1645  [000] d...  4518.326390: sched_stat_runtime: comm=sshd pid=1645 runtime=97022 [ns] vruntime=1178607048 [ns]</span><br><span class="line">--</span><br><span class="line">          &lt;idle&gt;-0     [001] d...  4525.694161: sched_switch: prev_comm=swapper/1 prev_pid=0 prev_prio=120 prev_state=S ==&gt; next_comm=bash next_pid=1649 next_prio=120</span><br><span class="line">            bash-1649  [001] d...  4525.694175: sched_waking: comm=kworker/u256:2 pid=3393 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [001] d...  4525.694257: readline: (0x41e6ea &lt;- 0x48aaf0) arg1="echo "0" &gt; enable"</span><br><span class="line">          &lt;idle&gt;-0     [000] dNh.  4525.694323: sched_wakeup: comm=kworker/u256:2 pid=3393 prio=120 target_cpu=000</span><br><span class="line">            bash-1649  [001] d...  4525.694327: sched_stat_runtime: comm=bash pid=1649 runtime=168870 [ns] vruntime=10131670237 [ns]</span><br></pre></td></tr></table></figure>
+<p>OK，此时就可以同时追踪kproble和uprobe了。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/12/quickwords29-amd-zen2-microarch/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Quickwords29：AMD ZEN 2 Microarchitecture Overview</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内核版本"><span class="nav-number">1.</span> <span class="nav-text">内核版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置uprobe"><span class="nav-number">2.</span> <span class="nav-text">设置uprobe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#看看有哪些能设置的点"><span class="nav-number">2.1.</span> <span class="nav-text">看看有哪些能设置的点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加uprobe跟踪点"><span class="nav-number">2.2.</span> <span class="nav-text">添加uprobe跟踪点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置kprobe"><span class="nav-number">3.</span> <span class="nav-text">设置kprobe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察trace结果"><span class="nav-number">4.</span> <span class="nav-text">观察trace结果</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-06-18T13:40:34.912Z</updated>
+  <updated>2019-06-19T12:06:15.239Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>5分钟经典英文技术演讲3：如何应对信息过载并提高生产效率-Scott Hanselman</title>
+    <link href="https://decodezp.github.io/2019/06/19/eng-talk3-scaling-yourself/"/>
+    <id>https://decodezp.github.io/2019/06/19/eng-talk3-scaling-yourself/</id>
+    <published>2019-06-19T12:04:22.000Z</published>
+    <updated>2019-06-19T12:06:15.239Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;一个人的能力上限很大程度上取决于他获取信息的能力。&lt;/p&gt;
+&lt;p&gt;而能力增长的速度与获取信息的&lt;strong&gt;质量&lt;/strong&gt;正相关。&lt;/p&gt;
+&lt;p&gt;不可否认，大量优质的技术内容都基于英文。“5分钟经典英文技术演讲”专门撷取国外最有价值的纯英文技术演讲，以最精炼的形式将信息传达给国内的技术同侪，绕过网络政策和语言的障碍，实现中西方技术世界无壁垒的信息同步。&lt;/p&gt;
+&lt;p&gt;最新内容将发布于DecodeZ: decodezp.github.io&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://decodezp.github.io/2018/12/12/eng-talk1-fast-learn/&quot;&gt;往期回顾1：如何快速掌握新技术&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://decodezp.github.io/2018/12/21/eng-talk2-things-matter/&quot;&gt;往期回顾2：软件设计真正的精髓&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;GOTO2012-Scaling-Yourself&quot;&gt;&lt;a href=&quot;#GOTO2012-Scaling-Yourself&quot; class=&quot;headerlink&quot; title=&quot;GOTO2012: Scaling Yourself&quot;&gt;&lt;/a&gt;GOTO2012: Scaling Yourself&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=FS1mnISoG7U&amp;amp;list=PL-V4m0AO-7weBsEkJjmF563WGfIsCgk9t&amp;amp;index=16&amp;amp;t=1484s&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原视频&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/0a3df681baef_C924/97e47e1feb7b591e8220b08a8c83cc9a_28706943-45af-44b8-a280-d15e7cfbc89c.jpg&quot; alt=&quot;演讲者：Scott Hanselman&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;摘要：信息过载的时代，能否找到一种在信息洪流中独善其身的方法，让我们专注于真正重要事情？当生活/工作的范畴一再扩大，我们也需要延展自身的边界，在充分利用信息的同时，保持持续的生产效率。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="ENG_talk" scheme="https://decodezp.github.io/categories/ENG-talk/"/>
+    
+    
+      <category term="English" scheme="https://decodezp.github.io/tags/English/"/>
+    
+      <category term="Presentation" scheme="https://decodezp.github.io/tags/Presentation/"/>
+    
+  </entry>
   
   <entry>
     <title>Quickwords30：Use Both kprobe and uprobe At The Same Time</title>
@@ -444,27 +476,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>商业供稿3：2019云计算安全5大趋势</title>
-    <link href="https://decodezp.github.io/2019/04/15/commerical3-2019-cloud-security-trends/"/>
-    <id>https://decodezp.github.io/2019/04/15/commerical3-2019-cloud-security-trends/</id>
-    <published>2019-04-15T12:18:29.000Z</published>
-    <updated>2019-04-15T12:23:59.865Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;em&gt;原载于云杉网络 &lt;a href=&quot;http://www.yunshan.net&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;www.yunshan.net&lt;/a&gt; 微信公众号&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&quot;安全将成为云计算最大的挑战&quot;&gt;&lt;a href=&quot;#安全将成为云计算最大的挑战&quot; class=&quot;headerlink&quot; title=&quot;安全将成为云计算最大的挑战&quot;&gt;&lt;/a&gt;安全将成为云计算最大的挑战&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="commerical" scheme="https://decodezp.github.io/categories/commerical/"/>
-    
-    
-      <category term="commerical" scheme="https://decodezp.github.io/tags/commerical/"/>
     
   </entry>
   

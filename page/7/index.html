@@ -192,6 +192,68 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-quickwords8-700-nic-arch" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/12/25/quickwords8-700-nic-arch/">几句话说清楚8：Intel 700系列网卡内部结构概览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/12/25/quickwords8-700-nic-arch/" class="article-date">
+	  <time datetime="2018-12-25T09:17:39.000Z" itemprop="datePublished">December 25, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="/2018/12/25/quickwords8-700-nic-arch/"><img width="250" height="175" src="https://article-fd.zol-img.com.cn/t_s640x2000/g5/M00/03/0F/ChMkJ1sqEjeILkjbAAGZzFX5UVMAApKMgJlJbEAAZnk090.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          一不小心这个系列写到了第8期，原本打算写些别的东西，不过看到8这个数字就想到了Intel将要推出的800系列网卡…的小弟——命途多舛的700系列网卡。从目前市场(主要是云计算、互联网公司和数据中心)的情况看，700系列有逐渐推广的趋势，那么这一期就介绍一下700系列网卡的基本技术架构和特点吧。
+Intel 700系列网卡的内部架构在处理完物理层的事情之后，数据包会进入网卡内部的处理流水线。
+...
+
+        
+          <p class="article-more-link">
+            <a href="/2018/12/25/quickwords8-700-nic-arch/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-quickwords7-dpdk-cross-compile" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -772,70 +834,6 @@ return &quot;您期望的时间不存在&quot;
     
 
   
-    <article id="post-test2-cache-line-alignment" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/06/test2-cache-line-alignment/">测来测去2：CPU缓存读入策略</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/12/06/test2-cache-line-alignment/" class="article-date">
-	  <time datetime="2018-12-06T06:18:31.000Z" itemprop="datePublished">December 6, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <a href="/2018/12/06/test2-cache-line-alignment/"><img width="250" height="175" src="http://1.bp.blogspot.com/-_rreUS6uUzs/TicrO8neu9I/AAAAAAAAIIs/1GVO_DbXcQo/s400/CPUCache.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          到底哪些数据写入了CPU缓存我们知道CPU会在要读写某个数据时，先将数据写入缓存。
-我们也知道这个操作一般以Cache Line为操作粒度，并且Cache Line的长度一般为64Byte。
-那么这个Cache Line包含的数据到底是哪64Byte呢？
-如果要读写的数据的地址正好以64Byte对齐，那么肯定是这个数据和它之后的（64 - sizeof(数据)）Byte存在于这个缓存行里。
-...
-
-        
-          <p class="article-more-link">
-            <a href="/2018/12/06/test2-cache-line-alignment/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/test/">test</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -934,6 +932,21 @@ return &quot;您期望的时间不存在&quot;
 
             
               <div class="widget-entry-thumbnail">
+                <a href="/2019/06/24/promised-date/" title=""><img width="50" height="50" src="http://img6.16fan.com/attachments/wenzhang/201612/2/148064556323048ge.jpeg?imageView2/2/w/700/q/90/format/webp" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2019/06/24/promised-date/">应许之日</a></h6>
+              <span>June 24, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
                 <a href="/2019/06/19/eng-talk3-scaling-yourself/" title=""><img width="50" height="50" src="https://s2.ax1x.com/2019/06/19/VORk9O.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
@@ -1005,21 +1018,6 @@ return &quot;您期望的时间不存在&quot;
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2019/05/28/test14-phoronix-tinymembench/" title=""><img width="50" height="50" src="https://www.researchgate.net/profile/Thomas_Unterluggauer/publication/320250282/figure/fig1/AS:556142838857728@1509606193481/Memory-bandwidth-determined-with-tinymembench-NEON-read-prefetched-64-bytes-step-NEON.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/28/test14-phoronix-tinymembench/">测来测去14：Phoronix tinymembench结果不理想的可能原因</a></h6>
-              <span>May 28, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1029,7 +1027,7 @@ return &quot;您期望的时间不存在&quot;
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ENG-talk/">ENG_talk</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/commerical/">commerical</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/history/">history</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">41</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tech/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/product/">product</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/quickwords/">quickwords</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/thoughts/">thoughts</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wonder/">wonder</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ENG-talk/">ENG_talk</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/commerical/">commerical</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/history/">history</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">41</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tech/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/product/">product</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/quickwords/">quickwords</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/thoughts/">thoughts</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wonder/">wonder</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1039,7 +1037,7 @@ return &quot;您期望的时间不存在&quot;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU/">CPU</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIC/">NIC</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/">cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/commerical/">commerical</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dpdk/">dpdk</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftrace/">ftrace</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hardware/">hardware</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/">history</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory/">memory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openwrt/">openwrt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perf/">perf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/product/">product</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/program/">program</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resources/">resources</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/">tech</a><span class="tag-list-count">58</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/">thoughts</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wonder/">wonder</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU/">CPU</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIC/">NIC</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/">cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/commerical/">commerical</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dpdk/">dpdk</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftrace/">ftrace</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hardware/">hardware</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/">history</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory/">memory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openwrt/">openwrt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perf/">perf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/product/">product</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/program/">program</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resources/">resources</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/">tech</a><span class="tag-list-count">58</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/">thoughts</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wonder/">wonder</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1049,7 +1047,7 @@ return &quot;您期望的时间不存在&quot;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CPU/" style="font-size: 17.78px;">CPU</a> <a href="/tags/English/" style="font-size: 12.22px;">English</a> <a href="/tags/NIC/" style="font-size: 14.44px;">NIC</a> <a href="/tags/Presentation/" style="font-size: 12.22px;">Presentation</a> <a href="/tags/cloud/" style="font-size: 10px;">cloud</a> <a href="/tags/commerical/" style="font-size: 12.22px;">commerical</a> <a href="/tags/dpdk/" style="font-size: 13.33px;">dpdk</a> <a href="/tags/ftrace/" style="font-size: 11.11px;">ftrace</a> <a href="/tags/game/" style="font-size: 10px;">game</a> <a href="/tags/hardware/" style="font-size: 18.89px;">hardware</a> <a href="/tags/history/" style="font-size: 12.22px;">history</a> <a href="/tags/life/" style="font-size: 12.22px;">life</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/memory/" style="font-size: 10px;">memory</a> <a href="/tags/network/" style="font-size: 15.56px;">network</a> <a href="/tags/openwrt/" style="font-size: 10px;">openwrt</a> <a href="/tags/perf/" style="font-size: 10px;">perf</a> <a href="/tags/performance/" style="font-size: 15.56px;">performance</a> <a href="/tags/product/" style="font-size: 10px;">product</a> <a href="/tags/program/" style="font-size: 10px;">program</a> <a href="/tags/resources/" style="font-size: 10px;">resources</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/thoughts/" style="font-size: 16.67px;">thoughts</a> <a href="/tags/wonder/" style="font-size: 10px;">wonder</a>
+      <a href="/tags/CPU/" style="font-size: 18px;">CPU</a> <a href="/tags/English/" style="font-size: 12px;">English</a> <a href="/tags/NIC/" style="font-size: 14px;">NIC</a> <a href="/tags/Presentation/" style="font-size: 12px;">Presentation</a> <a href="/tags/cloud/" style="font-size: 10px;">cloud</a> <a href="/tags/commerical/" style="font-size: 12px;">commerical</a> <a href="/tags/dpdk/" style="font-size: 13px;">dpdk</a> <a href="/tags/ftrace/" style="font-size: 11px;">ftrace</a> <a href="/tags/game/" style="font-size: 10px;">game</a> <a href="/tags/hardware/" style="font-size: 19px;">hardware</a> <a href="/tags/history/" style="font-size: 12px;">history</a> <a href="/tags/life/" style="font-size: 12px;">life</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/memory/" style="font-size: 10px;">memory</a> <a href="/tags/network/" style="font-size: 15px;">network</a> <a href="/tags/openwrt/" style="font-size: 10px;">openwrt</a> <a href="/tags/perf/" style="font-size: 10px;">perf</a> <a href="/tags/performance/" style="font-size: 15px;">performance</a> <a href="/tags/product/" style="font-size: 10px;">product</a> <a href="/tags/program/" style="font-size: 10px;">program</a> <a href="/tags/resources/" style="font-size: 10px;">resources</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a> <a href="/tags/test/" style="font-size: 16px;">test</a> <a href="/tags/thoughts/" style="font-size: 17px;">thoughts</a> <a href="/tags/wonder/" style="font-size: 10px;">wonder</a>
     </div>
   </div>
 
@@ -1059,7 +1057,7 @@ return &quot;您期望的时间不存在&quot;
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 

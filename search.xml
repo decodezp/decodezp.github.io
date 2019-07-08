@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>Quickwords31：What Is Inclusive and Exclusive Cache</title>
+      <link href="/2019/07/08/quickwords31-inclusive-exclusive-cache/"/>
+      <url>/2019/07/08/quickwords31-inclusive-exclusive-cache/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一般对Cache的认知方式"><a href="#一般对Cache的认知方式" class="headerlink" title="一般对Cache的认知方式"></a>一般对Cache的认知方式</h2><p>我们比较熟悉的对Cache的理解是，首先有3级，L1，L2和L3。这三级依次远离CPU核心，查询数据的速度也依次减慢。当CPU需要一个地址上的数据时，会先去L1查找；当L1没有这个数据的时候，去L2查找；L2也没有的时候，去L3查找。如果还没有，就去内存上去查找。这是我们看待Cache和CPU查询数据时的一般方式。<br><a id="more"></a></p><p>这里面其实没有涉及一个问题，就是L1中包含的数据，L2中是否包含；L2中包含的数据，L3中是否包含。我们可能会习惯性地认为“是包含的”，但实际上这句话只说对了一半，或者一小半吧。当下一级缓存包含上一级缓存的数据时，我们称这种缓存为<code>Inclusive Cache</code>，当下一级缓存不包含上一级缓存的数据的时候，这种缓存就被称为<code>Exclusive Cache</code>。</p><h2 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h2><p>那么<code>Exclusive Cache</code>有什么好处呢？首先第一点就是减少了缓存空间的浪费。因为当上级缓存有需要的数据时，CPU是不会查询次级缓存的，所以这部分空间就可以解放出来放别的数据。</p><p>另外一点就是减轻缓存相干性（Cache Coherency）的复杂度。简单来讲，当上一级缓存中的数据需要被踢出时，如果是<code>Inclusive Cache</code>，那么所有下级缓存中都包含该失效的数据，都需要被踢出。同时还需要验证上级缓存中是否也存在需要被提出的数据。在多核系统中，还需要考虑不同CPU核之间的MESI协议的处理，会令情况更加复杂。</p><p>事实上，现在的CPU更多的是<code>Exclusive Cache</code>结构，而非我们（自以为）熟悉的<code>Inclusive Cache</code>结构。但实际上，很多CPU的设计都不是严格的<code>Inclusive/Exclusive Cache</code>结构，而是采用的折衷的<code>NI/NE</code>结构，也就是“既不是严格的Inclusive，也不是严格的Exclusive”，从而在各自针对Cache特性的优先级上获取一定的自由度。</p><h2 id="可能的影响"><a href="#可能的影响" class="headerlink" title="可能的影响"></a>可能的影响</h2><p>在DPDK的应用中，一些原有的DPDK应用在升级了新型号的CPU之后反而出现性能下降（~20%）的问题，这时就需要考虑是否是因为Cache架构变化导致的。例如：</p><p>某些新型的CPU，我就不具体点名了，其L2 Cache和L3 Cache之间，由之前的<code>Inclusive</code>关系变成了<code>Exclusive</code>关系。这也就是说当一个pkt进入某一个CPU核的L2缓存时，其必定不在L3缓存里。当DPDK应用是RTC(Run To Completion)框架时，该pkt的数据只在一个CPU核的L2里处理，还可以取得应有的性能。但当DPDK应用是PipeLine框架时，因为pkt的数据需要在多个核之间传递，每当它进入一个核的L2时，都需要将L3中的数据失效，同时多个核之间又共享L3，所以就增加了pkt在缓存间传递的次数，进而引起应用整体的性能下降。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>应许之日</title>
       <link href="/2019/06/24/promised-date/"/>
       <url>/2019/06/24/promised-date/</url>

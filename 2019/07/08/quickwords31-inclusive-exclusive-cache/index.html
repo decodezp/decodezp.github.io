@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>quickwords31：what is inclusive and exclusive cache | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="一般对Cache的认知方式我们比较熟悉的对Cache的理解是，首先有3级，L1，L2和L3。这三级依次远离CPU核心，查询数据的速度也依次减慢。当CPU需要一个地址上的数据时，会先去L1查找；当L1没有这个数据的时候，去L2查找；L2也没有的时候，去L3查找。如果还没有，就去内存上去查找。这是我们看待Cache和CPU查询数据时的一般方式。">
+<meta name="keywords" content="tech,hardware,CPU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quickwords31：What Is Inclusive and Exclusive Cache">
+<meta property="og:url" content="https://decodezp.github.io/2019/07/08/quickwords31-inclusive-exclusive-cache/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="一般对Cache的认知方式我们比较熟悉的对Cache的理解是，首先有3级，L1，L2和L3。这三级依次远离CPU核心，查询数据的速度也依次减慢。当CPU需要一个地址上的数据时，会先去L1查找；当L1没有这个数据的时候，去L2查找；L2也没有的时候，去L3查找。如果还没有，就去内存上去查找。这是我们看待Cache和CPU查询数据时的一般方式。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/9a354b0fe10877ca236b52b794de094293a6eb47/3-Figure2-1.png">
+<meta property="og:updated_time" content="2019-07-08T13:23:30.705Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Quickwords31：What Is Inclusive and Exclusive Cache">
+<meta name="twitter:description" content="一般对Cache的认知方式我们比较熟悉的对Cache的理解是，首先有3级，L1，L2和L3。这三级依次远离CPU核心，查询数据的速度也依次减慢。当CPU需要一个地址上的数据时，会先去L1查找；当L1没有这个数据的时候，去L2查找；L2也没有的时候，去L3查找。如果还没有，就去内存上去查找。这是我们看待Cache和CPU查询数据时的一般方式。">
+<meta name="twitter:image" content="https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/9a354b0fe10877ca236b52b794de094293a6eb47/3-Figure2-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-quickwords31-inclusive-exclusive-cache" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/9a354b0fe10877ca236b52b794de094293a6eb47/3-Figure2-1.png" rel="gallery_cjxuf27a2004128fy2dem2agf">
+        <img src="https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/9a354b0fe10877ca236b52b794de094293a6eb47/3-Figure2-1.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Quickwords31：What Is Inclusive and Exclusive Cache
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/07/08/quickwords31-inclusive-exclusive-cache/" class="article-date">
+	  <time datetime="2019-07-08T13:10:13.000Z" itemprop="datePublished">July 8, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一般对Cache的认知方式"><a href="#一般对Cache的认知方式" class="headerlink" title="一般对Cache的认知方式"></a>一般对Cache的认知方式</h2><p>我们比较熟悉的对Cache的理解是，首先有3级，L1，L2和L3。这三级依次远离CPU核心，查询数据的速度也依次减慢。当CPU需要一个地址上的数据时，会先去L1查找；当L1没有这个数据的时候，去L2查找；L2也没有的时候，去L3查找。如果还没有，就去内存上去查找。这是我们看待Cache和CPU查询数据时的一般方式。<br><a id="more"></a></p>
+<p>这里面其实没有涉及一个问题，就是L1中包含的数据，L2中是否包含；L2中包含的数据，L3中是否包含。我们可能会习惯性地认为“是包含的”，但实际上这句话只说对了一半，或者一小半吧。当下一级缓存包含上一级缓存的数据时，我们称这种缓存为<code>Inclusive Cache</code>，当下一级缓存不包含上一级缓存的数据的时候，这种缓存就被称为<code>Exclusive Cache</code>。</p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h2><p>那么<code>Exclusive Cache</code>有什么好处呢？首先第一点就是减少了缓存空间的浪费。因为当上级缓存有需要的数据时，CPU是不会查询次级缓存的，所以这部分空间就可以解放出来放别的数据。</p>
+<p>另外一点就是减轻缓存相干性（Cache Coherency）的复杂度。简单来讲，当上一级缓存中的数据需要被踢出时，如果是<code>Inclusive Cache</code>，那么所有下级缓存中都包含该失效的数据，都需要被踢出。同时还需要验证上级缓存中是否也存在需要被提出的数据。在多核系统中，还需要考虑不同CPU核之间的MESI协议的处理，会令情况更加复杂。</p>
+<p>事实上，现在的CPU更多的是<code>Exclusive Cache</code>结构，而非我们（自以为）熟悉的<code>Inclusive Cache</code>结构。但实际上，很多CPU的设计都不是严格的<code>Inclusive/Exclusive Cache</code>结构，而是采用的折衷的<code>NI/NE</code>结构，也就是“既不是严格的Inclusive，也不是严格的Exclusive”，从而在各自针对Cache特性的优先级上获取一定的自由度。</p>
+<h2 id="可能的影响"><a href="#可能的影响" class="headerlink" title="可能的影响"></a>可能的影响</h2><p>在DPDK的应用中，一些原有的DPDK应用在升级了新型号的CPU之后反而出现性能下降（~20%）的问题，这时就需要考虑是否是因为Cache架构变化导致的。例如：</p>
+<p>某些新型的CPU，我就不具体点名了，其L2 Cache和L3 Cache之间，由之前的<code>Inclusive</code>关系变成了<code>Exclusive</code>关系。这也就是说当一个pkt进入某一个CPU核的L2缓存时，其必定不在L3缓存里。当DPDK应用是RTC(Run To Completion)框架时，该pkt的数据只在一个CPU核的L2里处理，还可以取得应有的性能。但当DPDK应用是PipeLine框架时，因为pkt的数据需要在多个核之间传递，每当它进入一个核的L2时，都需要将L3中的数据失效，同时多个核之间又共享L3，所以就增加了pkt在缓存间传递的次数，进而引起应用整体的性能下降。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/24/promised-date/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">应许之日</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般对Cache的认知方式"><span class="nav-number">1.</span> <span class="nav-text">一般对Cache的认知方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">2.</span> <span class="nav-text">Why?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能的影响"><span class="nav-number">3.</span> <span class="nav-text">可能的影响</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

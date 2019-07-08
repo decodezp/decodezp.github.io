@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-06-24T14:06:29.586Z</updated>
+  <updated>2019-07-08T13:23:30.705Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quickwords31：What Is Inclusive and Exclusive Cache</title>
+    <link href="https://decodezp.github.io/2019/07/08/quickwords31-inclusive-exclusive-cache/"/>
+    <id>https://decodezp.github.io/2019/07/08/quickwords31-inclusive-exclusive-cache/</id>
+    <published>2019-07-08T13:10:13.000Z</published>
+    <updated>2019-07-08T13:23:30.705Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一般对Cache的认知方式&quot;&gt;&lt;a href=&quot;#一般对Cache的认知方式&quot; class=&quot;headerlink&quot; title=&quot;一般对Cache的认知方式&quot;&gt;&lt;/a&gt;一般对Cache的认知方式&lt;/h2&gt;&lt;p&gt;我们比较熟悉的对Cache的理解是，首先有3级，L1，L2和L3。这三级依次远离CPU核心，查询数据的速度也依次减慢。当CPU需要一个地址上的数据时，会先去L1查找；当L1没有这个数据的时候，去L2查找；L2也没有的时候，去L3查找。如果还没有，就去内存上去查找。这是我们看待Cache和CPU查询数据时的一般方式。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>应许之日</title>
@@ -419,7 +443,7 @@
     <link href="https://decodezp.github.io/2019/04/20/quickwords27-skylake-pipeline-10/"/>
     <id>https://decodezp.github.io/2019/04/20/quickwords27-skylake-pipeline-10/</id>
     <published>2019-04-20T05:36:19.000Z</published>
-    <updated>2019-04-20T05:39:11.955Z</updated>
+    <updated>2019-07-08T13:23:32.266Z</updated>
     
     <summary type="html">
     
@@ -455,27 +479,6 @@
     
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如果你到鲁汶来，一定要喝Stella</title>
-    <link href="https://decodezp.github.io/2019/04/19/thoughts7-leuven-stella/"/>
-    <id>https://decodezp.github.io/2019/04/19/thoughts7-leuven-stella/</id>
-    <published>2019-04-19T06:56:20.000Z</published>
-    <updated>2019-05-08T14:54:19.622Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;自打那次正式的告别之后，很久都没有再梦见过鲁汶。那几年大部分的时光，都仿佛跌入了时间的黑洞，如今能找到的，只有下面这篇旧文中的只言片语。刚想要深入挖掘一下脑海中的记忆，却又畏葸不前——毕竟清扫记忆这事，如扫落叶，旋扫旋生。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

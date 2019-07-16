@@ -222,7 +222,7 @@ var themeMenus = {};
           </div>
           <div class="entry-summary">
           IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。
-本质上来说，是在DPDK的mbuf结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。
+本质上来说，是在DPDK的mbuf结构中，将L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。
 ixg...
 
         

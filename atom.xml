@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-07-16T11:11:14.246Z</updated>
+  <updated>2019-07-16T11:14:22.339Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="https://decodezp.github.io/2019/07/16/test15-dpdk-vxlan-csum-offload/"/>
     <id>https://decodezp.github.io/2019/07/16/test15-dpdk-vxlan-csum-offload/</id>
     <published>2019-07-16T11:08:19.000Z</published>
-    <updated>2019-07-16T11:11:14.246Z</updated>
+    <updated>2019-07-16T11:14:22.339Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;IXGBE&quot;&gt;&lt;a href=&quot;#IXGBE&quot; class=&quot;headerlink&quot; title=&quot;IXGBE&quot;&gt;&lt;/a&gt;IXGBE&lt;/h2&gt;&lt;p&gt;以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。&lt;/p&gt;
-&lt;p&gt;本质上来说，是在DPDK的&lt;code&gt;mbuf&lt;/code&gt;结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该&lt;code&gt;mbuf&lt;/code&gt;对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。&lt;br&gt;
+&lt;p&gt;本质上来说，是在DPDK的&lt;code&gt;mbuf&lt;/code&gt;结构中，将L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该&lt;code&gt;mbuf&lt;/code&gt;对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。&lt;br&gt;
     
     </summary>
     

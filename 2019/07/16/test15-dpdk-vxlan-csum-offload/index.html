@@ -45,19 +45,19 @@
   
   
   
-  <meta name="description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
+  <meta name="description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，将L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
 <meta name="keywords" content="tech,dpdk,test">
 <meta property="og:type" content="article">
 <meta property="og:title" content="测来测去15：DPDK VxLAN Inner L4 CSUM OFFLOAD">
 <meta property="og:url" content="https://decodezp.github.io/2019/07/16/test15-dpdk-vxlan-csum-offload/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
+<meta property="og:description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，将L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG">
-<meta property="og:updated_time" content="2019-07-16T11:11:14.246Z">
+<meta property="og:updated_time" content="2019-07-16T11:14:22.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="测来测去15：DPDK VxLAN Inner L4 CSUM OFFLOAD">
-<meta name="twitter:description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
+<meta name="twitter:description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，将L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
 <meta name="twitter:image" content="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
@@ -200,7 +200,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG" rel="gallery_cjy5ptjga006ds8fy3x8dgfi4">
+      <a class="article-gallery-img fancybox" href="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG" rel="gallery_cjy5pywrk006116fyv1arm17l">
         <img src="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG" itemprop="image">
       </a>
     
@@ -233,7 +233,7 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="IXGBE"><a href="#IXGBE" class="headerlink" title="IXGBE"></a>IXGBE</h2><p>以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。</p>
-<p>本质上来说，是在DPDK的<code>mbuf</code>结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该<code>mbuf</code>对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。<br><a id="more"></a></p>
+<p>本质上来说，是在DPDK的<code>mbuf</code>结构中，将L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该<code>mbuf</code>对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。<br><a id="more"></a></p>
 <h3 id="ixgbe-tx-offload"><a href="#ixgbe-tx-offload" class="headerlink" title="ixgbe_tx_offload"></a>ixgbe_tx_offload</h3><p>在DPDK的IXGBE驱动代码中有如下结构体：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Offload features */</span></span><br><span class="line"><span class="keyword">union</span> ixgbe_tx_offload &#123;</span><br><span class="line">    <span class="keyword">uint64_t</span> data[<span class="number">2</span>];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">        <span class="keyword">uint64_t</span> l2_len:<span class="number">7</span>; <span class="comment">/**&lt; L2 (MAC) Header Length. */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> l3_len:<span class="number">9</span>; <span class="comment">/**&lt; L3 (IP) Header Length. */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> l4_len:<span class="number">8</span>; <span class="comment">/**&lt; L4 (TCP/UDP) Header Length. */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> tso_segsz:<span class="number">16</span>; <span class="comment">/**&lt; TCP TSO segment size */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> vlan_tci:<span class="number">16</span>;</span><br><span class="line">        <span class="comment">/**&lt; VLAN Tag Control Identifier (CPU order). */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/* fields for TX offloading of tunnels */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> outer_l3_len:<span class="number">8</span>; <span class="comment">/**&lt; Outer L3 (IP) Hdr Length. */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> outer_l2_len:<span class="number">8</span>; <span class="comment">/**&lt; Outer L2 (MAC) Hdr Length. */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> RTE_LIBRTE_SECURITY</span></span><br><span class="line">        <span class="comment">/* inline ipsec related*/</span></span><br><span class="line">        <span class="keyword">uint64_t</span> sa_idx:<span class="number">8</span>;  <span class="comment">/**&lt; TX SA database entry index */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> sec_pad_len:<span class="number">4</span>; <span class="comment">/**&lt; padding length */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>这里面<code>l2_len</code>是占了7个比特位，也就是说你外层报文头长度+内层L2 Header长度不要大于127Byte。</p>

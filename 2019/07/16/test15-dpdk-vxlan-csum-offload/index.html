@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>测来测去15：dpdk vxlan inner l4 csum offload | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
+<meta name="keywords" content="tech,dpdk,test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测来测去15：DPDK VxLAN Inner L4 CSUM OFFLOAD">
+<meta property="og:url" content="https://decodezp.github.io/2019/07/16/test15-dpdk-vxlan-csum-offload/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG">
+<meta property="og:updated_time" content="2019-07-16T11:11:14.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测来测去15：DPDK VxLAN Inner L4 CSUM OFFLOAD">
+<meta name="twitter:description" content="IXGBE以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。 本质上来说，是在DPDK的mbuf结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该mbuf对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。">
+<meta name="twitter:image" content="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-test15-dpdk-vxlan-csum-offload" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG" rel="gallery_cjy5ptjga006ds8fy3x8dgfi4">
+        <img src="https://1.bp.blogspot.com/-vRXafzWUX9E/Wu8yA7FYpxI/AAAAAAAAAao/eoPX17rOsWMyJAObIkmCtJQcX1wPEuENACLcBGAs/s1600/2018-04-VXLAN-PartVII-Figure_7-1.PNG" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      测来测去15：DPDK VxLAN Inner L4 CSUM OFFLOAD
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/07/16/test15-dpdk-vxlan-csum-offload/" class="article-date">
+	  <time datetime="2019-07-16T11:08:19.000Z" itemprop="datePublished">July 16, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="IXGBE"><a href="#IXGBE" class="headerlink" title="IXGBE"></a>IXGBE</h2><p>以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。</p>
+<p>本质上来说，是在DPDK的<code>mbuf</code>结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该<code>mbuf</code>对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。<br><a id="more"></a></p>
+<h3 id="ixgbe-tx-offload"><a href="#ixgbe-tx-offload" class="headerlink" title="ixgbe_tx_offload"></a>ixgbe_tx_offload</h3><p>在DPDK的IXGBE驱动代码中有如下结构体：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Offload features */</span></span><br><span class="line"><span class="keyword">union</span> ixgbe_tx_offload &#123;</span><br><span class="line">    <span class="keyword">uint64_t</span> data[<span class="number">2</span>];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">        <span class="keyword">uint64_t</span> l2_len:<span class="number">7</span>; <span class="comment">/**&lt; L2 (MAC) Header Length. */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> l3_len:<span class="number">9</span>; <span class="comment">/**&lt; L3 (IP) Header Length. */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> l4_len:<span class="number">8</span>; <span class="comment">/**&lt; L4 (TCP/UDP) Header Length. */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> tso_segsz:<span class="number">16</span>; <span class="comment">/**&lt; TCP TSO segment size */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> vlan_tci:<span class="number">16</span>;</span><br><span class="line">        <span class="comment">/**&lt; VLAN Tag Control Identifier (CPU order). */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/* fields for TX offloading of tunnels */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> outer_l3_len:<span class="number">8</span>; <span class="comment">/**&lt; Outer L3 (IP) Hdr Length. */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> outer_l2_len:<span class="number">8</span>; <span class="comment">/**&lt; Outer L2 (MAC) Hdr Length. */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> RTE_LIBRTE_SECURITY</span></span><br><span class="line">        <span class="comment">/* inline ipsec related*/</span></span><br><span class="line">        <span class="keyword">uint64_t</span> sa_idx:<span class="number">8</span>;  <span class="comment">/**&lt; TX SA database entry index */</span></span><br><span class="line">        <span class="keyword">uint64_t</span> sec_pad_len:<span class="number">4</span>; <span class="comment">/**&lt; padding length */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里面<code>l2_len</code>是占了7个比特位，也就是说你外层报文头长度+内层L2 Header长度不要大于127Byte。</p>
+<p>另外代码中还有一些<code>ol_flag</code>的配置，也需要结合需求一起配置。</p>
+<h2 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h2><p>以下内容节选自：<a href="https://doc.dpdk.org/guides/prog_guide/mbuf_lib.html" target="_blank" rel="noopener">https://doc.dpdk.org/guides/prog_guide/mbuf_lib.html</a></p>
+<p>但是我感觉好像没什么人看到过的样子….</p>
+<h3 id="checksum-of-out-ip"><a href="#checksum-of-out-ip" class="headerlink" title="checksum of out_ip:"></a>checksum of out_ip:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mb-&gt;l2_len = len(out_eth)</span><br><span class="line">mb-&gt;l3_len = len(out_ip)</span><br><span class="line">mb-&gt;ol_flags |= PKT_TX_IPV4 | PKT_TX_IP_CSUM</span><br></pre></td></tr></table></figure>
+<p>set out_ip checksum to 0 in the packet<br>This is supported on hardware advertising DEV_TX_OFFLOAD_IPV4_CKSUM.</p>
+<h3 id="checksum-of-out-ip-and-out-udp"><a href="#checksum-of-out-ip-and-out-udp" class="headerlink" title="checksum of out_ip and out_udp:"></a>checksum of out_ip and out_udp:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mb-&gt;l2_len = len(out_eth)</span><br><span class="line">mb-&gt;l3_len = len(out_ip)</span><br><span class="line">mb-&gt;ol_flags |= PKT_TX_IPV4 | PKT_TX_IP_CSUM | PKT_TX_UDP_CKSUM</span><br></pre></td></tr></table></figure>
+<p>set out_ip checksum to 0 in the packet<br>set out_udp checksum to pseudo header using rte_ipv4_phdr_cksum()<br>This is supported on hardware advertising DEV_TX_OFFLOAD_IPV4_CKSUM and DEV_TX_OFFLOAD_UDP_CKSUM.</p>
+<h3 id="checksum-of-in-ip"><a href="#checksum-of-in-ip" class="headerlink" title="checksum of in_ip:"></a>checksum of in_ip:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mb-&gt;l2_len = len(out_eth + out_ip + out_udp + vxlan + in_eth)</span><br><span class="line">mb-&gt;l3_len = len(in_ip)</span><br><span class="line">mb-&gt;ol_flags |= PKT_TX_IPV4 | PKT_TX_IP_CSUM</span><br></pre></td></tr></table></figure>
+<p>set in_ip checksum to 0 in the packet<br>This is similar to case 1), but l2_len is different. It is supported on hardware advertising DEV_TX_OFFLOAD_IPV4_CKSUM. Note that it can only work if outer L4 checksum is 0.</p>
+<h3 id="checksum-of-in-ip-and-in-tcp"><a href="#checksum-of-in-ip-and-in-tcp" class="headerlink" title="checksum of in_ip and in_tcp:"></a>checksum of in_ip and in_tcp:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mb-&gt;l2_len = len(out_eth + out_ip + out_udp + vxlan + in_eth)</span><br><span class="line">mb-&gt;l3_len = len(in_ip)</span><br><span class="line">mb-&gt;ol_flags |= PKT_TX_IPV4 | PKT_TX_IP_CSUM | PKT_TX_TCP_CKSUM</span><br></pre></td></tr></table></figure>
+<p>set in_ip checksum to 0 in the packet<br>set in_tcp checksum to pseudo header using rte_ipv4_phdr_cksum()<br>This is similar to case 2), but l2_len is different. It is supported on hardware advertising DEV_TX_OFFLOAD_IPV4_CKSUM and DEV_TX_OFFLOAD_TCP_CKSUM. Note that it can only work if outer L4 checksum is 0.</p>
+<h3 id="segment-inner-TCP"><a href="#segment-inner-TCP" class="headerlink" title="segment inner TCP:"></a>segment inner TCP:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mb-&gt;l2_len = len(out_eth + out_ip + out_udp + vxlan + in_eth)</span><br><span class="line">mb-&gt;l3_len = len(in_ip)</span><br><span class="line">mb-&gt;l4_len = len(in_tcp)</span><br><span class="line">mb-&gt;ol_flags |= PKT_TX_IPV4 | PKT_TX_IP_CKSUM | PKT_TX_TCP_CKSUM |</span><br><span class="line">  PKT_TX_TCP_SEG;</span><br></pre></td></tr></table></figure>
+<p>set in_ip checksum to 0 in the packet<br>set in_tcp checksum to pseudo header without including the IP<br>  payload length using rte_ipv4_phdr_cksum()<br>This is supported on hardware advertising DEV_TX_OFFLOAD_TCP_TSO. Note that it can only work if outer L4 checksum is 0.</p>
+<h3 id="checksum-of-out-ip-in-ip-in-tcp"><a href="#checksum-of-out-ip-in-ip-in-tcp" class="headerlink" title="checksum of out_ip, in_ip, in_tcp:"></a>checksum of out_ip, in_ip, in_tcp:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mb-&gt;outer_l2_len = len(out_eth)</span><br><span class="line">mb-&gt;outer_l3_len = len(out_ip)</span><br><span class="line">mb-&gt;l2_len = len(out_udp + vxlan + in_eth)</span><br><span class="line">mb-&gt;l3_len = len(in_ip)</span><br><span class="line">mb-&gt;ol_flags |= PKT_TX_OUTER_IPV4 | PKT_TX_OUTER_IP_CKSUM  | \</span><br><span class="line">  PKT_TX_IP_CKSUM |  PKT_TX_TCP_CKSUM;</span><br></pre></td></tr></table></figure>
+<p>set out_ip checksum to 0 in the packet<br>set in_ip checksum to 0 in the packet<br>set in_tcp checksum to pseudo header using rte_ipv4_phdr_cksum()<br>This is supported on hardware advertising DEV_TX_OFFLOAD_IPV4_CKSUM, DEV_TX_OFFLOAD_UDP_CKSUM and DEV_TX_OFFLOAD_OUTER_IPV4_CKSUM.</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/test/">test</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dpdk/">dpdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/08/quickwords31-inclusive-exclusive-cache/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Quickwords31：What Is Inclusive and Exclusive Cache</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IXGBE"><span class="nav-number">1.</span> <span class="nav-text">IXGBE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ixgbe-tx-offload"><span class="nav-number">1.1.</span> <span class="nav-text">ixgbe_tx_offload</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置方法"><span class="nav-number">2.</span> <span class="nav-text">配置方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#checksum-of-out-ip"><span class="nav-number">2.1.</span> <span class="nav-text">checksum of out_ip:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checksum-of-out-ip-and-out-udp"><span class="nav-number">2.2.</span> <span class="nav-text">checksum of out_ip and out_udp:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checksum-of-in-ip"><span class="nav-number">2.3.</span> <span class="nav-text">checksum of in_ip:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checksum-of-in-ip-and-in-tcp"><span class="nav-number">2.4.</span> <span class="nav-text">checksum of in_ip and in_tcp:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#segment-inner-TCP"><span class="nav-number">2.5.</span> <span class="nav-text">segment inner TCP:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checksum-of-out-ip-in-ip-in-tcp"><span class="nav-number">2.6.</span> <span class="nav-text">checksum of out_ip, in_ip, in_tcp:</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

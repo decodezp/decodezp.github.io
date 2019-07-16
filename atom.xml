@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-07-08T13:23:30.705Z</updated>
+  <updated>2019-07-16T11:11:14.246Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去15：DPDK VxLAN Inner L4 CSUM OFFLOAD</title>
+    <link href="https://decodezp.github.io/2019/07/16/test15-dpdk-vxlan-csum-offload/"/>
+    <id>https://decodezp.github.io/2019/07/16/test15-dpdk-vxlan-csum-offload/</id>
+    <published>2019-07-16T11:08:19.000Z</published>
+    <updated>2019-07-16T11:11:14.246Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;IXGBE&quot;&gt;&lt;a href=&quot;#IXGBE&quot; class=&quot;headerlink&quot; title=&quot;IXGBE&quot;&gt;&lt;/a&gt;IXGBE&lt;/h2&gt;&lt;p&gt;以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。&lt;/p&gt;
+&lt;p&gt;本质上来说，是在DPDK的&lt;code&gt;mbuf&lt;/code&gt;结构中，讲L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该&lt;code&gt;mbuf&lt;/code&gt;对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>Quickwords31：What Is Inclusive and Exclusive Cache</title>
@@ -459,26 +484,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tar命令速查手册</title>
-    <link href="https://decodezp.github.io/2019/04/20/tar-cheat-sheet/"/>
-    <id>https://decodezp.github.io/2019/04/20/tar-cheat-sheet/</id>
-    <published>2019-04-19T19:15:05.000Z</published>
-    <updated>2019-04-19T19:17:32.280Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总是会忘记这个命令后面的各种参数对应的压缩格式，每次都要上网重新搜索。可能也是对这种“查一查就能知道”的信息天生缺乏敏感性，但每次都搜索显得实在不太professional，所以…那就在一个地方查吧 ^^&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

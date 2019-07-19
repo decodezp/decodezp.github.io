@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-07-16T11:14:22.339Z</updated>
+  <updated>2019-07-19T12:30:11.824Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去16：Adding new kprobe to ftrace tracing</title>
+    <link href="https://decodezp.github.io/2019/07/19/test16-adding-new-kprobe/"/>
+    <id>https://decodezp.github.io/2019/07/19/test16-adding-new-kprobe/</id>
+    <published>2019-07-19T12:29:10.000Z</published>
+    <updated>2019-07-19T12:30:11.824Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;添加ftrace新事件&quot;&gt;&lt;a href=&quot;#添加ftrace新事件&quot; class=&quot;headerlink&quot; title=&quot;添加ftrace新事件&quot;&gt;&lt;/a&gt;添加ftrace新事件&lt;/h2&gt;&lt;p&gt;Ftrace自己带很多事件，之前一直以为在内核方面ftrace的触角就到此为止了。今天才了解到kprobe也可以像uprobe一样自己动态定义一个出来。这样默认的ftrace没有的事件也就可以通过添加新kprobe事件的方式添加了。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去15：DPDK VxLAN Inner L4 CSUM OFFLOAD</title>
@@ -460,30 +480,6 @@
       <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quickwords27 Skylake Microarchitecture(10)</title>
-    <link href="https://decodezp.github.io/2019/04/20/quickwords27-skylake-pipeline-10/"/>
-    <id>https://decodezp.github.io/2019/04/20/quickwords27-skylake-pipeline-10/</id>
-    <published>2019-04-20T05:36:19.000Z</published>
-    <updated>2019-07-08T13:23:32.266Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Load-and-Store-instructions&quot;&gt;&lt;a href=&quot;#Load-and-Store-instructions&quot; class=&quot;headerlink&quot; title=&quot;Load and Store instructions&quot;&gt;&lt;/a&gt;Load and Store instructions&lt;/h2&gt;&lt;p&gt;In previous chapters we discussed how does ROB and RS as well as RAT work. You may notice that we did not include &lt;code&gt;load&lt;/code&gt; and &lt;code&gt;store&lt;/code&gt; instruction in the demonstrated examples. This is partly due to simplification reason and partly because of the specialized mechanisms we will introduce in this article.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

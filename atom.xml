@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-07-19T12:30:11.824Z</updated>
+  <updated>2019-08-07T11:02:23.302Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去17：Adding dynamic probe to gain insight of DPDK application</title>
+    <link href="https://decodezp.github.io/2019/08/07/test17-dyn-probe-dpdk/"/>
+    <id>https://decodezp.github.io/2019/08/07/test17-dyn-probe-dpdk/</id>
+    <published>2019-08-07T11:00:53.000Z</published>
+    <updated>2019-08-07T11:02:23.302Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Dynamic-Trace-Framework&quot;&gt;&lt;a href=&quot;#Dynamic-Trace-Framework&quot; class=&quot;headerlink&quot; title=&quot;Dynamic Trace Framework&quot;&gt;&lt;/a&gt;Dynamic Trace Framework&lt;/h2&gt;&lt;p&gt;曾经想给DPDK添加一个trace framework，但使用的方法是添加一个专门的rte_trace库，涉及一整套trace buffer和控制相关的操作，同时需要修改原本DPDK应用的代码，使用起来成本还是比较高的。在逐渐熟悉了&lt;code&gt;uprobe&lt;/code&gt;的操作之后，其实可以用uprobe完成绝大部分这个trace framework所做的工作，例如方法执行时间戳、方法参数、返回值、内部变量值的记录工作，并且有性能开销方面的保障。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去16：Adding new kprobe to ftrace tracing</title>
@@ -456,30 +476,6 @@
     
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去8：公有云实例性能实际波动情况</title>
-    <link href="https://decodezp.github.io/2019/04/22/test8-cloud-vm-performance/"/>
-    <id>https://decodezp.github.io/2019/04/22/test8-cloud-vm-performance/</id>
-    <published>2019-04-22T04:49:27.000Z</published>
-    <updated>2019-04-22T04:52:22.963Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;公有云作为一种资源打包整合再售卖的商业模式，不可避免地存在多租户共享资源的情况。除了安全问题之外，更多的是需要辨别这种共享对用户各自的性能存在多大的影响。这种影响不仅仅表现在性能的下降，而更多的是表现为性能的不一致：在高峰时段和空闲时段，性能出现较大的波动。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="performance" scheme="https://decodezp.github.io/tags/performance/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>测来测去17：adding dynamic probe to gain insight of dpdk application | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="Dynamic Trace Framework曾经想给DPDK添加一个trace framework，但使用的方法是添加一个专门的rte_trace库，涉及一整套trace buffer和控制相关的操作，同时需要修改原本DPDK应用的代码，使用起来成本还是比较高的。在逐渐熟悉了uprobe的操作之后，其实可以用uprobe完成绝大部分这个trace framework所做的工作，例如方法执行时间戳">
+<meta name="keywords" content="tech">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测来测去17：Adding dynamic probe to gain insight of DPDK application">
+<meta property="og:url" content="https://decodezp.github.io/2019/08/07/test17-dyn-probe-dpdk/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="Dynamic Trace Framework曾经想给DPDK添加一个trace framework，但使用的方法是添加一个专门的rte_trace库，涉及一整套trace buffer和控制相关的操作，同时需要修改原本DPDK应用的代码，使用起来成本还是比较高的。在逐渐熟悉了uprobe的操作之后，其实可以用uprobe完成绝大部分这个trace framework所做的工作，例如方法执行时间戳">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://software.intel.com/sites/default/files/managed/21/36/introduction-to-the-dpdk-sample-applications-fig01.png">
+<meta property="og:updated_time" content="2019-08-07T11:02:23.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测来测去17：Adding dynamic probe to gain insight of DPDK application">
+<meta name="twitter:description" content="Dynamic Trace Framework曾经想给DPDK添加一个trace framework，但使用的方法是添加一个专门的rte_trace库，涉及一整套trace buffer和控制相关的操作，同时需要修改原本DPDK应用的代码，使用起来成本还是比较高的。在逐渐熟悉了uprobe的操作之后，其实可以用uprobe完成绝大部分这个trace framework所做的工作，例如方法执行时间戳">
+<meta name="twitter:image" content="https://software.intel.com/sites/default/files/managed/21/36/introduction-to-the-dpdk-sample-applications-fig01.png">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-test17-dyn-probe-dpdk" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://software.intel.com/sites/default/files/managed/21/36/introduction-to-the-dpdk-sample-applications-fig01.png" rel="gallery_cjz158be80065v6fyfmlfo30r">
+        <img src="https://software.intel.com/sites/default/files/managed/21/36/introduction-to-the-dpdk-sample-applications-fig01.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      测来测去17：Adding dynamic probe to gain insight of DPDK application
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/08/07/test17-dyn-probe-dpdk/" class="article-date">
+	  <time datetime="2019-08-07T11:00:53.000Z" itemprop="datePublished">August 7, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Dynamic-Trace-Framework"><a href="#Dynamic-Trace-Framework" class="headerlink" title="Dynamic Trace Framework"></a>Dynamic Trace Framework</h2><p>曾经想给DPDK添加一个trace framework，但使用的方法是添加一个专门的rte_trace库，涉及一整套trace buffer和控制相关的操作，同时需要修改原本DPDK应用的代码，使用起来成本还是比较高的。在逐渐熟悉了<code>uprobe</code>的操作之后，其实可以用uprobe完成绝大部分这个trace framework所做的工作，例如方法执行时间戳、方法参数、返回值、内部变量值的记录工作，并且有性能开销方面的保障。<br><a id="more"></a></p>
+<h2 id="l3fwd"><a href="#l3fwd" class="headerlink" title="l3fwd"></a>l3fwd</h2><p>这里就用DPDK自带的<code>l3fwd</code>程序作一个简单的使用示例。</p>
+<blockquote>
+<p>我们的目的是追踪<code>l3fwd</code>中<code>l3fwd_lpm_send_packets</code>这个方法的调用情况。这个方法是在<code>l3fwd</code>收到数据包之后处理转发的时候调用的。</p>
+</blockquote>
+<p>先用<code>perf</code>检查一下编译出来的二进制文件中包含该方法：</p>
+<p><code>perf probe -F -x ./l3fwd | grep lpm_send_packets</code></p>
+<p>我们看一下这个方法的的原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line">l3fwd_lpm_send_packets(<span class="keyword">int</span> nb_rx, struct rte_mbuf **pkts_burst,</span><br><span class="line">                    <span class="keyword">uint8_t</span> portid, struct lcore_conf *qconf)</span><br></pre></td></tr></table></figure>
+<p>也就是不带返回值，然后4个参数。</p>
+<p>然后添加一个新的<code>uprobe</code></p>
+<p><code>perf probe -x ./l3fwd &#39;l3fwd_lpm_send_packets %di %si %dx %cx&#39;</code></p>
+<p>后面<code>%di %si %dx %cx</code>对应x86_64架构中函数的4个参数寄存器。详见下图：</p>
+<p><img src="https://s2.ax1x.com/2019/08/07/e52gIg.png" alt=""></p>
+<p>OK， 这个时候应该可以在<code>/sys/kernel/debug/tracing/events</code>路径下面看到一个叫<code>probe_l3fwd</code>的文件夹了，进去之后<code>echo 1 &gt; enable</code>就算准备完毕。</p>
+<p>启动<code>l3fwd</code>:</p>
+<p><code>./l3fwd -c 0x1ffff -- -p 0x3 -P --config=&quot;(0,0,1),(0,1,2),(0,2,3),(1,0,4),(1,1,5),(1,2,6)&quot;</code></p>
+<h2 id="查看结果"><a href="#查看结果" class="headerlink" title="查看结果"></a>查看结果</h2><p>首先给<code>l3fwd</code>发几个包，用<code>scapy</code>一个一个发就可以。然后</p>
+<p><code>cat /sys/kernel/debug/tracing/trace</code></p>
+<p>就可以看到如下结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> tracer: nop</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> entries-in-buffer/entries-written: 11/11   #P:36</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span>                              _-----=&gt; irqs-off</span><br><span class="line"><span class="meta">#</span>                             / _----=&gt; need-resched</span><br><span class="line"><span class="meta">#</span>                            | / _---=&gt; hardirq/softirq</span><br><span class="line"><span class="meta">#</span>                            || / _--=&gt; preempt-depth</span><br><span class="line"><span class="meta">#</span>                            ||| /     delay</span><br><span class="line"><span class="meta">#</span>           TASK-PID   CPU#  ||||    TIMESTAMP  FUNCTION</span><br><span class="line"><span class="meta">#</span>              | |       |   ||||       |         |</span><br><span class="line">           &lt;...&gt;-105187 [003] d... 9864775.255783: l3fwd_lpm_send_packets: (0x464f42) arg1=0x1 arg2=0x7f728add44b0 arg3=0x0 arg4=0x1407140</span><br><span class="line">           &lt;...&gt;-106508 [003] d... 9864984.831907: l3fwd_lpm_send_packets: (0x464f42) arg1=0x1 arg2=0x7f8f219dc4b0 arg3=0x0 arg4=0x1407140</span><br><span class="line">           &lt;...&gt;-106508 [003] d... 9865065.328194: l3fwd_lpm_send_packets: (0x464f42) arg1=0x1 arg2=0x7f8f219dc4b0 arg3=0x0 arg4=0x1407140</span><br><span class="line">           &lt;...&gt;-106508 [003] d... 9865121.933159: l3fwd_lpm_send_packets: (0x464f42) arg1=0x1 arg2=0x7f8f219dc4b0 arg3=0x0 arg4=0x1407140</span><br><span class="line">           &lt;...&gt;-106508 [003] d... 9865318.618119: l3fwd_lpm_send_packets: (0x464f42) arg1=0x1 arg2=0x7f8f219dc4b0 arg3=0x0 arg4=0x1407140</span><br><span class="line">           &lt;...&gt;-106508 [003] d... 9865340.393096: l3fwd_lpm_send_packets: (0x464f42) arg1=0x1 arg2=0x7f8f219dc4b0 arg3=0x0 arg4=0x1407140</span><br></pre></td></tr></table></figure>
+<p>这是发了6个packet之后的结果，这里面给出了每次该方法调用的时间戳、执行CPU序号、以及每次执行时4个参数的值。</p>
+<h2 id="核对结果"><a href="#核对结果" class="headerlink" title="核对结果"></a>核对结果</h2><p>那么这些值都对不对呢？为了验证可以用gdb attach上去看一下：</p>
+<p><code>gdb attach</code>pidof l3fwd<code></code></p>
+<p>在<code>l3fwd_lpm_send_packets</code>处设置一个断点：</p>
+<p><code>b /root/dpdk-stable-18.05.1/examples/l3fwd-fdir/l3fwd_lpm.c:243</code></p>
+<p>然后继续<code>continue</code>，发送一个数据包，查看当前变量的值：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(gdb) info locals</span><br><span class="line">pkts_burst = &#123;0x7f8739502e40, 0x2, 0x7f8f219dd770, 0x7f8f23d4b757 &lt;__memmove_ssse3+3895&gt;, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x11, 0x2, 0x452330 &lt;rte_log+138&gt;, </span><br><span class="line">  0x0, 0x3000000018, 0x7f8f219dc610, 0x7f8f219dc550, 0x0, 0x4e1a46 &lt;eal_thread_dump_affinity+262&gt;, 0x4, 0x2, 0x219de700, 0x7f8f219dc630, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0&#125;</span><br><span class="line">lcore_id = 2</span><br><span class="line">prev_tsc = 22639728109674980</span><br><span class="line">diff_tsc = 28037</span><br><span class="line">cur_tsc = 22639728109703017</span><br><span class="line">i = 1</span><br><span class="line">***nb_rx = 1***</span><br><span class="line">***portid = 0***</span><br><span class="line">queueid = 2 '\002'</span><br><span class="line">***qconf = 0x1407140 &lt;lcore_conf+19456&gt;***</span><br><span class="line">drain_tsc = 230000</span><br></pre></td></tr></table></figure>
+<p>这里可以看到nb_rx = 1，与trace中第一个参数的值相同，portid = 0与trace中第三个参数的值相同，qconf = 0x1407140与trace中第四个参数的值相同。queueid虽然在参数中没有体现，但根据我们的设置，port0的第二个rx queue由CPU3负责轮询，可以从trace中CPU的信息中对应上。</p>
+<p>如果在gdb中打印pkts_burst的地址：</p>
+<blockquote>
+<p>p &amp;pkts_burst</p>
+</blockquote>
+<p><code>$1 = (struct rte_mbuf *(*)[32]) 0x7f8f219dc4b0</code></p>
+<p>也可以对应起来。</p>
+<blockquote>
+<p>实际上queueid可以通过对qconf做偏移取得。但我的机器似乎内核版本较低（需要大于3.14)，暂时无法提供。方法也很简单就是+8(%cx)，表示往后偏移8个字节。</p>
+</blockquote>
+<p>通过这些数据，完全可以计算出l3fwd这个应用转发速率是多少，每个队列的速率是多少，平均一次收多少包，没有收到包的轮询比例有多少等所有信息。</p>
+<p>也可以看一些内部变量的情况，前提是编译器没给你优化掉，这个后面再介绍。</p>
+<p>如果可以预置一些此类探针，或者制作一个方便添加/删除的框架，应当可以在多个方面帮助用户。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/19/test16-adding-new-kprobe/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">测来测去16：Adding new kprobe to ftrace tracing</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Trace-Framework"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Trace Framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l3fwd"><span class="nav-number">2.</span> <span class="nav-text">l3fwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看结果"><span class="nav-number">3.</span> <span class="nav-text">查看结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核对结果"><span class="nav-number">4.</span> <span class="nav-text">核对结果</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

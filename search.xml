@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>测来测去18：使用LD_PRELOAD搞砸一切</title>
+      <link href="/2019/08/09/test18-ld-preload-mess-up/"/>
+      <url>/2019/08/09/test18-ld-preload-mess-up/</url>
+      
+        <content type="html"><![CDATA[<h2 id="LD-PRELOAD"><a href="#LD-PRELOAD" class="headerlink" title="LD_PRELOAD"></a>LD_PRELOAD</h2><p><code>LD_PRELOAD</code>是一个神奇的指令，关于它的介绍可以参考这篇<a href="http://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/" target="_blank" rel="noopener">文章</a>，这篇<a href="https://catonmat.net/simple-ld-preload-tutorial" target="_blank" rel="noopener">文章</a>。<br><a id="more"></a></p><h2 id="有用的事"><a href="#有用的事" class="headerlink" title="有用的事"></a>有用的事</h2><p>用<code>LD_PRELOAD</code>可以做很多有用的事情，比如替换<code>malloc</code>和<code>free</code>来检测内存泄露，这里有一个实际的Github开源<a href="https://github.com/jrfonseca/memtrail" target="_blank" rel="noopener">软件</a>。</p><h2 id="搞点别的"><a href="#搞点别的" class="headerlink" title="搞点别的"></a>搞点别的</h2><p><code>LD_PRELOAD</code>虽然很强大，但针对不是动态链接的方法就无能为力。检查一个ELF文件中哪些方法是可以被<code>LD_PRELOAD</code>改造的，可以用：</p><p><code>readelf --dyn-syms /path/to/elf/file</code></p><p>比如我这里写了一个很简单的：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@server-P1 build]# readelf --dyn-syms test</span><br><span class="line"></span><br><span class="line">Symbol table '.dynsym' contains 6 entries:</span><br><span class="line">   Num:    Value          Size Type    Bind   Vis      Ndx Name</span><br><span class="line">     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND </span><br><span class="line">     1: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND puts@GLIBC_2.2.5 (2)</span><br><span class="line">     2: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND printf@GLIBC_2.2.5 (2)</span><br><span class="line">     3: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.2.5 (2)</span><br><span class="line">     4: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__</span><br><span class="line">     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND fopen@GLIBC_2.2.5 (2)</span><br></pre></td></tr></table></figure><p>这里能看到可以被<code>LD_PRELOAD</code>利用的方法包括<code>puts</code>, <code>printf</code>这类<code>glibc</code>提供的动态符号。</p><p>这里比较特殊的是这个叫<code>__libc_start_main</code>的方法，如果我们写了一个<code>.so</code>文件去替换这个符号的话…比如：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span></span><br><span class="line">__libc_start_main(<span class="keyword">void</span>)  &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Here comes the injected function!\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>gcc -shared -fPIC -o preload.so preload.c</code></p><p>然后</p><p><code>export LD_PRELOAD=$PWD/preload.so</code></p><p>之后就可以抓狂了~</p><p>消除的方法也很简单：</p><p><code>unset LD_PRELOAD</code></p><p>现在比较关心的是如何将静态链接的方法也用<code>LD_PRELOAD</code>替换。不过如果它替换不了，用<code>ftrace</code>加Hook应该是可以的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去17：Adding dynamic probe to gain insight of DPDK application</title>
       <link href="/2019/08/07/test17-dyn-probe-dpdk/"/>
       <url>/2019/08/07/test17-dyn-probe-dpdk/</url>

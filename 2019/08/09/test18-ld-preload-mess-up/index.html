@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>应许之日 | DecodeZ</title>
+  <title>测来测去18：使用ld_preload搞砸一切 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="很庆幸自己能活这么久，站在此时此刻的人生节点上，可以闻到更好的时光还在后面。">
-<meta name="keywords" content="thoughts">
+  <meta name="description" content="LD_PRELOADLD_PRELOAD是一个神奇的指令，关于它的介绍可以参考这篇文章，这篇文章。">
+<meta name="keywords" content="tech">
 <meta property="og:type" content="article">
-<meta property="og:title" content="应许之日">
-<meta property="og:url" content="https://decodezp.github.io/2019/06/24/promised-date/index.html">
+<meta property="og:title" content="测来测去18：使用LD_PRELOAD搞砸一切">
+<meta property="og:url" content="https://decodezp.github.io/2019/08/09/test18-ld-preload-mess-up/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="很庆幸自己能活这么久，站在此时此刻的人生节点上，可以闻到更好的时光还在后面。">
+<meta property="og:description" content="LD_PRELOADLD_PRELOAD是一个神奇的指令，关于它的介绍可以参考这篇文章，这篇文章。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://img6.16fan.com/attachments/wenzhang/201612/2/148064556323048ge.jpeg?imageView2/2/w/700/q/90/format/webp">
-<meta property="og:updated_time" content="2019-06-24T14:06:29.586Z">
+<meta property="og:image" content="https://www.apriorit.com/images/articles/Preloader_site.jpg">
+<meta property="og:updated_time" content="2019-08-08T21:22:32.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="应许之日">
-<meta name="twitter:description" content="很庆幸自己能活这么久，站在此时此刻的人生节点上，可以闻到更好的时光还在后面。">
-<meta name="twitter:image" content="http://img6.16fan.com/attachments/wenzhang/201612/2/148064556323048ge.jpeg?imageView2/2/w/700/q/90/format/webp">
+<meta name="twitter:title" content="测来测去18：使用LD_PRELOAD搞砸一切">
+<meta name="twitter:description" content="LD_PRELOADLD_PRELOAD是一个神奇的指令，关于它的介绍可以参考这篇文章，这篇文章。">
+<meta name="twitter:image" content="https://www.apriorit.com/images/articles/Preloader_site.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-promised-date" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-test18-ld-preload-mess-up" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://img6.16fan.com/attachments/wenzhang/201612/2/148064556323048ge.jpeg?imageView2/2/w/700/q/90/format/webp" rel="gallery_cjz36to0l001tfcfy6n4jbg61">
-        <img src="http://img6.16fan.com/attachments/wenzhang/201612/2/148064556323048ge.jpeg?imageView2/2/w/700/q/90/format/webp" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.apriorit.com/images/articles/Preloader_site.jpg" rel="gallery_cjz36to3c007sfcfy83fkn46h">
+        <img src="https://www.apriorit.com/images/articles/Preloader_site.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      应许之日
+      测来测去18：使用LD_PRELOAD搞砸一切
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/06/24/promised-date/" class="article-date">
-	  <time datetime="2019-06-24T14:05:19.000Z" itemprop="datePublished">June 24, 2019</time>
+	Posted on <a href="/2019/08/09/test18-ld-preload-mess-up/" class="article-date">
+	  <time datetime="2019-08-08T21:19:53.000Z" itemprop="datePublished">August 9, 2019</time>
 	</a>
 
       
@@ -232,23 +232,33 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>很庆幸自己能活这么久，站在此时此刻的人生节点上，可以闻到更好的时光还在后面。<br><a id="more"></a></p>
-<p>回头看看来时的路，似乎人生的前半程，都是在一片鸿蒙中打滚。不知道自己是谁，不知道自己是个怎样的人，不知道接下来要干什么，不知道明天和今天会有什么不同。也不知道如何去找到自己的位置，如何处理与其他人的关系，如何取得想取得的，留住想留住的，以及摆脱想摆脱的。似乎所有的得失，都只是随机的事件，而我只是被时光推挤着前行，如同被挤入地铁一样身不由己。</p>
-<p>我不喜欢这种感觉，却又无可奈何。自己空有一份力气，却无处去使，只能任由摆布。我不是那种在人生的早期就知道自己这一生要干什么的人，我也不是那种有某一样特别才华的人。但我也有自己的爱好，有自己擅长的东西，最主要的，有想要找到价值的欲望。这股欲望既引领着我，同时也不断折磨着我，直到现在我才渐渐品味到得偿所愿的快乐。</p>
-<p>虽然我的生活看起来还是之前的样子，但我知道我改变了。像青山涳濛之处，仿佛能听到雨后竹笋拔节的声音，又像雷声隐隐之时，将有一场酣畅淋漓解救大地的焦渴。这就是我的应许之日。我知道我是被许诺的，许诺给我这么一天，我此生到世间来的目的就是为了这一天。</p>
-<p>想感谢一下以前的自己，跋涉过漫漫而悠长的岁月，在多少次都以为活不下去的时刻——没有期待和希望——仍然选择等待和忍耐。我没有什么信仰，也不是什么毅力超群的人，我以前并不知道是哪里来的力量为悬崖竖起了一道墙。但现在我想明白了。我要将这股力量归功于我对承诺和约定的看重——我会守约，我一定会守约。也许这反而成为我被伤害的原因，但我心里其实一直相信，有人会和我一样，不顾所有困难地践约。他既然答应给我这么一天，我就知道一定会有这么一天。</p>
-<p>我相信真的能等到这一天，所有的心愿都会达成，所有的过错都被原谅，所有的来不及都可以弥补，所有的无可奈何都可以遗忘。我知道这不是我的一厢情愿，而是我确被许诺的东西，我的应许之日，我所等待的意义和一切等待之所以能称之为等待的原因。</p>
+        <h2 id="LD-PRELOAD"><a href="#LD-PRELOAD" class="headerlink" title="LD_PRELOAD"></a>LD_PRELOAD</h2><p><code>LD_PRELOAD</code>是一个神奇的指令，关于它的介绍可以参考这篇<a href="http://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/" target="_blank" rel="noopener">文章</a>，这篇<a href="https://catonmat.net/simple-ld-preload-tutorial" target="_blank" rel="noopener">文章</a>。<br><a id="more"></a></p>
+<h2 id="有用的事"><a href="#有用的事" class="headerlink" title="有用的事"></a>有用的事</h2><p>用<code>LD_PRELOAD</code>可以做很多有用的事情，比如替换<code>malloc</code>和<code>free</code>来检测内存泄露，这里有一个实际的Github开源<a href="https://github.com/jrfonseca/memtrail" target="_blank" rel="noopener">软件</a>。</p>
+<h2 id="搞点别的"><a href="#搞点别的" class="headerlink" title="搞点别的"></a>搞点别的</h2><p><code>LD_PRELOAD</code>虽然很强大，但针对不是动态链接的方法就无能为力。检查一个ELF文件中哪些方法是可以被<code>LD_PRELOAD</code>改造的，可以用：</p>
+<p><code>readelf --dyn-syms /path/to/elf/file</code></p>
+<p>比如我这里写了一个很简单的：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@server-P1 build]# readelf --dyn-syms test</span><br><span class="line"></span><br><span class="line">Symbol table '.dynsym' contains 6 entries:</span><br><span class="line">   Num:    Value          Size Type    Bind   Vis      Ndx Name</span><br><span class="line">     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND </span><br><span class="line">     1: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND puts@GLIBC_2.2.5 (2)</span><br><span class="line">     2: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND printf@GLIBC_2.2.5 (2)</span><br><span class="line">     3: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.2.5 (2)</span><br><span class="line">     4: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__</span><br><span class="line">     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND fopen@GLIBC_2.2.5 (2)</span><br></pre></td></tr></table></figure>
+<p>这里能看到可以被<code>LD_PRELOAD</code>利用的方法包括<code>puts</code>, <code>printf</code>这类<code>glibc</code>提供的动态符号。</p>
+<p>这里比较特殊的是这个叫<code>__libc_start_main</code>的方法，如果我们写了一个<code>.so</code>文件去替换这个符号的话…比如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span></span><br><span class="line">__libc_start_main(<span class="keyword">void</span>)  &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Here comes the injected function!\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>gcc -shared -fPIC -o preload.so preload.c</code></p>
+<p>然后</p>
+<p><code>export LD_PRELOAD=$PWD/preload.so</code></p>
+<p>之后就可以抓狂了~</p>
+<p>消除的方法也很简单：</p>
+<p><code>unset LD_PRELOAD</code></p>
+<p>现在比较关心的是如何将静态链接的方法也用<code>LD_PRELOAD</code>替换。不过如果它替换不了，用<code>ftrace</code>加Hook应该是可以的。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -283,19 +293,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/07/08/quickwords31-inclusive-exclusive-cache/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Quickwords31：What Is Inclusive and Exclusive Cache
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/19/eng-talk3-scaling-yourself/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/07/test17-dyn-probe-dpdk/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">5分钟经典英文技术演讲3：如何应对信息过载并提高生产效率-Scott Hanselman</div>
+      <div class="article-nav-title">测来测去17：Adding dynamic probe to gain insight of DPDK application</div>
     </a>
   
 </nav>
@@ -309,7 +310,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LD-PRELOAD"><span class="nav-number">1.</span> <span class="nav-text">LD_PRELOAD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有用的事"><span class="nav-number">2.</span> <span class="nav-text">有用的事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搞点别的"><span class="nav-number">3.</span> <span class="nav-text">搞点别的</span></a></li></ol>
     
     </div>
   </aside>

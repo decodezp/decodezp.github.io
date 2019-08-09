@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>几句话说清楚32：Git命令极简使用指南</title>
+      <link href="/2019/08/09/quickwords32-simplest-git-manual/"/>
+      <url>/2019/08/09/quickwords32-simplest-git-manual/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>基本上可以Cover 90%以上的工作场景。</p></blockquote><h2 id="要开始在现有Master上搞点什么"><a href="#要开始在现有Master上搞点什么" class="headerlink" title="要开始在现有Master上搞点什么"></a>要开始在现有Master上搞点什么</h2><h3 id="确保你在master分支上"><a href="#确保你在master分支上" class="headerlink" title="确保你在master分支上"></a>确保你在master分支上</h3><p><code>git checkout master</code><br><a id="more"></a></p><h3 id="创建一个新的分支"><a href="#创建一个新的分支" class="headerlink" title="创建一个新的分支"></a>创建一个新的分支</h3><p><code>git checkout -b mydevbranch</code></p><h3 id="修改了代码之后"><a href="#修改了代码之后" class="headerlink" title="修改了代码之后"></a>修改了代码之后</h3><p>可以先用<code>git diff</code>看看自己的修改详情，然后再看一眼<code>git status</code>，修改的文件。如果没问题</p><p><code>git add -u</code>，把已经被追踪的文件加进去。</p><p>如果有代码修改涉及创建新文件，就用<code>git add /path/to/file</code>把这个也加进去。</p><p>然后简单写写<code>commit info</code>：<code>git commit -m “commit info”</code></p><h3 id="推到远端去"><a href="#推到远端去" class="headerlink" title="推到远端去"></a>推到远端去</h3><p>到这里只是把修改commit到了本地分支。如果你是第一次在这个分支上推送，那么就用：<code>git push -u origin master HEAD</code>。</p><p>这个时候如果你是用github的话，就会发现你直接创建了一个<code>pull request</code>。</p><p>如果不是第一次推了，那么先重复一下<code>修改了代码之后</code>的步骤，在<code>git commit</code>之后：</p><p><code>git push origin mydevbranch</code></p><p>推到远端。</p><p>如果你这个分支代码更新了比较长的时间，主线master已经发生了变化，可以及时现在master上pull一下，然后checkout回mydevbranch，然后做一个rebase</p><p><code>git rebase master</code></p><p>再往远端推。有冲突可以及时解决，不必等到最后。</p><h2 id="要抓一个分支下来"><a href="#要抓一个分支下来" class="headerlink" title="要抓一个分支下来"></a>要抓一个分支下来</h2><p>一般<code>git clone</code>可以拿到master分支，拿其他分支的话：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin remotebranch</span><br><span class="line">git checkout -b remotebranch origin/remotebranch</span><br><span class="line">git pull origin remotebranch</span><br></pre></td></tr></table></figure><p>就可以在本地有一个和远端同步的分支代码了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去18：使用LD_PRELOAD搞砸一切</title>
       <link href="/2019/08/09/test18-ld-preload-mess-up/"/>
       <url>/2019/08/09/test18-ld-preload-mess-up/</url>

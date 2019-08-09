@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-08-08T21:22:32.702Z</updated>
+  <updated>2019-08-09T13:29:49.412Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚32：Git命令极简使用指南</title>
+    <link href="https://decodezp.github.io/2019/08/09/quickwords32-simplest-git-manual/"/>
+    <id>https://decodezp.github.io/2019/08/09/quickwords32-simplest-git-manual/</id>
+    <published>2019-08-09T13:23:45.000Z</published>
+    <updated>2019-08-09T13:29:49.412Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;基本上可以Cover 90%以上的工作场景。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;要开始在现有Master上搞点什么&quot;&gt;&lt;a href=&quot;#要开始在现有Master上搞点什么&quot; class=&quot;headerlink&quot; title=&quot;要开始在现有Master上搞点什么&quot;&gt;&lt;/a&gt;要开始在现有Master上搞点什么&lt;/h2&gt;&lt;h3 id=&quot;确保你在master分支上&quot;&gt;&lt;a href=&quot;#确保你在master分支上&quot; class=&quot;headerlink&quot; title=&quot;确保你在master分支上&quot;&gt;&lt;/a&gt;确保你在master分支上&lt;/h3&gt;&lt;p&gt;&lt;code&gt;git checkout master&lt;/code&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去18：使用LD_PRELOAD搞砸一切</title>
@@ -451,30 +474,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去9：DPDK i40e XXV710 Flow Director Mask Configuration</title>
-    <link href="https://decodezp.github.io/2019/05/06/test9-x710-fdir-mask/"/>
-    <id>https://decodezp.github.io/2019/05/06/test9-x710-fdir-mask/</id>
-    <published>2019-05-06T11:59:29.000Z</published>
-    <updated>2019-05-06T12:15:36.067Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Flow-Director&quot;&gt;&lt;a href=&quot;#Flow-Director&quot; class=&quot;headerlink&quot; title=&quot;Flow Director&quot;&gt;&lt;/a&gt;Flow Director&lt;/h2&gt;&lt;p&gt;最常见的Flow Director使用方式就是将匹配某个五元组的报文送到一个特定的队列里去。但精确匹配有时候并不能满足全部需求，需要给一些特定的字段加Mask。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
     
   </entry>
   

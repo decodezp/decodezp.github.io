@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-08-09T13:29:49.412Z</updated>
+  <updated>2019-08-11T08:49:56.476Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>十八岁这天的日记</title>
+    <link href="https://decodezp.github.io/2019/08/11/diary-on-18th-b-day/"/>
+    <id>https://decodezp.github.io/2019/08/11/diary-on-18th-b-day/</id>
+    <published>2019-08-11T08:48:30.000Z</published>
+    <updated>2019-08-11T08:49:56.476Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上中学的时候，按历任语文老师的要求，写过好几本日记。这里面有一本是最不一样的，因为高三了，语文老师可能也认为“写日记”这个事确实太闲情逸致了一些，所以不再像以前一样要求上交日记本批改。我因此也得以在上面写了一些真正的日记。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚32：Git命令极简使用指南</title>
@@ -451,29 +471,6 @@
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
       <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>命名的力量</title>
-    <link href="https://decodezp.github.io/2019/05/08/thoughts8-master-of-naming/"/>
-    <id>https://decodezp.github.io/2019/05/08/thoughts8-master-of-naming/</id>
-    <published>2019-05-08T14:38:30.000Z</published>
-    <updated>2019-05-08T14:54:16.800Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;一&quot;&gt;&lt;a href=&quot;#一&quot; class=&quot;headerlink&quot; title=&quot;一&quot;&gt;&lt;/a&gt;一&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;To Know the Name of a Thing is to Have Power Over It&lt;br&gt;如果我们知道了一件事物的名字，就有了操控它的力量。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;常言道，人类最深的恐惧都来自于“未知”。那么，什么是“未知”？&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

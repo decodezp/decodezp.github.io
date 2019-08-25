@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚25：skylake微架构(microarchitecture)剖析(9) | DecodeZ</title>
+  <title>quickwords33:how uprobe works | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="接上期。 第六个cycle之后看一下第六个cycle时会发生什么。">
-<meta name="keywords" content="tech,hardware,CPU">
+  <meta name="description" content="背景用uprobe也有一段时间了，确实是一个很有价值的工具。我这个人有个特点，就是如果不知道这件事背后的原理，即便工具很好用，但用起来始终心里不踏实，像是房本上没加名字，住着没有安全感。对于uprobe这么fancy的工具还是很有必要了解一下具体的工作机制。一方面是打消“神秘感”，一方面是看看是否能激发别的灵感。">
+<meta name="keywords" content="tech">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)">
-<meta property="og:url" content="https://decodezp.github.io/2019/04/08/quickwords25-skylake-pipeline-9/index.html">
+<meta property="og:title" content="Quickwords33:How uprobe works">
+<meta property="og:url" content="https://decodezp.github.io/2019/08/25/quickwords33-how-uprobe-work/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="接上期。 第六个cycle之后看一下第六个cycle时会发生什么。">
+<meta property="og:description" content="背景用uprobe也有一段时间了，确实是一个很有价值的工具。我这个人有个特点，就是如果不知道这件事背后的原理，即便工具很好用，但用起来始终心里不踏实，像是房本上没加名字，住着没有安全感。对于uprobe这么fancy的工具还是很有必要了解一下具体的工作机制。一方面是打消“神秘感”，一方面是看看是否能激发别的灵感。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
-<meta property="og:updated_time" content="2019-04-07T17:25:47.250Z">
+<meta property="og:image" content="https://images.hindawi.com/images/social/ACENG.jpg">
+<meta property="og:updated_time" content="2019-08-25T14:16:29.701Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)">
-<meta name="twitter:description" content="接上期。 第六个cycle之后看一下第六个cycle时会发生什么。">
-<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta name="twitter:title" content="Quickwords33:How uprobe works">
+<meta name="twitter:description" content="背景用uprobe也有一段时间了，确实是一个很有价值的工具。我这个人有个特点，就是如果不知道这件事背后的原理，即便工具很好用，但用起来始终心里不踏实，像是房本上没加名字，住着没有安全感。对于uprobe这么fancy的工具还是很有必要了解一下具体的工作机制。一方面是打消“神秘感”，一方面是看看是否能激发别的灵感。">
+<meta name="twitter:image" content="https://images.hindawi.com/images/social/ACENG.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords25-skylake-pipeline-9" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords33-how-uprobe-work" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_cjzr21wr1003umjfyw7qk65bk">
-        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://images.hindawi.com/images/social/ACENG.jpg" rel="gallery_cjzr22bq30000n5fybxr1nawb">
+        <img src="https://images.hindawi.com/images/social/ACENG.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚25：Skylake微架构(Microarchitecture)剖析(9)
+      Quickwords33:How uprobe works
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/04/08/quickwords25-skylake-pipeline-9/" class="article-date">
-	  <time datetime="2019-04-07T17:20:24.000Z" itemprop="datePublished">April 8, 2019</time>
+	Posted on <a href="/2019/08/25/quickwords33-how-uprobe-work/" class="article-date">
+	  <time datetime="2019-08-25T14:07:45.000Z" itemprop="datePublished">August 25, 2019</time>
 	</a>
 
       
@@ -232,41 +232,23 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>接<a href="https://decodezp.github.io/2019/04/06/quickwords24-skylake-pipeline-8/">上期</a>。</p>
-<h2 id="第六个cycle之后"><a href="#第六个cycle之后" class="headerlink" title="第六个cycle之后"></a>第六个cycle之后</h2><p>看一下第六个cycle时会发生什么。<br><a id="more"></a></p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AW0xf0.png" alt=""></p>
-<p>仍然分为两个阶段。第一个阶段<code>cycle 6’</code>里，第六条<code>ADD</code>指令指令可以进入ROB以及RS。</p>
-<p>在RS中，<code>D-tag</code>填写该指令所在的ROB条目<code>ROB6</code>，两个操作数通过读取<code>RAT</code>获得，<code>R4</code>和<code>R2</code>对应的分别是<code>ROB5</code>和<code>ROB1</code>。</p>
-<p><code>RAT</code>中<code>R1</code>所对应的最新值修改为<code>ROB6</code>。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBCXF.png" alt=""></p>
-<p>在第二个阶段，注意到此时第二条指令也在<code>cycle 6</code>执行完毕，因此它将执行的结果(8)写入到其所在的ROB条目<code>ROB2</code>，并在同时将执行的结果广播给RS中的指令。</p>
-<p>此时RS中的<code>MUL</code>指令正在等待<code>ROB2</code>的值，此时将其对应的<code>Value1</code>中写入计算的结果(8)。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBplT.png" alt=""></p>
-<p>在第七个周期，注意到第五条指令也该执行完成，其所执行所得到的结果(-1)，也需要写回到<code>ROB5</code>并广播给RS中的指令。但此时没有等待该值的指令。所以对其他状态暂时没有影响。</p>
-<p>但如果此时有新的指令需要<code>R4</code>，<code>ROB5</code>此时的值可以直接传递给该指令。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBSpV.png" alt=""></p>
-<p>在第7个指令之后，CPU进入一个尴尬的时期。没有新的指令执行完毕，RS中的指令也没有<code>Ready</code>的，观察一下时刻表，下一个时刻有新的指令执行完毕是<code>cycle 12</code>的事。</p>
-<p>在<code>cycle 12</code>中第一条<code>DIV</code>指令执行完毕，结果写入<code>ROB1</code>，广播结果给RS中的指令，正好两个都需要<code>ROB1</code>，并且拿到这个结果之后都进入<code>Ready</code>状态，可以在下一个cycle执行。</p>
-<p>更新一下第四条和第六条指令的时刻表，执行都是在第13个cycle，完成将分别在第16和14个cycle。</p>
-<p>此时还发生了一件事，就是ROB中的第一条指令的<code>DONE</code>标志位标成了<code>Y</code>。ROB之前我们介绍是一个先入先出的FIFO结构，只有第一条指令完成之后，才能按顺序开始commit。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWB96U.png" alt=""></p>
-<p>所以在<code>cycle 13</code>，第一条指令历史性的commit了。Commit的意思就是把结果写入到<code>ARF</code>，因此<code>R2</code>在ARF中改为了4。同时删除该ROB条目，为后续的指令腾出资源。当然<code>RAT</code>中也不再需要rename到<code>ROB1</code>，最新的值已经在<code>ARF</code>中。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBim4.png" alt=""></p>
-<p>在<code>cycle 14</code>中，ROB中的当前在队列头部的指令，也就是第二条指令也可以commit了，按之前的操作，<code>R1</code>的值也改成了最新的值(8)。</p>
-<p>同时，第六条指令也执行完毕，计算的结果写入<code>ROB6</code>。当然这条指令还不能commit，因为commit需要按指令顺序。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBF0J.png" alt=""></p>
-<p>第15个cycle，除了commit第三条指令之外没什么好做的。和以前的操作类似。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBVt1.png" alt=""></p>
-<p>第16个指令，第4条指令执行完毕，结果写入<code>ROB4</code>，同时它也是当前ROB中在队列头部的指令，可以在下一个cycle commit。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBEkR.png" alt=""></p>
-<p>那就commit呗。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBk79.png" alt=""></p>
-<p>剩下的第18,19 cycle想必你也知道该干什么了：把最后的两条指令commit掉。</p>
-<p><img src="https://s2.ax1x.com/2019/04/06/AWBZfx.png" alt=""></p>
-<p>OK，当指令时刻表都完成之后，这6条指令正式执行完毕。</p>
-<h2 id="关于这几个组件"><a href="#关于这几个组件" class="headerlink" title="关于这几个组件"></a>关于这几个组件</h2><p>全部目的都在于通过一个示例解释<code>RAT</code>, <code>ROB</code>和<code>RS</code>这三个组件的组成、特性和功能。在熟悉了这个例子的基础上可以再去寻找那些传统的“教科书”去印证理解那些大段大段的文字描述。</p>
-<p>这个例子其实还缺少一些类似分支转跳，尤其是分支预测失败之后如何操作的说明。但足矣描述清楚CPU的乱序执行和顺序commit到底是怎么回事。</p>
-<p>关于CPU微架构，前端和后端的内容基本上介绍的差不多了，后面会开始最后一个部分，也就是内存操作相关的组件的介绍。兴许会再添加一个后端执行的示例也说不定，看心情。</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>用uprobe也有一段时间了，确实是一个很有价值的工具。我这个人有个特点，就是如果不知道这件事背后的原理，即便工具很好用，但用起来始终心里不踏实，像是房本上没加名字，住着没有安全感。对于uprobe这么fancy的工具还是很有必要了解一下具体的工作机制。一方面是打消“神秘感”，一方面是看看是否能激发别的灵感。<br><a id="more"></a></p>
+<h2 id="添加uprobe之后发生了什么"><a href="#添加uprobe之后发生了什么" class="headerlink" title="添加uprobe之后发生了什么"></a>添加uprobe之后发生了什么</h2><p>我们可以猜到的是，给二进制文件添加uprobe之后，一定可以在汇编代码里看到一些改变。既然如此，我们就找个二进制文件看一下。</p>
+<p>在uprobe界有一个“网红”示例：<code>bash</code>中的<code>readline</code>方法。该方法能够用uprobe读取出用户在bash命令行中输入的命令的字符串。</p>
+<p>我们先看一下原始的<code>bash</code>二进制文件中，<code>readline</code>方法的汇编代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">$</span> gdb --pid &lt;target bash PID&gt;</span><br><span class="line">(gdb) disassemble /r readline</span><br><span class="line">Dump of assembler code for function readline:</span><br><span class="line">   0x000000000049a520 &lt;+0&gt;:  83 3d 81 5e 26 00 ff     cmpl   $0xffffffff,0x265e81(%rip)</span><br><span class="line">   0x000000000049a527 &lt;+7&gt;:  53                       push   %rbx</span><br><span class="line">   0x000000000049a528 &lt;+8&gt;:  74 6e                    je     0x49a598 &lt;readline+120&gt;</span><br><span class="line">   0x000000000049a52a &lt;+10&gt;: e8 21 ee ff ff           callq  0x499350 &lt;rl_set_prompt&gt;</span><br><span class="line">   0x000000000049a52f &lt;+15&gt;: e8 3c fd ff ff           callq  0x49a270 &lt;rl_initialize&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>如果此时添加了<code>&#39;r:bash:readline &quot;%s&quot; retval</code>这样一条<code>uprobe</code>之后，再来看一下现在的<code>bash</code>二进制文件中<code>readline</code>方法的情况：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(gdb) disassemble /r readline</span><br><span class="line">Dump of assembler code for function readline:</span><br><span class="line">   0x000000000049a520 &lt;+0&gt;:  cc                       int3</span><br><span class="line">   0x000000000049a521 &lt;+1&gt;:  3d 81 5e 26 00           cmp    $0x265e81,%eax</span><br><span class="line">   0x000000000049a526 &lt;+6&gt;:  ff 53 74                 callq  *0x74(%rbx)</span><br><span class="line">   0x000000000049a529 &lt;+9&gt;:  6e                       outsb  %ds:(%rsi),(%dx)</span><br><span class="line">   0x000000000049a52a &lt;+10&gt;: e8 21 ee ff ff           callq  0x499350 &lt;rl_set_prompt&gt;</span><br><span class="line">   0x000000000049a52f &lt;+15&gt;: e8 3c fd ff ff           callq  0x49a270 &lt;rl_initialize&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>现在可以看到的是，<code>readline</code>方法的二进制文件中，第一个字节从<code>0x83</code>变成了<code>0xcc</code>。这个是一个叫做<code>INT3</code>的指令。</p>
+<h2 id="INT3"><a href="#INT3" class="headerlink" title="INT3"></a>INT3</h2><p>既然出现在了汇编代码中，<code>INT</code>其实也是一个汇编指令。在x86 CPU中，<code>INT</code>是用来产生software interrupt的指令，它后面的数字代表对应的中断表的表项，同时触发该表项对应的回调函数。</p>
+<p><code>INT3</code>其实是用来触发软件<code>break point</code>的指令，其实就是我们用gdb时设定的“断点”，在CPU运行到这个指令的时候触发。</p>
+<p>同时<code>INT3</code>比较特殊的地方在于，它的二进制指令只有一个字节。因为足够短，它可以在程序的任意位置设置。</p>
+<h2 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h2><p>在了解了<code>INT3</code>这个机关之后，说明一下uprobe的工作原理：</p>
+<p><img src="https://dev.framing.life/assets/images/post/kernel-and-user-probes-magic/instruction-probes-workflow-z1-escaped.svg" alt=""></p>
+<p>首先把原先的<code>readline</code>的二进制程序<code>83 3d 81 5e 26 00 ff</code>的第一个字节替换为<code>cc</code>，这样当程序运行到这里的时候，就直接进入<code>INT3</code>中断。</p>
+<p>进入中断之后，首先保存当前进程的上下文信息，然后做我们给它做的事：在原二进制程序上单步前进，在运行到<code>ret</code>指令时保存相关寄存器里的值并记录。然后恢复进程原来的上下文信息，令程序继续执行。</p>
+<p>如此就完成了uprobe的功能。Kprobe也是类似的原理：</p>
+<p><img src="http://jake.dothome.co.kr/wp-content/uploads/2015/12/kprobes2.png" alt=""></p>
 
       
     </div>
@@ -277,7 +259,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -312,19 +294,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/04/13/quickwords26-linux-perf-under-the-hood/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Quickwords 26 Linux Perf Under The Hood
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/06/quickwords24-skylake-pipeline-8/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/11/diary-on-18th-b-day/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">几句话说清楚24：Skylake微架构(Microarchitecture)剖析(8)</div>
+      <div class="article-nav-title">十八岁这天的日记</div>
     </a>
   
 </nav>
@@ -338,7 +311,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第六个cycle之后"><span class="nav-number">1.</span> <span class="nav-text">第六个cycle之后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于这几个组件"><span class="nav-number">2.</span> <span class="nav-text">关于这几个组件</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加uprobe之后发生了什么"><span class="nav-number">2.</span> <span class="nav-text">添加uprobe之后发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INT3"><span class="nav-number">3.</span> <span class="nav-text">INT3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总体流程"><span class="nav-number">4.</span> <span class="nav-text">总体流程</span></a></li></ol>
     
     </div>
   </aside>

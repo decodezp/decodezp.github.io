@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-08-11T08:49:56.476Z</updated>
+  <updated>2019-08-25T14:16:29.701Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quickwords33:How uprobe works</title>
+    <link href="https://decodezp.github.io/2019/08/25/quickwords33-how-uprobe-work/"/>
+    <id>https://decodezp.github.io/2019/08/25/quickwords33-how-uprobe-work/</id>
+    <published>2019-08-25T14:07:45.000Z</published>
+    <updated>2019-08-25T14:16:29.701Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;用uprobe也有一段时间了，确实是一个很有价值的工具。我这个人有个特点，就是如果不知道这件事背后的原理，即便工具很好用，但用起来始终心里不踏实，像是房本上没加名字，住着没有安全感。对于uprobe这么fancy的工具还是很有必要了解一下具体的工作机制。一方面是打消“神秘感”，一方面是看看是否能激发别的灵感。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>十八岁这天的日记</title>
@@ -436,30 +456,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;同时添加一个TCP-Flow-Director规则&quot;&gt;&lt;a href=&quot;#同时添加一个TCP-Flow-Director规则&quot; class=&quot;headerlink&quot; title=&quot;同时添加一个TCP Flow Director规则&quot;&gt;&lt;/a&gt;同时添加一个TCP Flow Director规则&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/&quot;&gt;上一篇文章&lt;/a&gt;的基础上，添加一个TCP相关的Fdir操作：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去10：DPDK i40e X710 Flow Director Deep Dive(1)</title>
-    <link href="https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/"/>
-    <id>https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/</id>
-    <published>2019-05-11T06:10:03.000Z</published>
-    <updated>2019-05-23T12:48:35.840Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在&lt;a href=&quot;https://decodezp.github.io/2019/05/06/test9-x710-fdir-mask/&quot;&gt;这篇文章&lt;/a&gt;介绍DPDK i40e X710网卡如何配置Flow director mask的过程中演示了一下如何给UDP流量添加dest Port Mask。首先对当时的配置再做一点细节上的补充：&lt;br&gt;
     
     </summary>
     

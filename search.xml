@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Quickwords33:How uprobe works</title>
+      <link href="/2019/08/25/quickwords33-how-uprobe-work/"/>
+      <url>/2019/08/25/quickwords33-how-uprobe-work/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>用uprobe也有一段时间了，确实是一个很有价值的工具。我这个人有个特点，就是如果不知道这件事背后的原理，即便工具很好用，但用起来始终心里不踏实，像是房本上没加名字，住着没有安全感。对于uprobe这么fancy的工具还是很有必要了解一下具体的工作机制。一方面是打消“神秘感”，一方面是看看是否能激发别的灵感。<br><a id="more"></a></p><h2 id="添加uprobe之后发生了什么"><a href="#添加uprobe之后发生了什么" class="headerlink" title="添加uprobe之后发生了什么"></a>添加uprobe之后发生了什么</h2><p>我们可以猜到的是，给二进制文件添加uprobe之后，一定可以在汇编代码里看到一些改变。既然如此，我们就找个二进制文件看一下。</p><p>在uprobe界有一个“网红”示例：<code>bash</code>中的<code>readline</code>方法。该方法能够用uprobe读取出用户在bash命令行中输入的命令的字符串。</p><p>我们先看一下原始的<code>bash</code>二进制文件中，<code>readline</code>方法的汇编代码：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">$</span> gdb --pid &lt;target bash PID&gt;</span><br><span class="line">(gdb) disassemble /r readline</span><br><span class="line">Dump of assembler code for function readline:</span><br><span class="line">   0x000000000049a520 &lt;+0&gt;:  83 3d 81 5e 26 00 ff     cmpl   $0xffffffff,0x265e81(%rip)</span><br><span class="line">   0x000000000049a527 &lt;+7&gt;:  53                       push   %rbx</span><br><span class="line">   0x000000000049a528 &lt;+8&gt;:  74 6e                    je     0x49a598 &lt;readline+120&gt;</span><br><span class="line">   0x000000000049a52a &lt;+10&gt;: e8 21 ee ff ff           callq  0x499350 &lt;rl_set_prompt&gt;</span><br><span class="line">   0x000000000049a52f &lt;+15&gt;: e8 3c fd ff ff           callq  0x49a270 &lt;rl_initialize&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>如果此时添加了<code>&#39;r:bash:readline &quot;%s&quot; retval</code>这样一条<code>uprobe</code>之后，再来看一下现在的<code>bash</code>二进制文件中<code>readline</code>方法的情况：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(gdb) disassemble /r readline</span><br><span class="line">Dump of assembler code for function readline:</span><br><span class="line">   0x000000000049a520 &lt;+0&gt;:  cc                       int3</span><br><span class="line">   0x000000000049a521 &lt;+1&gt;:  3d 81 5e 26 00           cmp    $0x265e81,%eax</span><br><span class="line">   0x000000000049a526 &lt;+6&gt;:  ff 53 74                 callq  *0x74(%rbx)</span><br><span class="line">   0x000000000049a529 &lt;+9&gt;:  6e                       outsb  %ds:(%rsi),(%dx)</span><br><span class="line">   0x000000000049a52a &lt;+10&gt;: e8 21 ee ff ff           callq  0x499350 &lt;rl_set_prompt&gt;</span><br><span class="line">   0x000000000049a52f &lt;+15&gt;: e8 3c fd ff ff           callq  0x49a270 &lt;rl_initialize&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>现在可以看到的是，<code>readline</code>方法的二进制文件中，第一个字节从<code>0x83</code>变成了<code>0xcc</code>。这个是一个叫做<code>INT3</code>的指令。</p><h2 id="INT3"><a href="#INT3" class="headerlink" title="INT3"></a>INT3</h2><p>既然出现在了汇编代码中，<code>INT</code>其实也是一个汇编指令。在x86 CPU中，<code>INT</code>是用来产生software interrupt的指令，它后面的数字代表对应的中断表的表项，同时触发该表项对应的回调函数。</p><p><code>INT3</code>其实是用来触发软件<code>break point</code>的指令，其实就是我们用gdb时设定的“断点”，在CPU运行到这个指令的时候触发。</p><p>同时<code>INT3</code>比较特殊的地方在于，它的二进制指令只有一个字节。因为足够短，它可以在程序的任意位置设置。</p><h2 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h2><p>在了解了<code>INT3</code>这个机关之后，说明一下uprobe的工作原理：</p><p><img src="https://dev.framing.life/assets/images/post/kernel-and-user-probes-magic/instruction-probes-workflow-z1-escaped.svg" alt=""></p><p>首先把原先的<code>readline</code>的二进制程序<code>83 3d 81 5e 26 00 ff</code>的第一个字节替换为<code>cc</code>，这样当程序运行到这里的时候，就直接进入<code>INT3</code>中断。</p><p>进入中断之后，首先保存当前进程的上下文信息，然后做我们给它做的事：在原二进制程序上单步前进，在运行到<code>ret</code>指令时保存相关寄存器里的值并记录。然后恢复进程原来的上下文信息，令程序继续执行。</p><p>如此就完成了uprobe的功能。Kprobe也是类似的原理：</p><p><img src="http://jake.dothome.co.kr/wp-content/uploads/2015/12/kprobes2.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>十八岁这天的日记</title>
       <link href="/2019/08/11/diary-on-18th-b-day/"/>
       <url>/2019/08/11/diary-on-18th-b-day/</url>

@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>测来测去19：Enable DPDK i40e vector rx function</title>
+      <link href="/2019/09/04/test19-enable-dpdk-i40e-vector-rx-function/"/>
+      <url>/2019/09/04/test19-enable-dpdk-i40e-vector-rx-function/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Vector-Rx-Function"><a href="#Vector-Rx-Function" class="headerlink" title="Vector Rx Function"></a>Vector Rx Function</h2><p>在DPDK i40e网卡的驱动中提供有利用向量指令收包的方法，在一般场景下可以大幅提升性能。当针对基于DPDK的应用做性能诊断时可以用<code>perf top</code>命令直观观察有没有<code>i40e_recv_pkts_vec</code>这个方法出现，如果没有则可以判定当前的应用没有使用向量指令集优化过的收/发包方法。<br><a id="more"></a></p><h2 id="i40e-set-rx-function"><a href="#i40e-set-rx-function" class="headerlink" title="i40e_set_rx_function"></a>i40e_set_rx_function</h2><p>一般来说，DPDK和编译器会根据当前编译机器（或者指定的交叉编译CPU型号）对向量指令的支持情况来决定是否使用向量化指令。当支持向量指令时优先采用向量指令。不过在一些客户那边也遇到过编译环境支持向量化指令，但应用实际跑起来时却没有采用的情况。对于这种问题的根因需要看一下i40e驱动中决定采用哪种收发方法的逻辑究竟是怎样的。</p><p><code>i40e_set_rx_function</code>方法在<code>./drivers/net/i40e/i40e_rxtx.c</code>文件中，其中会调用<code>i40e_rx_vec_dev_conf_condition_check()</code>子方法来检查是否采用vector方法。</p><p>在<code>i40e_rx_vec_dev_conf_condition_check()</code>方法中又包了一层<code>i40e_rx_vec_dev_conf_condition_check_default()</code>在这个方法里有详细的配置检查逻辑，截取一部分：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* no fdir support */</span></span><br><span class="line"><span class="keyword">if</span> (fconf-&gt;mode != RTE_FDIR_MODE_NONE)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/* no header split support */</span></span><br><span class="line"><span class="keyword">if</span> (rxmode-&gt;offloads &amp; DEV_RX_OFFLOAD_HEADER_SPLIT)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* no QinQ support */</span></span><br><span class="line"><span class="keyword">if</span> (rxmode-&gt;offloads &amp; DEV_RX_OFFLOAD_VLAN_EXTEND)</span><br><span class="line">         <span class="keyword">return</span> <span class="number">-1</span>;</span><br></pre></td></tr></table></figure><p>我当时遇到的情况是i40e网卡打开了fdir的支持，这样在第一个<code>if</code>判断时方法返回-1，会导致外层逻辑放弃使用向量化收包方法。其他原因都可以使用<code>-O0 -g</code>的方式用gdb调试出来。</p><p>这也可以看出当需要使用网卡的fdir功能和另外两个hardware offloading功能时，是不能使用向量化收包方法的。</p><p>当然，除此之外还有另外一些因素会影响DPDK最终的选择，例如<code>config</code>文件夹下面那个<code>common_base</code>中的一些配置，但这些配置一般采用默认即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Quickwords33:How uprobe works</title>
       <link href="/2019/08/25/quickwords33-how-uprobe-work/"/>
       <url>/2019/08/25/quickwords33-how-uprobe-work/</url>

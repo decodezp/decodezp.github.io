@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-08-25T14:16:29.701Z</updated>
+  <updated>2019-09-04T11:25:57.562Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去19：Enable DPDK i40e vector rx function</title>
+    <link href="https://decodezp.github.io/2019/09/04/test19-enable-dpdk-i40e-vector-rx-function/"/>
+    <id>https://decodezp.github.io/2019/09/04/test19-enable-dpdk-i40e-vector-rx-function/</id>
+    <published>2019-09-04T11:22:57.000Z</published>
+    <updated>2019-09-04T11:25:57.562Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Vector-Rx-Function&quot;&gt;&lt;a href=&quot;#Vector-Rx-Function&quot; class=&quot;headerlink&quot; title=&quot;Vector Rx Function&quot;&gt;&lt;/a&gt;Vector Rx Function&lt;/h2&gt;&lt;p&gt;在DPDK i40e网卡的驱动中提供有利用向量指令收包的方法，在一般场景下可以大幅提升性能。当针对基于DPDK的应用做性能诊断时可以用&lt;code&gt;perf top&lt;/code&gt;命令直观观察有没有&lt;code&gt;i40e_recv_pkts_vec&lt;/code&gt;这个方法出现，如果没有则可以判定当前的应用没有使用向量指令集优化过的收/发包方法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>Quickwords33:How uprobe works</title>
@@ -432,30 +452,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;多于两个input-set的mask&quot;&gt;&lt;a href=&quot;#多于两个input-set的mask&quot; class=&quot;headerlink&quot; title=&quot;多于两个input_set的mask&quot;&gt;&lt;/a&gt;多于两个&lt;code&gt;input_set&lt;/code&gt;的mask&lt;/h2&gt;&lt;p&gt;先说结论，一个&lt;code&gt;pctype&lt;/code&gt;可以设置多个&lt;code&gt;input_set&lt;/code&gt;，但是最多仅能给两个&lt;code&gt;input_set&lt;/code&gt;设置mask。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去11：DPDK i40e X710 Flow Director Deep Dive(2)</title>
-    <link href="https://decodezp.github.io/2019/05/13/test11-dpdk-x710-fdir-mask-2/"/>
-    <id>https://decodezp.github.io/2019/05/13/test11-dpdk-x710-fdir-mask-2/</id>
-    <published>2019-05-13T10:46:49.000Z</published>
-    <updated>2019-05-13T10:51:29.452Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;同时添加一个TCP-Flow-Director规则&quot;&gt;&lt;a href=&quot;#同时添加一个TCP-Flow-Director规则&quot; class=&quot;headerlink&quot; title=&quot;同时添加一个TCP Flow Director规则&quot;&gt;&lt;/a&gt;同时添加一个TCP Flow Director规则&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://decodezp.github.io/2019/05/11/test10-dpdk-x710-fdir-mask-1/&quot;&gt;上一篇文章&lt;/a&gt;的基础上，添加一个TCP相关的Fdir操作：&lt;br&gt;
     
     </summary>
     

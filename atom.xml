@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-09-04T11:25:57.562Z</updated>
+  <updated>2019-09-18T20:00:07.840Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去20：快速定位short-lived进程对性能的负面影响</title>
+    <link href="https://decodezp.github.io/2019/09/19/test20-troubleshoot-short-lived-process/"/>
+    <id>https://decodezp.github.io/2019/09/19/test20-troubleshoot-short-lived-process/</id>
+    <published>2019-09-18T19:58:10.000Z</published>
+    <updated>2019-09-18T20:00:07.840Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;案例&quot;&gt;&lt;a href=&quot;#案例&quot; class=&quot;headerlink&quot; title=&quot;案例&quot;&gt;&lt;/a&gt;案例&lt;/h2&gt;&lt;p&gt;遇到过的一个案例是这样：DPDK应用在小流量的情况下丢包，并且是间歇性地丢。很自然的，会怀疑有其他进程抢占分配给DPDK的CPU核。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去19：Enable DPDK i40e vector rx function</title>
@@ -439,30 +461,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去12：DPDK i40e X710 Flow Director Deep Dive(3)</title>
-    <link href="https://decodezp.github.io/2019/05/14/test12-dpdk-x710-fdir-mask-3/"/>
-    <id>https://decodezp.github.io/2019/05/14/test12-dpdk-x710-fdir-mask-3/</id>
-    <published>2019-05-14T11:02:43.000Z</published>
-    <updated>2019-05-14T11:05:20.204Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;多于两个input-set的mask&quot;&gt;&lt;a href=&quot;#多于两个input-set的mask&quot; class=&quot;headerlink&quot; title=&quot;多于两个input_set的mask&quot;&gt;&lt;/a&gt;多于两个&lt;code&gt;input_set&lt;/code&gt;的mask&lt;/h2&gt;&lt;p&gt;先说结论，一个&lt;code&gt;pctype&lt;/code&gt;可以设置多个&lt;code&gt;input_set&lt;/code&gt;，但是最多仅能给两个&lt;code&gt;input_set&lt;/code&gt;设置mask。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
     
   </entry>
   

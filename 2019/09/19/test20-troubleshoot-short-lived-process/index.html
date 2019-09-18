@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>测来测去20：快速定位short-lived进程对性能的负面影响 | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="案例遇到过的一个案例是这样：DPDK应用在小流量的情况下丢包，并且是间歇性地丢。很自然的，会怀疑有其他进程抢占分配给DPDK的CPU核。">
+<meta name="keywords" content="tech,test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测来测去20：快速定位short-lived进程对性能的负面影响">
+<meta property="og:url" content="https://decodezp.github.io/2019/09/19/test20-troubleshoot-short-lived-process/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="案例遇到过的一个案例是这样：DPDK应用在小流量的情况下丢包，并且是间歇性地丢。很自然的，会怀疑有其他进程抢占分配给DPDK的CPU核。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://thumbs.dreamstime.com/z/short-lived-flowering-process-eastphoto-tukuchina-75460846.jpg">
+<meta property="og:updated_time" content="2019-09-18T20:00:07.840Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测来测去20：快速定位short-lived进程对性能的负面影响">
+<meta name="twitter:description" content="案例遇到过的一个案例是这样：DPDK应用在小流量的情况下丢包，并且是间歇性地丢。很自然的，会怀疑有其他进程抢占分配给DPDK的CPU核。">
+<meta name="twitter:image" content="https://thumbs.dreamstime.com/z/short-lived-flowering-process-eastphoto-tukuchina-75460846.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-test20-troubleshoot-short-lived-process" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://thumbs.dreamstime.com/z/short-lived-flowering-process-eastphoto-tukuchina-75460846.jpg" rel="gallery_ck0poxo3w0093fwfy3dnjvt4u">
+        <img src="https://thumbs.dreamstime.com/z/short-lived-flowering-process-eastphoto-tukuchina-75460846.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      测来测去20：快速定位short-lived进程对性能的负面影响
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/09/19/test20-troubleshoot-short-lived-process/" class="article-date">
+	  <time datetime="2019-09-18T19:58:10.000Z" itemprop="datePublished">September 19, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>遇到过的一个案例是这样：DPDK应用在小流量的情况下丢包，并且是间歇性地丢。很自然的，会怀疑有其他进程抢占分配给DPDK的CPU核。<br><a id="more"></a></p>
+<blockquote>
+<p>这个案例里Kernel里面CPU隔离的参数都是配好的，不过并非所有的进程都完全按照内核的要求行事。比如一些自己在代码里面调用了<code>sched_setaffinity</code>方法的程序。</p>
+</blockquote>
+<p>比较特殊的是，抢占这个CPU核的进程是一个生命周期非常短(short-lived)的进程，从启动到退出只有几毫秒的时间。所以很难在一些类似<code>top</code>，<code>ps</code>等一般查看进程状态的工具中“逮住”它。</p>
+<h2 id="perf"><a href="#perf" class="headerlink" title="perf"></a>perf</h2><p>无论再短的进程都可以通过追踪Kernel里的方法观察到。一般这个时候想到的是利用<code>ftrace</code>来抓取，但<code>perf</code>提供了一些更为简便的操作和事件统计。</p>
+<p>首先看一下<code>perf</code>里面关于调度器的事件：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">[root@server-P1 ~]<span class="meta"># perf list | grep sched</span></span><br><span class="line">  irq_vectors:reschedule_entry                       [Tracepoint event]</span><br><span class="line">  irq_vectors:reschedule_exit                        [Tracepoint event]</span><br><span class="line">  sched:sched_kthread_stop                           [Tracepoint event]</span><br><span class="line">  sched:sched_kthread_stop_ret                       [Tracepoint event]</span><br><span class="line">  sched:sched_migrate_task                           [Tracepoint event]</span><br><span class="line">  sched:sched_move_numa                              [Tracepoint event]</span><br><span class="line">  sched:sched_pi_setprio                             [Tracepoint event]</span><br><span class="line">  sched:sched_process_exec                           [Tracepoint event]</span><br><span class="line">  sched:sched_process_exit                           [Tracepoint event]</span><br><span class="line">  sched:sched_process_fork                           [Tracepoint event]</span><br><span class="line">  sched:sched_process_free                           [Tracepoint event]</span><br><span class="line">  sched:sched_process_hang                           [Tracepoint event]</span><br><span class="line">  sched:sched_process_wait                           [Tracepoint event]</span><br><span class="line">  sched:sched_stat_blocked                           [Tracepoint event]</span><br><span class="line">  sched:sched_stat_iowait                            [Tracepoint event]</span><br><span class="line">  sched:sched_stat_runtime                           [Tracepoint event]</span><br><span class="line">  sched:sched_stat_sleep                             [Tracepoint event]</span><br><span class="line">  sched:sched_stat_wait                              [Tracepoint event]</span><br><span class="line">  sched:sched_stick_numa                             [Tracepoint event]</span><br><span class="line">  sched:sched_swap_numa                              [Tracepoint event]</span><br><span class="line">  sched:sched_switch                                 [Tracepoint event]</span><br><span class="line">  sched:sched_wait_task                              [Tracepoint event]</span><br><span class="line">  sched:sched_wake_idle_without_ipi                  [Tracepoint event]</span><br><span class="line">  sched:sched_wakeup                                 [Tracepoint event]</span><br><span class="line">  sched:sched_wakeup_new                             [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_get_priority_max          [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_get_priority_min          [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_getaffinity               [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_getattr                   [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_getparam                  [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_getscheduler              [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_rr_get_interval           [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_setaffinity               [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_setattr                   [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_setparam                  [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_setscheduler              [Tracepoint event]</span><br><span class="line">  syscalls:sys_enter_sched_yield                     [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_get_priority_max           [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_get_priority_min           [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_getaffinity                [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_getattr                    [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_getparam                   [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_getscheduler               [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_rr_get_interval            [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_setaffinity                [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_setattr                    [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_setparam                   [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_setscheduler               [Tracepoint event]</span><br><span class="line">  syscalls:sys_exit_sched_yield                      [Tracepoint event]</span><br></pre></td></tr></table></figure>
+<p>基本上够用了..其实真正重要的也就是<code>*exec</code>，<code>*exit</code>和<code>*switch</code>这仨。为了避免要抓取的short-lived进程仅仅存在于想象之中，我们先搞一些具体统计数据涨涨信心。</p>
+<h3 id="perf-stat"><a href="#perf-stat" class="headerlink" title="perf stat"></a>perf stat</h3><p>可以先用<code>perf stat</code>看看具体事件的计数：</p>
+<p><code>perf stat -e sched:sched_switch -a -I 1000 sleep 10</code></p>
+<p>这里面会给出当前整个系统调度器发生switch的统计情况，每1秒输出一次，总计10秒。</p>
+<p>如果想针对某一个特定的CPU，可以把<code>-a</code>替换成<code>-C 4</code>这类。其他事件的统计也可以用类似的方法。</p>
+<p>如果<code>switch</code>事件比较多，那么可以继续看一下<code>shced:sched_process_exec</code>事件在某个CPU上发生的频率，当然了，这个CPU一般是正在跑DPDK或其他生产业务的CPU。</p>
+<h2 id="详细内容"><a href="#详细内容" class="headerlink" title="详细内容"></a>详细内容</h2><p>如果想看到该事件的一些详细信息，比如具体是哪个程序在频繁启动，对应的PID，以及程序在哪个CPU上启动，可执行文件的路径是什么等信息，可以用<code>ftrace</code>的方式实现。</p>
+<p>首先使能该trace事件：</p>
+<p><code>echo 1 &gt; /sys/kernel/debug/tracing/events/sched/sched_process_exec/enable</code></p>
+<p>然后<code>cat /sys/kernel/debug/tracing/trace</code></p>
+<p>应该就可以看到了。</p>
+<p>也可以用<code>perf-tools</code>里的<code>execsnoop</code>工具，不过本质上都是一样的。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/test/">test</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/04/test19-enable-dpdk-i40e-vector-rx-function/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">测来测去19：Enable DPDK i40e vector rx function</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#案例"><span class="nav-number">1.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perf"><span class="nav-number">2.</span> <span class="nav-text">perf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#perf-stat"><span class="nav-number">2.1.</span> <span class="nav-text">perf stat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详细内容"><span class="nav-number">3.</span> <span class="nav-text">详细内容</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

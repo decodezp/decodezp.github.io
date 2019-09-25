@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Shell命令行中感叹号!的运用</title>
+      <link href="/2019/09/25/exclamation-mark-shell/"/>
+      <url>/2019/09/25/exclamation-mark-shell/</url>
+      
+        <content type="html"><![CDATA[<h2 id="重复执行上一条命令"><a href="#重复执行上一条命令" class="headerlink" title="!!重复执行上一条命令"></a>!!重复执行上一条命令</h2><p>直接输入<code>!!</code>，不过我更喜欢按上方向键…<br><a id="more"></a></p><h2 id="数字执行history对应命令"><a href="#数字执行history对应命令" class="headerlink" title="!+数字执行history对应命令"></a>!+数字执行history对应命令</h2><p>!后面跟对应编号可以执行对应history记录中编号的命令</p><p>但是好像Ctrl+r更方便一些…</p><h2 id="导入对应命令的参数"><a href="#导入对应命令的参数" class="headerlink" title="导入对应命令的参数"></a>导入对应命令的参数</h2><p>这是我个人感觉惊叹号最好用的地方。</p><p>基本格式是，如果要取history记录第N条命令的第M个参数：</p><p><code>!N:M</code></p><p>如果不输入N则代表上一条命令。</p><p>举例：</p><p><code>cp aa/aaa/aaa bb/bbb/bbb</code></p><p>此时如果输入</p><p><code>ls !:2</code>就相当于直接<code>ls bb/bbb/bbb</code></p><p>如果需要所有参数，可以</p><p><code>!:*</code></p><p>如果需要某一段参数，可以</p><p><code>!:1-2</code></p><p>如果需要用以前输入命令的参数但是觉得用<code>history</code>找一下比较麻烦，可以仅输入最开始的几个关键字，会自动匹配最新的那条命令（类似Ctrl+r）。</p><p>如在一些操作（非cp操作）之后又需要用到刚才的<code>cp</code>命令的参数，可以直接</p><p><code>ls !cp:2</code></p><p>同样也相当于<code>ls bb/bbb/bbb</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>热烈庆祝8总力克猫传腹病魔康复痊愈</title>
       <link href="/2019/09/22/8-recovery/"/>
       <url>/2019/09/22/8-recovery/</url>
@@ -2129,9 +2152,9 @@
             
             <tag> tech </tag>
             
-            <tag> linux </tag>
-            
             <tag> ftrace </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       

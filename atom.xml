@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-09-25T12:19:29.469Z</updated>
+  <updated>2019-10-12T12:36:10.851Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>金罍深深酌</title>
+    <link href="https://decodezp.github.io/2019/10/12/leuven-mem/"/>
+    <id>https://decodezp.github.io/2019/10/12/leuven-mem/</id>
+    <published>2019-10-12T12:33:29.000Z</published>
+    <updated>2019-10-12T12:36:10.851Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一&quot;&gt;&lt;a href=&quot;#一&quot; class=&quot;headerlink&quot; title=&quot;一&quot;&gt;&lt;/a&gt;一&lt;/h1&gt;&lt;p&gt;2012年3月，我在布鲁塞尔南站7号站台见到了高中同学L。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="life" scheme="https://decodezp.github.io/categories/life/"/>
+    
+    
+      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>Shell命令行中感叹号!的运用</title>
@@ -432,31 +452,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去13：DPDK i40e X710 FDIR Flexbytes</title>
-    <link href="https://decodezp.github.io/2019/05/23/test13-dpdk-x710-flexload/"/>
-    <id>https://decodezp.github.io/2019/05/23/test13-dpdk-x710-flexload/</id>
-    <published>2019-05-23T12:42:12.000Z</published>
-    <updated>2019-05-28T12:46:18.398Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Flex-Bytes&quot;&gt;&lt;a href=&quot;#Flex-Bytes&quot; class=&quot;headerlink&quot; title=&quot;Flex Bytes&quot;&gt;&lt;/a&gt;Flex Bytes&lt;/h2&gt;&lt;p&gt;700系列网卡除了提取包头的字段作为散列的依据之外，还可以截取Payload的特定片段作为散列的依据。&lt;/p&gt;
-&lt;p&gt;Flexible payload是可以识别出的L2/L3/L4 Header之后的字节，最多可以截取来自于3个不同偏移（OFFSET）的16字节内容。所有的内容需要来自该报文前480字节内。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
     
   </entry>
   

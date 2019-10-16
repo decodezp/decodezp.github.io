@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>QuickWords 34： DPDK i40e 82599网卡发送Tx丢包问题</title>
+      <link href="/2019/10/17/quickwords34-dpdk-tx-hang/"/>
+      <url>/2019/10/17/quickwords34-dpdk-tx-hang/</url>
+      
+        <content type="html"><![CDATA[<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>表现为在DPDK场景下网卡丢包或者发送队列Hang住。如果用GDB跟进去的话会发现是网卡的DD标志位未置位。<br><a id="more"></a></p><h2 id="根因"><a href="#根因" class="headerlink" title="根因"></a>根因</h2><p>因为DPDK ixgbe或者i40e驱动可以直接操作网卡的寄存器和Buffer，当上层业务存在问题，发送一些“不合规”的数据包时，这些有问题的数据包会直接进入网卡，引发硬件问题。</p><p>而在内核态时，这些有问题的数据包会被内核驱动过滤掉。</p><h2 id="具体原因"><a href="#具体原因" class="headerlink" title="具体原因"></a>具体原因</h2><p>引发发送丢包或发送队列Hang住的数据包包括以下几类：</p><ul><li>包长小于17Byte</li><li>包长大于9674Byte</li><li>TCP报文分段数目大于8</li><li>TSO MSS小于256Byte</li><li>TSO MSS大于9674Byte</li><li>Mbuf链里mbuf个数和第一个mbuf的nb_segs值不一样</li><li>Mbuf链里任意一个mbuf的data_len=0</li><li>Mbuf链长度大于8</li><li>其他目前还位置的原因</li></ul><h2 id="Workaround"><a href="#Workaround" class="headerlink" title="Workaround"></a>Workaround</h2><p>在调用rte_eth_tx*()方法之前，调用ixgbe或i40e驱动提供的[ixgbe | i40e]_prep_pkts()方法，可排除大部分导致该问题的报文。目前已在几个客户生产环境下解决了问题。</p><p>同时不必过度担心此类检查会影响性能，经过实际测试影响很小。</p><p>根源上，还是需要业务层面找到产生“异常”报文的代码。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> NIC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>金罍深深酌</title>
       <link href="/2019/10/12/leuven-mem/"/>
       <url>/2019/10/12/leuven-mem/</url>
@@ -2175,9 +2202,9 @@
             
             <tag> tech </tag>
             
-            <tag> linux </tag>
-            
             <tag> ftrace </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       

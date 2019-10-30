@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-10-16T19:13:08.276Z</updated>
+  <updated>2019-10-30T11:27:33.509Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去21：在ftrace中拿到event的user-space stack trace</title>
+    <link href="https://decodezp.github.io/2019/10/30/test21-uprobe-userstacktrace/"/>
+    <id>https://decodezp.github.io/2019/10/30/test21-uprobe-userstacktrace/</id>
+    <published>2019-10-30T11:24:43.000Z</published>
+    <updated>2019-10-30T11:27:33.509Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;在开启了ftrace中的一些事件之后，可以用function_graph的trace拿到在&lt;strong&gt;&lt;em&gt;内核态&lt;/em&gt;&lt;/strong&gt;的callstack。但有些时候我们希望能拿到用户态程序的callstack，这样我们就能知道是那些方法触发了某一事件，或者我们直接希望uprobe的事件发生时，能够看到该事件对应的callstack，也会是一个很有价值的信息。&lt;/p&gt;
+&lt;h2 id=&quot;阅读文档&quot;&gt;&lt;a href=&quot;#阅读文档&quot; class=&quot;headerlink&quot; title=&quot;阅读文档&quot;&gt;&lt;/a&gt;阅读文档&lt;/h2&gt;&lt;p&gt;本来的计划是，搞一个什么ftrace callback的内核模块，模块里面调用一些&lt;code&gt;save_stack_trace_user()&lt;/code&gt;这类的方法，但是感觉虽然理论上行得通，但是实际上系统里敢让你塞一个内核模块进去的企业太少，所以暂时先放弃这个方案。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>QuickWords 34： DPDK i40e 82599网卡发送Tx丢包问题</title>
@@ -433,27 +456,6 @@
     
     
       <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gartner预测误差统计</title>
-    <link href="https://decodezp.github.io/2019/06/03/gartner-prediction/"/>
-    <id>https://decodezp.github.io/2019/06/03/gartner-prediction/</id>
-    <published>2019-06-03T12:30:27.000Z</published>
-    <updated>2019-06-03T12:45:59.771Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Gartner的预测&quot;&gt;&lt;a href=&quot;#Gartner的预测&quot; class=&quot;headerlink&quot; title=&quot;Gartner的预测&quot;&gt;&lt;/a&gt;Gartner的预测&lt;/h2&gt;&lt;p&gt;Gartner表面上是一家咨询公司，实际上是一家市场公关公司。不仅通过一些市场工具给厂商打广告，还直接给某样技术打广告，当然也兼做一些资源对接的中介服务。至于Gartner的分析报告，即便每年需要几十万的“咨询费”才能阅读，但我是从来没有完整看完过其中任何一篇，因为他们报告的题目都拟得非常好——非常精炼，也非常准确——所以有时候看完题目就好了。&lt;/p&gt;
-&lt;p&gt;每当Gartner新公布了一项市场数字和指标之后，都会被各家媒体和相关厂商疯狂引用，作为论证市场繁荣和增长预期的最有力论据。但年复一年，我们永远盯住的是“下一个丰收的年景”，却不怎么关心当下的市场是否曾被准确勾画。以往知来，我们就以年年火热的云计算市场为例，统计一下Gartner的历史预测准确率。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

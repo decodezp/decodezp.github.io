@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>Loadbalancer Product Trends</title>
+      <link href="/2019/10/31/product2-loadbalancer-trends/"/>
+      <url>/2019/10/31/product2-loadbalancer-trends/</url>
+      
+        <content type="html"><![CDATA[<p>So what is going on? There are mainly 4 kinds of work.<br><a id="more"></a></p><h2 id="100G"><a href="#100G" class="headerlink" title="100G"></a>100G</h2><p>Customers are trying to migrate to 100G NIC on their hardware platform.</p><h2 id="CloudNative"><a href="#CloudNative" class="headerlink" title="CloudNative"></a>CloudNative</h2><p>Customers are trying to adopt their load balancer projects to cloud native scenario, trying to deploy load balancer in a purely containerized environment and orchestrated by K8S. That is a trend should be noticed.</p><h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2><p>Customers are adding IPv6 support to their product. Politically this progress is pushed by the government. China is trying to build its next generation internet infrastructure and IPv6 is a big part of it. So we received a lot of requests regarding how to enable RSS or FDIR to support IPv6 traffic.</p><h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>Customers are trying to integrate more feature to load balancer and most of them are hardware based solution for encryption and HTTPS offloading.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+          <category> product </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> product </tag>
+            
+            <tag> network </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去21：在ftrace中拿到event的user-space stack trace</title>
       <link href="/2019/10/30/test21-uprobe-userstacktrace/"/>
       <url>/2019/10/30/test21-uprobe-userstacktrace/</url>
@@ -1647,9 +1676,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -1805,9 +1834,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -2279,9 +2308,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
             <tag> cloud </tag>
             

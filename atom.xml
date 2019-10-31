@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-10-30T11:27:33.509Z</updated>
+  <updated>2019-10-31T11:41:44.054Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Loadbalancer Product Trends</title>
+    <link href="https://decodezp.github.io/2019/10/31/product2-loadbalancer-trends/"/>
+    <id>https://decodezp.github.io/2019/10/31/product2-loadbalancer-trends/</id>
+    <published>2019-10-31T11:37:18.000Z</published>
+    <updated>2019-10-31T11:41:44.054Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;So what is going on? There are mainly 4 kinds of work.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+      <category term="product" scheme="https://decodezp.github.io/categories/tech/product/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="product" scheme="https://decodezp.github.io/tags/product/"/>
+    
+      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去21：在ftrace中拿到event的user-space stack trace</title>
@@ -436,26 +462,6 @@
       <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
     
       <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拔智齿</title>
-    <link href="https://decodezp.github.io/2019/06/05/tooth-extraction/"/>
-    <id>https://decodezp.github.io/2019/06/05/tooth-extraction/</id>
-    <published>2019-06-05T12:02:29.000Z</published>
-    <updated>2019-06-05T12:09:14.412Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;拔智齿是一个磨人的过程。真正拔的时候其实还好，但决定去拔之前，要做很多心理建设工作。尤其是对牙一直很好的人来说，去拔牙就仿佛承认了之前对牙齿的乐观和与之俱来的优越感都只是一场幻觉。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="life" scheme="https://decodezp.github.io/categories/life/"/>
-    
-    
-      <category term="life" scheme="https://decodezp.github.io/tags/life/"/>
     
   </entry>
   

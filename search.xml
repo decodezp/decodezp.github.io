@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>QuickWords 35： Perf probe usage</title>
+      <link href="/2019/11/07/quickwords35-perf-probe-usage/"/>
+      <url>/2019/11/07/quickwords35-perf-probe-usage/</url>
+      
+        <content type="html"><![CDATA[<p>查看用户空间binary/.so文件可用函数</p><p><code>perf probe -F -x /usr/lib64/libopenvswitch-2.so.7.0.0</code></p><p>查看可以被probe的源码行<br><a id="more"></a></p><p><code>perf probe -x /usr/lib64/libopenvswitch-2.so.7.0.0 -L conntrack_execute</code></p><p>查看源码行处可被probe的本地变量</p><p><code>perf probe -x /usr/lib64/libopenvswitch-2.so.7.0.0 -V conntrack_execute:xx</code></p><p>添加probe event:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">perf probe -x /usr/lib64/libopenvswitch-2.so.7.0.0 conntrack_execute</span><br><span class="line"></span><br><span class="line">Added new event:</span><br><span class="line">  probe_libopenvswitch:conntrack_execute (on conntrack_execute in /usr/lib64/libopenvswitch-2.so.7.0.0)</span><br><span class="line">You can now use it in all perf tools, such as:</span><br><span class="line">    perf record -e probe_libopenvswitch:conntrack_execute -aR sleep 1</span><br></pre></td></tr></table></figure><p>若添加本地变量trace：</p><p><code>perf probe -x /usr/lib64/libopenvswitch-2.so.7.0.0 &#39;conntrack_execute dl_type&#39;</code></p><p>查看现有probe event:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perf probe --list</span><br><span class="line"></span><br><span class="line">probe_libopenvswitch:conntrack_execute (on conntrack_execute@lib/conntrack.c in /usr/lib64/libopenvswitch-2.so.7.0.0)</span><br></pre></td></tr></table></figure><p>或</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">perf list | grep probe</span><br><span class="line">probe_libopenvswitch:conntrack_execute             [Tracepoint event]</span><br></pre></td></tr></table></figure><p>记录perf record</p><p><code>perf record -e probe_libopenvswitch:conntrack_execute -aR -g sleep 10</code></p><p>查看记录</p><p><code>perf script</code></p><p>记录函数第一个参数</p><p><code>perf probe -x /usr/lib64/libopenvswitch-2.so.7.0.0 -a &#39;another=conntrack_execute %ax&#39;</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> perf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Loadbalancer Product Trends</title>
       <link href="/2019/10/31/product2-loadbalancer-trends/"/>
       <url>/2019/10/31/product2-loadbalancer-trends/</url>
@@ -1676,9 +1701,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -1834,9 +1859,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -2308,9 +2333,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
             <tag> cloud </tag>
             

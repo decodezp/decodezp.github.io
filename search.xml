@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>快乐清单</title>
+      <link href="/2019/12/05/thoughts11-happiness-list/"/>
+      <url>/2019/12/05/thoughts11-happiness-list/</url>
+      
+        <content type="html"><![CDATA[<p>开始了一项早就打算开始的项目：把每天快乐的瞬间都记录下来。Google Drive中这个简单的Excel表格，被我命名为“快乐清单”。<br><a id="more"></a></p><p>已持续了差不多一周的时间，有的一天写了两件事，有的一天写了三件事，还有周日那天因为在家废弛了一天什么也没写。但这份表格是我写过的最让我流连的文档，每次打开它，仿佛像打开了一本存了私房钱的存折，而且存折上的数字，每天都在增长。</p><p>这几乎是我近期最成功的一个项目：没有什么投入，就是把最想记的事情记下来，然后每天都能重复产生复利。除此之外，还有一个有益的副产品，就是能把那些不想记住的坏事情挤占掉，用快乐的事情挤占掉，真是ROI爆表。</p><p>如果能对我记下的这些事情做个分类，就会发现里面并没有赚了多少钱这一项，当然也没有赔了多少钱，很多事情都是很小很小的一句话或者一个需要稍微冒些风险的决定。涉及在里面的，不仅是个人的主观意愿，更多的是人与人之间的互动和反馈。有些理论似乎过高地强调了“人际关系”的重要性，但实践下来之后，尤其是有了“数据支持”之后，人际关系对一个人的支撑作用，还是非常明显的。</p><p>刚才用储蓄和这个表格类比，其实不是十分贴切。因为储蓄的增长虽然也会令人愉快，但钱有一天可能会消失，而这里面储蓄的内容不会。2019年于我是一个很特别的年份，开始认识到自己真正的方向，同时也认识到身体对一个人的重要性，当然最重要的，是逐渐学会了重视以前那些不起眼的价值。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> thoughts </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> thoughts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去22：DPDK i40e fdir+rss+reta实现相同flow type不同input_set散列</title>
       <link href="/2019/11/26/test22-fdir-rss-reta/"/>
       <url>/2019/11/26/test22-fdir-rss-reta/</url>
@@ -1747,9 +1770,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -1905,9 +1928,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -2379,9 +2402,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
             <tag> cloud </tag>
             

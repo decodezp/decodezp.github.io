@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-12-04T23:12:11.358Z</updated>
+  <updated>2019-12-22T14:28:09.705Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>怎样讲一个好故事</title>
+    <link href="https://decodezp.github.io/2019/12/22/thoughts12-how-to-make-a-good-story/"/>
+    <id>https://decodezp.github.io/2019/12/22/thoughts12-how-to-make-a-good-story/</id>
+    <published>2019-12-22T14:26:27.000Z</published>
+    <updated>2019-12-22T14:28:09.705Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   人的一切知识和学问都是从故事中获取的。讲故事不仅仅是人类传承知识和文化的手段，同时也是获得理解和支持的最有效的方式。并且，一个经过设计(Engineered)的故事具备以虚驭实的能力，这种一种让人着迷的力量。怎样讲出一个好的故事，就是这篇文章想要讲的故事。&lt;/p&gt;
+&lt;p&gt;所有故事都有一个开头，这个开头的作用不在于交代背景，也不在于用离奇的描述“抓住眼球”，而在于将读者代入到故事中去。一定要出现读者所熟悉的元素、符号、场景和经历，或者没有直接出现，但能够激发读者去联想，去自己的认知库中检索和关联的意象。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>快乐清单</title>
@@ -421,30 +442,6 @@
       <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quickwords31：What Is Inclusive and Exclusive Cache</title>
-    <link href="https://decodezp.github.io/2019/07/08/quickwords31-inclusive-exclusive-cache/"/>
-    <id>https://decodezp.github.io/2019/07/08/quickwords31-inclusive-exclusive-cache/</id>
-    <published>2019-07-08T13:10:13.000Z</published>
-    <updated>2019-07-08T13:23:30.705Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;一般对Cache的认知方式&quot;&gt;&lt;a href=&quot;#一般对Cache的认知方式&quot; class=&quot;headerlink&quot; title=&quot;一般对Cache的认知方式&quot;&gt;&lt;/a&gt;一般对Cache的认知方式&lt;/h2&gt;&lt;p&gt;我们比较熟悉的对Cache的理解是，首先有3级，L1，L2和L3。这三级依次远离CPU核心，查询数据的速度也依次减慢。当CPU需要一个地址上的数据时，会先去L1查找；当L1没有这个数据的时候，去L2查找；L2也没有的时候，去L3查找。如果还没有，就去内存上去查找。这是我们看待Cache和CPU查询数据时的一般方式。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-12-22T14:28:09.705Z</updated>
+  <updated>2019-12-22T16:09:17.738Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系</title>
+    <link href="https://decodezp.github.io/2019/12/23/quickwords37-skylake-cache-snoop-filter/"/>
+    <id>https://decodezp.github.io/2019/12/23/quickwords37-skylake-cache-snoop-filter/</id>
+    <published>2019-12-22T16:05:40.000Z</published>
+    <updated>2019-12-22T16:09:17.738Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Skylake的缓存设计使用了Non-inclusive的架构设计，同时调大了L2缓存的大小。简单来说，区别就是以前从内存读入的数据会同时进入L3和L2缓存，而现在会只进入L2缓存，当该数据从L2缓存中清除的时候，才会进入L3缓存。&lt;/p&gt;
+&lt;p&gt;在以前的缓存架构中，L2缓存中的数据是L3缓存数据的真子集。而Skylake的架构中，L2和L3的数据在绝大部分时间中是独占的(exclusive)的，即二者所缓存的数据没有重叠。但注意，Skylake的架构是Non-inclusive，而不是严格的exclusive，是因为当同一条Cache Line在多个CPU核的L2缓存中都存在时，L3缓存中也有该Cache Line的数据。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="perf" scheme="https://decodezp.github.io/tags/perf/"/>
+    
+  </entry>
   
   <entry>
     <title>怎样讲一个好故事</title>
@@ -417,31 +440,6 @@
     
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去15：DPDK VxLAN Inner L4 CSUM OFFLOAD</title>
-    <link href="https://decodezp.github.io/2019/07/16/test15-dpdk-vxlan-csum-offload/"/>
-    <id>https://decodezp.github.io/2019/07/16/test15-dpdk-vxlan-csum-offload/</id>
-    <published>2019-07-16T11:08:19.000Z</published>
-    <updated>2019-07-16T11:14:22.339Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;IXGBE&quot;&gt;&lt;a href=&quot;#IXGBE&quot; class=&quot;headerlink&quot; title=&quot;IXGBE&quot;&gt;&lt;/a&gt;IXGBE&lt;/h2&gt;&lt;p&gt;以IXGBE驱动为例，看一下如何让把内层报文Checksum的计算Offload给网卡。&lt;/p&gt;
-&lt;p&gt;本质上来说，是在DPDK的&lt;code&gt;mbuf&lt;/code&gt;结构中，将L2 Header的长度配置为外层VxLAN报文+内层L2 Header的总长度，这样对网卡来说，该&lt;code&gt;mbuf&lt;/code&gt;对应的报文就是一个L2 Header长得令人发指的普通非隧道报文，但是这样就可以计算内层L3/L4 Header的Checksum了。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="dpdk" scheme="https://decodezp.github.io/tags/dpdk/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   

@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系</title>
+      <link href="/2019/12/23/quickwords37-skylake-cache-snoop-filter/"/>
+      <url>/2019/12/23/quickwords37-skylake-cache-snoop-filter/</url>
+      
+        <content type="html"><![CDATA[<p>Skylake的缓存设计使用了Non-inclusive的架构设计，同时调大了L2缓存的大小。简单来说，区别就是以前从内存读入的数据会同时进入L3和L2缓存，而现在会只进入L2缓存，当该数据从L2缓存中清除的时候，才会进入L3缓存。</p><p>在以前的缓存架构中，L2缓存中的数据是L3缓存数据的真子集。而Skylake的架构中，L2和L3的数据在绝大部分时间中是独占的(exclusive)的，即二者所缓存的数据没有重叠。但注意，Skylake的架构是Non-inclusive，而不是严格的exclusive，是因为当同一条Cache Line在多个CPU核的L2缓存中都存在时，L3缓存中也有该Cache Line的数据。<br><a id="more"></a></p><p>还有一些别的区别，比如Skylake的Cache Line支持”Forward”状态，具备专用的snoop filter等。Snoop filter主要用来追踪记录在L2和L1中的Cache Line，Skylake之前的架构是用L3缓存充当的，因为L2和L1的数据都存在于L3缓存中。</p><p>Snoop filter还是一个特点是，如果一条Snoop filter中的记录需要被清除，那么就需要将该条记录对应的，存在于L2和L1 Cache中的数据invalid掉，该数据会进入L3缓存。这个叫做”Back invalidation”。这个东西有可能会成为导致一些应用在Skylake上性能下降的原因。</p><p>下面是一个读取过程：</p><ul><li><p>CPU核心A请求数据地址addr-&gt;L2 Cache Miss-&gt;从内存中加载addr数据进入L2-&gt;Snoop filter记录addr</p></li><li><p>当核心A的L2缓存清除addr对应的数据后，该数据进入L3缓存，同时在Snoop filter中也清除addr的记录</p></li><li><p>如果此时核心A又需要addr上的数据，则直接从L3读取，并在Snoop filter中添加记录</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> perf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>怎样讲一个好故事</title>
       <link href="/2019/12/22/thoughts12-how-to-make-a-good-story/"/>
       <url>/2019/12/22/thoughts12-how-to-make-a-good-story/</url>

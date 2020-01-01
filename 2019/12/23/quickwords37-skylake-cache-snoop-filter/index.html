@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚18：pcie带宽单位gt/s到gbps转换方法 | DecodeZ</title>
+  <title>几句话说清楚37:skylake non-inclusive缓存和snoop filter的关系 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="PCIE的表达方式PCIE使用GT/s这个单位表达自己的带宽，这并不是为了标新立异，而是为了更好（直接）地表达PCIE的工作方式。">
-<meta name="keywords" content="tech,hardware">
+  <meta name="description" content="Skylake的缓存设计使用了Non-inclusive的架构设计，同时调大了L2缓存的大小。简单来说，区别就是以前从内存读入的数据会同时进入L3和L2缓存，而现在会只进入L2缓存，当该数据从L2缓存中清除的时候，才会进入L3缓存。 在以前的缓存架构中，L2缓存中的数据是L3缓存数据的真子集。而Skylake的架构中，L2和L3的数据在绝大部分时间中是独占的(exclusive)的，即二者所缓存的">
+<meta name="keywords" content="tech,perf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚18：PCIE带宽单位GT&#x2F;s到Gbps转换方法">
-<meta property="og:url" content="https://decodezp.github.io/2019/02/22/quickwords18-pcie-gtps-gbps/index.html">
+<meta property="og:title" content="几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系">
+<meta property="og:url" content="https://decodezp.github.io/2019/12/23/quickwords37-skylake-cache-snoop-filter/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="PCIE的表达方式PCIE使用GT/s这个单位表达自己的带宽，这并不是为了标新立异，而是为了更好（直接）地表达PCIE的工作方式。">
+<meta property="og:description" content="Skylake的缓存设计使用了Non-inclusive的架构设计，同时调大了L2缓存的大小。简单来说，区别就是以前从内存读入的数据会同时进入L3和L2缓存，而现在会只进入L2缓存，当该数据从L2缓存中清除的时候，才会进入L3缓存。 在以前的缓存架构中，L2缓存中的数据是L3缓存数据的真子集。而Skylake的架构中，L2和L3的数据在绝大部分时间中是独占的(exclusive)的，即二者所缓存的">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://eteknix-eteknixltd.netdna-ssl.com/wp-content/uploads/2015/08/Supermicro_X10DAX-Photo-pcie-slots.jpg">
-<meta property="og:updated_time" content="2019-02-22T13:48:53.561Z">
+<meta property="og:image" content="https://external-preview.redd.it/jOtWwCRdrwZestxo8b3tgnqSA7izXGK6L22YGm6wRdA.jpg?auto=webp&s=4ff3ff1cab8d278abf8519458d2bc7a2665b4ccc">
+<meta property="og:updated_time" content="2019-12-22T16:09:17.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚18：PCIE带宽单位GT&#x2F;s到Gbps转换方法">
-<meta name="twitter:description" content="PCIE的表达方式PCIE使用GT/s这个单位表达自己的带宽，这并不是为了标新立异，而是为了更好（直接）地表达PCIE的工作方式。">
-<meta name="twitter:image" content="https://eteknix-eteknixltd.netdna-ssl.com/wp-content/uploads/2015/08/Supermicro_X10DAX-Photo-pcie-slots.jpg">
+<meta name="twitter:title" content="几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系">
+<meta name="twitter:description" content="Skylake的缓存设计使用了Non-inclusive的架构设计，同时调大了L2缓存的大小。简单来说，区别就是以前从内存读入的数据会同时进入L3和L2缓存，而现在会只进入L2缓存，当该数据从L2缓存中清除的时候，才会进入L3缓存。 在以前的缓存架构中，L2缓存中的数据是L3缓存数据的真子集。而Skylake的架构中，L2和L3的数据在绝大部分时间中是独占的(exclusive)的，即二者所缓存的">
+<meta name="twitter:image" content="https://external-preview.redd.it/jOtWwCRdrwZestxo8b3tgnqSA7izXGK6L22YGm6wRdA.jpg?auto=webp&s=4ff3ff1cab8d278abf8519458d2bc7a2665b4ccc">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords18-pcie-gtps-gbps" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-quickwords37-skylake-cache-snoop-filter" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://eteknix-eteknixltd.netdna-ssl.com/wp-content/uploads/2015/08/Supermicro_X10DAX-Photo-pcie-slots.jpg" rel="gallery_ck4h7i1ii003l8bfysmb5sahx">
-        <img src="https://eteknix-eteknixltd.netdna-ssl.com/wp-content/uploads/2015/08/Supermicro_X10DAX-Photo-pcie-slots.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://external-preview.redd.it/jOtWwCRdrwZestxo8b3tgnqSA7izXGK6L22YGm6wRdA.jpg?auto=webp&s=4ff3ff1cab8d278abf8519458d2bc7a2665b4ccc" rel="gallery_ck4h7ilvh000092fyanj6fueo">
+        <img src="https://external-preview.redd.it/jOtWwCRdrwZestxo8b3tgnqSA7izXGK6L22YGm6wRdA.jpg?auto=webp&s=4ff3ff1cab8d278abf8519458d2bc7a2665b4ccc" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚18：PCIE带宽单位GT/s到Gbps转换方法
+      几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/02/22/quickwords18-pcie-gtps-gbps/" class="article-date">
-	  <time datetime="2019-02-22T13:41:22.000Z" itemprop="datePublished">February 22, 2019</time>
+	Posted on <a href="/2019/12/23/quickwords37-skylake-cache-snoop-filter/" class="article-date">
+	  <time datetime="2019-12-22T16:05:40.000Z" itemprop="datePublished">December 23, 2019</time>
 	</a>
 
       
@@ -232,30 +232,19 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="PCIE的表达方式"><a href="#PCIE的表达方式" class="headerlink" title="PCIE的表达方式"></a>PCIE的表达方式</h2><p>PCIE使用GT/s这个单位表达自己的带宽，这并不是为了标新立异，而是为了更好（直接）地表达PCIE的工作方式。<br><a id="more"></a></p>
-<p>原始的数据在采用PCIE总线传输的时候，需要重新编码。因为PCIE是一种串行总线所以总线时钟要嵌入在串行的数据里。为了保证数据接收方能够正确地还原出时钟，需要提供足够多的信号电位变化（Level Transitions），电位的高低其实代表的就是传输的比特（0或者1）。所以对PCIE来说，它的传输效率并非在于传输了多少有效的数据，而是电位变化的频率。</p>
-<p>GT/s其实就是GigaTransfers per second。而重新编码的电位变化频率也会高于原始数据的比特变化频率，从而导致PCIE传输对带宽有一些因为编码产生的Overhead。</p>
-<p>一次电位变化从数据角度说就相当于传输了一个Bit。所以在下面的计算里GT/s可以等同于Gbps，不过这是编码后的数据。</p>
-<h2 id="PCIE-Gen2-Gen3的区别"><a href="#PCIE-Gen2-Gen3的区别" class="headerlink" title="PCIE Gen2/Gen3的区别"></a>PCIE Gen2/Gen3的区别</h2><p>按上面介绍的原理，为了提高传输速率，一是提高最大可用电位变化频率，而是提高编码效率。</p>
-<h3 id="变化频率"><a href="#变化频率" class="headerlink" title="变化频率"></a>变化频率</h3><ul>
-<li>Gen2最大支持5GT/s</li>
-<li>Gen3最大支持8GT/s</li>
-</ul>
-<h3 id="编码效率"><a href="#编码效率" class="headerlink" title="编码效率"></a>编码效率</h3><ul>
-<li>Gen2编码8Bit原始数据需要10Bit的数据量</li>
-<li>Gen3编码128Bit原始数据需要130Bit的数据量</li>
-</ul>
-<h2 id="GT-s到Gbps的转换"><a href="#GT-s到Gbps的转换" class="headerlink" title="GT/s到Gbps的转换"></a>GT/s到Gbps的转换</h2><ul>
-<li>Gen2</li>
-</ul>
-<p>Gen2最大支持5GT/s/lane。相当于5Gbps的编码后的数据，乘以编码效率<br><code>5Gbps * (8/10) = 4Gbps = 500MBps</code>未编码的原始数据。</p>
+        <p>Skylake的缓存设计使用了Non-inclusive的架构设计，同时调大了L2缓存的大小。简单来说，区别就是以前从内存读入的数据会同时进入L3和L2缓存，而现在会只进入L2缓存，当该数据从L2缓存中清除的时候，才会进入L3缓存。</p>
+<p>在以前的缓存架构中，L2缓存中的数据是L3缓存数据的真子集。而Skylake的架构中，L2和L3的数据在绝大部分时间中是独占的(exclusive)的，即二者所缓存的数据没有重叠。但注意，Skylake的架构是Non-inclusive，而不是严格的exclusive，是因为当同一条Cache Line在多个CPU核的L2缓存中都存在时，L3缓存中也有该Cache Line的数据。<br><a id="more"></a></p>
+<p>还有一些别的区别，比如Skylake的Cache Line支持”Forward”状态，具备专用的snoop filter等。Snoop filter主要用来追踪记录在L2和L1中的Cache Line，Skylake之前的架构是用L3缓存充当的，因为L2和L1的数据都存在于L3缓存中。</p>
+<p>Snoop filter还是一个特点是，如果一条Snoop filter中的记录需要被清除，那么就需要将该条记录对应的，存在于L2和L1 Cache中的数据invalid掉，该数据会进入L3缓存。这个叫做”Back invalidation”。这个东西有可能会成为导致一些应用在Skylake上性能下降的原因。</p>
+<p>下面是一个读取过程：</p>
 <ul>
-<li>Gen3</li>
+<li><p>CPU核心A请求数据地址addr-&gt;L2 Cache Miss-&gt;从内存中加载addr数据进入L2-&gt;Snoop filter记录addr</p>
+</li>
+<li><p>当核心A的L2缓存清除addr对应的数据后，该数据进入L3缓存，同时在Snoop filter中也清除addr的记录</p>
+</li>
+<li><p>如果此时核心A又需要addr上的数据，则直接从L3读取，并在Snoop filter中添加记录</p>
+</li>
 </ul>
-<p>Gen3最大支持8GT/s/lane。按上述算法：</p>
-<p><code>8Gbps * (128/130) = 7876Gbps = 984.6MBps</code></p>
-<p>如果是PCIE Gen3 x8那就是984.6MBps x 8</p>
-<h2 id="速查表格"><a href="#速查表格" class="headerlink" title="速查表格"></a>速查表格</h2><p><img src="https://s2.ax1x.com/2019/02/22/kfycbq.png" alt=""></p>
 
       
     </div>
@@ -266,7 +255,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perf/">perf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -301,19 +290,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/02/24/quickwords19-desc-perf-improvement/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          几句话说清楚19：描述性能优化成果的正确姿势
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/21/quickwords17-makefileam-configureac/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/12/22/thoughts12-how-to-make-a-good-story/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">几句话说清楚17：用Makefile.am和configure.ac构建一个专业的Hello World</div>
+      <div class="article-nav-title">怎样讲一个好故事</div>
     </a>
   
 </nav>
@@ -327,7 +307,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PCIE的表达方式"><span class="nav-number">1.</span> <span class="nav-text">PCIE的表达方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCIE-Gen2-Gen3的区别"><span class="nav-number">2.</span> <span class="nav-text">PCIE Gen2/Gen3的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变化频率"><span class="nav-number">2.1.</span> <span class="nav-text">变化频率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码效率"><span class="nav-number">2.2.</span> <span class="nav-text">编码效率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GT-s到Gbps的转换"><span class="nav-number">3.</span> <span class="nav-text">GT/s到Gbps的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#速查表格"><span class="nav-number">4.</span> <span class="nav-text">速查表格</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>

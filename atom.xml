@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2019-12-22T16:09:17.738Z</updated>
+  <updated>2020-01-03T05:34:00.838Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去23:i40e_vlan_tpid_set():Set switch config failed aq_err:14</title>
+    <link href="https://decodezp.github.io/2020/01/06/test23-Set-switch-config-failed-aq-err/"/>
+    <id>https://decodezp.github.io/2020/01/06/test23-Set-switch-config-failed-aq-err/</id>
+    <published>2020-01-06T05:31:27.000Z</published>
+    <updated>2020-01-03T05:34:00.838Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;把X722网卡的固件升级到4.10或4.11版本之后运行DPDK-19.02及之前的版本都会出这个问题：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系</title>
@@ -413,26 +433,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;Dynamic-Trace-Framework&quot;&gt;&lt;a href=&quot;#Dynamic-Trace-Framework&quot; class=&quot;headerlink&quot; title=&quot;Dynamic Trace Framework&quot;&gt;&lt;/a&gt;Dynamic Trace Framework&lt;/h2&gt;&lt;p&gt;曾经想给DPDK添加一个trace framework，但使用的方法是添加一个专门的rte_trace库，涉及一整套trace buffer和控制相关的操作，同时需要修改原本DPDK应用的代码，使用起来成本还是比较高的。在逐渐熟悉了&lt;code&gt;uprobe&lt;/code&gt;的操作之后，其实可以用uprobe完成绝大部分这个trace framework所做的工作，例如方法执行时间戳、方法参数、返回值、内部变量值的记录工作，并且有性能开销方面的保障。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去16：Adding new kprobe to ftrace tracing</title>
-    <link href="https://decodezp.github.io/2019/07/19/test16-adding-new-kprobe/"/>
-    <id>https://decodezp.github.io/2019/07/19/test16-adding-new-kprobe/</id>
-    <published>2019-07-19T12:29:10.000Z</published>
-    <updated>2019-07-19T12:30:11.824Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;添加ftrace新事件&quot;&gt;&lt;a href=&quot;#添加ftrace新事件&quot; class=&quot;headerlink&quot; title=&quot;添加ftrace新事件&quot;&gt;&lt;/a&gt;添加ftrace新事件&lt;/h2&gt;&lt;p&gt;Ftrace自己带很多事件，之前一直以为在内核方面ftrace的触角就到此为止了。今天才了解到kprobe也可以像uprobe一样自己动态定义一个出来。这样默认的ftrace没有的事件也就可以通过添加新kprobe事件的方式添加了。&lt;br&gt;
     
     </summary>
     

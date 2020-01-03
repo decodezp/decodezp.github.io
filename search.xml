@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>测来测去23:i40e_vlan_tpid_set():Set switch config failed aq_err:14</title>
+      <link href="/2020/01/06/test23-Set-switch-config-failed-aq-err/"/>
+      <url>/2020/01/06/test23-Set-switch-config-failed-aq-err/</url>
+      
+        <content type="html"><![CDATA[<p>把X722网卡的固件升级到4.10或4.11版本之后运行DPDK-19.02及之前的版本都会出这个问题：<br><a id="more"></a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">i40e_vlan_tpid_set(): Set switch config failed aq_err: 14</span><br><span class="line">eth_i40e_dev_init(): Failed to set the default outer VLAN ether type</span><br><span class="line">EAL: ethdev initialisation failedEAL: Requested device 0000:43:00.0 cannot be used</span><br><span class="line">EAL: PCI device 0000:43:00.1 on NUMA socket 0</span><br><span class="line">EAL:   probe driver: 8086:37d0 net_i40e</span><br><span class="line">i40e_vlan_tpid_set(): Set switch config failed aq_err: 14</span><br><span class="line">eth_i40e_dev_init(): Failed to set the default outer VLAN ether type</span><br><span class="line">EAL: ethdev initialisation failedEAL: Requested device 0000:43:00.1 cannot be used</span><br></pre></td></tr></table></figure><p>在DPDK19.08和19.11上是没啥问题的。</p><p>可以选择升级DPDK，如果还是要坚持使用老版本的DPDK可以在升级了X722网卡固件之后给DPDK的代码打上这个Patch<a href="https://patches.dpdk.org/patch/56718/" target="_blank" rel="noopener">链接</a></p><p>本质上是新的固件和老版本的驱动不兼容，存在一些需要配适的问题。只是最近这个问题好像频繁爆发，所以在此注明一下。</p><blockquote><p>好像也可以选择不升级X722的固件，但是不升级的话又会出现一些别的问题。总之如果网卡出了些奇奇怪怪的错误，第一先选择升级固件。升级完了之后还有问题的话，就把问题丢给Intel吧…</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系</title>
       <link href="/2019/12/23/quickwords37-skylake-cache-snoop-filter/"/>
       <url>/2019/12/23/quickwords37-skylake-cache-snoop-filter/</url>

@@ -37,6 +37,27 @@
   </entry>
   
   <entry>
+    <title>其远而无所至极</title>
+    <link href="https://decodezp.github.io/2020/01/03/thoughts13-the-farthest-place/"/>
+    <id>https://decodezp.github.io/2020/01/03/thoughts13-the-farthest-place/</id>
+    <published>2020-01-03T12:22:25.000Z</published>
+    <updated>2020-01-03T12:24:59.721Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;故事要怎么开始呢，仿佛本就没有什么开始。直到去年下半年之前，我都无法确切地说出自己要成为怎样的人。心里虽有些模模糊糊的轮廓，却没有再看清楚一点的念头，因为害怕清晰的影像反而会让自己失望。&lt;/p&gt;
+&lt;p&gt;去年4月有一个很神奇的契机，成为了点燃浩浩苍穹的星火。我现在犹记得接完电话之后的那股强烈的预感。但这仍然不是故事的开始，甚至2017年12月取得那张凭证也不是开始，应该说，所有我们以为是开始的，都可以找到另外一件事，那些开始不过是这件事的结果。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
+  
+  <entry>
     <title>几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系</title>
     <link href="https://decodezp.github.io/2019/12/23/quickwords37-skylake-cache-snoop-filter/"/>
     <id>https://decodezp.github.io/2019/12/23/quickwords37-skylake-cache-snoop-filter/</id>
@@ -413,26 +434,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;LD-PRELOAD&quot;&gt;&lt;a href=&quot;#LD-PRELOAD&quot; class=&quot;headerlink&quot; title=&quot;LD_PRELOAD&quot;&gt;&lt;/a&gt;LD_PRELOAD&lt;/h2&gt;&lt;p&gt;&lt;code&gt;LD_PRELOAD&lt;/code&gt;是一个神奇的指令，关于它的介绍可以参考这篇&lt;a href=&quot;http://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;文章&lt;/a&gt;，这篇&lt;a href=&quot;https://catonmat.net/simple-ld-preload-tutorial&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;文章&lt;/a&gt;。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去17：Adding dynamic probe to gain insight of DPDK application</title>
-    <link href="https://decodezp.github.io/2019/08/07/test17-dyn-probe-dpdk/"/>
-    <id>https://decodezp.github.io/2019/08/07/test17-dyn-probe-dpdk/</id>
-    <published>2019-08-07T11:00:53.000Z</published>
-    <updated>2019-08-07T11:02:23.302Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Dynamic-Trace-Framework&quot;&gt;&lt;a href=&quot;#Dynamic-Trace-Framework&quot; class=&quot;headerlink&quot; title=&quot;Dynamic Trace Framework&quot;&gt;&lt;/a&gt;Dynamic Trace Framework&lt;/h2&gt;&lt;p&gt;曾经想给DPDK添加一个trace framework，但使用的方法是添加一个专门的rte_trace库，涉及一整套trace buffer和控制相关的操作，同时需要修改原本DPDK应用的代码，使用起来成本还是比较高的。在逐渐熟悉了&lt;code&gt;uprobe&lt;/code&gt;的操作之后，其实可以用uprobe完成绝大部分这个trace framework所做的工作，例如方法执行时间戳、方法参数、返回值、内部变量值的记录工作，并且有性能开销方面的保障。&lt;br&gt;
     
     </summary>
     

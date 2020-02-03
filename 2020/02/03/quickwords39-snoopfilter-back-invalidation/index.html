@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9462173887006476",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>几句话说清楚39:什么是snoop filter back invalidation | DecodeZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
+  
+  
+    <meta name="google-site-verification" content="googlefa7a4b15f86f804">
+  
+  
+  
+  <meta name="description" content="前面提到了Skylake的CPU对缓存的结构进行了一番改动，L2和L3缓存从Inclusive的关系变为了Non-inclusive。这个变化就引入了Skylake中专用的Snoop Filter。和所有Snoop Filter一样，都是服务于MESI协议，探测一下同一条Cache Line在不同的CPU核中的状态。">
+<meta name="keywords" content="tech,CPU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几句话说清楚39:什么是Snoop Filter Back Invalidation">
+<meta property="og:url" content="https://decodezp.github.io/2020/02/03/quickwords39-snoopfilter-back-invalidation/index.html">
+<meta property="og:site_name" content="DecodeZ">
+<meta property="og:description" content="前面提到了Skylake的CPU对缓存的结构进行了一番改动，L2和L3缓存从Inclusive的关系变为了Non-inclusive。这个变化就引入了Skylake中专用的Snoop Filter。和所有Snoop Filter一样，都是服务于MESI协议，探测一下同一条Cache Line在不同的CPU核中的状态。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://images0.cnblogs.com/blog/502711/201410/122043386718001.png">
+<meta property="og:updated_time" content="2020-02-03T15:11:22.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="几句话说清楚39:什么是Snoop Filter Back Invalidation">
+<meta name="twitter:description" content="前面提到了Skylake的CPU对缓存的结构进行了一番改动，L2和L3缓存从Inclusive的关系变为了Non-inclusive。这个变化就引入了Skylake中专用的Snoop Filter。和所有Snoop Filter一样，都是服务于MESI协议，探测一下同一条Cache Line在不同的CPU核中的状态。">
+<meta name="twitter:image" content="https://images0.cnblogs.com/blog/502711/201410/122043386718001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9462173887006476",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/downloads"] = "downloads"; 
+
+  themeMenus["/notes"] = "notes"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="DecodeZ" rel="home"> DecodeZ </a>
+            
+          </h1>
+
+          
+            <div class="site-description">刚日读经，柔日读史</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/downloads">downloads</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/notes">notes</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-quickwords39-snoopfilter-back-invalidation" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://images0.cnblogs.com/blog/502711/201410/122043386718001.png" rel="gallery_ck66l95lz0000x7fyrq1ezzdw">
+        <img src="https://images0.cnblogs.com/blog/502711/201410/122043386718001.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      几句话说清楚39:什么是Snoop Filter Back Invalidation
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/02/03/quickwords39-snoopfilter-back-invalidation/" class="article-date">
+	  <time datetime="2020-02-03T15:06:16.000Z" itemprop="datePublished">February 3, 2020</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://decodezp.github.io/2019/12/23/quickwords37-skylake-cache-snoop-filter/">前面</a>提到了Skylake的CPU对缓存的结构进行了一番改动，L2和L3缓存从Inclusive的关系变为了Non-inclusive。这个变化就引入了Skylake中专用的Snoop Filter。和所有Snoop Filter一样，都是服务于MESI协议，探测一下同一条Cache Line在不同的CPU核中的状态。<br><a id="more"></a></p>
+<p>在Skylake中的区别是，以前的Snoop Filter都是直接用L3缓存，因为缓存之间存在Inclusive的关系，所以所有CPU core L2缓存中存在的数据在L3中都存在，因此方便多个核之间“交流”数据信息。</p>
+<p>换成Non-inclusive架构之后，L3便不再具有这一“特殊能力”，为了保证Cache Cohenerence，就需要专门的Snoop Filter。从本质上将，Snoop Filter也就是一块缓存，保存有某个Cache Line在所有CPU核中的状态，以便支持MESI协议。</p>
+<p>是缓存的话就存在一个问题，就是缓存的大小始终是有限的。当Snoop Filter中保存的信息超出了它的容量，就需要将一些原有的信息踢出。由于Snoop Filter的特殊性，如果缓存的状态信息不存在了，但缓存仍然存在于CPU核心的L1或L2缓存中，便无法继续保持缓存相干性。所以在Snoop Filter踢出某个Cache Line的信息时，同样需要把各级缓存中存在的该Cache Line从缓存中踢出。这一行为就成为“Snoop Filter Back Invalidation”。</p>
+<p>如果你的程序出现Cache Miss，可能并不是因为缓存大小不够或者你要的数据不在缓存之中，还有可能是Snoop Filter容量不够，导致出现Back Invalidation出现Cache Miss。</p>
+<p>检查CPU是否出现Snoop Filter Back Invalidation需要查看以下PMU事件计数：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   "Unit": "CHA",</span><br><span class="line">   "EventCode": "0x3D",</span><br><span class="line">   "UMask": "0x01",</span><br><span class="line">   "PortMask": "0x00",</span><br><span class="line">   "FCMask": "0x00",</span><br><span class="line">   "UMaskExt": "0x00",</span><br><span class="line">   "EventName": "UNC_CHA_SF_EVICTION.M_STATE",</span><br><span class="line">   "BriefDescription": "Snoop filter capacity evictions for M-state entries.",</span><br><span class="line">   "PublicDescription": "Counts snoop filter capacity evictions for entries</span><br><span class="line">    tracking modified lines in the cores cache. Snoop filter capacity evictions</span><br><span class="line">    occur when the snoop filter is full and evicts an existing entry to track</span><br><span class="line">    a new entry.</span><br><span class="line">    Does not count clean evictions such as when a cores cache replaces a</span><br><span class="line">    tracked cacheline with a new cacheline.",</span><br><span class="line">   "Counter": "0,1,2,3",</span><br><span class="line">   "MSRValue": "0x00",</span><br><span class="line">   "ELLC": "0",</span><br><span class="line">   "Filter": "na",</span><br><span class="line">   "ExtSel": "0",</span><br><span class="line">   "Deprecated": "0",</span><br><span class="line">   "FILTER_VALUE": "0"</span><br><span class="line"> &#125;,</span><br><span class="line"> &#123;</span><br><span class="line">   "Unit": "CHA",</span><br><span class="line">   "EventCode": "0x3D",</span><br><span class="line">   "UMask": "0x02",</span><br><span class="line">   "PortMask": "0x00",</span><br><span class="line">   "FCMask": "0x00",</span><br><span class="line">   "UMaskExt": "0x00",</span><br><span class="line">   "EventName": "UNC_CHA_SF_EVICTION.E_STATE",</span><br><span class="line">   "BriefDescription": "Snoop filter capacity evictions for E-state entries.",</span><br><span class="line">   "PublicDescription": "Counts snoop filter capacity evictions for entries</span><br><span class="line">    tracking modified lines in the cores cache. Snoop filter capacity evictions</span><br><span class="line">    occur when the snoop filter is full and evicts an existing entry to track</span><br><span class="line">    a new entry.</span><br><span class="line">    Does not count clean evictions such as when a cores cache replaces a</span><br><span class="line">    tracked cacheline with a new cacheline.",</span><br><span class="line">   "Counter": "0,1,2,3",</span><br><span class="line">   "MSRValue": "0x00",</span><br><span class="line">   "ELLC": "0",</span><br><span class="line">   "Filter": "na",</span><br><span class="line">   "ExtSel": "0",</span><br><span class="line">   "Deprecated": "0",</span><br><span class="line">   "FILTER_VALUE": "0"</span><br><span class="line"> &#125;,</span><br><span class="line"> &#123;</span><br><span class="line">   "Unit": "CHA",</span><br><span class="line">   "EventCode": "0x3D",</span><br><span class="line">   "UMask": "0x04",</span><br><span class="line">   "PortMask": "0x00",</span><br><span class="line">   "FCMask": "0x00",</span><br><span class="line">   "UMaskExt": "0x00",</span><br><span class="line">   "EventName": "UNC_CHA_SF_EVICTION.S_STATE",</span><br><span class="line">   "BriefDescription": "Snoop filter capacity evictions for S-state entries.",</span><br><span class="line">   "PublicDescription": "Counts snoop filter capacity evictions for entries</span><br><span class="line">    tracking modified lines in the cores cache. Snoop filter capacity evictions</span><br><span class="line">    occur when the snoop filter is full and evicts an existing entry to track</span><br><span class="line">    a new entry.</span><br><span class="line">    Does not count clean evictions such as when a cores cache replaces a</span><br><span class="line">    tracked cacheline with a new cacheline.",</span><br><span class="line">   "Counter": "0,1,2,3",</span><br><span class="line">   "MSRValue": "0x00",</span><br><span class="line">   "ELLC": "0",</span><br><span class="line">   "Filter": "na",</span><br><span class="line">   "ExtSel": "0",</span><br><span class="line">   "Deprecated": "0",</span><br><span class="line">   "FILTER_VALUE": "0"</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MTE0OC8xNzY5Ng==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/03/history4-cuihao/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">北魏司徒东郡公崔浩教你如何忽悠领导</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav">None</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 DecodeZ All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/downloads" class="mobile-nav-link">Downloads</a>
+  
+    <a href="/notes" class="mobile-nav-link">Notes</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-129343976-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

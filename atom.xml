@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-02-03T14:53:08.115Z</updated>
+  <updated>2020-02-03T15:11:22.743Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚39:什么是Snoop Filter Back Invalidation</title>
+    <link href="https://decodezp.github.io/2020/02/03/quickwords39-snoopfilter-back-invalidation/"/>
+    <id>https://decodezp.github.io/2020/02/03/quickwords39-snoopfilter-back-invalidation/</id>
+    <published>2020-02-03T15:06:16.000Z</published>
+    <updated>2020-02-03T15:11:22.743Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://decodezp.github.io/2019/12/23/quickwords37-skylake-cache-snoop-filter/&quot;&gt;前面&lt;/a&gt;提到了Skylake的CPU对缓存的结构进行了一番改动，L2和L3缓存从Inclusive的关系变为了Non-inclusive。这个变化就引入了Skylake中专用的Snoop Filter。和所有Snoop Filter一样，都是服务于MESI协议，探测一下同一条Cache Line在不同的CPU核中的状态。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>北魏司徒东郡公崔浩教你如何忽悠领导</title>
@@ -424,26 +446,6 @@
     
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>十八岁这天的日记</title>
-    <link href="https://decodezp.github.io/2019/08/11/diary-on-18th-b-day/"/>
-    <id>https://decodezp.github.io/2019/08/11/diary-on-18th-b-day/</id>
-    <published>2019-08-11T08:48:30.000Z</published>
-    <updated>2019-08-11T08:49:56.476Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;上中学的时候，按历任语文老师的要求，写过好几本日记。这里面有一本是最不一样的，因为高三了，语文老师可能也认为“写日记”这个事确实太闲情逸致了一些，所以不再像以前一样要求上交日记本批改。我因此也得以在上面写了一些真正的日记。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚38:什么是 Memory Disambiguation</title>
+      <link href="/2020/02/03/quickwords38-memory-disambiguation/"/>
+      <url>/2020/02/03/quickwords38-memory-disambiguation/</url>
+      
+        <content type="html"><![CDATA[<p>首先看一下disambiguation这个单词在字典中的意思：<br><a id="more"></a></p><blockquote><p>disambiguation<br>/dɪsamˈbɪɡjʊeɪt/<br>verb remove uncertainty of meaning from (an ambiguous sentence, phrase, or other linguistic unit).</p></blockquote><blockquote><p>中文：消除歧义</p></blockquote><p>OK，那么什么叫“Memory消除歧义”呢？其实就是需要搞清楚一个读取操作应该拿到的值到底是多少。</p><p>举一个简单的例子：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">store <span class="number">1</span>, (r2) ; 给r2中内存地址写入值<span class="number">1</span></span><br><span class="line">load r3, (r4) ; 读取r4中内存地址的值，并写入r3</span><br></pre></td></tr></table></figure><p>这里的问题就是，这条<code>load</code>指令是不是要等待第一条<code>store</code>指令执行完之后才可以执行。如果<code>r2</code>和<code>r4</code>中保存的内存地址不相同（也不存在overlap），那么这两条指令可以不用关心执行的先后顺序，从而可以通过并行执行的方式提高系统性能。</p><p>如果这两个寄存器中的值相同，就很蛋疼，因为必须要保证指令执行的先后顺序，否则<code>load</code>指令会读取一个“有歧义”的值。</p><p>CPU中使用了一系列机制来确保在性能最优的情况下处理这个问题。例如store/load buffer，store load forward等。同时也继续延续”speculative”的光荣传统，承担“猜错”的风险获取性能收益。而如果一旦猜错，那么所有<code>load</code>及之后的指令都需要从流水线中清除，十分类似分支预测失败之后的处理。</p><p>以上机制的详细内容不在这里深究，下面主要看一下如何探测出你的程序性能是否受到了Memory Disambiguation的影响。</p><p>在SKYLAKE的<a href="https://download.01.org/perfmon/SKX/skylakex_core_v1.20.json" target="_blank" rel="noopener">PMU描述文档</a>里存在一个MACHINE_CLEARS.MEMORY_ORDERING的事件，它的描述是：</p><blockquote><p>Counts the number of memory ordering Machine Clears detected. Memory Ordering Machine Clears can result from one of the following:a. memory disambiguation,b. external snoop, orc. cross SMT-HW-thread snoop (stores) hitting load buffer.</p></blockquote><p>因为Memory disambiguation引发的流水线清除被称作”Machine clears”，这一PMU事件反映的就是这一问题。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>测来测去23:i40e_vlan_tpid_set():Set switch config failed aq_err:14</title>
       <link href="/2020/01/06/test23-Set-switch-config-failed-aq-err/"/>
       <url>/2020/01/06/test23-Set-switch-config-failed-aq-err/</url>
@@ -1864,9 +1891,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -2022,9 +2049,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -2496,9 +2523,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
             <tag> cloud </tag>
             

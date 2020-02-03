@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-01-03T05:34:00.838Z</updated>
+  <updated>2020-02-03T14:38:41.003Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚38:什么是 Memory Disambiguation</title>
+    <link href="https://decodezp.github.io/2020/02/03/quickwords38-memory-disambiguation/"/>
+    <id>https://decodezp.github.io/2020/02/03/quickwords38-memory-disambiguation/</id>
+    <published>2020-02-03T14:34:59.000Z</published>
+    <updated>2020-02-03T14:38:41.003Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先看一下disambiguation这个单词在字典中的意思：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去23:i40e_vlan_tpid_set():Set switch config failed aq_err:14</title>
@@ -414,26 +438,6 @@
 &lt;p&gt;基本上可以Cover 90%以上的工作场景。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;要开始在现有Master上搞点什么&quot;&gt;&lt;a href=&quot;#要开始在现有Master上搞点什么&quot; class=&quot;headerlink&quot; title=&quot;要开始在现有Master上搞点什么&quot;&gt;&lt;/a&gt;要开始在现有Master上搞点什么&lt;/h2&gt;&lt;h3 id=&quot;确保你在master分支上&quot;&gt;&lt;a href=&quot;#确保你在master分支上&quot; class=&quot;headerlink&quot; title=&quot;确保你在master分支上&quot;&gt;&lt;/a&gt;确保你在master分支上&lt;/h3&gt;&lt;p&gt;&lt;code&gt;git checkout master&lt;/code&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去18：使用LD_PRELOAD搞砸一切</title>
-    <link href="https://decodezp.github.io/2019/08/09/test18-ld-preload-mess-up/"/>
-    <id>https://decodezp.github.io/2019/08/09/test18-ld-preload-mess-up/</id>
-    <published>2019-08-08T21:19:53.000Z</published>
-    <updated>2019-08-08T21:22:32.702Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;LD-PRELOAD&quot;&gt;&lt;a href=&quot;#LD-PRELOAD&quot; class=&quot;headerlink&quot; title=&quot;LD_PRELOAD&quot;&gt;&lt;/a&gt;LD_PRELOAD&lt;/h2&gt;&lt;p&gt;&lt;code&gt;LD_PRELOAD&lt;/code&gt;是一个神奇的指令，关于它的介绍可以参考这篇&lt;a href=&quot;http://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;文章&lt;/a&gt;，这篇&lt;a href=&quot;https://catonmat.net/simple-ld-preload-tutorial&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;文章&lt;/a&gt;。&lt;br&gt;
     
     </summary>
     

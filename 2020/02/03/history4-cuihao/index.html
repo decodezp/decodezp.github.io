@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚9：skylake微架构(microarchitecture)剖析(1) | DecodeZ</title>
+  <title>北魏司徒东郡公崔浩教你如何忽悠领导 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="楔子了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。 另外在介绍完微架构之后，会继续结合Perf中的Performance Event来对照说明互为印证。">
-<meta name="keywords" content="tech,hardware,CPU">
+  <meta name="description" content="“崔浩”这个名字很普通，普通到今人还有很多人和他同名。但官拜三公的北魏东郡公崔浩并不是一个“差不多先生”。把这么普通的名字放在这么神奇的男人身上，让人在读史料的时候都能产生一种出戏的感觉。 说实话，崔浩当上北魏的司徒并不是什么值得一提的事情。他本就出身高门望族，祖上也有人当过曹魏的司空，之后祖祖辈辈又在当公务员这条路上颇有家学。正遇国际形势风云变幻的乱世，国家培养个干部也不容易，有如此人才自当是要">
+<meta name="keywords" content="history">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)">
-<meta property="og:url" content="https://decodezp.github.io/2019/01/07/quickwords9-skylake-pipeline-1/index.html">
+<meta property="og:title" content="北魏司徒东郡公崔浩教你如何忽悠领导">
+<meta property="og:url" content="https://decodezp.github.io/2020/02/03/history4-cuihao/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="楔子了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。 另外在介绍完微架构之后，会继续结合Perf中的Performance Event来对照说明互为印证。">
+<meta property="og:description" content="“崔浩”这个名字很普通，普通到今人还有很多人和他同名。但官拜三公的北魏东郡公崔浩并不是一个“差不多先生”。把这么普通的名字放在这么神奇的男人身上，让人在读史料的时候都能产生一种出戏的感觉。 说实话，崔浩当上北魏的司徒并不是什么值得一提的事情。他本就出身高门望族，祖上也有人当过曹魏的司空，之后祖祖辈辈又在当公务员这条路上颇有家学。正遇国际形势风云变幻的乱世，国家培养个干部也不容易，有如此人才自当是要">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
-<meta property="og:updated_time" content="2019-01-07T15:55:42.417Z">
+<meta property="og:image" content="https://e.share.photo.xuite.net/winnie199064/1ec09fd/11600382/545584895_m.jpg">
+<meta property="og:updated_time" content="2020-02-03T14:53:08.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)">
-<meta name="twitter:description" content="楔子了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。 另外在介绍完微架构之后，会继续结合Perf中的Performance Event来对照说明互为印证。">
-<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta name="twitter:title" content="北魏司徒东郡公崔浩教你如何忽悠领导">
+<meta name="twitter:description" content="“崔浩”这个名字很普通，普通到今人还有很多人和他同名。但官拜三公的北魏东郡公崔浩并不是一个“差不多先生”。把这么普通的名字放在这么神奇的男人身上，让人在读史料的时候都能产生一种出戏的感觉。 说实话，崔浩当上北魏的司徒并不是什么值得一提的事情。他本就出身高门望族，祖上也有人当过曹魏的司空，之后祖祖辈辈又在当公务员这条路上颇有家学。正遇国际形势风云变幻的乱世，国家培养个干部也不容易，有如此人才自当是要">
+<meta name="twitter:image" content="https://e.share.photo.xuite.net/winnie199064/1ec09fd/11600382/545584895_m.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords9-skylake-pipeline-1" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-history4-cuihao" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_ck66kqf2w006bfxfyvrhaxl86">
-        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://e.share.photo.xuite.net/winnie199064/1ec09fd/11600382/545584895_m.jpg" rel="gallery_ck66kqf0i001wfxfyag4zsjcz">
+        <img src="https://e.share.photo.xuite.net/winnie199064/1ec09fd/11600382/545584895_m.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚9：Skylake微架构(Microarchitecture)剖析(1)
+      北魏司徒东郡公崔浩教你如何忽悠领导
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/01/07/quickwords9-skylake-pipeline-1/" class="article-date">
-	  <time datetime="2019-01-07T15:52:11.000Z" itemprop="datePublished">January 7, 2019</time>
+	Posted on <a href="/2020/02/03/history4-cuihao/" class="article-date">
+	  <time datetime="2020-02-03T14:51:55.000Z" itemprop="datePublished">February 3, 2020</time>
 	</a>
 
       
@@ -232,49 +232,49 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="楔子"><a href="#楔子" class="headerlink" title="楔子"></a>楔子</h2><p>了解CPU的微架构是基于其开发“硬核”软件的必需步骤。由于一些历史遗留问题，现存的技术资料往往存在一些概念混淆、重复命名甚至自相矛盾之处。本文一来梳理Skylake微架构(主要是流水线)的组成和特性，二来试图厘清一些含混的概念用以帮助后来者。</p>
-<p>另外在介绍完微架构之后，会继续结合<code>Perf</code>中的<code>Performance Event</code>来对照说明互为印证。</p>
+        <p>“崔浩”这个名字很普通，普通到今人还有很多人和他同名。但官拜三公的北魏东郡公崔浩并不是一个“差不多先生”。把这么普通的名字放在这么神奇的男人身上，让人在读史料的时候都能产生一种出戏的感觉。</p>
+<p>说实话，崔浩当上北魏的司徒并不是什么值得一提的事情。他本就出身高门望族，祖上也有人当过曹魏的司空，之后祖祖辈辈又在当公务员这条路上颇有家学。正遇国际形势风云变幻的乱世，国家培养个干部也不容易，有如此人才自当是要人尽其用。</p>
+<p>崔浩也没让领导们失望，历仕道武帝、明元帝和太武帝三朝，为北魏东征西讨开疆扩土立下了不世之功。除了在谋略上“自比张良”之外，崔浩还精研各类天文星象卜筮谶语等杂学，同时还喜欢对魏国臣民的价值观、世界观发表看法，《资治通鉴》载：</p>
 <a id="more"></a>
 <blockquote>
-<p>需要强调的是，本文的重点是Skylake的流水线(pipeline)架构，core间的连接和架构方式不作重点说明。</p>
+<p>浩不好老、庄之书，曰：“此矫诬之说，不近人情。老聃习礼，仲尼所师，岂肯为败法之书以乱先王之治乎！”尤不信佛法，曰：“何为事此胡神！”</p>
 </blockquote>
-<h2 id="Skylake简介"><a href="#Skylake简介" class="headerlink" title="Skylake简介"></a>Skylake简介</h2><p>Skylake是由Intel以色列研发中心于2015年发布的14nm CPU架构。作为Broadwell的继任者，Skylake在原有架构的基础上，对一些关键特性和组件做出了相当幅度的优化：</p>
-<p><img src="https://en.wikichip.org/w/images/thumb/0/0d/skylake_buff_window.png/350px-skylake_buff_window.png" alt=""></p>
-<p>上图简单列举了一些量化指标，现在不求甚解就好。</p>
-<p>在指令集方面，引入了<code>AVX-512</code>、<code>CLFLUSHOPT</code>、<code>CLWB</code>等新的指令集，不过本文不打算介绍这些东西，写到这里只是觉得如果只用上一段话结束这一小节有些太突兀了。</p>
-<h2 id="流水线总览"><a href="#流水线总览" class="headerlink" title="流水线总览"></a>流水线总览</h2><p><img src="https://en.wikichip.org/w/images/thumb/8/80/intel_common_arch_post_ucache.svg/428px-intel_common_arch_post_ucache.svg.png" alt=""></p>
-<p>引用上面这张图是为了举一个反例，说明一下本文要解决的问题。这张图可以被当做是一张流水线的架构抽象，我可以指着每一个组件讲讲它们都是干嘛的，但这里的问题就是某一个相同的组件在不同的文档、资料、甚至语境下可能有两个甚至更多个名字。</p>
-<p>比如蓝色方块最下面的<code>Allocation Queue</code>，它就还有一个名字叫做<code>Instruction Decode Queue</code>，同时它还有可能被叫做<code>IDQ</code>或<code>AQ</code>。而关于<code>Decoded Instruction Queue</code>、<code>Micro Instruction Sequencer</code>、<code>Re-order buffer</code>、<code>Scheduler</code>、<code>Reservation Station</code>等概念的辨析也是…需要下一番功夫。</p>
-<p>本文将以全网最清晰的方式讲清楚这些概念。</p>
-<p>从high-level的层面来讲，Skylake的流水线架构与Broadwell和Haswell没有太大出入。还是可以分为两个阶段：</p>
-<h3 id="前端-Front-End"><a href="#前端-Front-End" class="headerlink" title="前端(Front-End)"></a>前端(Front-End)</h3><p>上图中蓝色部分就代表流水线的前端。它的主要作用就是获取指令、解码(Decode)指令。</p>
-<p>为了最大限度的发挥CPU的能力，前端就需要尽可能高效率地把程序指令输送给后端。这里就面临两个挑战：</p>
-<ol>
-<li>如何更快更准确地取得要执行的指令</li>
-<li>如何将取得的指令更快地解码为微指令(micro-ops/uops)</li>
-</ol>
-<p>有了更多的微指令输送给后端（执行单元），后端的工作量才能饱和。而前端的所有组件和机制，都是围绕这两个挑战进行的。</p>
-<h3 id="后端-Back-End"><a href="#后端-Back-End" class="headerlink" title="后端(Back-End)"></a>后端(Back-End)</h3><p>上图中红色的部分就代表流水线的后端。一般来讲绿色的部分是存储子系统，虽然与后端交互，但严格讲不算在后端里面。</p>
-<p>后端的主要任务就是执行前端送过来的指令。和前端类似，后端除了“来料加工”之外，也有它自己需要面对的挑战：</p>
-<ol>
-<li>如何提高指令的并行程度</li>
-<li>如何充分利用已有的CPU能力</li>
-</ol>
-<p>如果将CPU比作一家餐厅，跑在上面的应用就是来餐厅就餐的食客。前端类似餐厅的服务生，需要接受客人的下单，同时将订单送到后厨。而后厨就类似后端，负责做出客人需要的菜品。</p>
-<p>但如何能让上菜速度更快？前端是否可以在客人排位时就让其提前下单？后厨是否能够提前准备好本店热门的特色菜，或者一并煮好一大锅面条，根据需要浇上不同的浇头？</p>
-<p>CPU说是高科技，其实干得也就是这些事情。</p>
-<p>在下一篇文章中将详细介绍一下前端。</p>
+<p>魏晋南北朝时期，玄谈是一大风雅之事，是阶级身份和智力水平的象征。而佛教不仅在这一时期被多国所推崇，北魏更是在平城西郊修建了云冈石窟，虽然是在崔浩死后，但也可以看出这个国家的佛教传承。最重要的是，围绕佛教这种意识形态，出现了一批享受特权优待的僧侣集团。对崔浩来说，不喜欢佛教不仅仅是个人偏好的问题，如果总是在领导面前说佛教的坏话，其实就是动了“既得利益者”的蛋糕。</p>
+<p>所以这些人对崔浩自然是没有好眼色的：</p>
+<blockquote>
+<p>及世祖即位，左右多毁之。帝不得已，命浩以公归第。</p>
+</blockquote>
+<p>因为利益冲突的原因，崔浩受到了排挤。这短时间崔浩一定是不服气的，以他骄傲的性格，在“归第”的这段时间里，一定在思索如何打压“僧侣反动集团”并让自己东山再起。</p>
+<p>我们在生活中常见的场景就是领导给下属画大饼，许诺未来的种种利益，并且绝对没有任何无法兑现后的赔偿措施，所以这种事一般都可以称为是“忽悠”。只是忽悠并不是领导的专属，下属也可以忽悠领导，并且更具观赏性。</p>
+<p>所有的忽悠都要有一个人心的饵。领导知道下属需要什么，下属也可以知道领导需要什么。而拓跋焘想要什么，崔浩很清楚。佛教也许可以帮助他的臣民在这朝不保夕的乱世还保有对“来生”的渺远幻想，但不能帮他成为一个名垂千古的圣君。</p>
+<p>像所有崔浩曾经擘画过的国际形势和斗争策略一样，这次他也很准确地把握住了问题的核心，就是北魏太武帝拓跋焘对佛教的态度。若拓跋焘崇信佛教，或仍然需要佛教，那么他便没有胜出的机会。于是问题的关键就变成了，如何让拓跋焘不再需要佛教。</p>
+<p>很多时候，不再需要并不是彻底松手，也可以是给他一件更好的代替。</p>
+<p>想要忽悠领导，就绝对不要讲逻辑、辨是非，把领导推到“正确”的对立面。即便你再正确，你正不正确也是领导说了算。你要做的只是换一种方式证明领导的正确。</p>
+<p>所以佛教并没有错，您信佛也不是什么问题，但是只信佛还不够彻底，还不够宣扬您的理念，不能彰显您对天下的胸怀，还不能够和您身份完全匹配。</p>
+<p>什么才是“匹配”？崔浩找到了一个民间神棍寇谦之，先给他安排了一个老聃亲封天师道正统的身份，又让他偶遇了老子玄孙李谱文，得授真经六十卷，为道家不传之妙。同时李谱文授予了他“辅佐北方太平真君”的人生使命。北魏的一班文武是不买寇谦之的账的，但崔浩却疯狂表演，执弟子礼，并上疏给拓跋焘：</p>
+<blockquote>
+<p>臣闻圣王受命，必有天应。《河图》、《洛书》皆寄言于虫兽之文，未若今日人神接对，手笑粲然，辞旨深妙，自古无比。岂可以世俗常虑而忽上灵之命！臣窃惧之。</p>
+</blockquote>
+<p>第一句就直击拓跋焘的命门——不想当圣王的皇帝不是一个好拓跋焘。全文没有提一句佛教如何不好，身边的人如何不好，而仅仅是“圣君天应”的饵便达到了既定目标，左右之围，不攻自破。</p>
+<blockquote>
+<p>帝欣然，使谒都奉玉帛、牲牢祭嵩岳，迎致谦之弟子在山中者，以崇奉天师，显扬新法，宣布天下。起天师道场于平城之东南，重坛五层，给道士百二十人衣食，每月设厨会数千人。</p>
+</blockquote>
+<p>在《资治通鉴》这段记述之后，司马光跟了一贴，他想不通为什么崔浩本来不信佛道，却又独信寇谦之。绕来绕去最后讨论到“君子择术”这类中心思想，其实一点边都没摸到。</p>
+<p>故记言于书左：</p>
+<blockquote>
+<p>上有所好，下必甚焉。初浩欲排佛而帝左右毁之，非左右之力强，乃帝尊佛老之法故也。今浩欲清君侧，必思以新法，帝能信而用之，则左右之围自解。故因循老庄旧义，以谦之之言为深妙，并劝帝以上灵之命云云，此皆一时权宜，非实信之。</p>
+</blockquote>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/tech/">tech</a>
+    <a class="article-category-link" href="/categories/history/">history</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/history/">history</a></li></ul>
 
       
             
@@ -309,19 +309,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/01/10/quickwords10-skylake-pipeline-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          几句话说清楚10：Skylake微架构(Microarchitecture)剖析(2)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/05/history2-liuyuan/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/02/03/quickwords38-memory-disambiguation/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">汉光文帝教你如何提出领导无法拒绝的方案</div>
+      <div class="article-nav-title">几句话说清楚38:什么是 Memory Disambiguation</div>
     </a>
   
 </nav>
@@ -335,7 +326,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#楔子"><span class="nav-number">1.</span> <span class="nav-text">楔子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skylake简介"><span class="nav-number">2.</span> <span class="nav-text">Skylake简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流水线总览"><span class="nav-number">3.</span> <span class="nav-text">流水线总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前端-Front-End"><span class="nav-number">3.1.</span> <span class="nav-text">前端(Front-End)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后端-Back-End"><span class="nav-number">3.2.</span> <span class="nav-text">后端(Back-End)</span></a></li></ol></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>

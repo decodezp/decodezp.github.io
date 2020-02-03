@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-02-03T14:38:41.003Z</updated>
+  <updated>2020-02-03T14:53:08.115Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>北魏司徒东郡公崔浩教你如何忽悠领导</title>
+    <link href="https://decodezp.github.io/2020/02/03/history4-cuihao/"/>
+    <id>https://decodezp.github.io/2020/02/03/history4-cuihao/</id>
+    <published>2020-02-03T14:51:55.000Z</published>
+    <updated>2020-02-03T14:53:08.115Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;“崔浩”这个名字很普通，普通到今人还有很多人和他同名。但官拜三公的北魏东郡公崔浩并不是一个“差不多先生”。把这么普通的名字放在这么神奇的男人身上，让人在读史料的时候都能产生一种出戏的感觉。&lt;/p&gt;
+&lt;p&gt;说实话，崔浩当上北魏的司徒并不是什么值得一提的事情。他本就出身高门望族，祖上也有人当过曹魏的司空，之后祖祖辈辈又在当公务员这条路上颇有家学。正遇国际形势风云变幻的乱世，国家培养个干部也不容易，有如此人才自当是要人尽其用。&lt;/p&gt;
+&lt;p&gt;崔浩也没让领导们失望，历仕道武帝、明元帝和太武帝三朝，为北魏东征西讨开疆扩土立下了不世之功。除了在谋略上“自比张良”之外，崔浩还精研各类天文星象卜筮谶语等杂学，同时还喜欢对魏国臣民的价值观、世界观发表看法，《资治通鉴》载：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="history" scheme="https://decodezp.github.io/categories/history/"/>
+    
+    
+      <category term="history" scheme="https://decodezp.github.io/tags/history/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚38:什么是 Memory Disambiguation</title>
@@ -422,29 +444,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几句话说清楚32：Git命令极简使用指南</title>
-    <link href="https://decodezp.github.io/2019/08/09/quickwords32-simplest-git-manual/"/>
-    <id>https://decodezp.github.io/2019/08/09/quickwords32-simplest-git-manual/</id>
-    <published>2019-08-09T13:23:45.000Z</published>
-    <updated>2019-08-09T13:29:49.412Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;基本上可以Cover 90%以上的工作场景。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;要开始在现有Master上搞点什么&quot;&gt;&lt;a href=&quot;#要开始在现有Master上搞点什么&quot; class=&quot;headerlink&quot; title=&quot;要开始在现有Master上搞点什么&quot;&gt;&lt;/a&gt;要开始在现有Master上搞点什么&lt;/h2&gt;&lt;h3 id=&quot;确保你在master分支上&quot;&gt;&lt;a href=&quot;#确保你在master分支上&quot; class=&quot;headerlink&quot; title=&quot;确保你在master分支上&quot;&gt;&lt;/a&gt;确保你在master分支上&lt;/h3&gt;&lt;p&gt;&lt;code&gt;git checkout master&lt;/code&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

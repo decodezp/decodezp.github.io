@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-02-03T15:11:22.743Z</updated>
+  <updated>2020-03-12T01:11:34.747Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚40:什么是Outstanding Cache Miss</title>
+    <link href="https://decodezp.github.io/2020/03/12/quickwords40-outstanding-cache-miss/"/>
+    <id>https://decodezp.github.io/2020/03/12/quickwords40-outstanding-cache-miss/</id>
+    <published>2020-03-12T01:10:35.000Z</published>
+    <updated>2020-03-12T01:11:34.747Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在阅读CPU PMU事件文档或其他一些相关资料的时候，总是会看到”Outstanding Cache Miss”这类描述。对于Cache Miss大家应该比较熟悉，但什么叫做”Outstanding Cache Miss”就需要再作一下说明了。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚39:什么是Snoop Filter Back Invalidation</title>
@@ -419,26 +443,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;Vector-Rx-Function&quot;&gt;&lt;a href=&quot;#Vector-Rx-Function&quot; class=&quot;headerlink&quot; title=&quot;Vector Rx Function&quot;&gt;&lt;/a&gt;Vector Rx Function&lt;/h2&gt;&lt;p&gt;在DPDK i40e网卡的驱动中提供有利用向量指令收包的方法，在一般场景下可以大幅提升性能。当针对基于DPDK的应用做性能诊断时可以用&lt;code&gt;perf top&lt;/code&gt;命令直观观察有没有&lt;code&gt;i40e_recv_pkts_vec&lt;/code&gt;这个方法出现，如果没有则可以判定当前的应用没有使用向量指令集优化过的收/发包方法。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quickwords33:How uprobe works</title>
-    <link href="https://decodezp.github.io/2019/08/25/quickwords33-how-uprobe-work/"/>
-    <id>https://decodezp.github.io/2019/08/25/quickwords33-how-uprobe-work/</id>
-    <published>2019-08-25T14:07:45.000Z</published>
-    <updated>2019-08-25T14:16:29.701Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;用uprobe也有一段时间了，确实是一个很有价值的工具。我这个人有个特点，就是如果不知道这件事背后的原理，即便工具很好用，但用起来始终心里不踏实，像是房本上没加名字，住着没有安全感。对于uprobe这么fancy的工具还是很有必要了解一下具体的工作机制。一方面是打消“神秘感”，一方面是看看是否能激发别的灵感。&lt;br&gt;
     
     </summary>
     

@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚40:什么是Outstanding Cache Miss</title>
+      <link href="/2020/03/12/quickwords40-outstanding-cache-miss/"/>
+      <url>/2020/03/12/quickwords40-outstanding-cache-miss/</url>
+      
+        <content type="html"><![CDATA[<p>在阅读CPU PMU事件文档或其他一些相关资料的时候，总是会看到”Outstanding Cache Miss”这类描述。对于Cache Miss大家应该比较熟悉，但什么叫做”Outstanding Cache Miss”就需要再作一下说明了。<br><a id="more"></a></p><p>当CPU发生Cache Miss之后，自然需要从下一级缓存，或者RAM中将需要的数据存入缓存。从请求开始到数据还没有进入缓存的这段时间，就是“Outstanding Cache Miss”。</p><p>如果将缓存的数据请求也理解成和一般的I/O请求一样，那么也会区分是blocking还是non-blocking的请求。如果一条缓存请求在没有完成之前（处于Outstanding的状态）所有其他请求都无法进行，那么这块缓存就叫做blocking cache。反之，如果缓存可以同时处理多条I/O请求，那么这个缓存就是non-blocking cache。</p><p>当然non-blocking缓存的性能会好一些。另外non-blocking缓存的另外一个指标就是能同时Hold住多少条Cache请求。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚39:什么是Snoop Filter Back Invalidation</title>
       <link href="/2020/02/03/quickwords39-snoopfilter-back-invalidation/"/>
       <url>/2020/02/03/quickwords39-snoopfilter-back-invalidation/</url>
@@ -1939,9 +1966,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -2097,9 +2124,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
         </tags>
       
@@ -2571,9 +2598,9 @@
       
         <tags>
             
-            <tag> thoughts </tag>
-            
             <tag> tech </tag>
+            
+            <tag> thoughts </tag>
             
             <tag> cloud </tag>
             

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-03-12T01:11:34.747Z</updated>
+  <updated>2020-04-17T15:54:45.086Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚41:Xeon Scalable CPU Cache Coherence处理流程(1)</title>
+    <link href="https://decodezp.github.io/2020/04/17/quickwords40-cache-coherence-1/"/>
+    <id>https://decodezp.github.io/2020/04/17/quickwords40-cache-coherence-1/</id>
+    <published>2020-04-17T15:52:09.000Z</published>
+    <updated>2020-04-17T15:54:45.086Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先明确一下Cache Coherence出现的原因：多核处理器中，同一段数据可能在多个私有Cache中同时存在。多CPU核需要对该数据进行读写操作，为了保证程序执行结果的正确性，这多个CPU之间需要互相“通信”才能确保自己拿来参与计算的数据是应该用的数据。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚40:什么是Outstanding Cache Miss</title>
@@ -430,26 +454,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去19：Enable DPDK i40e vector rx function</title>
-    <link href="https://decodezp.github.io/2019/09/04/test19-enable-dpdk-i40e-vector-rx-function/"/>
-    <id>https://decodezp.github.io/2019/09/04/test19-enable-dpdk-i40e-vector-rx-function/</id>
-    <published>2019-09-04T11:22:57.000Z</published>
-    <updated>2019-09-04T11:25:57.562Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Vector-Rx-Function&quot;&gt;&lt;a href=&quot;#Vector-Rx-Function&quot; class=&quot;headerlink&quot; title=&quot;Vector Rx Function&quot;&gt;&lt;/a&gt;Vector Rx Function&lt;/h2&gt;&lt;p&gt;在DPDK i40e网卡的驱动中提供有利用向量指令收包的方法，在一般场景下可以大幅提升性能。当针对基于DPDK的应用做性能诊断时可以用&lt;code&gt;perf top&lt;/code&gt;命令直观观察有没有&lt;code&gt;i40e_recv_pkts_vec&lt;/code&gt;这个方法出现，如果没有则可以判定当前的应用没有使用向量指令集优化过的收/发包方法。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

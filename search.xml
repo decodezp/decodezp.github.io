@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>几句话说清楚41:Xeon Scalable CPU Cache Coherence处理流程(1)</title>
+      <link href="/2020/04/17/quickwords40-cache-coherence-1/"/>
+      <url>/2020/04/17/quickwords40-cache-coherence-1/</url>
+      
+        <content type="html"><![CDATA[<p>先明确一下Cache Coherence出现的原因：多核处理器中，同一段数据可能在多个私有Cache中同时存在。多CPU核需要对该数据进行读写操作，为了保证程序执行结果的正确性，这多个CPU之间需要互相“通信”才能确保自己拿来参与计算的数据是应该用的数据。<br><a id="more"></a></p><p>这里面关键就是对“写”的处理，如果只是只读的话，其实不用考虑Cache Coherence。</p><p>对Cache Coherence的理解在开发性能敏感型的应用时非常关键，不过在真正介绍这套机制之前，还是得先说一下当前CPU的Cache结构。</p><p>当然大家都知道Cache包括L1/L2/L3三层架构，一个比一个大，一个比一个慢。不过对多核CPU之间的Mesh架构还需要再介绍一下：</p><p><img src="https://3s81si1s5ygj3mzby34dq6qf-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/intel-skylake-xeon-xcc-die.jpg" alt=""></p><p>这张图比较经典，多个CPU核通过Mesh总线连接，每一个核都有一个CHA/SF和LLC。</p><p>其实少画了一个CMS，不过在这里不重要。</p><p>分别解释一下：</p><ul><li><p>CHA:发送和接收Cache Coherence协议的消息，更新SF和LLC的状态。它自己管理自己手里的L2 Cache以及一部分LLC(LLC Slice, 1.375MB for skylake，icelake好像保密不让说)。系统内所有的内存地址都可以唯一地哈希到一个LLC Slice中，该LLC Slice所处的节点就算这个地址的Home节点。</p></li><li><p>SF:记录所有属于该Home节点的地址上的数据在各个节点的L2 Cache的状态。该数据不一定在Home节点的L2 Cache中，但会记录哪个节点的L2 Cache中有该数据，其实就是一种Directory-Based Cache Coherence机制。不过这里不讲解这套东西了，有兴趣的可以查看这个<a href="http://www.cs.cmu.edu/~418/lectures/13_directory_coherence.pdf" target="_blank" rel="noopener">文档</a>。</p></li><li><p>LLC:三级缓存，同样也会记录每条Cache Line的数据和状态。与SF在结构上唯一的不同就是可以保存实际的数据，而SF仅仅记录状态。它们两个之间的关系不再是暧昧不清的Non-inclusive，而是完完全全的Exclusive，即当某一个Cache Line在SF中是ME/S/状态时，LLC必然是I状态，反之亦然。</p></li></ul><blockquote><p>SF因为不保存数据，所以不区分M和E状态，统称为ME状态。</p></blockquote><p>从大方向上总结一下，就是SF主要保存各个CPU核的私有数据缓存状态（L2都是各核私有的），LLC主要保存多核共享的数据及其状态。</p><p>OK，都是TMD理论，我当时看各方资料直接看自闭了，下面描述一个CPU核第一次读取某一个数据的过程，假设当前系统中没有任何该数据的副本。</p><ul><li>CPU0发送读取请求，L1没有该数据，Cache Miss</li><li>L2中也没有该数据，Cache Miss</li><li>计算该数据地址的Hash，算出该地址的Home节点</li><li>通过本地节点的CHA(严格来说是CMS，不过不重要)给Home节点的CHA发送RFO/Rd消息，RFO是拿到数据之后要写入新的数据，Rd是纯粹读。这里就先假设是RFO</li><li>RFO消息进入Mesh总线，Mesh总线将消息交换到Home节点</li><li>Home节点的CHA接收消息，同时给Home节点的SF和LLC发送查询请求</li><li>SF中没有该地址的记录，所以返回I状态</li><li>LLC中也没有，返回I状态</li><li>Home节点CHA给iMC(memory controller)发送请求，去内存中读取该地址中的数据</li><li>iMC返回数据，Home节点在SF中标注数据所在节点为CPU0，状态为ME</li><li>返回的数据不进入Home节点的L2缓存，也不进入LLC，而是进入CPU0，即请求发起者的L2缓存</li><li>在CPU0的L2中，该数据被标注为E状态</li></ul><p>这里面有几个点需要注意：</p><ul><li>CPU0的SF中并没有关于该条Cache Line的记录，CPU0与之有关的记录是在L2中，而Home节点与之有关的记录在SF中。</li><li>各节点SF只记录以自己为Home节点的地址的状态，其他的一概不管</li><li>同一个地址可以同时存在于某节点的L2缓存和SF中，即该地址的Home节点正是此节点</li><li>同一个地址也可以同时存在于某节点的L2缓存和LLC中，因为LLC也扮演L2的victim cache，在L2中因为种种原因被踢掉的数据都会进入LLC。但如果被踢掉的数据之前本来就是多核共享的，那么就会出现此种情景。</li><li>接上条，被踢掉的L2数据不会进入该L2所在的节点的LLC Slice，而是回到其Home节点的LLC（TODO:找到明确出处）</li></ul><p>这就是最开始的一些内容了，后面再介绍一些更加百转千回的流程。同时，这里面还没有考虑多Socket NUMA的情况，以及CPU核与IIO之间的缓存处理。</p><p>想起来就头痛啊！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> CPU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚40:什么是Outstanding Cache Miss</title>
       <link href="/2020/03/12/quickwords40-outstanding-cache-miss/"/>
       <url>/2020/03/12/quickwords40-outstanding-cache-miss/</url>
@@ -1966,9 +1993,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -2124,9 +2151,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
         </tags>
       
@@ -2546,9 +2573,9 @@
             
             <tag> tech </tag>
             
-            <tag> ftrace </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ftrace </tag>
             
         </tags>
       
@@ -2598,9 +2625,9 @@
       
         <tags>
             
-            <tag> tech </tag>
-            
             <tag> thoughts </tag>
+            
+            <tag> tech </tag>
             
             <tag> cloud </tag>
             

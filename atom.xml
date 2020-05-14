@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-04-17T15:54:45.086Z</updated>
+  <updated>2020-05-14T12:41:56.437Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚42:Xeon Scalable CPU Cache Coherence处理流程(2)</title>
+    <link href="https://decodezp.github.io/2020/05/14/quickwords42-cache-coherence-2/"/>
+    <id>https://decodezp.github.io/2020/05/14/quickwords42-cache-coherence-2/</id>
+    <published>2020-05-14T12:40:46.000Z</published>
+    <updated>2020-05-14T12:41:56.437Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在&lt;a href=&quot;https://decodezp.github.io/2020/04/17/quickwords40-cache-coherence-1/&quot;&gt;上一篇文章&lt;/a&gt;中我们介绍了在Non-inclusive缓存第一次读取的读取数据的过程。其中有几个关键点在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据不是首先进入L3缓存再进入L2缓存，而是直接进入L2缓存&lt;/li&gt;
+&lt;li&gt;数据所在Cache Line的状态会被记录在它自己的Home节点的Snoop Filter中&lt;/li&gt;
+&lt;li&gt;所有LLC中的数据和Snoop Filter中的数据可以涵盖此时CPU所有缓存中的数据，只是会有重复的&lt;/li&gt;
+&lt;li&gt;Snoop Filter和LLC是Exclusive关系，在Snoop Filter中的数据不会同时存在于LLC中，反之亦然
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚41:Xeon Scalable CPU Cache Coherence处理流程(1)</title>
@@ -432,28 +461,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去20：快速定位short-lived进程对性能的负面影响</title>
-    <link href="https://decodezp.github.io/2019/09/19/test20-troubleshoot-short-lived-process/"/>
-    <id>https://decodezp.github.io/2019/09/19/test20-troubleshoot-short-lived-process/</id>
-    <published>2019-09-18T19:58:10.000Z</published>
-    <updated>2019-09-18T20:00:07.840Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;案例&quot;&gt;&lt;a href=&quot;#案例&quot; class=&quot;headerlink&quot; title=&quot;案例&quot;&gt;&lt;/a&gt;案例&lt;/h2&gt;&lt;p&gt;遇到过的一个案例是这样：DPDK应用在小流量的情况下丢包，并且是间歇性地丢。很自然的，会怀疑有其他进程抢占分配给DPDK的CPU核。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   

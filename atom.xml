@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-05-14T12:41:56.437Z</updated>
+  <updated>2020-05-23T03:45:27.023Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚43:什么是云原生Cloud Native</title>
+    <link href="https://decodezp.github.io/2020/05/23/quickwords43-what-is-cloudnative/"/>
+    <id>https://decodezp.github.io/2020/05/23/quickwords43-what-is-cloudnative/</id>
+    <published>2020-05-23T03:43:48.000Z</published>
+    <updated>2020-05-23T03:45:27.023Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;容器就是云原生？微服务就是云原生？K8S就是云原生？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚42:Xeon Scalable CPU Cache Coherence处理流程(2)</title>
@@ -440,27 +460,6 @@
     
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>热烈庆祝8总力克猫传腹病魔康复痊愈</title>
-    <link href="https://decodezp.github.io/2019/09/22/8-recovery/"/>
-    <id>https://decodezp.github.io/2019/09/22/8-recovery/</id>
-    <published>2019-09-22T10:50:13.000Z</published>
-    <updated>2019-09-22T10:53:01.346Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;8总是今年3月出生的一只蓝白相间的英国短毛猫，因为脑袋上的蓝色花斑从中间裂开一个“八”字形的缝，因此被称为8总。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/09/22/u93Xm4.jpg&quot; alt=&quot;8总和母亲&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

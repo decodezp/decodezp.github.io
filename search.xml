@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>测来测去24:QAT使用大页hugepage</title>
+      <link href="/2020/07/22/test24-qat-hugepage/"/>
+      <url>/2020/07/22/test24-qat-hugepage/</url>
+      
+        <content type="html"><![CDATA[<p>实践中，使用大页的QAT应用（尤其是Nginx)都比较稳定，已经用大页这个方法修复了很多生产环境中的疑难杂症，列举几个：<br><a id="more"></a></p><ul><li>ioctl call for mem allocation failed, ret = -1</li><li>Lac_MemPoolCreate() - : Unable to allocate contiguous chunk of memory</li><li>qat_rsa_encrypt: internal error</li><li>qat_engine_init: pthread create failure error</li><li>usdm_drv: userMemAlloc:395 Unable to allocate memory slab or wrong alignment</li><li>发生在Lac_MemPoolCreate()上的coredump等等</li></ul><p>这些问题主要是由于QAT(usdm)需要连续的2MB slab内存，但是因为内存泄漏或者cache的原因导致没有这个资源。可以用<code>cat /proc/buddyinfo</code>查看。</p><p>用2MB大页的话因为是系统预先预留的，所以可以避免这个问题。</p><p>使用Hugepage的方法也很简单：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insmod ./usdm_drv.ko max_huge_pages=50 max_huge_pages_per_process=5</span><br></pre></td></tr></table></figure><p>当然系统里面你需要先预留好足够的空闲大页。Linux怎么创建大页就不在这里介绍了。</p><p>Nginx跑起来之后可以通过<code>cat /proc/meminfo</code>查看Free的大页数量是不是比Total数量减少来确认使用了Hugepage。</p><p>关于那两个参数可以查看这个<a href="https://01.org/sites/default/files/downloads//336210qatswpg-013.pdf" target="_blank" rel="noopener">文档</a>中第3.16节的内容。</p><p>这里主要说一些文档中没写的需要注意的点：</p><ul><li><p>max_huge_pages的数量要大于max_huge_pages_per_process x Nginx worker process num x 2，乘以2是为了做Nginx reload时有足够的资源</p></li><li><p>推荐的Async-Nginx用法是：<code>insmod ./usdm_drv.ko max_huge_pages=2048 max_huge_pages_per_process=32</code>，Nginx可以开到32个Process</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚44：什么是微码Microcode</title>
       <link href="/2020/07/12/quickwords44-microcode/"/>
       <url>/2020/07/12/quickwords44-microcode/</url>

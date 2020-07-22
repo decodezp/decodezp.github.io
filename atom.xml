@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-07-12T06:11:09.498Z</updated>
+  <updated>2020-07-22T08:48:53.635Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去24:QAT使用大页hugepage</title>
+    <link href="https://decodezp.github.io/2020/07/22/test24-qat-hugepage/"/>
+    <id>https://decodezp.github.io/2020/07/22/test24-qat-hugepage/</id>
+    <published>2020-07-22T08:45:26.000Z</published>
+    <updated>2020-07-22T08:48:53.635Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;实践中，使用大页的QAT应用（尤其是Nginx)都比较稳定，已经用大页这个方法修复了很多生产环境中的疑难杂症，列举几个：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚44：什么是微码Microcode</title>
@@ -438,30 +458,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>QuickWords 34： DPDK i40e 82599网卡发送Tx丢包问题</title>
-    <link href="https://decodezp.github.io/2019/10/17/quickwords34-dpdk-tx-hang/"/>
-    <id>https://decodezp.github.io/2019/10/17/quickwords34-dpdk-tx-hang/</id>
-    <published>2019-10-16T19:11:39.000Z</published>
-    <updated>2019-10-16T19:13:08.276Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;现象&quot;&gt;&lt;a href=&quot;#现象&quot; class=&quot;headerlink&quot; title=&quot;现象&quot;&gt;&lt;/a&gt;现象&lt;/h2&gt;&lt;p&gt;表现为在DPDK场景下网卡丢包或者发送队列Hang住。如果用GDB跟进去的话会发现是网卡的DD标志位未置位。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
-    
-      <category term="NIC" scheme="https://decodezp.github.io/tags/NIC/"/>
     
   </entry>
   

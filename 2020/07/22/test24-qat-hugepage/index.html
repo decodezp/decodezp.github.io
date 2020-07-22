@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>quickwords 34： dpdk i40e 82599网卡发送tx丢包问题 | DecodeZ</title>
+  <title>测来测去24:qat使用大页hugepage | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="现象表现为在DPDK场景下网卡丢包或者发送队列Hang住。如果用GDB跟进去的话会发现是网卡的DD标志位未置位。">
-<meta name="keywords" content="tech,hardware,NIC">
+  <meta name="description" content="实践中，使用大页的QAT应用（尤其是Nginx)都比较稳定，已经用大页这个方法修复了很多生产环境中的疑难杂症，列举几个：">
+<meta name="keywords" content="tech">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QuickWords 34： DPDK i40e 82599网卡发送Tx丢包问题">
-<meta property="og:url" content="https://decodezp.github.io/2019/10/17/quickwords34-dpdk-tx-hang/index.html">
+<meta property="og:title" content="测来测去24:QAT使用大页hugepage">
+<meta property="og:url" content="https://decodezp.github.io/2020/07/22/test24-qat-hugepage/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="现象表现为在DPDK场景下网卡丢包或者发送队列Hang住。如果用GDB跟进去的话会发现是网卡的DD标志位未置位。">
+<meta property="og:description" content="实践中，使用大页的QAT应用（尤其是Nginx)都比较稳定，已经用大页这个方法修复了很多生产环境中的疑难杂症，列举几个：">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s.hdnux.com/photos/23/74/51/5229127/3/920x920.jpg">
-<meta property="og:updated_time" content="2019-10-16T19:13:08.276Z">
+<meta property="og:image" content="https://www.intel.com/content/dam/www/public/us/en/images/product/16x9/granite-hill-combined-left-16x9-rwd.png.rendition.intel.web.864.486.png">
+<meta property="og:updated_time" content="2020-07-22T08:48:53.635Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QuickWords 34： DPDK i40e 82599网卡发送Tx丢包问题">
-<meta name="twitter:description" content="现象表现为在DPDK场景下网卡丢包或者发送队列Hang住。如果用GDB跟进去的话会发现是网卡的DD标志位未置位。">
-<meta name="twitter:image" content="https://s.hdnux.com/photos/23/74/51/5229127/3/920x920.jpg">
+<meta name="twitter:title" content="测来测去24:QAT使用大页hugepage">
+<meta name="twitter:description" content="实践中，使用大页的QAT应用（尤其是Nginx)都比较稳定，已经用大页这个方法修复了很多生产环境中的疑难杂症，列举几个：">
+<meta name="twitter:image" content="https://www.intel.com/content/dam/www/public/us/en/images/product/16x9/granite-hill-combined-left-16x9-rwd.png.rendition.intel.web.864.486.png">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords34-dpdk-tx-hang" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-test24-qat-hugepage" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://s.hdnux.com/photos/23/74/51/5229127/3/920x920.jpg" rel="gallery_ckcx4hy21006rb1fyv1dlka2e">
-        <img src="https://s.hdnux.com/photos/23/74/51/5229127/3/920x920.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.intel.com/content/dam/www/public/us/en/images/product/16x9/granite-hill-combined-left-16x9-rwd.png.rendition.intel.web.864.486.png" rel="gallery_ckcx4iady0000c0fy6h3q3za8">
+        <img src="https://www.intel.com/content/dam/www/public/us/en/images/product/16x9/granite-hill-combined-left-16x9-rwd.png.rendition.intel.web.864.486.png" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      QuickWords 34： DPDK i40e 82599网卡发送Tx丢包问题
+      测来测去24:QAT使用大页hugepage
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/10/17/quickwords34-dpdk-tx-hang/" class="article-date">
-	  <time datetime="2019-10-16T19:11:39.000Z" itemprop="datePublished">October 17, 2019</time>
+	Posted on <a href="/2020/07/22/test24-qat-hugepage/" class="article-date">
+	  <time datetime="2020-07-22T08:45:26.000Z" itemprop="datePublished">July 22, 2020</time>
 	</a>
 
       
@@ -232,24 +232,29 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>表现为在DPDK场景下网卡丢包或者发送队列Hang住。如果用GDB跟进去的话会发现是网卡的DD标志位未置位。<br><a id="more"></a></p>
-<h2 id="根因"><a href="#根因" class="headerlink" title="根因"></a>根因</h2><p>因为DPDK ixgbe或者i40e驱动可以直接操作网卡的寄存器和Buffer，当上层业务存在问题，发送一些“不合规”的数据包时，这些有问题的数据包会直接进入网卡，引发硬件问题。</p>
-<p>而在内核态时，这些有问题的数据包会被内核驱动过滤掉。</p>
-<h2 id="具体原因"><a href="#具体原因" class="headerlink" title="具体原因"></a>具体原因</h2><p>引发发送丢包或发送队列Hang住的数据包包括以下几类：</p>
+        <p>实践中，使用大页的QAT应用（尤其是Nginx)都比较稳定，已经用大页这个方法修复了很多生产环境中的疑难杂症，列举几个：<br><a id="more"></a></p>
 <ul>
-<li>包长小于17Byte</li>
-<li>包长大于9674Byte</li>
-<li>TCP报文分段数目大于8</li>
-<li>TSO MSS小于256Byte</li>
-<li>TSO MSS大于9674Byte</li>
-<li>Mbuf链里mbuf个数和第一个mbuf的nb_segs值不一样</li>
-<li>Mbuf链里任意一个mbuf的data_len=0</li>
-<li>Mbuf链长度大于8</li>
-<li>其他目前还位置的原因</li>
+<li>ioctl call for mem allocation failed, ret = -1</li>
+<li>Lac_MemPoolCreate() - : Unable to allocate contiguous chunk of memory</li>
+<li>qat_rsa_encrypt: internal error</li>
+<li>qat_engine_init: pthread create failure error</li>
+<li>usdm_drv: userMemAlloc:395 Unable to allocate memory slab or wrong alignment</li>
+<li>发生在Lac_MemPoolCreate()上的coredump等等</li>
 </ul>
-<h2 id="Workaround"><a href="#Workaround" class="headerlink" title="Workaround"></a>Workaround</h2><p>在调用rte_eth_tx*()方法之前，调用ixgbe或i40e驱动提供的[ixgbe | i40e]_prep_pkts()方法，可排除大部分导致该问题的报文。目前已在几个客户生产环境下解决了问题。</p>
-<p>同时不必过度担心此类检查会影响性能，经过实际测试影响很小。</p>
-<p>根源上，还是需要业务层面找到产生“异常”报文的代码。</p>
+<p>这些问题主要是由于QAT(usdm)需要连续的2MB slab内存，但是因为内存泄漏或者cache的原因导致没有这个资源。可以用<code>cat /proc/buddyinfo</code>查看。</p>
+<p>用2MB大页的话因为是系统预先预留的，所以可以避免这个问题。</p>
+<p>使用Hugepage的方法也很简单：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insmod ./usdm_drv.ko max_huge_pages=50 max_huge_pages_per_process=5</span><br></pre></td></tr></table></figure>
+<p>当然系统里面你需要先预留好足够的空闲大页。Linux怎么创建大页就不在这里介绍了。</p>
+<p>Nginx跑起来之后可以通过<code>cat /proc/meminfo</code>查看Free的大页数量是不是比Total数量减少来确认使用了Hugepage。</p>
+<p>关于那两个参数可以查看这个<a href="https://01.org/sites/default/files/downloads//336210qatswpg-013.pdf" target="_blank" rel="noopener">文档</a>中第3.16节的内容。</p>
+<p>这里主要说一些文档中没写的需要注意的点：</p>
+<ul>
+<li><p>max_huge_pages的数量要大于max_huge_pages_per_process x Nginx worker process num x 2，乘以2是为了做Nginx reload时有足够的资源</p>
+</li>
+<li><p>推荐的Async-Nginx用法是：<code>insmod ./usdm_drv.ko max_huge_pages=2048 max_huge_pages_per_process=32</code>，Nginx可以开到32个Process</p>
+</li>
+</ul>
 
       
     </div>
@@ -260,7 +265,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NIC/">NIC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -295,19 +300,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/10/30/test21-uprobe-userstacktrace/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          测来测去21：在ftrace中拿到event的user-space stack trace
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/10/12/leuven-mem/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/07/12/quickwords44-microcode/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">金罍深深酌</div>
+      <div class="article-nav-title">几句话说清楚44：什么是微码Microcode</div>
     </a>
   
 </nav>
@@ -321,7 +317,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#现象"><span class="nav-number">1.</span> <span class="nav-text">现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根因"><span class="nav-number">2.</span> <span class="nav-text">根因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体原因"><span class="nav-number">3.</span> <span class="nav-text">具体原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Workaround"><span class="nav-number">4.</span> <span class="nav-text">Workaround</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>

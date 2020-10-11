@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-07-22T08:48:53.635Z</updated>
+  <updated>2020-10-11T06:33:41.086Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>蝴蝶泉</title>
+    <link href="https://decodezp.github.io/2020/10/11/thoughts15-butterfly-spring/"/>
+    <id>https://decodezp.github.io/2020/10/11/thoughts15-butterfly-spring/</id>
+    <published>2020-10-11T06:31:54.000Z</published>
+    <updated>2020-10-11T06:33:41.086Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;二十年前第一次去云南，我坐了三天三夜的火车。到达昆明之后，又去了石林和大理。那时年纪尚小，又不知人文地理，自是懵懵懂懂走马观花。算到而今，能回想起来的经过十不存一。岁驰时移，所谓”彩云之南“，于我更多的只是在旅游APP填写足迹时聊以凑数。若当真讲讲心得，其实与没去过无异。&lt;/p&gt;
+&lt;p&gt;不意今年双节仓促之中竟又成行。北京飞昆明，只需半天足矣；动车至大理，也不过像打车到新修的廊坊大兴机场。至此才算是真正见过了滇池和洱海。不知为何我印象中这两个都是如后海这般的“市内人造景观”，却不知即便曾目遇亲见，也可能错得离谱。唯有蝴蝶泉，久别重逢，历历如昨。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
+    
+  </entry>
   
   <entry>
     <title>测来测去24:QAT使用大页hugepage</title>
@@ -435,29 +454,6 @@
       <category term="product" scheme="https://decodezp.github.io/tags/product/"/>
     
       <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去21：在ftrace中拿到event的user-space stack trace</title>
-    <link href="https://decodezp.github.io/2019/10/30/test21-uprobe-userstacktrace/"/>
-    <id>https://decodezp.github.io/2019/10/30/test21-uprobe-userstacktrace/</id>
-    <published>2019-10-30T11:24:43.000Z</published>
-    <updated>2019-10-30T11:27:33.509Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;在开启了ftrace中的一些事件之后，可以用function_graph的trace拿到在&lt;strong&gt;&lt;em&gt;内核态&lt;/em&gt;&lt;/strong&gt;的callstack。但有些时候我们希望能拿到用户态程序的callstack，这样我们就能知道是那些方法触发了某一事件，或者我们直接希望uprobe的事件发生时，能够看到该事件对应的callstack，也会是一个很有价值的信息。&lt;/p&gt;
-&lt;h2 id=&quot;阅读文档&quot;&gt;&lt;a href=&quot;#阅读文档&quot; class=&quot;headerlink&quot; title=&quot;阅读文档&quot;&gt;&lt;/a&gt;阅读文档&lt;/h2&gt;&lt;p&gt;本来的计划是，搞一个什么ftrace callback的内核模块，模块里面调用一些&lt;code&gt;save_stack_trace_user()&lt;/code&gt;这类的方法，但是感觉虽然理论上行得通，但是实际上系统里敢让你塞一个内核模块进去的企业太少，所以暂时先放弃这个方案。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="https://decodezp.github.io/categories/test/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="test" scheme="https://decodezp.github.io/tags/test/"/>
     
   </entry>
   

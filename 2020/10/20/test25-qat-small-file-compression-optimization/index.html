@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>几句话说清楚14：skylake微架构(microarchitecture)剖析(5) | DecodeZ</title>
+  <title>测来测去25:async_mod_nginx qatzip提升小文件压缩qps | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="Instruction Decode Queue(IDQ)IDQ也叫Allocation Queue(AQ)，也有时候会写成是Decode Queue。解码完成的uops在进入后端之前需要先在IDQ中做一下缓冲。作为一个”缓冲队列”，主要作用是将前端解码可能引入的流水线”气泡(bubbles)“消化掉，为后端提供稳定的uops供应(目标是6uop/cycle)。">
-<meta name="keywords" content="tech,hardware,CPU">
+  <meta name="description" content="一般我们会利用Async_mode_nginx配合QAT卸载HTTPS流量，但也有一些用户希望能够仅使用QAT提供的HTTP压缩能力，主要是为了减少公网带宽的占用。这个功能可以利用Async_mode_nginx结合QATzip来完成。 但基于QAT硬件条件的考虑，对小文件的压缩支持不如对大文件的好，特别是当文件大小小于10KB的时候，使用了QAT硬件压缩的QPS会低于使用软件（gzip）压缩的Q">
+<meta name="keywords" content="tech">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几句话说清楚14：Skylake微架构(Microarchitecture)剖析(5)">
-<meta property="og:url" content="https://decodezp.github.io/2019/02/03/quickwords14-skylake-pipeline-5/index.html">
+<meta property="og:title" content="测来测去25:Async_Mod_Nginx QATzip提升小文件压缩QPS">
+<meta property="og:url" content="https://decodezp.github.io/2020/10/20/test25-qat-small-file-compression-optimization/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="Instruction Decode Queue(IDQ)IDQ也叫Allocation Queue(AQ)，也有时候会写成是Decode Queue。解码完成的uops在进入后端之前需要先在IDQ中做一下缓冲。作为一个”缓冲队列”，主要作用是将前端解码可能引入的流水线”气泡(bubbles)“消化掉，为后端提供稳定的uops供应(目标是6uop/cycle)。">
+<meta property="og:description" content="一般我们会利用Async_mode_nginx配合QAT卸载HTTPS流量，但也有一些用户希望能够仅使用QAT提供的HTTP压缩能力，主要是为了减少公网带宽的占用。这个功能可以利用Async_mode_nginx结合QATzip来完成。 但基于QAT硬件条件的考虑，对小文件的压缩支持不如对大文件的好，特别是当文件大小小于10KB的时候，使用了QAT硬件压缩的QPS会低于使用软件（gzip）压缩的Q">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
-<meta property="og:updated_time" content="2019-02-03T07:44:13.811Z">
+<meta property="og:image" content="https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/papers_1280p.jpg?itok=RHoVTL-b">
+<meta property="og:updated_time" content="2020-10-20T14:59:13.713Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几句话说清楚14：Skylake微架构(Microarchitecture)剖析(5)">
-<meta name="twitter:description" content="Instruction Decode Queue(IDQ)IDQ也叫Allocation Queue(AQ)，也有时候会写成是Decode Queue。解码完成的uops在进入后端之前需要先在IDQ中做一下缓冲。作为一个”缓冲队列”，主要作用是将前端解码可能引入的流水线”气泡(bubbles)“消化掉，为后端提供稳定的uops供应(目标是6uop/cycle)。">
-<meta name="twitter:image" content="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg">
+<meta name="twitter:title" content="测来测去25:Async_Mod_Nginx QATzip提升小文件压缩QPS">
+<meta name="twitter:description" content="一般我们会利用Async_mode_nginx配合QAT卸载HTTPS流量，但也有一些用户希望能够仅使用QAT提供的HTTP压缩能力，主要是为了减少公网带宽的占用。这个功能可以利用Async_mode_nginx结合QATzip来完成。 但基于QAT硬件条件的考虑，对小文件的压缩支持不如对大文件的好，特别是当文件大小小于10KB的时候，使用了QAT硬件压缩的QPS会低于使用软件（gzip）压缩的Q">
+<meta name="twitter:image" content="https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/papers_1280p.jpg?itok=RHoVTL-b">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-quickwords14-skylake-pipeline-5" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-test25-qat-small-file-compression-optimization" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" rel="gallery_ckgi3e1rv0038cppvc5dmzjj5">
-        <img src="https://www.cbronline.com/wp-content/uploads/2017/06/960_intel_corporation_skylake_processor_line_up_leaked-570x300.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/papers_1280p.jpg?itok=RHoVTL-b" rel="gallery_ckgi3e1y900fbcppvvvuztm1v">
+        <img src="https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/papers_1280p.jpg?itok=RHoVTL-b" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      几句话说清楚14：Skylake微架构(Microarchitecture)剖析(5)
+      测来测去25:Async_Mod_Nginx QATzip提升小文件压缩QPS
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2019/02/03/quickwords14-skylake-pipeline-5/" class="article-date">
-	  <time datetime="2019-02-03T07:42:55.000Z" itemprop="datePublished">February 3, 2019</time>
+	Posted on <a href="/2020/10/20/test25-qat-small-file-compression-optimization/" class="article-date">
+	  <time datetime="2020-10-20T14:53:34.000Z" itemprop="datePublished">October 20, 2020</time>
 	</a>
 
       
@@ -232,31 +232,12 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Instruction-Decode-Queue-IDQ"><a href="#Instruction-Decode-Queue-IDQ" class="headerlink" title="Instruction Decode Queue(IDQ)"></a>Instruction Decode Queue(IDQ)</h2><p>IDQ也叫Allocation Queue(AQ)，也有时候会写成是Decode Queue。解码完成的uops在进入后端之前需要先在IDQ中做一下缓冲。作为一个”缓冲队列”，主要作用是将前端解码可能引入的流水线”气泡(bubbles)“消化掉，为后端提供稳定的uops供应(目标是6uop/cycle)。<br><a id="more"></a></p>
-<p>Skylake的IDQ最大可以存放64个uops/thread，比Broadwell的28个多一倍还多。这些uop在IDQ中除了排一下队之外，还会被Loop Stream Detector(LSD)扫描一遍，用来发现这些uop是不是来自于一个循环。</p>
-<h3 id="Loop-Stream-Detector-LSD"><a href="#Loop-Stream-Detector-LSD" class="headerlink" title="Loop Stream Detector(LSD)"></a>Loop Stream Detector(LSD)</h3><p>如果在IDQ中能被发现存在循环体uop，那么在下一次循环的时候，就不需要去重新解码这些循环体生成的uop，而是直接由LSD提供uops。这便可以省去指令fetch、解码、读uop cache、分支预测等所有之前的步骤，并且能进一步减少缓存占用。当然，当LSD起作用的时候，整个前端都是处于Disabled的状态。</p>
-<p>Skylake的LSD需要在IDQ的长度（64uop）内发现循环，所以，循环体还是尽量紧凑一点吧:D</p>
-<h2 id="后端（Backend）"><a href="#后端（Backend）" class="headerlink" title="后端（Backend）"></a>后端（Backend）</h2><p><img src="https://en.wikichip.org/w/images/thumb/6/64/skylake_rob.svg/450px-skylake_rob.svg.png" alt=""></p>
-<p>还是首先介绍一下这个部分是否有别的名字。在有些文档里后端又直接被称为<code>Execution Engine</code>。后端的主要任务当然就是执行前端解码出来的这些uop。但后端和前端的设计都在围绕着“如何提高指令的并行性”来设计和优化。</p>
-<p>在Skylake架构中，IDQ以最大6uop/cycle的速度将uop送入Re-order Buffer，后端的处理在Re-order Buffer中正式开始。</p>
-<h2 id="Out-of-order-OOO-Execution-Engine"><a href="#Out-of-order-OOO-Execution-Engine" class="headerlink" title="Out-of-order(OOO)Execution/Engine"></a>Out-of-order(OOO)Execution/Engine</h2><p>先讲一下OOO（乱序）以便对后端的执行有一个整体的把握。</p>
-<p>我们的程序虽然是按顺序编写的指令，但CPU并不（一定）会按相同的方式执行。为了提升整体效率，CPU采用的是乱序执行的方式。从一个“窗口”范围内选取可以执行的指令执行，并且这些操作对用户透明，在程序编写者的角度看来仍是在按他编写的指令顺序执行。</p>
-<blockquote>
-<p>从根本上来讲，OOO是用”数据流（Data flow）”的角度来看待程序，而非程序员的“指令流”视角。</p>
-</blockquote>
-<p>指令的目的就是以一种特定的方式操纵存在于内存/缓存中的数据，引起数据的变化，其实这就是我们通常所说的“写程序”。只不过这是人类习惯的逻辑方式，在机器看来并不一定高效。</p>
-<p><img src="https://s2.ax1x.com/2019/02/03/kGeQiV.jpg" alt="截图出自Computer Architecture 2011 – out-of-order execution (lec 7) 1 Computer Architecture Out-of-order execution By Dan Tsafrir, 11/4/2011 Presentation"></p>
-<p>在上图例子中，需要执行左上角的六个计算指令。<code>In-order execution</code>是假设完全按照程序顺序执行这六个指令的耗时。下面的`In-order(superscalar3)是合并了一些可以并行执行的指令的耗时。</p>
-<p>因为指令(2)中的<code>r1</code>要依赖指令(1)的结果，所以指令(2)只能等(1)执行结束再执行。而本来可以并行执行的(3)(4)也因为要保证In-order顺序而只能一同放在(1)之后执行。</p>
-<p>但从左下角的<code>Data flow</code>的角度来看，其实我们并不需要按照指令顺序运行程序：指令(2)完全可以放在后面执行，并重新安排并行计算顺序。这样就又节省了执行所需的时间。</p>
-<p>OOO选择可执行指令的依据是：</p>
-<ul>
-<li>不依赖未执行指令操纵的数据</li>
-<li>有可用的执行资源</li>
-</ul>
-<p>为了尽可能让进入后端的指令满足这两个条件，OOO采用了一系列的组件和技术。在后面的章节中将会进行介绍。</p>
-<p><img src="http://hpca23.cse.tamu.edu/taco/utsa-www/cs5513-fall07/basic-concept.gif" alt=""></p>
-<p>上图是一个OOO的概念示意图。前端输出给后端的都是顺序指令流，后端在一个窗口范围中选择可以执行的指令进行乱序执行。这里面没有强调的是，最终指令退出(retire)的顺序仍是按照程序的顺序。</p>
+        <p>一般我们会利用Async_mode_nginx配合QAT卸载HTTPS流量，但也有一些用户希望能够仅使用QAT提供的HTTP压缩能力，主要是为了减少公网带宽的占用。这个功能可以利用Async_mode_nginx结合QATzip来完成。</p>
+<p>但基于QAT硬件条件的考虑，对小文件的压缩支持不如对大文件的好，特别是当文件大小小于10KB的时候，使用了QAT硬件压缩的QPS会低于使用软件（gzip）压缩的QPS。这个时候可以打开Async_mode_nginx的配置文件：<br><a id="more"></a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">load_module modules/ngx_http_qatzip_filter_module.so;</span><br><span class="line">load_module modules/ngx_ssl_engine_qat_module.so;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    use epoll;</span><br><span class="line">    worker_connections 102400;</span><br><span class="line">    accept_mutex off;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Enable QAT engine in heretic mode.</span><br><span class="line">ssl_engine &#123;</span><br><span class="line">    use_engine qatengine;</span><br><span class="line">    default_algorithms RSA,EC,DH,DSA;</span><br><span class="line">    qat_engine &#123;</span><br><span class="line">        qat_offload_mode async;</span><br><span class="line">        qat_notify_mode poll;</span><br><span class="line">        qat_poll_mode heuristic;</span><br><span class="line">        qat_sw_fallback on;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    gzip on;</span><br><span class="line">    gzip_min_length     128;</span><br><span class="line">    gzip_comp_level     1;</span><br><span class="line">    gzip_types  text/css text/javascript text/xml text/plain text/x-component application/javascript application/json application/xml application/rss+xml font/truetype font/opentype application/vnd.ms-fontobject image/svg+xml;</span><br><span class="line">    gzip_vary            on;</span><br><span class="line">    gzip_disable        "msie6";</span><br><span class="line">    gzip_http_version   1.0;</span><br><span class="line"></span><br><span class="line">    qatzip_sw failover;</span><br><span class="line">    qatzip_min_length 128;</span><br><span class="line">    qatzip_comp_level 1;</span><br><span class="line">    qatzip_buffers 16 8k;</span><br><span class="line">    qatzip_types text/css text/javascript text/xml text/plain text/x-component application/javascript application/json application/xml application/rss+xml font/truetype font/opentype application/vnd.ms-fontobject image/svg+xml application/octet-stream image/jpeg;</span><br><span class="line">    qatzip_chunk_size   64k;</span><br><span class="line">    qatzip_stream_size  256k;</span><br><span class="line">    qatzip_sw_threshold 256;</span><br><span class="line"></span><br><span class="line">    # HTTP server with QATZip enabled.</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # HTTPS server with async mode.</span><br><span class="line">    server &#123;</span><br><span class="line">        #If QAT Engine enabled,  `asynch` need to add to `listen` directive or just add `ssl_asynch  on;` to the context.</span><br><span class="line">        listen       443 ssl asynch;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        ssl_protocols       TLSv1.2;</span><br><span class="line">        ssl_certificate      cert.pem;</span><br><span class="line">        ssl_certificate_key  cert.key;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里面当然所有和SSL相关的内容应该都注释掉了，在<code>http</code>那一栏里找到<code>qatzip_stream_size</code>这一项，把它的值设为10K，这样可以显著提高小文件的QPS。</p>
+<p>另外建议在高并发，以及大Nginx worker process的情况下测试，对比会更加明显。</p>
+<p>最后吐槽一下竟然我都没找到关于<code>qatzip_*</code>那几个参数的官方说明….</p>
 
       
     </div>
@@ -267,7 +248,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPU/">CPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -302,19 +283,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2019/02/14/quickwords15-toplev/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          几句话说清楚15：Top-Down性能分析方法资料及Toplev使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/31/how-to-learn-english/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/10/11/thoughts15-butterfly-spring/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">程序员学英语的几点实用经验</div>
+      <div class="article-nav-title">蝴蝶泉</div>
     </a>
   
 </nav>
@@ -328,7 +300,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Instruction-Decode-Queue-IDQ"><span class="nav-number">1.</span> <span class="nav-text">Instruction Decode Queue(IDQ)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Loop-Stream-Detector-LSD"><span class="nav-number">1.1.</span> <span class="nav-text">Loop Stream Detector(LSD)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端（Backend）"><span class="nav-number">2.</span> <span class="nav-text">后端（Backend）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Out-of-order-OOO-Execution-Engine"><span class="nav-number">3.</span> <span class="nav-text">Out-of-order(OOO)Execution/Engine</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-10-11T06:33:41.086Z</updated>
+  <updated>2020-10-20T14:59:13.713Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去25:Async_Mod_Nginx QATzip提升小文件压缩QPS</title>
+    <link href="https://decodezp.github.io/2020/10/20/test25-qat-small-file-compression-optimization/"/>
+    <id>https://decodezp.github.io/2020/10/20/test25-qat-small-file-compression-optimization/</id>
+    <published>2020-10-20T14:53:34.000Z</published>
+    <updated>2020-10-20T14:59:13.713Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一般我们会利用Async_mode_nginx配合QAT卸载HTTPS流量，但也有一些用户希望能够仅使用QAT提供的HTTP压缩能力，主要是为了减少公网带宽的占用。这个功能可以利用Async_mode_nginx结合QATzip来完成。&lt;/p&gt;
+&lt;p&gt;但基于QAT硬件条件的考虑，对小文件的压缩支持不如对大文件的好，特别是当文件大小小于10KB的时候，使用了QAT硬件压缩的QPS会低于使用软件（gzip）压缩的QPS。这个时候可以打开Async_mode_nginx的配置文件：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>蝴蝶泉</title>
@@ -428,32 +449,6 @@
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
       <category term="perf" scheme="https://decodezp.github.io/tags/perf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Loadbalancer Product Trends</title>
-    <link href="https://decodezp.github.io/2019/10/31/product2-loadbalancer-trends/"/>
-    <id>https://decodezp.github.io/2019/10/31/product2-loadbalancer-trends/</id>
-    <published>2019-10-31T11:37:18.000Z</published>
-    <updated>2019-10-31T11:41:44.054Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;So what is going on? There are mainly 4 kinds of work.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-      <category term="product" scheme="https://decodezp.github.io/categories/tech/product/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-      <category term="product" scheme="https://decodezp.github.io/tags/product/"/>
-    
-      <category term="network" scheme="https://decodezp.github.io/tags/network/"/>
     
   </entry>
   

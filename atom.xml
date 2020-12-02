@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-10-29T03:31:02.025Z</updated>
+  <updated>2020-12-02T15:35:19.955Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几句话说清楚45:缓存中VIPT和Set-associative的关系</title>
+    <link href="https://decodezp.github.io/2020/12/02/quickwords45-vipt-set-associative/"/>
+    <id>https://decodezp.github.io/2020/12/02/quickwords45-vipt-set-associative/</id>
+    <published>2020-12-02T15:32:36.000Z</published>
+    <updated>2020-12-02T15:35:19.955Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Virtual Index Physical Tag(VIPT）是常见的L1数据缓存的类型。使用这种方式一是可以避免歧义和别名，二是也可以增加缓存的存取性能。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+      <category term="hardware" scheme="https://decodezp.github.io/tags/hardware/"/>
+    
+      <category term="CPU" scheme="https://decodezp.github.io/tags/CPU/"/>
+    
+  </entry>
   
   <entry>
     <title>Intel在云计算市场的竞争策略</title>
@@ -432,26 +456,6 @@
     
     
       <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>怎样做好市场工作</title>
-    <link href="https://decodezp.github.io/2019/11/17/thoughts10-how-to-do-marketing/"/>
-    <id>https://decodezp.github.io/2019/11/17/thoughts10-how-to-do-marketing/</id>
-    <published>2019-11-17T09:34:32.000Z</published>
-    <updated>2019-11-17T09:37:28.667Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;市场工作是提高产品价值所要进行的最重要的工作。市场工作并不是围绕产品的工作，也不是围绕客户的工作，而是围绕&lt;strong&gt;符号&lt;/strong&gt;的工作——构建关于一个特定符号的意象。这个符号代表你想要卖出去的东西，而意象的作用在于，它不会改变人们对你产品的认知，而是让人们改变对&lt;strong&gt;自我&lt;/strong&gt;的认知，即便那只是一种想象。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/categories/thoughts/"/>
-    
-    
-      <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
     
   </entry>
   

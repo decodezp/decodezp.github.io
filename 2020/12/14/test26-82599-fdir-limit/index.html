@@ -35,7 +35,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>其远而无所至极 | DecodeZ</title>
+  <title>测来测去26:82599 flow director的一些限制 | DecodeZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Network,Program,Computer,CPU,Performance">
@@ -45,20 +45,20 @@
   
   
   
-  <meta name="description" content="故事要怎么开始呢，仿佛本就没有什么开始。直到去年下半年之前，我都无法确切地说出自己要成为怎样的人。心里虽有些模模糊糊的轮廓，却没有再看清楚一点的念头，因为害怕清晰的影像反而会让自己失望。 去年4月有一个很神奇的契机，成为了点燃浩浩苍穹的星火。我现在犹记得接完电话之后的那股强烈的预感。但这仍然不是故事的开始，甚至2017年12月取得那张凭证也不是开始，应该说，所有我们以为是开始的，都可以找到另外一件">
-<meta name="keywords" content="thoughts">
+  <meta name="description" content="虽然82599已经是十几年前的产品了但在10G NIC市场上仍有一定的占有率，并且现在比较多的遇到一些和Flow director相关的需求，这里面简单总结一下它存在的限制。 Input_set不能配置在i40e网卡中可以为不同的Packet type(IPv4-TCP/IPv4-UDP..)分别配置不同的Input_set，换句话说针对IPv4-TCP的报文可以仅匹配目的IP和目的端口；针对IP">
+<meta name="keywords" content="tech">
 <meta property="og:type" content="article">
-<meta property="og:title" content="其远而无所至极">
-<meta property="og:url" content="https://decodezp.github.io/2020/01/03/thoughts13-the-farthest-place/index.html">
+<meta property="og:title" content="测来测去26:82599 Flow director的一些限制">
+<meta property="og:url" content="https://decodezp.github.io/2020/12/14/test26-82599-fdir-limit/index.html">
 <meta property="og:site_name" content="DecodeZ">
-<meta property="og:description" content="故事要怎么开始呢，仿佛本就没有什么开始。直到去年下半年之前，我都无法确切地说出自己要成为怎样的人。心里虽有些模模糊糊的轮廓，却没有再看清楚一点的念头，因为害怕清晰的影像反而会让自己失望。 去年4月有一个很神奇的契机，成为了点燃浩浩苍穹的星火。我现在犹记得接完电话之后的那股强烈的预感。但这仍然不是故事的开始，甚至2017年12月取得那张凭证也不是开始，应该说，所有我们以为是开始的，都可以找到另外一件">
+<meta property="og:description" content="虽然82599已经是十几年前的产品了但在10G NIC市场上仍有一定的占有率，并且现在比较多的遇到一些和Flow director相关的需求，这里面简单总结一下它存在的限制。 Input_set不能配置在i40e网卡中可以为不同的Packet type(IPv4-TCP/IPv4-UDP..)分别配置不同的Input_set，换句话说针对IPv4-TCP的报文可以仅匹配目的IP和目的端口；针对IP">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://5b0988e595225.cdn.sohucs.com/images/20190819/dbba88a66e8040898090e360b2c66d33.jpeg">
-<meta property="og:updated_time" content="2020-02-02T16:19:12.021Z">
+<meta property="og:image" content="https://www.gobarcelonabuy.com.tw/images/about_pic21.jpg">
+<meta property="og:updated_time" content="2020-12-14T05:57:27.332Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="其远而无所至极">
-<meta name="twitter:description" content="故事要怎么开始呢，仿佛本就没有什么开始。直到去年下半年之前，我都无法确切地说出自己要成为怎样的人。心里虽有些模模糊糊的轮廓，却没有再看清楚一点的念头，因为害怕清晰的影像反而会让自己失望。 去年4月有一个很神奇的契机，成为了点燃浩浩苍穹的星火。我现在犹记得接完电话之后的那股强烈的预感。但这仍然不是故事的开始，甚至2017年12月取得那张凭证也不是开始，应该说，所有我们以为是开始的，都可以找到另外一件">
-<meta name="twitter:image" content="https://5b0988e595225.cdn.sohucs.com/images/20190819/dbba88a66e8040898090e360b2c66d33.jpeg">
+<meta name="twitter:title" content="测来测去26:82599 Flow director的一些限制">
+<meta name="twitter:description" content="虽然82599已经是十几年前的产品了但在10G NIC市场上仍有一定的占有率，并且现在比较多的遇到一些和Flow director相关的需求，这里面简单总结一下它存在的限制。 Input_set不能配置在i40e网卡中可以为不同的Packet type(IPv4-TCP/IPv4-UDP..)分别配置不同的Input_set，换句话说针对IPv4-TCP的报文可以仅匹配目的IP和目的端口；针对IP">
+<meta name="twitter:image" content="https://www.gobarcelonabuy.com.tw/images/about_pic21.jpg">
   
     <link rel="alternate" href="/atom.xml" title="DecodeZ" type="application/atom+xml">
   
@@ -194,14 +194,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-thoughts13-the-farthest-place" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-test26-82599-fdir-limit" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://5b0988e595225.cdn.sohucs.com/images/20190819/dbba88a66e8040898090e360b2c66d33.jpeg" rel="gallery_ckio5arvb00bdazpvvfkpkcga">
-        <img src="https://5b0988e595225.cdn.sohucs.com/images/20190819/dbba88a66e8040898090e360b2c66d33.jpeg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="https://www.gobarcelonabuy.com.tw/images/about_pic21.jpg" rel="gallery_ckio5arup00a3azpv490ha89c">
+        <img src="https://www.gobarcelonabuy.com.tw/images/about_pic21.jpg" itemprop="image">
       </a>
     
   </div>
@@ -212,7 +212,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      其远而无所至极
+      测来测去26:82599 Flow director的一些限制
     </h1>
   
 
@@ -220,8 +220,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2020/01/03/thoughts13-the-farthest-place/" class="article-date">
-	  <time datetime="2020-01-03T12:22:25.000Z" itemprop="datePublished">January 3, 2020</time>
+	Posted on <a href="/2020/12/14/test26-82599-fdir-limit/" class="article-date">
+	  <time datetime="2020-12-14T05:55:30.000Z" itemprop="datePublished">December 14, 2020</time>
 	</a>
 
       
@@ -232,32 +232,22 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>故事要怎么开始呢，仿佛本就没有什么开始。直到去年下半年之前，我都无法确切地说出自己要成为怎样的人。心里虽有些模模糊糊的轮廓，却没有再看清楚一点的念头，因为害怕清晰的影像反而会让自己失望。</p>
-<p>去年4月有一个很神奇的契机，成为了点燃浩浩苍穹的星火。我现在犹记得接完电话之后的那股强烈的预感。但这仍然不是故事的开始，甚至2017年12月取得那张凭证也不是开始，应该说，所有我们以为是开始的，都可以找到另外一件事，那些开始不过是这件事的结果。<br><a id="more"></a></p>
-<p>从去年4月开始至今，于我是一段前所未有的旅程。上了大学稍微明白一些世理之后开始准备的那些不知所谓的东西都仿佛有了更多实用角度的意义。那些熟悉的记载在故纸堆中的人物，当我意识到我也正在做像他们一样的事，甚至侧身其中，经历类似的挫折和屈辱，处理完全可以类比的问题时，虽然我还没有像他们中有些人那样封侯入相，但于我已是十数年如一日之后的如愿以偿。</p>
-<p>如果说我能有什么愿望，那必定是以平生所学经世致用。但之前这么说太空洞了，太没有说服力了，就像某些腐儒自知无望的喃喃呓语。我一直期望着能有一天我可以不带任何惭愧地讲出这句话，就像我真的有了什么实实在在的践行，就像我不是一个只会自欺欺人的骗子，就像现在一样。</p>
-<p>人最终的欲望还是眼前的现实能够符合脑中的期望，这种保持一致的冲动所带来的折磨是一切故事之所以动人的唯一原因，即便故事只是一种想象中的现实。但脑中为何会有这样那样的期望？这又都来自于前人的故事。如果不是人们甘愿这种折磨，想来也不会有这样的期望。</p>
-<p>单纯的折磨很难说有人会喜欢，但人们是对解脱之后的那种感觉更加上瘾。在折磨的过程中最令人不能忍受的并非是意识不到这一点，而是没有着手之处。没有现实给的反馈，也就无从知晓自己是不是期望得太高了，还是期望得刚刚好，这动摇了等式两边最基本的一个符号。但好消息是，这种期望从来就有，即便现在还不知道从何下手，但你已会开始为此准备，就像那些没有开始的开始，故事已经在悄无声息之处漫延。</p>
-<p>有时候会想起来在10.01实验室调汇编的情景，没有什么经世致用的理想，但可以感觉到一种充盈的快乐。当时我也并不知道这除了在简历技能栏里加上一条之外还有什么其他的用途。现在想来，所谓天道往复，并非仅仅指天理昭彰，报应不爽，而应是天网恢恢，疏而不失，当前的事情都有伏笔，很多被遗忘的细节，在未来闪回之时，却是故事背后的故事。</p>
-<p>这种巧合，任何一种严密的逻辑都无法解释，只能把它归结为一种不可言说的神秘。所有试图解释的努力都是在描述，而从不在解构上着力。但这些描述就已经足够动人，像是故事里面还有故事，逻辑背后还有逻辑，引人遐思又引人追寻。</p>
-<p>讲这种故事讲得最好的自然是道家。20岁左右的时候有一段时间沉迷于老庄勾勒的幻境，以为世间之事，无过于此，天道杳远，也不过是章节中的几个起落。寒鸦凫水，羚羊挂角，在实务面前却又总是逡巡不前，别无良策。只能随手抽出某某经典，遁匿于世，以求暂时的安慰。</p>
-<p>道家经典里，最喜欢的是《南华经》，《南华经》内篇里，最喜欢的是《大宗师》。开篇那句“知天之所为，知人之所为者，至矣”，是喜欢上老庄的第一个理由。至于内篇第一的《逍遥游》，其实并没有给我太多触动——鲲鹏很大，大到没有知觉，北海和南溟很深，深到不知所措。以前以为《逍遥游》讲的是一个关乎眼界和格局的故事，“小知不及大知，小年不及大年”。我也不知道为什么会看上了《逍遥游》中出镜率很少的一句话：</p>
-<blockquote>
-<p>天之苍苍，其正色耶，其远而无所至极耶</p>
-</blockquote>
-<p>很有可能和我那段时间一直在看唯识论有关。我没有想到的是，这两者在这句话里达到了“高度的统一”，这仿佛是我发现了一个藏匿起来的彩蛋——逍遥游并不是在讲什么是大，什么是小，而是在讲如何认知自己的认知。仅仅依靠感官产生的认知，是局限且不可信的。之所以会这样，是因为真实不是仅仅只有一面，而是有无穷无尽的可能。如果仅有一种真实，那么这必定不是真实。那所有所见所闻都是不真实的了吗？天空蓝是它本来的颜色吗？是因为它“远而无所至极”所以无法看到它本来的颜色吗？如果认知中的“远而无所至极”也仅仅是真实的一面，是否意味着我们还有机会穷尽真实的边界？</p>
-<p>我愿意试一下。</p>
+        <p>虽然82599已经是十几年前的产品了但在10G NIC市场上仍有一定的占有率，并且现在比较多的遇到一些和Flow director相关的需求，这里面简单总结一下它存在的限制。</p>
+<h2 id="Input-set不能配置"><a href="#Input-set不能配置" class="headerlink" title="Input_set不能配置"></a>Input_set不能配置</h2><p>在i40e网卡中可以为不同的Packet type(IPv4-TCP/IPv4-UDP..)分别配置不同的Input_set，换句话说针对IPv4-TCP的报文可以仅匹配目的IP和目的端口；针对IPv4-UDP的报文可以仅匹配源IP和源端口。但在82599中Input_set是固定的（一般包含源/目的IP和源/目的端口），不能有其他配置。<br><a id="more"></a></p>
+<h2 id="Input-set的Mask是全局Mask"><a href="#Input-set的Mask是全局Mask" class="headerlink" title="Input_set的Mask是全局Mask"></a>Input_set的Mask是全局Mask</h2><p>针对上一个问题，如果确实希望仅匹配某一个Packet type Input_set的真子集，那么可以用打Mask的方式实现，即Input_set不变，只是给不需要的字段打上掩码掩掉。在i40e网卡上可以分别跟不同的Packet type的Input_set打不同的掩码，但82599的掩码是全局的。举个例子，如果给IPv4-UDP的目的端口打了掩码，那么相当于给IPv4-TCP的目的端口也打了掩码，这样就不能再进行精确匹配IPv4-TCP目的端口号的匹配了。</p>
+<h2 id="IPv6仅支持Signature-Mode"><a href="#IPv6仅支持Signature-Mode" class="headerlink" title="IPv6仅支持Signature Mode"></a>IPv6仅支持Signature Mode</h2><p>这个应该是比较“知名”的限制，因为82599片上存储空间的限制，无法完全支持匹配IPv6那么长的地址，所以只能用这种类似于哈希的方式匹配。</p>
+<h2 id="不支持RSS-queue-region功能"><a href="#不支持RSS-queue-region功能" class="headerlink" title="不支持RSS queue-region功能"></a>不支持RSS queue-region功能</h2><p>补充一个RSS相关的限制，即82599不支持正儿八经的queue-region功能，但可以配合reta table做一定程度上的模拟。在DPDK rte_flow接口中就是用这种方式实现的。但问题就是会有其他的并不需要的报文也会进入到设定的报文中，因为reta table只按报文哈希的结果转发到某特定队列。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/thoughts/">thoughts</a>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thoughts/">thoughts</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
 
       
             
@@ -292,19 +282,10 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2020/01/06/test23-Set-switch-config-failed-aq-err/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          测来测去23:i40e_vlan_tpid_set():Set switch config failed aq_err:14
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/23/quickwords37-skylake-cache-snoop-filter/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/12/02/quickwords45-vipt-set-associative/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">几句话说清楚37:Skylake Non-inclusive缓存和Snoop Filter的关系</div>
+      <div class="article-nav-title">几句话说清楚45:缓存中VIPT和Set-associative的关系</div>
     </a>
   
 </nav>
@@ -318,7 +299,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-set不能配置"><span class="nav-number">1.</span> <span class="nav-text">Input_set不能配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-set的Mask是全局Mask"><span class="nav-number">2.</span> <span class="nav-text">Input_set的Mask是全局Mask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv6仅支持Signature-Mode"><span class="nav-number">3.</span> <span class="nav-text">IPv6仅支持Signature Mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不支持RSS-queue-region功能"><span class="nav-number">4.</span> <span class="nav-text">不支持RSS queue-region功能</span></a></li></ol>
     
     </div>
   </aside>

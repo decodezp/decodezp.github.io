@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://decodezp.github.io/"/>
-  <updated>2020-12-02T15:35:19.955Z</updated>
+  <updated>2020-12-14T05:57:27.332Z</updated>
   <id>https://decodezp.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测来测去26:82599 Flow director的一些限制</title>
+    <link href="https://decodezp.github.io/2020/12/14/test26-82599-fdir-limit/"/>
+    <id>https://decodezp.github.io/2020/12/14/test26-82599-fdir-limit/</id>
+    <published>2020-12-14T05:55:30.000Z</published>
+    <updated>2020-12-14T05:57:27.332Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;虽然82599已经是十几年前的产品了但在10G NIC市场上仍有一定的占有率，并且现在比较多的遇到一些和Flow director相关的需求，这里面简单总结一下它存在的限制。&lt;/p&gt;
+&lt;h2 id=&quot;Input-set不能配置&quot;&gt;&lt;a href=&quot;#Input-set不能配置&quot; class=&quot;headerlink&quot; title=&quot;Input_set不能配置&quot;&gt;&lt;/a&gt;Input_set不能配置&lt;/h2&gt;&lt;p&gt;在i40e网卡中可以为不同的Packet type(IPv4-TCP/IPv4-UDP..)分别配置不同的Input_set，换句话说针对IPv4-TCP的报文可以仅匹配目的IP和目的端口；针对IPv4-UDP的报文可以仅匹配源IP和源端口。但在82599中Input_set是固定的（一般包含源/目的IP和源/目的端口），不能有其他配置。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>几句话说清楚45:缓存中VIPT和Set-associative的关系</title>
@@ -436,26 +457,6 @@
     
     
       <category term="thoughts" scheme="https://decodezp.github.io/tags/thoughts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测来测去22：DPDK i40e fdir+rss+reta实现相同flow type不同input_set散列</title>
-    <link href="https://decodezp.github.io/2019/11/26/test22-fdir-rss-reta/"/>
-    <id>https://decodezp.github.io/2019/11/26/test22-fdir-rss-reta/</id>
-    <published>2019-11-26T11:07:58.000Z</published>
-    <updated>2019-11-26T11:12:07.218Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;i40e网卡，同样的flow type，比如&lt;code&gt;RTE_ETH_FLOW_NONFRAG_IPV4_UDP&lt;/code&gt;，需求是某一特定Dst Port的报文到rx队列1，某一特定Src IP + Dst IP的报文到rx队列2，或其他类似的针对相同flow type的需求。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="tech" scheme="https://decodezp.github.io/categories/tech/"/>
-    
-    
-      <category term="tech" scheme="https://decodezp.github.io/tags/tech/"/>
     
   </entry>
   

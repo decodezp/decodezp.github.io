@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>测来测去26:82599 Flow director的一些限制</title>
+      <link href="/2020/12/14/test26-82599-fdir-limit/"/>
+      <url>/2020/12/14/test26-82599-fdir-limit/</url>
+      
+        <content type="html"><![CDATA[<p>虽然82599已经是十几年前的产品了但在10G NIC市场上仍有一定的占有率，并且现在比较多的遇到一些和Flow director相关的需求，这里面简单总结一下它存在的限制。</p><h2 id="Input-set不能配置"><a href="#Input-set不能配置" class="headerlink" title="Input_set不能配置"></a>Input_set不能配置</h2><p>在i40e网卡中可以为不同的Packet type(IPv4-TCP/IPv4-UDP..)分别配置不同的Input_set，换句话说针对IPv4-TCP的报文可以仅匹配目的IP和目的端口；针对IPv4-UDP的报文可以仅匹配源IP和源端口。但在82599中Input_set是固定的（一般包含源/目的IP和源/目的端口），不能有其他配置。<br><a id="more"></a></p><h2 id="Input-set的Mask是全局Mask"><a href="#Input-set的Mask是全局Mask" class="headerlink" title="Input_set的Mask是全局Mask"></a>Input_set的Mask是全局Mask</h2><p>针对上一个问题，如果确实希望仅匹配某一个Packet type Input_set的真子集，那么可以用打Mask的方式实现，即Input_set不变，只是给不需要的字段打上掩码掩掉。在i40e网卡上可以分别跟不同的Packet type的Input_set打不同的掩码，但82599的掩码是全局的。举个例子，如果给IPv4-UDP的目的端口打了掩码，那么相当于给IPv4-TCP的目的端口也打了掩码，这样就不能再进行精确匹配IPv4-TCP目的端口号的匹配了。</p><h2 id="IPv6仅支持Signature-Mode"><a href="#IPv6仅支持Signature-Mode" class="headerlink" title="IPv6仅支持Signature Mode"></a>IPv6仅支持Signature Mode</h2><p>这个应该是比较“知名”的限制，因为82599片上存储空间的限制，无法完全支持匹配IPv6那么长的地址，所以只能用这种类似于哈希的方式匹配。</p><h2 id="不支持RSS-queue-region功能"><a href="#不支持RSS-queue-region功能" class="headerlink" title="不支持RSS queue-region功能"></a>不支持RSS queue-region功能</h2><p>补充一个RSS相关的限制，即82599不支持正儿八经的queue-region功能，但可以配合reta table做一定程度上的模拟。在DPDK rte_flow接口中就是用这种方式实现的。但问题就是会有其他的并不需要的报文也会进入到设定的报文中，因为reta table只按报文哈希的结果转发到某特定队列。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几句话说清楚45:缓存中VIPT和Set-associative的关系</title>
       <link href="/2020/12/02/quickwords45-vipt-set-associative/"/>
       <url>/2020/12/02/quickwords45-vipt-set-associative/</url>
